@@ -71,11 +71,6 @@ let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types, hs_highl
 " General Mappings {{{1
 let mapleader = ' '
 
-" Use backspace for % (recursive mapping for matchit.vim)
-nmap <BS> %
-xmap <BS> %
-omap <BS> %
-
 " Switch between splits
 nnoremap <silent> <C-h> <C-w><C-h>
 nnoremap <silent> <C-j> <C-w><C-j>
@@ -189,7 +184,7 @@ let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 autocmd! CmdWinEnter * nnoremap <buffer> <CR> <CR>
 autocmd! QuickFixCmdPost * copen
 autocmd! VimEnter * call functions#cursorshape#CursorShapeMode()
-autocmd! BufReadPost * normal! g`"zz
+autocmd! BufReadPost * silent! normal! g`"zz
 command! -bang -nargs=* -range=% -complete=file W <line1>,<line2> w<bang> <args>
 command! BD silent e# | bd#
 command! SS echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
