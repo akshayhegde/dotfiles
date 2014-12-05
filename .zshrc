@@ -76,8 +76,6 @@ bindkey '^n' insert-last-word
 bindkey '^?' backward-delete-char
 
 # Functions {{{1
-
-# cd to the open finder window's path.
 function cdf {
     target=`osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)'`
     if [[ "$target" != "" ]]; then
@@ -85,17 +83,4 @@ function cdf {
     else
         echo -e 'There are no Finder windows!' >$2
     fi
-}
-
-# Colorize man pages
-man() {
-      env \
-          LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-          LESS_TERMCAP_md=$(printf "\e[1;31m") \
-          LESS_TERMCAP_me=$(printf "\e[0m") \
-          LESS_TERMCAP_se=$(printf "\e[0m") \
-          LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-          LESS_TERMCAP_ue=$(printf "\e[0m") \
-          LESS_TERMCAP_us=$(printf "\e[1;32m") \
-          man "$@"
 }
