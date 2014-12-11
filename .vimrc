@@ -135,7 +135,7 @@ let [fist_in_private, fist_anonymously] = [0, 0]
 " CtrlP {{{2
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>F :CtrlPCurWD<CR>
-let [ctrlp_use_caching, ctrl_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
+let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
 
 " Dispatch {{{2
 nnoremap d<space> :Dispatch<space>
