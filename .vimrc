@@ -119,10 +119,6 @@ nnoremap <leader>W m`:%s/\s\+$//<CR>:let @/=''<CR>``
 nnoremap <expr> <leader>b functions#general#bufNav("horizontal")
 nnoremap <expr> <leader>B functions#general#bufNav("vertical")
 
-" Into the black hole
-nnoremap <leader>x "_
-xnoremap <leader>x "_
-
 " Literal word search
 nnoremap g/ /\<\><left><left>
 
