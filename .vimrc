@@ -147,10 +147,7 @@ nnoremap d<CR> :Dispatch<CR>
 nnoremap m<CR> :Make<CR>
 
 " Fugitive {{{2
-nnoremap <leader>ga :Git add --all .<CR>:Gcommit<CR>
-nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gC :Git co -b<space>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
