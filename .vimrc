@@ -95,14 +95,6 @@ xnoremap > >gv
 xnoremap * :<C-u>call functions#general#VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call functions#general#VSetSearch('?')<CR>/<C-R>=@/<CR><CR>
 
-" Center the screen and open folds when moving/searching/jumping
-nnoremap '' ``zzzv
-nnoremap g; g;zzzv
-nnoremap g, g,zzzv
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap g<C-]> g<C-]>zz
-
 " Select entire line without any trailing or leading spaces
 nnoremap <leader>v ^vg_
 
