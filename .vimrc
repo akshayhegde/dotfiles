@@ -134,9 +134,7 @@ nnoremap <expr> <leader>B functions#general#bufNav("vertical")
 nnoremap <leader>x "_
 xnoremap <leader>x "_
 
-" Search mappings
-nnoremap <leader>s :grep<space>
-nnoremap <leader>S :vimgrep<space>
+" Literal word search
 nnoremap g/ /\<\><left><left>
 
 " Plugin Settings and Mappings {{{1
