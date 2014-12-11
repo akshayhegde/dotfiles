@@ -136,7 +136,7 @@ xnoremap <leader>x "_
 
 " Search mappings
 nnoremap <leader>s :grep<space>
-nnoremap <leader>V :vimgrep<space>
+nnoremap <leader>S :vimgrep<space>
 nnoremap g/ /\<\><left><left>
 
 " Plugin Settings and Mappings {{{1
@@ -146,15 +146,13 @@ let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 " Emmet {{{2
 let [user_emmet_expandabbr_key, use_emmet_complete_tag, user_emmet_mode] = ["<c-b>", 1, 'i']
 
-" Vimple {{{2
-let g:vimple_init_vars = 0
-
 " Fist {{{2
 let [fist_in_private, fist_anonymously] = [0, 0]
 
-" VimFindsMe/VFM {{{2
-let vfm_use_split = 1
-nnoremap <leader>f :VFMEdit<CR>
+" CtrlP {{{2
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>F :CtrlPCurWD<CR>
+let [ctrlp_use_caching, ctrl_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
 
 " Dispatch {{{2
 nnoremap d<space> :Dispatch<space>
