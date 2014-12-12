@@ -1,9 +1,9 @@
 " ------------ ajh's .vimrc ------------
-" Load Plugins {{{1
+" Plugins {{{1
 execute pathogen#infect()
 runtime macros/matchit.vim
 
-" Colorscheme and Syntax {{{1
+" Syntax, FileType, Colorscheme {{{1
 syntax on
 filetype plugin indent on
 colorscheme hybrid_mod
@@ -74,7 +74,7 @@ nnoremap <silent> <C-j> <C-w><C-j>
 nnoremap <silent> <C-k> <C-w><C-k>
 nnoremap <silent> <C-l> <C-w><C-l>
 
-" Move by display lines by default
+" Move by display lines
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> gj (v:count == 0 ? 'j' : 'gj')
@@ -83,39 +83,30 @@ nnoremap <expr> gk (v:count == 0 ? 'k' : 'gk')
 " Expand buffer list similar to ## for the argslist
 cnoremap %% <C-R>=functions#general#bufferList()<CR>
 
-" Remap some keys to be more useful
+" Remap some default keys to be more useful
 nnoremap Q gq
-nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
 nnoremap Y y$
-nnoremap <CR> za
 xnoremap < <gv
 xnoremap > >gv
-
-" Use * and # in visual mode
+nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
+nnoremap <CR> za
 xnoremap * :<C-u>call functions#general#VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call functions#general#VSetSearch('?')<CR>/<C-R>=@/<CR><CR>
 
-" Select entire line without any trailing or leading spaces
+" Visually Select a line without indentation
 nnoremap <leader>v ^vg_
 
 " Autoclose
 inoremap {<CR> {<CR>}<ESC>O
 inoremap (<CR> (<CR>)<ESC>O
 
-" Open and close the qf list
-nnoremap <leader>c :copen<CR>
-nnoremap <leader>q :cclose<CR>
-
-" Quickly edit files
-nnoremap <leader>ev :e ~/dotfiles/.vimrc<CR>
-
-" Reindent entire file and return cursor to the same line
+" re-indent file while retaining cursor position.
 nnoremap <leader>ef m`gg=G``
 
 " Remove trailing whitespace
 nnoremap <leader>W m`:%s/\s\+$//<CR>:let @/=''<CR>``
 
-" Buffer switching
+" Open a buffer horizontally or vertically.
 nnoremap <expr> <leader>b functions#general#bufNav("horizontal")
 nnoremap <expr> <leader>B functions#general#bufNav("vertical")
 
@@ -129,7 +120,7 @@ let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 " Emmet {{{2
 let [user_emmet_expandabbr_key, use_emmet_complete_tag, user_emmet_mode] = ["<c-b>", 1, 'i']
 
-" Fist {{{2
+" Fist of Vim {{{2
 let [fist_in_private, fist_anonymously] = [0, 0]
 
 " CtrlP {{{2
@@ -160,7 +151,6 @@ let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 
 " Commands {{{1
 autocmd! CmdWinEnter * nnoremap <buffer> <CR> <CR>
-autocmd! QuickFixCmdPost * copen
 autocmd! VimEnter * call functions#cursorshape#CursorShapeMode()
 autocmd! BufReadPost * silent! normal! g`"zz
 command! -bang -nargs=* -range=% -complete=file W <line1>,<line2> w<bang> <args>
