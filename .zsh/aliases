@@ -7,6 +7,7 @@ alias mv="mv -vi"
 alias rm="rm -v"
 alias curl="/usr/local/Cellar/curl/*/bin/curl"
 alias irc="weechat"
+alias pgrep="pgrep -l"
 
 # Fasd Aliases
 alias j="z"
@@ -19,9 +20,8 @@ alias le="ls -Gd *(-/DN^F)" # List empty directories
 
 # Git aliases
 alias g="git"
-alias gcopy="git log -n 1 | head -n 1 | cut -d ' ' -f2 | tr -d '\n' | pbcopy && echo 'Copied \c' && pbpaste && echo ''"
+alias gcopy="git log -n 1|head -n 1|cut -d ' ' -f2|tr -d '\n'|pbcopy && echo 'Copied \c' && pbpaste && echo ''"
 alias gst="git status"
-alias tower="gittower ."
 
 # Edit stuff
 alias e=$EDITOR
@@ -38,13 +38,10 @@ alias eins="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/inst
 alias eupd="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_vim"
 
 # Useful aliases
-alias bust="buster generate --domain=http://127.0.0.1:2368 && buster deploy"
+alias evi="vim ~/dotfiles/.vimrc"
 alias flush="sudo discoveryutil mdnsflushcache"
 alias compl="rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit"
-alias lyrics="osascript -e 'tell app \"iTunes\" to get lyrics of current track' | vim - +set\ buftype=nofile"
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-alias pgrep="pgrep -l"
 alias tat="tmux att"
-alias swi="xcrun swift -i"
 alias upd="brew update --verbose; brew outdated; brew upgrade"
 # vim: ft=zsh
