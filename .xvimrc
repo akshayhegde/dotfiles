@@ -14,6 +14,9 @@ vmap <BS> %
 " Make Y behave like C or D
 nmap Y y$
 
+" Split a line
+nnoremap S i<CR><ESC>^m`gk:s/ +$//<CR>``
+
 " Windows
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
