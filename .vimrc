@@ -150,9 +150,9 @@ nnoremap <leader>t :Tabularize<space>/
 let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 
 " Commands {{{1
-autocmd! CmdWinEnter * nnoremap <buffer> <CR> <CR>
-autocmd! VimEnter * call functions#cursorshape#CursorShapeMode()
-autocmd! BufReadPost * silent! normal! g`"zz
+autocmd CmdWinEnter * nnoremap <buffer> <CR> <CR>
+autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
+autocmd BufReadPost * if line ("'\"") > 1 && line("'\"") <= line("$") | exe "norm! g`\"" | endif
 command! -bang -nargs=* -range=% -complete=file W <line1>,<line2> w<bang> <args>
 command! BD silent e# | bd#
 command! SS echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
