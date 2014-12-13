@@ -20,7 +20,7 @@ alias le="ls -Gd *(-/DN^F)" # List empty directories
 
 # Git aliases
 alias g="git"
-alias gcopy="git log -n 1|head -n 1|cut -d ' ' -f2|tr -d '\n'|pbcopy && echo 'Copied \c' && pbpaste && echo ''"
+alias gcopy="git rev-parse -q --verify @ | tr -d '\n' | pbcopy; echo 'Copied \c'; pbpaste; echo ''"
 alias gst="git status"
 
 # Edit stuff
