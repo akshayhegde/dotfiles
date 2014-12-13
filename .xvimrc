@@ -1,4 +1,5 @@
-" General settings
+" ~/.xvimrc - Read by the XVim plugin for Xcode.
+" General settings {{{1
 set clipboard=unnamed
 set relativenumber
 set ignorecase
@@ -7,15 +8,15 @@ set nowrap
 set wrapscan
 set laststatus=0
 
-" Use backspace for %
-nmap <BS> %
-vmap <BS> %
+" Mappings {{{1
+" Vim Mappings {{{2
 
-" Make Y behave like C or D
+" Remap some default keys to be more useful
 nmap Y y$
+nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
-" Split a line
-nnoremap S i<CR><ESC>^m`gk:s/ +$//<CR>``
+" Remove trailing whitespace
+nmap <leader>W :s/\s+$//<CR>
 
 " Windows
 nmap <C-h> <C-w>h
@@ -23,6 +24,7 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
+" Xcode Mappings {{{2
 " Build/Clean/Run
 nmap <space>b :xcmenucmd Build<CR>
 nmap <space>r :xcmenucmd Run<CR>
