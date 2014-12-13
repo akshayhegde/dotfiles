@@ -15,9 +15,6 @@ set laststatus=0
 nmap Y y$
 nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
-" Remove trailing whitespace
-nmap <leader>W :s/\s+$//<CR>
-
 " Windows
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -25,6 +22,14 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 " Xcode Mappings {{{2
+
+" Toggle commenting
+nmap gcc :xccmd commentAndUncommentCurrentLines<CR>
+vmap gc :xccmd commentAndUncommentCurrentLines<CR>
+
+" Grep for selected text
+nmap <space>g viw:xccmd findSelectedTextInWorkspace<CR>
+
 " Build/Clean/Run
 nmap <space>b :xcmenucmd Build<CR>
 nmap <space>r :xcmenucmd Run<CR>
