@@ -38,10 +38,11 @@ alias eins="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/inst
 alias eupd="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_vim"
 
 # Useful aliases
+alias compl="rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit"
 alias evi="vim ~/dotfiles/.vimrc"
 alias flush="sudo discoveryutil mdnsflushcache"
-alias compl="rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit"
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 alias tat="tmux att"
+alias tnew="tmux new -s default"
 alias upd="brew update --verbose; brew outdated; brew upgrade"
 # vim: ft=zsh
