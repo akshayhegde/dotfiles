@@ -11,4 +11,4 @@ to suit others.
 ![Vim](http://cl.ly/Yxf1/dotfiles.png "Vim tmux demo")
 
 ### Zsh:
-![Zsh]("http://cl.ly/YxgG/zsh.png" "Zsh")
+![Zsh](http://cl.ly/YxgG/zsh.png "Zsh")
