@@ -28,7 +28,7 @@ prompt_ajh_cmd_exec_time() {
     local stop=$EPOCHSECONDS
     local start=${cmd_timestamp:-stop}
     integer elapsed=$stop-$start
-    (($elapsed > ${AJH_CMD_MAX_EXEC_TIME:=3})) && prompt_ajh_human_time $elapsed
+    (($elapsed > 3)) && prompt_ajh_human_time $elapsed
 }
 
 # String length {{{2
