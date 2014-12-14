@@ -8,7 +8,7 @@ prompt_ajh_git_dirty() {
     command git rev-parse --is-inside-work-tree &>/dev/null || return
     command test -n "$(git status --porcelain --ignore-submodules -unormal)"
 
-    (($? == 0)) && echo '❉]' || echo ']'
+    (($? == 0)) && echo ' ❉]' || echo ']'
 }
 
 # Human readable time {{{2
@@ -82,8 +82,8 @@ prompt_ajh_setup() {
     # %u => unstaged changes
     # %m => stashed
     zstyle '' enable git
-    zstyle ':vcs_info:git*' formats '[%b %m%u%c'
-    zstyle ':vcs_info:git*'  actionformats ' %b (%a) %m%u%c'
+    zstyle ':vcs_info:git*' formats '[%b'
+    zstyle ':vcs_info:git*'  actionformats '[%b (%a)'
 
     # Formats
     # %F => color, %f => reset_color
