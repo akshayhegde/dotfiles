@@ -13,18 +13,45 @@ prompt_ajh_git_dirty() {
 }
 
 # Human readable time {{{2
+prompt_ajh_human_time() {
+    local tmp=$1
+    local hours=$(( tmp / 60 / 60 % 24 ))
+    local minutes=$(( tmp / 60 % 60 ))
+    local seconds=$(( tmp % 60 ))
+    (( $hours > 0 )) && echo -n "${hours}h "
+    (( $minutes > 0)) && echo -n "${minutes}m "
+    echo "${seconds}s"
+}
+
+# Command execution time
+# displays the execution time of the last command
+prompt_ajh_cmd_exec_time() {
+    local stop=$EPOCHSECONDS
+    local start=${cmd_timestamp:-stop}
+    integer elapsed=$stop-$start
+    (($elapsed > ${AJH_CMD_MAX_EXEC_TIME:=3})) && prompt_ajh_human_time $elapsed
+}
+
+# String length {{{2
+prompt_ajh_string_length() {
+    echo ${#${(S%%)1//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+}
 
 
 # Preexec {{{1
+# shows current directory and executed command time in the title
 prompt_ajh_preexec() {
-
+    cmd_timestamp=$EPOCHSECONDS
+    print -Pn "\e]0;"
+    echo -nE "$PWD:t: $2"
+    print -Pn "\a"
 }
 
 # Precmd {{{1
 prompt_ajh_precmd() {
     vcs_info
 
-    local prompt_ajh_preprompt="\n%F{242}$vcs_info_msg_0_"
+    local prompt_ajh_preprompt="\n%F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f"
     print -P $prompt_ajh_preprompt
 
     # Asynchronously checks if there is anything to pull
@@ -36,6 +63,7 @@ prompt_ajh_precmd() {
             local arrows=''
             (( $(command git rev-list --right-only --count @...@'{u}' 2>/dev/null) > 0 )) && arrows='⇣'
             (( $(command git rev-list --left-only --count @...@'{u}' 2>/dev/null) > 0 )) && arrows+='⇡'
+            print -Pn "\e7\e[A\e[1G\e[`prompt_ajh_string_length $prompt_ajh_preprompt`C%F{cyan}${arrows}%f\e8"
         }
     } &!
     unset cmd_timestamp
