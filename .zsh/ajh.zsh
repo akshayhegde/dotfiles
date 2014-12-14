@@ -86,7 +86,7 @@ prompt_ajh_precmd() {
 
 # Prompt setup {{{1
 prompt_ajh_setup() {
-    export PROMPT_EOL_MARK='.'
+    export PROMPT_EOL_MARK=''
     prompt_opts=(cr subst percent)
 
     zmodload zsh/datetime
