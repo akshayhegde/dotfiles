@@ -6,7 +6,7 @@ runtime macros/matchit.vim
 " Syntax, FileType, Colorscheme {{{1
 syntax on
 filetype plugin indent on
-colorscheme hybrid_mod
+colorscheme spacegray
 
 " General Settings {{{1
 set autoread
