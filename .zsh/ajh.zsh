@@ -1,50 +1,67 @@
-# My Zsh theme.
-# Features => Indicators for git status, vim mode, last command execution time and backgrounded app.
-setopt prompt_subst
-autoload colors
-autoload -Uz vcs_info
-colors
+# ajh.zsh
+# Slightly modeled after pure zsh prompt.
 
-orange="%F{166}"
-purple="%F{135}"
-limegreen="%F{118}"
+# Helpers {{{1
+# Git Dirty {{{2
+# Fastest way possible to check dirtyness (From pure.zsh)
+prompt_ajh_git_dirty() {
+    command git rev-parse --is-inside-work-tree &>/dev/null || return
+    [[ "$AJH_GIT_UNTRACKED_DIRTY" == 0 ]] && local umode="-uno" || local unmode="-unormal"
+    command test -n "$(git status --porcelain --ignore-submodules ${umode})"
 
-# Version control
-zstyle ':vcs_info:*' enable git hg
-zstyle ':vcs_info:*' stagedstr '%F{28}●'
-zstyle ':vcs_info:*' unstagedstr '%F{161}●'
-zstyle ':vcs_info:*' check-for-changes true
-
-preexec () {
-   (( $#_elapsed > 1000 )) && set -A _elapsed $_elapsed[-1000,-1]
-   typeset -ig _start=SECONDS
+    (($? == 0)) && echo '❉'
 }
 
-precmd () {
-   (( _start >= 0 )) && set -A _elapsed $_elapsed $(( SECONDS-_start ))
-   _start=-1
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats '%F{blue}%F{green}%b%c%u%F{blue} '
-    } else {
-        zstyle ':vcs_info:*' formats '%F{blue}%F{green}%b%c%u%F{red}●%F{blue} '
-    }
+# Human readable time {{{2
+
+
+# Preexec {{{1
+prompt_ajh_preexec() {
+
+}
+
+# Precmd {{{1
+prompt_ajh_precmd() {
     vcs_info
+
+    local prompt_ajh_preprompt="\n%F{242}$vcs_info_msg_0_"
+    print -P $prompt_ajh_preprompt
+
+    # Asynchronously checks if there is anything to pull
+    (( ${AJH_GIT_PULL:-1} )) && {
+        command git rev-parse --is-inside-work-tree &>/dev/null &&
+        [[ "$(command git rev-parse --show-toplevel)" != "$HOME" ]] &&
+        command git fetch &>/dev/null &&
+        command git rev-parse --abbrev-reg @'{u}' &>/dev/null && {
+            local arrows=''
+            (( $(command git rev-list --right-only --count @...@'{u}' 2>/dev/null) > 0 )) && arrows='⇣'
+            (( $(command git rev-list --left-only --count @...@'{u}' 2>/dev/null) > 0 )) && arrows+='⇡'
+        }
+    } &!
+    unset cmd_timestamp
 }
 
-vim_insert_mode="%B%F{green}❯%f%b"
-vim_cmd_mode="%B%F{red}❮%f%b"
-vim_mode=$vim_insert_mode
+# Prompt setup {{{1
+prompt_ajh_setup() {
+    export PROMPT_EOL_MARK='.'
+    prompt_opts=(cr subst percent)
 
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_insert_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
+    zmodload zsh/datetime
+    autoload -Uz add-zsh-hook
+    autoload -Uz vcs_info
 
-function zle-line-finish {
-  vim_mode=$vim_insert_mode
+    add-zsh-hook precmd prompt_ajh_precmd
+    add-zsh-hook preexec prompt_ajh_preexec
+
+    # Git formats
+    # %b => Branch
+    # %c => staged changed
+    # %u => unstaged changes
+    # %m => stashed
+    zstyle '' enable git
+    zstyle ':vcs_info:git*' formats '%b %m%u%c'
+    zstyle ':vcs_info:git*'  actionformats ' %b (%a) %m%u%c'
+
+    PROMPT='%F{yellow}%n%(?.%F{magenta}.%F{red}) ❯%f '
 }
-zle -N zle-line-finish
-PROMPT=$'%{$orange%}%~ %f${vim_mode}%f '
-RPROMPT='[${vcs_info_msg_0_}%F{blue}bg:%j%f %{$orange%}t:${_elapsed[-1]}s%f]'
-# vim: ft=zsh
+prompt_ajh_setup "$@"
