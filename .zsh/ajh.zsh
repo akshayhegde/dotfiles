@@ -6,10 +6,9 @@
 # Fastest way possible to check dirtyness (From pure.zsh)
 prompt_ajh_git_dirty() {
     command git rev-parse --is-inside-work-tree &>/dev/null || return
-    [[ "$AJH_GIT_UNTRACKED_DIRTY" == 0 ]] && local umode="-uno" || local unmode="-unormal"
-    command test -n "$(git status --porcelain --ignore-submodules ${umode})"
+    command test -n "$(git status --porcelain --ignore-submodules -unormal)"
 
-    (($? == 0)) && echo '❉'
+    (($? == 0)) && echo '❉]' || echo ']'
 }
 
 # Human readable time {{{2
@@ -37,25 +36,21 @@ prompt_ajh_string_length() {
     echo ${#${(S%%)1//(\%([KF1]|)\{*\}|\%[Bbkf])}}
 }
 
-
 # Preexec {{{1
 # shows current directory and executed command time in the title
 prompt_ajh_preexec() {
     cmd_timestamp=$EPOCHSECONDS
-    print -Pn "\e]0;"
-    echo -nE "$PWD:t: $2"
-    print -Pn "\a"
 }
 
 # Precmd {{{1
 prompt_ajh_precmd() {
     vcs_info
 
-    local prompt_ajh_preprompt="\n%F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f"
+    local prompt_ajh_preprompt="\n%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f"
     print -P $prompt_ajh_preprompt
 
     # Asynchronously checks if there is anything to pull
-    (( ${AJH_GIT_PULL:-1} )) && {
+    {
         command git rev-parse --is-inside-work-tree &>/dev/null &&
         [[ "$(command git rev-parse --show-toplevel)" != "$HOME" ]] &&
         command git fetch &>/dev/null &&
@@ -87,9 +82,13 @@ prompt_ajh_setup() {
     # %u => unstaged changes
     # %m => stashed
     zstyle '' enable git
-    zstyle ':vcs_info:git*' formats '%b %m%u%c'
+    zstyle ':vcs_info:git*' formats '[%b %m%u%c'
     zstyle ':vcs_info:git*'  actionformats ' %b (%a) %m%u%c'
 
+    # Formats
+    # %F => color, %f => reset_color
+    # %n => username
+    # ?.. => ternary operator
     PROMPT='%F{yellow}%n%(?.%F{magenta}.%F{red}) ❯%f '
 }
 prompt_ajh_setup "$@"
