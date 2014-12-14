@@ -2,12 +2,20 @@
 # Slightly modeled after pure zsh prompt.
 
 # Helpers {{{1
+# Zle (Vi-mode) {{{2
+function zle-keymap-select {
+    vi_mode="${${KEYMAP/vicmd/${vi_cmd_mode}}/(main|viins)/${vi_insert_mode}}"
+    zle reset-prompt
+}
+function zle-line-finish {
+    vi_mode=$vi_insert_mode
+}
+
 # Git Dirty {{{2
 # Fastest way possible to check dirtyness (From pure.zsh)
 prompt_ajh_git_dirty() {
     command git rev-parse --is-inside-work-tree &>/dev/null || return
     command test -n "$(git status --porcelain --ignore-submodules -unormal)"
-
     (($? == 0)) && echo ' ❉]' || echo ']'
 }
 
@@ -37,19 +45,31 @@ prompt_ajh_string_length() {
 }
 
 # Preexec {{{1
-# shows current directory and executed command time in the title
 prompt_ajh_preexec() {
     cmd_timestamp=$EPOCHSECONDS
+
+    # Show current directory and command if process is active.
+    print -Pn "\e]0;"
+    echo -nE "$PWD:t: $1"
+    print -Pn "\a"
 }
 
 # Precmd {{{1
 prompt_ajh_precmd() {
+    # Show full path in title:
+    print -Pn '\e]0;%~\a'
+
+    # Setup vi-mode variables
+    vi_insert_mode="%B%F{green}❯%f%b"
+    vi_cmd_mode="%B%F{red}❮%f%b"
+    vi_mode=$vi_insert_mode
+
     vcs_info
 
     local prompt_ajh_preprompt="\n%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f"
     print -P $prompt_ajh_preprompt
 
-    # Asynchronously checks if there is anything to pull
+    # Asynchronously checks if there is anything to pull or push
     {
         command git rev-parse --is-inside-work-tree &>/dev/null &&
         [[ "$(command git rev-parse --show-toplevel)" != "$HOME" ]] &&
@@ -73,22 +93,15 @@ prompt_ajh_setup() {
     autoload -Uz add-zsh-hook
     autoload -Uz vcs_info
 
+    zle -N zle-keymap-select
+    zle -N zle-line-finish
     add-zsh-hook precmd prompt_ajh_precmd
     add-zsh-hook preexec prompt_ajh_preexec
 
-    # Git formats
-    # %b => Branch
-    # %c => staged changed
-    # %u => unstaged changes
-    # %m => stashed
     zstyle '' enable git
     zstyle ':vcs_info:git*' formats '[%b'
-    zstyle ':vcs_info:git*'  actionformats '[%b (%a)'
+    zstyle ':vcs_info:git*' actionformats '[%b (%a)'
 
-    # Formats
-    # %F => color, %f => reset_color
-    # %n => username
-    # ?.. => ternary operator
-    PROMPT='%F{yellow}%n%(?.%F{magenta}.%F{red}) ❯%f '
+    PROMPT='%F{yellow}%n%(?.%F{magenta}.%F{red}) ${vi_mode}%f '
 }
 prompt_ajh_setup "$@"
