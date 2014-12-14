@@ -3,11 +3,33 @@
 " Essentially a streamlining and conversion to X11 colors of
 " 'sorcerer' by Jeet Sukumaran (jeetsukumaran@gmailcom)
 
+" MADE-UP NAME    HEX        XTERM  ANSI
+" ==================================================
+" almost black    #1c1c1c    234    0
+" darker grey     #262626    235    background color
+" dark grey       #303030    236
+" grey            #444444    238    8
+" medium grey     #585858    240
+" light grey      #6c6c6c    242    7
+" lighter grey    #bcbcbc    250    foreground color
+" white           #ffffff    231    16
+" purple          #5f5f87    60     5
+" light purple    #8787af    103    13
+" green           #5f875f    65     2
+" light green     #87af87    108    10
+" aqua            #5f8787    66     6
+" light aqua      #5fafaf    73     15
+" blue            #5f87af    67     4
+" light blue      #8fafd7    110    12
+" red             #af5f5f    131    1
+" orange          #ff8700    208    9
+" ocre            #87875f    110    3
+" yellow          #ffffaf    229    11
+
 hi clear
 
 if exists('syntax_on')
   syntax reset
-
 endif
 
 set background=dark
@@ -32,7 +54,7 @@ if &t_Co >= 256 || has('gui_running')
   hi Type             ctermbg=NONE ctermfg=103  guibg=NONE    guifg=#8787af cterm=NONE           gui=NONE
   hi Underlined       ctermbg=NONE ctermfg=66   guibg=NONE    guifg=#5f8787 cterm=underline      gui=underline
 
-  hi LineNr           ctermbg=234  ctermfg=240  guibg=#1c1c1c guifg=#585858 cterm=NONE           gui=NONE
+  hi LineNr           ctermbg=234  ctermfg=242  guibg=#1c1c1c guifg=#6c6c6c cterm=NONE           gui=NONE
   hi NonText          ctermbg=NONE ctermfg=240  guibg=NONE    guifg=#585858 cterm=NONE           gui=NONE
 
   hi Pmenu            ctermbg=238  ctermfg=250  guibg=#444444 guifg=#bcbcbc cterm=NONE           gui=NONE
@@ -46,9 +68,9 @@ if &t_Co >= 256 || has('gui_running')
   hi Question         ctermbg=NONE ctermfg=108  guibg=NONE    guifg=#87af87 cterm=NONE           gui=NONE
   hi WarningMsg       ctermbg=NONE ctermfg=131  guibg=NONE    guifg=#af5f5f cterm=NONE           gui=NONE
 
-  hi TabLine          ctermbg=234  ctermfg=240  guibg=#1c1c1c guifg=#585858 cterm=NONE           gui=NONE
-  hi TabLineFill      ctermbg=234  ctermfg=234  guibg=#1c1c1c guifg=#1c1c1c cterm=NONE           gui=NONE
-  hi TabLineSel       ctermbg=236  ctermfg=73   guibg=#303030 guifg=#5fafaf cterm=NONE           gui=NONE
+  hi TabLine          ctermbg=238  ctermfg=101  guibg=#444444 guifg=#87875f cterm=NONE           gui=NONE
+  hi TabLineFill      ctermbg=238  ctermfg=238  guibg=#444444 guifg=#444444 cterm=NONE           gui=NONE
+  hi TabLineSel       ctermbg=101  ctermfg=235  guibg=#87875f guifg=#262626 cterm=NONE           gui=NONE
 
   hi Cursor           ctermbg=242  ctermfg=NONE guibg=#6c6c6c guifg=NONE    cterm=NONE           gui=NONE
   hi CursorColumn     ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
@@ -59,15 +81,15 @@ if &t_Co >= 256 || has('gui_running')
   hi helpNormal       ctermbg=NONE ctermfg=NONE guibg=NONE    guifg=NONE    cterm=NONE           gui=NONE
 
   hi StatusLine       ctermbg=101  ctermfg=235  guibg=#87875f guifg=#262626 cterm=NONE           gui=NONE
-  hi StatusLineNC     ctermbg=242  ctermfg=235  guibg=#6c6c6c guifg=#262626 cterm=NONE           gui=italic
+  hi StatusLineNC     ctermbg=238  ctermfg=101  guibg=#444444 guifg=#87875f cterm=NONE           gui=italic
 
   hi Visual           ctermbg=110  ctermfg=235  guibg=#8fafd7 guifg=#262626 cterm=NONE           gui=NONE
   hi VisualNOS        ctermbg=NONE ctermfg=NONE guibg=NONE    guifg=NONE    cterm=bold,underline gui=bold,underline
 
-  hi FoldColumn       ctermbg=240  ctermfg=250  guibg=#585858 guifg=#bcbcbc cterm=NONE           gui=NONE
-  hi Folded           ctermbg=240  ctermfg=250  guibg=#585858 guifg=#bcbcbc cterm=NONE           gui=NONE
+  hi FoldColumn       ctermbg=234  ctermfg=242  guibg=#1c1c1c guifg=#6c6c6c cterm=NONE           gui=NONE
+  hi Folded           ctermbg=234  ctermfg=242  guibg=#1c1c1c guifg=#6c6c6c cterm=NONE           gui=NONE
 
-  hi VertSplit        ctermbg=242  ctermfg=242  guibg=#6c6c6c guifg=#6c6c6c cterm=NONE           gui=NONE
+  hi VertSplit        ctermbg=238  ctermfg=238  guibg=#444444 guifg=#444444 cterm=NONE           gui=NONE
   hi WildMenu         ctermbg=110  ctermfg=235  guibg=#8fafd7 guifg=#262626 cterm=bold           gui=bold
 
   hi Function         ctermbg=NONE ctermfg=229  guibg=NONE    guifg=#ffffaf cterm=NONE           gui=NONE
@@ -91,84 +113,84 @@ if &t_Co >= 256 || has('gui_running')
   hi SpellRare        ctermbg=NONE ctermfg=208  guibg=NONE    guifg=NONE    cterm=undercurl      gui=undercurl guisp=#ff8700
 
   hi ColorColumn      ctermbg=131  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
-  hi SignColumn       ctermbg=238  ctermfg=235  guibg=#444444 guifg=#262626 cterm=NONE           gui=NONE
+  hi signColumn       ctermbg=234  ctermfg=242  guibg=#1c1c1c guifg=#6c6c6c cterm=NONE           gui=NONE
+elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
+  set t_Co=16
 
-else
-  hi Normal           ctermbg=NONE        ctermfg=Grey        cterm=NONE
-  hi Comment          ctermbg=NONE        ctermfg=Black       cterm=bold
-  hi Constant         ctermbg=NONE        ctermfg=Red         cterm=bold
-  hi Function         ctermbg=NONE        ctermfg=Yellow      cterm=bold
-  hi Identifier       ctermbg=NONE        ctermfg=Blue        cterm=NONE
-  hi PreProc          ctermbg=NONE        ctermfg=Cyan        cterm=NONE
-  hi Special          ctermbg=NONE        ctermfg=Green       cterm=bold
-  hi Statement        ctermbg=NONE        ctermfg=Cyan        cterm=NONE
-  hi String           ctermbg=NONE        ctermfg=Green       cterm=NONE
+  hi Normal           ctermbg=NONE        ctermfg=15          cterm=NONE
+  hi Comment          ctermbg=NONE        ctermfg=7           cterm=NONE
+  hi Constant         ctermbg=NONE        ctermfg=9           cterm=NONE
+  hi Function         ctermbg=NONE        ctermfg=3           cterm=NONE
+  hi Identifier       ctermbg=NONE        ctermfg=12          cterm=NONE
+  hi PreProc          ctermbg=NONE        ctermfg=6           cterm=NONE
+  hi Special          ctermbg=NONE        ctermfg=10          cterm=NONE
+  hi Statement        ctermbg=NONE        ctermfg=12          cterm=NONE
+  hi String           ctermbg=NONE        ctermfg=2           cterm=NONE
   hi Todo             ctermbg=NONE        ctermfg=NONE        cterm=reverse
-  hi Type             ctermbg=NONE        ctermfg=Blue        cterm=bold
+  hi Type             ctermbg=NONE        ctermfg=13          cterm=NONE
 
-  hi Error            ctermbg=NONE        ctermfg=Red         cterm=reverse
+  hi Error            ctermbg=NONE        ctermfg=1           cterm=reverse
   hi Ignore           ctermbg=NONE        ctermfg=NONE        cterm=NONE
-  hi Underlined       ctermbg=NONE        ctermfg=Cyan        cterm=underline
+  hi Underlined       ctermbg=NONE        ctermfg=11          cterm=underline
 
-  hi LineNr           ctermbg=NONE        ctermfg=DarkGrey    cterm=bold
-  hi NonText          ctermbg=NONE        ctermfg=DarkGrey    cterm=bold
+  hi LineNr           ctermbg=0           ctermfg=7           cterm=NONE
+  hi NonText          ctermbg=NONE        ctermfg=8           cterm=NONE
 
-  hi Pmenu            ctermbg=Grey        ctermfg=Black       cterm=NONE
-  hi PmenuSbar        ctermbg=Grey        ctermfg=NONE        cterm=NONE
-  hi PmenuSel         ctermbg=Green       ctermfg=Black       cterm=NONE
-  hi PmenuThumb       ctermbg=Green       ctermfg=NONE        cterm=NONE
+  hi Pmenu            ctermbg=7           ctermfg=0           cterm=NONE
+  hi PmenuSbar        ctermbg=7           ctermfg=NONE        cterm=NONE
+  hi PmenuSel         ctermbg=2           ctermfg=0           cterm=NONE
+  hi PmenuThumb       ctermbg=2           ctermfg=NONE        cterm=NONE
 
-  hi ErrorMsg         ctermbg=Red         ctermfg=Black       cterm=NONE
-  hi ModeMsg          ctermbg=Green       ctermfg=Black       cterm=NONE
-  hi MoreMsg          ctermbg=NONE        ctermfg=Cyan        cterm=NONE
-  hi Question         ctermbg=NONE        ctermfg=Green       cterm=NONE
-  hi WarningMsg       ctermbg=NONE        ctermfg=Red         cterm=NONE
+  hi ErrorMsg         ctermbg=1           ctermfg=0           cterm=NONE
+  hi ModeMsg          ctermbg=2           ctermfg=0           cterm=NONE
+  hi MoreMsg          ctermbg=NONE        ctermfg=11          cterm=NONE
+  hi Question         ctermbg=NONE        ctermfg=2           cterm=NONE
+  hi WarningMsg       ctermbg=NONE        ctermfg=1           cterm=NONE
 
-  hi TabLine          ctermbg=Blue        ctermfg=Black       cterm=NONE
-  hi TabLineFill      ctermbg=Blue        ctermfg=Blue        cterm=NONE
-  hi TabLineSel       ctermbg=Cyan        ctermfg=Black       cterm=NONE
+  hi TabLine          ctermbg=8           ctermfg=3           cterm=NONE
+  hi TabLineFill      ctermbg=8           ctermfg=0           cterm=NONE
+  hi TabLineSel       ctermbg=3           ctermfg=0           cterm=NONE
 
   hi Cursor           ctermbg=NONE        ctermfg=NONE        cterm=NONE
-  hi CursorLine       ctermbg=NONE        ctermfg=NONE        cterm=underline
-  hi CursorLineNr     ctermbg=NONE        ctermfg=White       cterm=underline
+  hi CursorLine       ctermbg=8           ctermfg=NONE        cterm=NONE
+  hi CursorLineNr     ctermbg=8           ctermfg=14          cterm=NONE
 
   hi helpLeadBlank    ctermbg=NONE        ctermfg=NONE        cterm=NONE
   hi helpNormal       ctermbg=NONE        ctermfg=NONE        cterm=NONE
 
-  hi StatusLine       ctermbg=Yellow      ctermfg=Black       cterm=NONE
-  hi StatusLineNC     ctermbg=Blue        ctermfg=Black       cterm=NONE
+  hi StatusLine       ctermbg=3           ctermfg=0           cterm=NONE
+  hi StatusLineNC     ctermbg=0           ctermfg=3           cterm=NONE
 
-  hi Visual           ctermbg=White       ctermfg=Black       cterm=NONE
+  hi Visual           ctermbg=15          ctermfg=0           cterm=NONE
   hi VisualNOS        ctermbg=NONE        ctermfg=NONE        cterm=bold,underline
 
-  hi FoldColumn       ctermbg=Red         ctermfg=White       cterm=NONE
-  hi Folded           ctermbg=Red         ctermfg=White       cterm=NONE
+  hi FoldColumn       ctermbg=0           ctermfg=7           cterm=NONE
+  hi Folded           ctermbg=0           ctermfg=7           cterm=NONE
 
-  hi VertSplit        ctermbg=Blue        ctermfg=Blue        cterm=NONE
-  hi WildMenu         ctermbg=Cyan        ctermfg=Black       cterm=NONE
+  hi VertSplit        ctermbg=8           ctermfg=8           cterm=NONE
+  hi WildMenu         ctermbg=14          ctermfg=0           cterm=NONE
 
-  hi Function         ctermbg=NONE        ctermfg=Yellow      cterm=NONE
-  hi SpecialKey       ctermbg=NONE        ctermfg=DarkGrey    cterm=bold
-  hi Title            ctermbg=NONE        ctermfg=White       cterm=bold
+  hi Function         ctermbg=NONE        ctermfg=11          cterm=NONE
+  hi SpecialKey       ctermbg=NONE        ctermfg=8           cterm=NONE
+  hi Title            ctermbg=NONE        ctermfg=15          cterm=bold
 
-  hi DiffAdd          ctermbg=Green       ctermfg=Black       cterm=NONE
-  hi DiffChange       ctermbg=Blue        ctermfg=Black       cterm=NONE
-  hi DiffDelete       ctermbg=Red         ctermfg=Black       cterm=NONE
-  hi DiffText         ctermbg=Cyan        ctermfg=Black       cterm=NONE
+  hi DiffAdd          ctermbg=2           ctermfg=0           cterm=NONE
+  hi DiffChange       ctermbg=6           ctermfg=0           cterm=NONE
+  hi DiffDelete       ctermbg=1           ctermfg=0           cterm=NONE
+  hi DiffText         ctermbg=11          ctermfg=0           cterm=NONE
 
-  hi IncSearch        ctermbg=Red         ctermfg=Black       cterm=NONE
-  hi Search           ctermbg=Green       ctermfg=Black       cterm=NONE
+  hi IncSearch        ctermbg=1           ctermfg=0           cterm=NONE
+  hi Search           ctermbg=2           ctermfg=0           cterm=NONE
 
-  hi Directory        ctermbg=NONE        ctermfg=Cyan        cterm=NONE
+  hi Directory        ctermbg=NONE        ctermfg=11          cterm=NONE
 
-  hi SpellBad         ctermbg=NONE        ctermfg=Red         cterm=undercurl
-  hi SpellCap         ctermbg=NONE        ctermfg=Cyan        cterm=undercurl
-  hi SpellLocal       ctermbg=NONE        ctermfg=Green       cterm=undercurl
-  hi SpellRare        ctermbg=NONE        ctermfg=Magenta     cterm=undercurl
+  hi SpellBad         ctermbg=NONE        ctermfg=1           cterm=undercurl
+  hi SpellCap         ctermbg=NONE        ctermfg=3           cterm=undercurl
+  hi SpellLocal       ctermbg=NONE        ctermfg=2           cterm=undercurl
+  hi SpellRare        ctermbg=NONE        ctermfg=5           cterm=undercurl
 
-  hi ColorColumn      ctermbg=Red         ctermfg=NONE        cterm=NONE
-  hi SignColumn       ctermbg=Magenta     ctermfg=Black       cterm=NONE
-
+  hi ColorColumn      ctermbg=1           ctermfg=NONE        cterm=NONE
+  hi SignColumn       ctermbg=0           ctermfg=7           cterm=NONE
 endif
 
 hi link Boolean            Constant
