@@ -6,4 +6,4 @@ make sure you know what it does. I don't and never will tailor my config files
 to suit others.
 
 ## Screenshots:
-![Vim](http://cl.ly/YwvL/iTerm.png "Vim tmux demo")
+![Vim](http://cl.ly/Yxf1/dotfiles.png "Vim tmux demo")
