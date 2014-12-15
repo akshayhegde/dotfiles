@@ -39,11 +39,6 @@ prompt_ajh_cmd_exec_time() {
     (($elapsed > 3)) && prompt_ajh_human_time $elapsed
 }
 
-# String length {{{2
-prompt_ajh_string_length() {
-    echo ${#${(S%%)1//(\%([KF1]|)\{*\}|\%[Bbkf])}}
-}
-
 # Preexec {{{1
 prompt_ajh_preexec() {
     cmd_timestamp=$EPOCHSECONDS
@@ -69,18 +64,6 @@ prompt_ajh_precmd() {
     local prompt_ajh_preprompt="\n%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f"
     print -P $prompt_ajh_preprompt
 
-    # Asynchronously checks if there is anything to pull or push
-    {
-        command git rev-parse --is-inside-work-tree &>/dev/null &&
-        [[ "$(command git rev-parse --show-toplevel)" != "$HOME" ]] &&
-        command git fetch &>/dev/null &&
-        command git rev-parse --abbrev-reg @'{u}' &>/dev/null && {
-            local arrows=''
-            (( $(command git rev-list --right-only --count @...@'{u}' 2>/dev/null) > 0 )) && arrows='⇣'
-            (( $(command git rev-list --left-only --count @...@'{u}' 2>/dev/null) > 0 )) && arrows+='⇡'
-            print -Pn "\e7\e[A\e[1G\e[`prompt_ajh_string_length $prompt_ajh_preprompt`C%F{cyan}${arrows}%f\e8"
-        }
-    } &!
     unset cmd_timestamp
 }
 
