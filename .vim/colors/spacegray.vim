@@ -1,5 +1,6 @@
 " SpaceGray.vim -- Vim colorscheme.
 " Maintainer: Akshay Hegde (github.com/ajh17)
+" Version: v1.0
 " A colorscheme loosely modeled after the spacegray theme for Xcode.
 " This colorscheme is 256color and up only.
 
@@ -16,7 +17,7 @@ let colors_name = 'spacegray'
 " Colorscheme definitions {{{1
 hi Normal          ctermbg=233  ctermfg=248    guibg=#141617  guifg=#B3B8C4  cterm=NONE      gui=NONE
 
-hi Comment         ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#4C5966  cterm=NONE      gui=NONE
+hi Comment         ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#515F6A  cterm=NONE      gui=NONE
 hi NonText         ctermbg=NONE ctermfg=8      guibg=NONE     guifg=#3E4853  cterm=NONE      gui=NONE
 hi Title           ctermbg=NONE ctermfg=231    guibg=NONE     guifg=#FFFFFF  cterm=NONE      gui=NONE
 
@@ -25,9 +26,10 @@ hi Function        ctermbg=NONE ctermfg=9      guibg=NONE     guifg=#CC6666  cte
 hi Identifier      ctermbg=NONE ctermfg=3      guibg=NONE     guifg=#E5C078  cterm=NONE      gui=NONE
 hi PreProc         ctermbg=NONE ctermfg=109    guibg=NONE     guifg=#85A7A5  cterm=NONE      gui=NONE
 hi Special         ctermbg=NONE ctermfg=103    guibg=NONE     guifg=#7D8FA3  cterm=NONE      gui=NONE
+hi SpecialKey      ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#4C5966  cterm=NONE      gui=NONE
 hi Statement       ctermbg=NONE ctermfg=13     guibg=NONE     guifg=#A57A9E  cterm=NONE      gui=NONE
 hi String          ctermbg=NONE ctermfg=10     guibg=NONE     guifg=#95B47B  cterm=NONE      gui=NONE
-hi Type            ctermbg=NONE ctermfg=66     guibg=NONE     guifg=#E5C078  cterm=NONE      gui=NONE
+hi Type            ctermbg=NONE ctermfg=11     guibg=NONE     guifg=#E5C078  cterm=NONE      gui=NONE
 
 hi Cursor          ctermbg=NONE ctermfg=NONE   guibg=#6C6C6C  guifg=NONE     cterm=NONE      gui=NONE
 hi CursorColumn    ctermbg=0    ctermfg=NONE   guibg=#303030  guifg=NONE     cterm=NONE      gui=NONE
@@ -36,9 +38,9 @@ hi CursorLine      ctermbg=0    ctermfg=NONE   guibg=#303030  guifg=NONE     cte
 hi Todo            ctermbg=NONE ctermfg=NONE   guibg=NONE     guifg=NONE     cterm=reverse   gui=reverse
 hi Error           ctermbg=52   ctermfg=12     guibg=NONE     guifg=#AF5F5F  cterm=underline gui=reverse
 hi ErrorMsg        ctermbg=NONE ctermfg=12     guibg=NONE     guifg=#C5735E  cterm=NONE      gui=NONE
-hi ModeMsg         ctermbg=NONE ctermfg=NONE   guibg=NONE     guifg=#808080  cterm=NONE      gui=NONE
-hi MoreMsg         ctermbg=NONE ctermfg=NONE   guibg=NONE     guifg=#808080  cterm=NONE      gui=NONE
-hi WarningMsg      ctermbg=NONE ctermfg=NONE   guibg=NONE     guifg=#AF5F5F  cterm=NONE      gui=NONE
+hi ModeMsg         ctermbg=NONE ctermfg=249    guibg=NONE     guifg=#808080  cterm=NONE      gui=NONE
+hi MoreMsg         ctermbg=NONE ctermfg=249    guibg=NONE     guifg=#808080  cterm=NONE      gui=NONE
+hi WarningMsg      ctermbg=NONE ctermfg=9      guibg=NONE     guifg=#AF5F5F  cterm=NONE      gui=NONE
 
 hi DiffAdd         ctermbg=65   ctermfg=193    guibg=#5F875F  guifg=#D7FFAF  cterm=NONE      gui=NONE
 hi DiffChange      ctermbg=60   ctermfg=189    guibg=#5F5F87  guifg=#D7D7FF  cterm=NONE      gui=NONE
@@ -87,13 +89,14 @@ hi SpellCap        ctermbg=17   ctermfg=12     guibg=#00005F  guifg=#81A2BE  cte
 hi SpellLocal      ctermbg=24   ctermfg=14     guibg=#005F5F  guifg=#8ABEB7  cterm=NONE      gui=NONE
 
 " Highlight Links {{{1
+" Most of the links are mercilessly stolen from romainl's amazing Apprentice
+" theme. (https://github.com/romainl/Apprentice)
 hi link Boolean             Constant
 hi link Character           Constant
 hi link Number              Constant
 
-hi link Float               Number
-hi link SpecialKey          Comment
 hi link Conceal             Normal
+hi link Float               Number
 
 hi link Define              Preproc
 hi link Include             Preproc
@@ -103,24 +106,26 @@ hi link PreCondit           PreProc
 hi link Conditional         Statement
 hi link Exeption            Statement
 hi link HelpCommand         Statement
-hi link Label               Statement
 hi link HelpExample         Statement
-hi link Repeat              Statement
-hi link Operator            Statement
 hi link Keyword             Statement
+hi link Label               Statement
+hi link Operator            Statement
+hi link Repeat              Statement
 
-hi link Typedef             Type
 hi link StorageClass        Type
 hi link Structure           Type
+hi link Typedef             Type
 
-hi link Tag                 Special
-hi link Delimiter           Special
 hi link Debug               Special
+hi link Delimiter           Special
+hi link SpecialChar         Special
+hi link SpecialComment      Special
+hi link Tag                 Special
 
 hi link htmlEndTag          htmlTagName
 hi link htmlLink            Function
 hi link htmlSpecialTagName  htmlTagName
 hi link htmlTag             htmlTagName
 
-hi link diffRemoved         Constant
 hi link diffAdded           String
+hi link diffRemoved         Constant
