@@ -61,7 +61,6 @@ if has("gui_running")
 endif
 
 " Filetype Settings {{{1
-let g:html_indent_inctags="head,html,body,p,head,table,tbody,div"
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
 let [python_highlight_all, java_highlight_all] = [1, 1]
 
