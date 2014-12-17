@@ -1,5 +1,5 @@
 setlocal shiftwidth=2 softtabstop=2
-setlocal foldenable foldmethod=marker
+setlocal foldmethod=marker
 setlocal tags=~/dotfiles/tags
 setlocal keywordprg=:help
 setlocal formatoptions-=o
