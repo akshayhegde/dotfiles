@@ -26,7 +26,6 @@ export BROWSER='open'
 export CORRECT_IGNORE='_*'
 export EDITOR=vim
 export GREP_COLOR='1;33'
-export GREP_OPTIONS='--color=auto'
 export KEYTIMEOUT=1
 export LANG='en_US.UTF-8'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
