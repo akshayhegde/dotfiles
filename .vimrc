@@ -18,7 +18,7 @@ set hidden
 set laststatus=2
 set lazyredraw
 set list listchars=eol:\ ,tab:▸\ ,trail:·
-set mouse=n
+set mouse=n ttymouse=sgr
 set nostartofline
 set number relativenumber
 set path=.,**
