@@ -1,6 +1,6 @@
 " SpaceGray.vim -- Vim colorscheme.
 " Maintainer: Akshay Hegde (github.com/ajh17)
-" Version: v1.0
+" Version: 1.1
 " A colorscheme loosely modeled after the spacegray theme for Xcode.
 " This colorscheme is 256color and up only.
 
@@ -15,7 +15,7 @@ set background=dark
 let colors_name = 'spacegray'
 
 " Colorscheme definitions {{{1
-hi Normal          ctermbg=233  ctermfg=248    guibg=#141617  guifg=#B3B8C4  cterm=NONE      gui=NONE
+hi Normal          ctermbg=233  ctermfg=188    guibg=#141617  guifg=#B3B8C4  cterm=NONE      gui=NONE
 
 hi Comment         ctermbg=NONE ctermfg=59     guibg=NONE     guifg=#515F6A  cterm=NONE      gui=NONE
 hi NonText         ctermbg=NONE ctermfg=8      guibg=NONE     guifg=#3E4853  cterm=NONE      gui=NONE
@@ -38,10 +38,10 @@ hi ColorColumn     ctermbg=235  ctermfg=NONE   guibg=#303537  guifg=NONE     cte
 
 hi Todo            ctermbg=NONE ctermfg=NONE   guibg=NONE     guifg=NONE     cterm=reverse   gui=reverse
 hi Error           ctermbg=52   ctermfg=12     guibg=NONE     guifg=#AF5F5F  cterm=underline gui=reverse
-hi ErrorMsg        ctermbg=NONE ctermfg=12     guibg=NONE     guifg=#C5735E  cterm=NONE      gui=NONE
+hi ErrorMsg        ctermbg=NONE ctermfg=9      guibg=NONE     guifg=#C5735E  cterm=NONE      gui=NONE
 hi ModeMsg         ctermbg=NONE ctermfg=249    guibg=NONE     guifg=#808080  cterm=NONE      gui=NONE
 hi MoreMsg         ctermbg=NONE ctermfg=249    guibg=NONE     guifg=#808080  cterm=NONE      gui=NONE
-hi WarningMsg      ctermbg=NONE ctermfg=9      guibg=NONE     guifg=#AF5F5F  cterm=NONE      gui=NONE
+hi WarningMsg      ctermbg=NONE ctermfg=12     guibg=NONE     guifg=#7D8FA3  cterm=NONE      gui=NONE
 
 hi DiffAdd         ctermbg=65   ctermfg=193    guibg=#5F875F  guifg=#D7FFAF  cterm=NONE      gui=NONE
 hi DiffChange      ctermbg=60   ctermfg=189    guibg=#5F5F87  guifg=#D7D7FF  cterm=NONE      gui=NONE
