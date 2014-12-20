@@ -27,7 +27,8 @@ alias gst="git status -sb"
 alias gcopy="git rev-parse -q --verify @ | tr -d '\n' | pbcopy; echo 'Copied \c'; pbpaste; echo ''"
 
 # Open origin remote URL in a browser.
-alias gopen="open `git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//'`"
+alias gshow="git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//'"
+alias gopen='open `gshow`'
 
 # Edit stuff {{{1
 alias tconf="vim ~/dotfiles/.tmux.conf"
