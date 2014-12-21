@@ -89,6 +89,7 @@ xnoremap > >gv
 nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
 xnoremap * :<C-u>call functions#general#VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call functions#general#VSetSearch('?')<CR>/<C-R>=@/<CR><CR>
+nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
 " Visually Select a line without indentation
 nnoremap <leader>v ^vg_
@@ -149,6 +150,4 @@ let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 " Commands {{{1
 autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
 autocmd BufReadPost * if line ("'\"") > 1 && line("'\"") <= line("$") | exe "norm! g`\"" | endif
-command! -bang -nargs=* -range=% -complete=file W <line1>,<line2> w<bang> <args>
 command! BD silent e# | bd#
-command! SS echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
