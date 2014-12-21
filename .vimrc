@@ -25,7 +25,7 @@ set path=.,**
 set showcmd showbreak=↪
 set splitbelow splitright
 set switchbuf=useopen,usetab
-set termencoding=utf-8 fileencoding=utf-8 fileformats=unix,dos,mac
+set encoding=utf-8 fileformats+=mac
 set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
@@ -73,10 +73,10 @@ nnoremap <silent> <C-k> <C-w><C-k>
 nnoremap <silent> <C-l> <C-w><C-l>
 
 " Move by display lines
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-nnoremap <expr> gj (v:count == 0 ? 'j' : 'gj')
-nnoremap <expr> gk (v:count == 0 ? 'k' : 'gk')
+nnoremap <expr> j  v:count == 0 ? 'gj' : 'j'
+nnoremap <expr> k  v:count == 0 ? 'gk' : 'k'
+nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
+nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 
 " Expand buffer list similar to ## for the argslist
 cnoremap %% <C-R>=functions#general#bufferList()<CR>
@@ -108,8 +108,10 @@ nnoremap <leader>W m`:%s/\s\+$//<CR>:let @/=''<CR>``
 nnoremap <expr> <leader>b functions#general#bufNav("horizontal")
 nnoremap <expr> <leader>B functions#general#bufNav("vertical")
 
-" Literal word search
+" Search mappings
 nnoremap g/ /\<\><left><left>
+nnoremap [I [I:
+nnoremap <leader>i :ilist /
 
 " Plugin Settings and Mappings {{{1
 " Netrw {{{2
