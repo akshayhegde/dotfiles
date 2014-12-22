@@ -44,6 +44,7 @@ alias eins="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/inst
 alias eupd="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_vim"
 
 # Useful aliases {{{1
+alias tat="tmux attach || tmux new -s default"
 alias compl="rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit"
 alias flush="sudo discoveryutil mdnsflushcache"
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
