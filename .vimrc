@@ -22,10 +22,11 @@ set mouse=n ttymouse=sgr
 set nostartofline
 set number relativenumber
 set path=.,**
+set report=0
 set showcmd showbreak=↪
 set splitbelow splitright
 set switchbuf=useopen,usetab
-set encoding=utf-8 fileformats+=mac
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8 fileformats+=mac
 set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
@@ -33,7 +34,7 @@ set wildmenu wildcharm=<C-z>
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
-set grepprg=ag\ --nogroup\ --nocolor
+set grepprg=ag\ --vimgrep grepformat^=%f:%l:%c:%m
 
 " Indent and Fold Settings {{{1
 set softtabstop=4 shiftwidth=4 shiftround
@@ -50,9 +51,9 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,*.xc*,*.pbxproj,*.xcodeproj/**,*.
 
 " History, Backup, Undo {{{1
 set history=10000
-set backup undofile noswapfile
-set backupdir=~/.vim/backup/
-set undodir=~/.vim/backup/undo/
+set noswapfile
+set backup backupdir=~/.vim/backup/
+set undofile undodir=~/.vim/backup/undo/
 
 " GUI Settings {{{1
 if has("gui_running")
@@ -82,6 +83,7 @@ nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 cnoremap %% <C-R>=functions#general#bufferList()<CR>
 
 " Remap some default keys to be more useful
+nnoremap + za
 nnoremap Q gq
 nnoremap Y y$
 xnoremap < <gv
