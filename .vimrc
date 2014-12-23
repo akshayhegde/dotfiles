@@ -13,6 +13,7 @@ set backspace=indent,eol,start
 set clipboard^=unnamed
 set completeopt-=preview
 set dictionary+=/usr/share/dict/words
+set fileformats+=mac
 set formatoptions+=1j
 set hidden
 set laststatus=2
@@ -26,7 +27,7 @@ set report=0
 set showcmd showbreak=↪
 set splitbelow splitright
 set switchbuf=useopen,usetab
-set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8 fileformats+=mac
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
@@ -83,14 +84,14 @@ nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 cnoremap %% <C-R>=functions#general#bufferList()<CR>
 
 " Remap some default keys to be more useful
-nnoremap + za
 nnoremap Q gq
 nnoremap Y y$
 xnoremap < <gv
 xnoremap > >gv
 nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
-xnoremap * :<C-u>call functions#general#VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call functions#general#VSetSearch('?')<CR>/<C-R>=@/<CR><CR>
+nnoremap + za
+xnoremap * :<C-u>call functions#general#vSSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call functions#general#vSSearch('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
 " Visually Select a line without indentation
