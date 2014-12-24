@@ -156,3 +156,4 @@ let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
 autocmd BufReadPost * if line ("'\"") > 1 && line("'\"") <= line("$") | exe "norm! g`\"" | endif
 command! BD silent e# | bd#
+command! -bar Scriptnames call setqflist(functions#general#scriptnames()) | copen
