@@ -102,7 +102,7 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap (<CR> (<CR>)<ESC>O
 
 " re-indent file while retaining cursor position.
-nnoremap <leader>ef m`gg=G``
+nnoremap <leader>= m`gg=G``
 
 " Remove trailing whitespace
 nnoremap <leader>W m`:%s/\s\+$//<CR>:let @/=''<CR>``
