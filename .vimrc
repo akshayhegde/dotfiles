@@ -140,6 +140,8 @@ nnoremap m<CR> :Make<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gP :Gpull --rebase<CR>
+nnoremap <leader>gp :Gpush<CR>
 
 " Clang_Complete {{{2
 let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
