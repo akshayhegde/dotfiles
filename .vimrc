@@ -62,10 +62,6 @@ if has("gui_running")
     set guioptions= lines=40 columns=140 guifont=Fira\ Mono:h13
 endif
 
-" Filetype Settings {{{1
-let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
-let [python_highlight_all, java_highlight_all] = [1, 1]
-
 " General Mappings {{{1
 let mapleader = ' '
 
@@ -117,43 +113,34 @@ nnoremap g/ /\<\><left><left>
 nnoremap [I [I:
 nnoremap <leader>i :ilist /
 
-" Plugin Settings and Mappings {{{1
-" Netrw {{{2
+" Plugin Settings {{{1
+let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
+let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
-
-" Emmet {{{2
 let [user_emmet_expandabbr_key, use_emmet_complete_tag, user_emmet_mode] = ["<c-b>", 1, 'i']
-
-" Fist of Vim {{{2
 let [fist_in_private, fist_anonymously] = [0, 0]
+let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+let g:no_default_tabular_maps=1
+let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 
+" Plugin Mappings {{{1
 " CtrlP {{{2
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>F :CtrlPCurWD<CR>
-let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
-
 " Dispatch {{{2
 nnoremap d<space> :Dispatch<space>
 nnoremap d<CR> :Dispatch<CR>
 nnoremap m<CR> :Make<CR>
-
 " Fugitive {{{2
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gP :Gpull --rebase<CR>
 nnoremap <leader>gp :Gpush<CR>
-
-" Clang_Complete {{{2
-let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-
 " Tabular {{{2
-let g:no_default_tabular_maps=1
 xnoremap <leader>t :Tabularize<space>/
 nnoremap <leader>t :Tabularize<space>/
-
-" Jedi {{{2
-let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 
 " Commands {{{1
 autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
