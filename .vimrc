@@ -149,6 +149,7 @@ augroup VIMRC
   autocmd BufReadPost * silent! execute "normal! g`\"zz"
   autocmd InsertEnter * set norelativenumber
   autocmd InsertLeave * set relativenumber
+  autocmd QuickFixCmdPost * copen
 augroup END
 
 " Commands {{{1
