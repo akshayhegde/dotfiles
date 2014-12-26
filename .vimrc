@@ -22,6 +22,7 @@ set lazyredraw
 set list listchars=eol:\ ,tab:▸\ ,trail:·
 set mouse=n ttymouse=sgr
 set nostartofline
+set nrformats-=octal
 set number relativenumber
 set path=.,**
 set report=0
@@ -41,7 +42,7 @@ set grepprg=ag\ --vimgrep grepformat^=%f:%l:%c:%m
 " Indent and Fold Settings {{{1
 set softtabstop=4 shiftwidth=4 shiftround
 set smarttab expandtab
-set autoindent breakindent breakindentopt=sbr
+set autoindent breakindent breakindentopt=shift:4,sbr
 set nofoldenable
 
 " Status Line {{{1
