@@ -120,9 +120,9 @@ let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 let [user_emmet_expandabbr_key, use_emmet_complete_tag, user_emmet_mode] = ["<c-b>", 1, 'i']
 let [fist_in_private, fist_anonymously] = [0, 0]
 let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
+let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 let g:no_default_tabular_maps=1
-let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 
 " Plugin Mappings {{{1
 " CtrlP {{{2
@@ -136,17 +136,16 @@ nnoremap m<CR> :Make<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gP :Gpull --rebase<CR>
 nnoremap <leader>gp :Gpush<CR>
 " Tabular {{{2
-xnoremap <leader>t :Tabularize<space>/
 nnoremap <leader>t :Tabularize<space>/
+xnoremap <leader>t :Tabularize<space>/
 
 " Autocommands {{{1
 augroup VIMRC
   autocmd!
   autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
-  autocmd BufReadPost * silent! exe "normal! g`\"zz"
+  autocmd BufReadPost * silent! execute "normal! g`\"zz"
 augroup END
 
 " Commands {{{1
