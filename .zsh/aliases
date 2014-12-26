@@ -22,6 +22,7 @@ alias le="ls -Gd *(-/DN^F)" # List empty directories
 # Git aliases {{{1
 alias g="git"
 alias gst="git status -sb"
+alias gd="git diff && echo '\n' && git diff --stat"
 
 # Copy HEAD's commit number to the clipboard.
 alias gcopy="git rev-parse -q --verify @ | tr -d '\n' | pbcopy; echo 'Copied \c'; pbpaste; echo ''"
