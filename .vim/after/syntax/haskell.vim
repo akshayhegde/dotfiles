@@ -9,7 +9,6 @@ syntax match hsTypeSig "\w\+\('\?\(\w\+\)*\)*\ze\s*::"
 " Keywords: {{{1
 " Defines some more types to syntax highlight
 syntax keyword hsTypes
-      \ Double
       \ False
       \ Floating
       \ Integral
