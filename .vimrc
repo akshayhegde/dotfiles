@@ -142,8 +142,13 @@ nnoremap <leader>gp :Gpush<CR>
 xnoremap <leader>t :Tabularize<space>/
 nnoremap <leader>t :Tabularize<space>/
 
+" Autocommands {{{1
+augroup VIMRC
+  autocmd!
+  autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
+  autocmd BufReadPost * silent! normal! g`"zz
+augroup END
+
 " Commands {{{1
-autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
-autocmd BufReadPost * if line ("'\"") > 1 && line("'\"") <= line("$") | exe "norm! g`\"" | endif
 command! BD silent e# | bd#
 command! -bar Scriptnames call setqflist(functions#general#scriptnames()) | copen
