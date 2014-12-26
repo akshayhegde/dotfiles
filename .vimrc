@@ -146,7 +146,7 @@ nnoremap <leader>t :Tabularize<space>/
 augroup VIMRC
   autocmd!
   autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
-  autocmd BufReadPost * silent! normal! g`"zz
+  autocmd BufReadPost * silent! exe "normal! g`\"zz"
 augroup END
 
 " Commands {{{1
