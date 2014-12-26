@@ -96,3 +96,8 @@ man() {
           LESS_TERMCAP_us=$(printf "\e[1;32m") \
           man "$@"
 }
+
+# Full screen Vim help page.
+function :h () {
+    vim +"h" +"h $1" +only;
+}
