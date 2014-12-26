@@ -115,6 +115,7 @@ nnoremap <leader>i :ilist /
 
 " Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
+let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types] = [1, 1, 1]
 let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 let [user_emmet_expandabbr_key, use_emmet_complete_tag, user_emmet_mode] = ["<c-b>", 1, 'i']
