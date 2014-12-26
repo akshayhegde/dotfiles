@@ -9,7 +9,6 @@ syntax match hsTypeSig "\w\+\('\?\(\w\+\)*\)*\ze\s*::"
 " Keywords: {{{1
 " Defines some more types to syntax highlight
 syntax keyword hsTypes
-      \ False
       \ Floating
       \ Integral
       \ Just
@@ -19,7 +18,6 @@ syntax keyword hsTypes
       \ RealFloat
       \ RealFrac
       \ Show
-      \ True
 
 " Links: {{{1
 highlight default link hsTypes Type
