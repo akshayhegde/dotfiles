@@ -146,6 +146,8 @@ augroup VIMRC
   autocmd!
   autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
   autocmd BufReadPost * silent! execute "normal! g`\"zz"
+  autocmd InsertEnter * set norelativenumber
+  autocmd InsertLeave * set relativenumber
 augroup END
 
 " Commands {{{1
