@@ -18,7 +18,9 @@ syntax keyword hsTypes
       \ Num
       \ RealFloat
       \ RealFrac
+      \ Show
       \ True
 
+" Links: {{{1
 highlight default link hsTypes Type
 highlight default link hsTypeSig Function
