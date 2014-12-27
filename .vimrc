@@ -12,7 +12,7 @@ colorscheme spacegray
 set autoread autowrite
 set backspace=indent,eol,start
 set clipboard^=unnamed
-set completeopt-=preview
+set completeopt=menu,menuone
 set dictionary+=/usr/share/dict/words
 set fileformats+=mac
 set formatoptions+=1j
@@ -156,3 +156,4 @@ augroup END
 " Commands {{{1
 command! BD silent e# | bd#
 command! -bar Scriptnames call setqflist(functions#general#scriptnames()) | copen
+command! Mvim silent! execute "!mvim %" | redraw!
