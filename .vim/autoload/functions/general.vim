@@ -11,18 +11,11 @@ endfunction
 
 " A simple buffer navigation function.
 function! functions#general#bufNav(arrangement)
+  let moreThanOneBuffer = len(filter(map(range(bufnr('$')), 'buflisted(v:val)'), 'v:val == 1')) > 1
   if a:arrangement ==? "horizontal"
-    if len(filter(map(range(bufnr('$')), 'buflisted(v:val)'), 'v:val == 1')) > 1
-      return ":buffer \<C-z>\<S-Tab>"
-    else
-      return ":buffer "
-    endif
+      return moreThanOneBuffer ? ":buffer \<C-z>\<S-Tab>" : ":buffer "
   elseif a:arrangement ==? "vertical"
-    if len(filter(map(range(bufnr('$')), 'buflisted(v:val)'), 'v:val == 1')) > 1
-      return ":vertical sbuffer \<C-z>\<S-Tab>"
-    else
-      return ":vertical sbuffer "
-    endif
+      return moreThanOneBuffer ? ":vertical sbuffer \<C-z>\<S-Tab>" : ":vertical sbuffer "
   endif
 endfunction
 
@@ -42,6 +35,7 @@ function! s:names()
   return scripts
 endfunction
 
+" Load :scriptnames into the quickfix list.
 function! functions#general#scriptnames()
   let names = s:names()
   let list = []
