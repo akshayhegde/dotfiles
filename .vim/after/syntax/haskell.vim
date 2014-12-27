@@ -15,6 +15,7 @@ syntax keyword hsTypes
       \ Maybe
       \ Nothing
       \ Num
+      \ Ord
       \ RealFloat
       \ RealFrac
       \ Show
