@@ -147,7 +147,7 @@ xnoremap <leader>t :Tabularize<space>/
 augroup VIMRC
   autocmd!
   autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
-  autocmd BufReadPost * silent! execute "normal! g`\"zz"
+  autocmd BufReadPost * silent! execute "normal! g`\""
   autocmd InsertEnter * set norelativenumber
   autocmd InsertLeave * set relativenumber
   autocmd QuickFixCmdPost * copen
