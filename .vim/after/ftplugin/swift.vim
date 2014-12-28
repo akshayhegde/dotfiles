@@ -1,4 +1,8 @@
 setlocal makeprg=swift\ %
-setlocal errorformat=%E%f:%l:%c:\ error:\ %m,%+C%.%#,%-C%p^,%C%.%#
+let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
+      \ '%E%f:%l:%c: error: %m,' .
+      \ '%W%f:%l:%c: warning: %m,' .
+      \ '%-G%\m%\%%(LLVM ERROR:%\|No compilation database found%\)%\@!%.%#,' .
+      \ '%E%m'
 
 let b:dispath = "swift %"
