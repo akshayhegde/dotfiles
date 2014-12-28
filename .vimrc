@@ -12,7 +12,7 @@ colorscheme spacegray
 set autoread autowrite
 set backspace=indent,eol,start
 set clipboard^=unnamed
-set completeopt=menu,menuone
+set completeopt+=longest,menuone
 set dictionary+=/usr/share/dict/words
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set fileformats+=mac
@@ -65,7 +65,7 @@ if has("gui_running")
 endif
 
 " General Mappings {{{1
-let mapleader = ' '
+let g:mapleader = ' '
 
 " Switch between splits
 nnoremap <silent> <C-h> <C-w><C-h>
@@ -85,8 +85,6 @@ cnoremap %% <C-R>=functions#general#bufferList()<CR>
 " Remap some default keys to be more useful
 nnoremap Q gq
 nnoremap Y y$
-xnoremap < <gv
-xnoremap > >gv
 nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
 nnoremap + za
 xnoremap * :<C-u>call functions#general#vSSearch('/')<CR>/<C-R>=@/<CR><CR>
@@ -112,8 +110,6 @@ nnoremap <expr> <leader>B functions#general#bufNav("vertical")
 
 " Search mappings
 nnoremap g/ /\<\><left><left>
-nnoremap [I [I:
-nnoremap <leader>i :ilist /
 
 " Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
@@ -124,7 +120,6 @@ let [user_emmet_expandabbr_key, use_emmet_complete_tag, user_emmet_mode] = ["<c-
 let [fist_in_private, fist_anonymously] = [0, 0]
 let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
 let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
-let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 let g:no_default_tabular_maps = 1
 
 " Plugin Mappings {{{1
