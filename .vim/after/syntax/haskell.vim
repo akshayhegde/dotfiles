@@ -5,6 +5,7 @@
 
 " Matches: {{{1
 syntax match hsTypeSig "[a-z][a-zA-Z']\+\ze\s::"
+syntax match hsLambda "\\\ze[[:alpha:][:space:]_([]" conceal cchar=λ
 
 " Keywords: {{{1
 " Defines some more types to syntax highlight
