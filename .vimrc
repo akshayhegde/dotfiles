@@ -14,6 +14,7 @@ set backspace=indent,eol,start
 set clipboard^=unnamed
 set completeopt=menu,menuone
 set dictionary+=/usr/share/dict/words
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set fileformats+=mac
 set formatoptions+=1j
 set hidden
@@ -21,6 +22,7 @@ set laststatus=2
 set lazyredraw
 set list listchars=eol:\ ,tab:▸\ ,trail:·
 set mouse=n ttymouse=sgr
+set nojoinspaces
 set nostartofline
 set nrformats-=octal
 set number relativenumber
@@ -29,7 +31,6 @@ set report=0
 set showcmd showbreak=↪
 set splitbelow splitright
 set switchbuf=useopen,usetab
-set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
