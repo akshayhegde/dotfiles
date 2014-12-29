@@ -34,9 +34,10 @@ syntax keyword preludeFunction abs all and any atan break ceiling
       \ isDigit isLower isSpace isUpper iterate last lcm length lines
       \ log map max maximum min minimum mod not notElem null odd or
       \ pi pred putStr putStrLn product quot rem repeat replicate
-      \ reverse round show sin snd sort span splitAt sqrt subtract
-      \ succ sum tail take takeWhile tan toLower toUpper truncate
-      \ undefined unlines until unwords words zip zipWith
+      \ reverse round scanl scanl1 scanr scanr1 show sin snd sort
+      \ span splitAt sqrt subtract succ sum tail take takeWhile
+      \ tan toLower toUpper truncate undefined unlines until
+      \ unwords words zip zipWith
 
 " Links: {{{1
 highlight default link hsTypeClass Structure
