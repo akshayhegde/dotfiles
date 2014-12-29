@@ -145,8 +145,6 @@ augroup VIMRC
   autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
   autocmd BufReadPost * silent! execute "normal! g`\""
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  autocmd InsertEnter * set norelativenumber
-  autocmd InsertLeave * set relativenumber
   autocmd QuickFixCmdPost * copen
 augroup END
 
