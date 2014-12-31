@@ -12,4 +12,4 @@ let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
 setlocal nofoldenable foldmethod=syntax
 setlocal commentstring=//\ %s
 setlocal textwidth=80
-command! -nargs=0 Format call functions#general#Format()
+command! -nargs=0 Format call format#file()

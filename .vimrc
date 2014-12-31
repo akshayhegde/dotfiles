@@ -80,15 +80,15 @@ nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
 nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 
 " Expand buffer list similar to ## for the argslist
-cnoremap %% <C-R>=functions#general#bufferList()<CR>
+cnoremap %% <C-R>=buffer#list()<CR>
 
 " Remap some default keys to be more useful
 nnoremap Q gq
 nnoremap Y y$
 nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
 nnoremap + za
-xnoremap * :<C-u>call functions#general#vSSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call functions#general#vSSearch('?')<CR>/<C-R>=@/<CR><CR>
+xnoremap * :<C-u>call starsearch#start('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call starsearch#start('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
 " Visually Select a line without indentation
@@ -104,9 +104,9 @@ nnoremap <leader>= m`gg=G``
 " Remove trailing whitespace
 nnoremap <leader>W m`:%s/\s\+$//<CR>:let @/=''<CR>``
 
-" Open a buffer horizontally or vertically.
-nnoremap <expr> <leader>b functions#general#bufNav("horizontal")
-nnoremap <expr> <leader>B functions#general#bufNav("vertical")
+" Buffer switching
+nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
+nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
 
 " Search mappings
 nnoremap g/ /\<\><left><left>
@@ -142,7 +142,7 @@ xnoremap <leader>t :Tabularize<space>/
 " Autocommands {{{1
 augroup VIMRC
   autocmd!
-  autocmd VimEnter * call functions#cursorshape#CursorShapeMode()
+  autocmd VimEnter * call cursor#changeShape()
   autocmd BufReadPost * silent! execute "normal! g`\""
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
   autocmd QuickFixCmdPost * copen
@@ -150,5 +150,5 @@ augroup END
 
 " Commands {{{1
 command! BD silent e# | bd#
-command! -bar Scriptnames call setqflist(functions#general#scriptnames()) | copen
+command! -bar Scriptnames call setqflist(scripts#get()) | copen
 command! Mvim silent! execute "!mvim %" | redraw!
