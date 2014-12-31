@@ -1,8 +1,9 @@
-" Format a c/cpp/java file with AStyle
-function! functions#general#AStyleFormat()
+" Format a c/cpp/java file.
+" Uses clang-format for C/C++ and astyle for java.
+function! functions#general#Format()
   norm! mf
   if &filetype == 'c' || &filetype == 'cpp'
-    :%!astyle --mode=c
+    :%!clang-format
   elseif &filetype == 'java'
     :%!astyle --mode=java
   endif
