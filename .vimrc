@@ -112,7 +112,7 @@ nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
 nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump<space>
 nnoremap <leader>p :ptjump<space>
-xnoremap K :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><bar>cwindow<bar>redraw!
+xnoremap K :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
 
 " Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
