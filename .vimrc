@@ -87,8 +87,8 @@ nnoremap Q gq
 nnoremap Y y$
 nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
 nnoremap + za
-xnoremap * :<C-u>call starsearch#start('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call starsearch#start('?')<CR>/<C-R>=@/<CR><CR>
+xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
 " Visually Select a line without indentation
@@ -110,6 +110,9 @@ nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
 
 " Search mappings
 nnoremap g/ /\<\><left><left>
+nnoremap <leader>j :tjump<space>
+nnoremap <leader>p :ptjump<space>
+xnoremap K :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><bar>cwindow<bar>redraw!
 
 " Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
@@ -145,7 +148,6 @@ augroup VIMRC
   autocmd VimEnter * call cursor#changeShape()
   autocmd BufReadPost * silent! execute "normal! g`\""
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  autocmd QuickFixCmdPost * copen
 augroup END
 
 " Commands {{{1
