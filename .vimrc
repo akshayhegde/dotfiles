@@ -109,10 +109,10 @@ nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
 nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
 
 " Search mappings
+xnoremap K :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
 nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump<space>
-nnoremap <leader>p :ptjump<space>
-xnoremap K :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
+nnoremap <leader>J :ptjump<space>
 
 " Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
