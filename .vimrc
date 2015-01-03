@@ -85,7 +85,7 @@ cnoremap %% <C-R>=buffer#list()<CR>
 " Remap some default keys to be more useful
 nnoremap Q gq
 nnoremap Y y$
-nnoremap S i<CR><ESC>^m`gk:silent! s/\v +$//<CR>:noh<CR>``
+nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
 nnoremap + za
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
@@ -102,7 +102,7 @@ inoremap (<CR> (<CR>)<ESC>O
 nnoremap <leader>= m`gg=G``
 
 " Remove trailing whitespace
-nnoremap <leader>W m`:%s/\s\+$//<CR>:let @/=''<CR>``
+nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``
 
 " Buffer switching
 nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
