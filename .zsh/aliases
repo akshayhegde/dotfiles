@@ -25,7 +25,7 @@ alias gst="git status -sb"
 alias gd="git diff && echo '\n' && git diff --stat"
 
 # Copy HEAD's commit number to the clipboard.
-alias gcopy="git rev-parse -q --verify @ | tr -d '\n' | pbcopy; echo 'Copied \c'; pbpaste; echo ''"
+alias gcopy="git rev-parse @ | tr -d '\n' | pbcopy; echo 'Copied \c'; pbpaste; echo ''"
 
 # Open origin remote URL in a browser.
 alias gshow="git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//'"
