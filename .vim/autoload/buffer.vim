@@ -1,4 +1,4 @@
-" A simple buffer navigation function.
+" Opens the buffer in the arrangement specified.
 function! buffer#switchBySplitting(arrangement)
   let moreThanOneBuffer = len(filter(map(range(bufnr('$')), 'buflisted(v:val)'), 'v:val == 1')) > 1
   if a:arrangement ==? "horizontally"
@@ -8,7 +8,7 @@ function! buffer#switchBySplitting(arrangement)
   endif
 endfunction
 
-" Get the buffer list
+" Get the names of buffers as a string separated by a space.
 function! buffer#list()
   let buflist = []
   for i in range(1, bufnr('$'))

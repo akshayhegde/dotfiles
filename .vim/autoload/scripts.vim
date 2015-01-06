@@ -1,4 +1,4 @@
-" Returns a list of the :scriptnames
+" Returns a list of vimscripts currently loaded.
 function! s:names()
   let scripts = ''
   redir => scripts
@@ -7,7 +7,8 @@ function! s:names()
   return scripts
 endfunction
 
-" Load :scriptnames into the quickfix list.
+" Returns a list of dictionaries containing the vimscripts currently loaded.
+" Suitable for use in the quickfix list.
 function! scripts#get()
   let names = s:names()
   let list = []
@@ -18,4 +19,3 @@ function! scripts#get()
   endfor
   return list
 endfunction
-

@@ -1,4 +1,5 @@
-" Change cursor shape when changing modes. iTerm/tmux specific.
+" Changes the cursor shape between insert and normal modes.
+" These escape codes are iTerm2 specific.
 function! cursor#changeShape()
     if exists('$TMUX')
         let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
