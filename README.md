@@ -7,8 +7,8 @@ to suit others.
 
 ## Screenshots:
 
-### Vim:
-![Vim](http://cl.ly/Yxf1/dotfiles.png "Vim tmux demo")
+### vim/tmux:
+![Vim](http://cl.ly/ZDH1/dotfiles.png "vim/tmux")
 
-### Zsh:
-![Zsh](http://cl.ly/YxgG/zsh.png "Zsh")
+### zsh:
+![Zsh](http://cl.ly/YxgG/zsh.png "zsh")
