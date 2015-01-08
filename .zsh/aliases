@@ -3,33 +3,17 @@
 # General aliases {{{1
 alias c="clear"
 alias cp="cp -vi"
-alias mv="mv -vi"
-alias rm="rm -v"
 alias curl="/usr/local/Cellar/curl/*/bin/curl"
-alias irc="weechat"
-alias pgrep="pgrep -l"
 alias grep='grep --color=auto'
+alias ls="ls -GAp"
+alias mv="mv -vi"
+alias pgrep="pgrep -l"
+alias rm="rm -v"
+alias gst="git status -sb"
 
 # Fasd Aliases {{{1
 alias j="z"
 alias v="f -e vim"
-
-# ls aliases {{{1
-alias ls="ls -GAp"
-alias ll="ls -GAl"          # List format
-alias le="ls -Gd *(-/DN^F)" # List empty directories
-
-# Git aliases {{{1
-alias g="git"
-alias gst="git status -sb"
-alias gd="git diff && echo '\n' && git diff --stat"
-
-# Copy HEAD's commit number to the clipboard.
-alias gcopy="git rev-parse @ | tr -d '\n' | pbcopy; echo 'Copied \c'; pbpaste; echo ''"
-
-# Open origin remote URL in a browser.
-alias gshow="git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//'"
-alias gopen='open `gshow`'
 
 # Edit stuff {{{1
 alias tconf="vim ~/dotfiles/.tmux.conf"
@@ -43,11 +27,3 @@ alias vupd=". ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrad
 alias ebund="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_bundles"
 alias eins="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/install_bundles"
 alias eupd="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_vim"
-
-# Useful aliases {{{1
-alias tat="tmux attach || tmux new -s default"
-alias compl="rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit"
-alias flush="sudo discoveryutil mdnsflushcache"
-alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-alias upd="brew update --verbose; brew outdated; brew upgrade"
-# vim: ft=zsh fdm=marker

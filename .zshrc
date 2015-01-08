@@ -75,14 +75,6 @@ bindkey '^n' insert-last-word
 bindkey '^?' backward-delete-char
 
 # Functions {{{1
-function cdf {
-    target=`osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)'`
-    if [[ "$target" != "" ]]; then
-        cd "$target"; echo "Going to $target"
-    else
-        echo -e 'There are no Finder windows!' >$2
-    fi
-}
 
 # Colorize man pages
 man() {
@@ -97,7 +89,53 @@ man() {
           man "$@"
 }
 
+# Go to the open Finder window's path
+function cdf {
+    target=`osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)'`
+    if [[ "$target" != "" ]]; then
+        cd "$target"; echo "Going to $target"
+    else
+        echo -e 'There are no Finder windows!' >$2
+    fi
+}
+
 # Full screen Vim help page.
 function :h () {
     vim +"h $1" +only;
+}
+
+# Copy current git commit sha1 to the clipboard.
+function gcopy() {
+    git rev-parse @ | tr -d '\n' | pbcopy
+    echo -n "Copied " && pbpaste
+    echo ''
+}
+
+# Open origin remote URL in a browser
+function gopen() {
+    local url
+    url=( $(git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//') )
+    open $url
+}
+
+# Attach or if a tmux server is not running, then create a new one.
+function tstart() {
+    tmux attach || tmux new -s default
+}
+
+# Clear out completion caches and rebuild.
+function remove_compl_cache() {
+    rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit
+}
+
+# Shows the most used shell commands.
+function history_stat() {
+    history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head
+}
+
+# Run brew update and upgrade
+function upgrade_pkgs() {
+    brew update --verbose
+    brew outdated
+    brew upgrade
 }
