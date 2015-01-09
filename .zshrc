@@ -119,7 +119,7 @@ function gopen() {
 }
 
 # Attach or if a tmux server is not running, then create a new one.
-function tstart() {
+function tmux_init() {
     tmux attach || tmux new -s default
 }
 
