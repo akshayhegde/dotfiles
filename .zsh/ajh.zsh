@@ -2,7 +2,7 @@
 # Slightly modeled after pure zsh prompt.
 
 # Helpers {{{1
-# Zle (Vi-mode) {{{2
+# Zle {{{2
 function zle-keymap-select {
     vi_mode="${${KEYMAP/vicmd/${vi_cmd_mode}}/(main|viins)/${vi_insert_mode}}"
     zle reset-prompt
@@ -81,7 +81,7 @@ prompt_ajh_setup() {
     add-zsh-hook precmd prompt_ajh_precmd
     add-zsh-hook preexec prompt_ajh_preexec
 
-    zstyle '' enable git
+    zstyle ':vcs_info:*' enable git hg svn
     zstyle ':vcs_info:git*' formats '[%b'
     zstyle ':vcs_info:git*' actionformats '[%b (%a)'
 
