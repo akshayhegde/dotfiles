@@ -61,7 +61,7 @@ set undofile undodir=~/.vim/backup/undo/
 
 " GUI Settings {{{1
 if has("gui_running")
-    set guioptions= lines=40 columns=140 guifont=Fira\ Mono:h13
+  set guioptions= lines=40 columns=140 guifont=Fira\ Mono:h13
 endif
 
 " General Mappings {{{1
@@ -99,7 +99,7 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap (<CR> (<CR>)<ESC>O
 
 " re-indent file while retaining cursor position.
-nnoremap <leader>= m`gg=G``
+nnoremap <leader>= :call format#reindent()<CR>
 
 " Remove trailing whitespace
 nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``
