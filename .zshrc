@@ -66,7 +66,7 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
-bindkey '^l' clear-screen
+bindkey -s '^l' 'clear\n'
 bindkey '^k' kill-line
 bindkey '^u' backward-kill-line
 bindkey '^r' history-incremental-search-backward
