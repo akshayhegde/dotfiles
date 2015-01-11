@@ -44,9 +44,9 @@ function! buffer#alternate(arrangement)
       let full_file_name = file_name . "." . header
       if filereadable(full_file_name)
         if bufexists(full_file_name) && a:arrangement !=? "e"
-          execute a:arrangement ==? "v" ? "sbuffer " . full_file_name : "vert sbuffer " . full_file_name
+          execute a:arrangement ==? "s" ? "sbuffer " . full_file_name : "vert sbuffer " . full_file_name
         else
-            execute edit_command . full_file_name
+          execute bufwinnr(full_file_name) != 1 ? edit_command . full_file_name : "sbuffer " . full_file_name
         endif
         return
       endif
@@ -61,9 +61,9 @@ function! buffer#alternate(arrangement)
       let full_file_name = file_name . "." . l:source
       if filereadable(full_file_name)
         if bufexists(full_file_name) && a:arrangement !=? "e"
-          execute a:arrangement ==? "v" ? "sbuffer " . full_file_name : "vert sbuffer " . full_file_name
+          execute a:arrangement ==? "s" ? "sbuffer " . full_file_name : "vert sbuffer " . full_file_name
         else
-          execute edit_command . full_file_name
+          execute bufwinnr(full_file_name) != 1 ? edit_command . full_file_name : "sbuffer " . full_file_name
         endif
         return
       endif
