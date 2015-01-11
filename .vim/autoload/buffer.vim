@@ -29,11 +29,7 @@ function! s:buffer_open(filename, arrangement)
   endif
 
   if filereadable(a:filename) || bufexists(a:filename)
-    if a:arrangement !=? "e"
-      execute a:arrangement ==? "s" ? "sbuffer " . a:filename : "vert sbuffer " . a:filename
-    else
-      execute bufwinnr(a:filename) == -1 ? edit_command . a:filename : "sbuffer " . a:filename
-    endif
+    execute bufwinnr(a:filename) == -1 ? edit_command . a:filename : "sbuffer " . a:filename
     return 1
   endif
   return 0
@@ -52,10 +48,10 @@ function! buffer#alternate(arrangement)
 
   if is_source
     for header in header_list
-       let success = s:buffer_open(file_name . "." . header, a:arrangement)
-       if success
-         return
-       endif
+      let success = s:buffer_open(file_name . "." . header, a:arrangement)
+      if success
+        return
+      endif
     endfor
     echohl ErrorMsg | echo "Header file not found in path!" | echohl None
   elseif is_header
