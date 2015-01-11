@@ -130,7 +130,7 @@ function remove_compl_cache() {
 
 # Shows the most used shell commands.
 function history_stat() {
-    history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head
+    history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head
 }
 
 # Run brew update and upgrade
