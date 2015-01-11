@@ -43,7 +43,7 @@ prompt_ajh_cmd_exec_time() {
 prompt_ajh_preexec() {
     cmd_timestamp=$EPOCHSECONDS
 
-    # Show current directory and command if process is active.
+    # Show current directory and command in the title if a process is active.
     print -Pn "\e]0;"
     echo -nE "$PWD:t: $1"
     print -Pn "\a"
@@ -60,10 +60,6 @@ prompt_ajh_precmd() {
     vi_mode=$vi_insert_mode
 
     vcs_info
-
-    local prompt_ajh_preprompt="\n%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f"
-    print -P $prompt_ajh_preprompt
-
     unset cmd_timestamp
 }
 
@@ -85,6 +81,8 @@ prompt_ajh_setup() {
     zstyle ':vcs_info:git*' formats '[%b'
     zstyle ':vcs_info:git*' actionformats '[%b (%a)'
 
-    PROMPT='%F{yellow}%n%(?.%F{magenta}.%F{red}) ${vi_mode}%f '
+    PROMPT='
+%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f
+%F{yellow}%n%(?.%F{magenta}.%F{red}) ${vi_mode}%f '
 }
 prompt_ajh_setup "$@"
