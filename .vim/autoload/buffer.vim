@@ -19,6 +19,26 @@ function! buffer#list()
   return join(map(buflist, 'escape(v:val, " ")'), ' ')
 endfunction
 
+" Opens the buffer with the specified arrangement. For buffer#alternate()
+function! s:buffer_open(filename, arrangement)
+  let edit_command = "edit "
+  if a:arrangement ==? "v"
+    let edit_command = "vsplit "
+  elseif a:arrangement ==? "s"
+    let edit_command = "split "
+  endif
+
+  if filereadable(a:filename) || bufexists(a:filename)
+    if a:arrangement !=? "e"
+      execute a:arrangement ==? "s" ? "sbuffer " . a:filename : "vert sbuffer " . a:filename
+    else
+      execute bufwinnr(a:filename) == -1 ? edit_command . a:filename : "sbuffer " . a:filename
+    endif
+    return 1
+  endif
+  return 0
+endfunction
+
 " A dead simple header/source alternater.
 " Without installing a 400+ plugin or having to write some stupid json file.
 function! buffer#alternate(arrangement)
@@ -30,44 +50,21 @@ function! buffer#alternate(arrangement)
   let is_source = index(source_list, extension) >= 0
   let is_header = index(header_list, extension) >= 0
 
-  let edit_command = "edit "
-  if a:arrangement ==? "v"
-    let edit_command = "vsplit "
-  elseif a:arrangement ==? "s"
-    let edit_command = "split "
-  endif
-
-
-  " Switch to header file if the current file is a source file
   if is_source
     for header in header_list
-      let full_file_name = file_name . "." . header
-      if filereadable(full_file_name)
-        if bufexists(full_file_name) && a:arrangement !=? "e"
-          execute a:arrangement ==? "s" ? "sbuffer " . full_file_name : "vert sbuffer " . full_file_name
-        else
-          execute bufwinnr(full_file_name) == -1 ? edit_command . full_file_name : "sbuffer " . full_file_name
-        endif
-        return
-      endif
+       let success = s:buffer_open(file_name . "." . header, a:arrangement)
+       if success
+         return
+       endif
     endfor
-    echohl ErrorMsg | echo "Header file not found!" | echohl None
-    return
-  endif
-
-  " Switch to the source file if the current file is a header file
-  if is_header
+    echohl ErrorMsg | echo "Alternate file not found in path!" | echohl None
+  elseif is_header
     for l:source in source_list
-      let full_file_name = file_name . "." . l:source
-      if filereadable(full_file_name)
-        if bufexists(full_file_name) && a:arrangement !=? "e"
-          execute a:arrangement ==? "s" ? "sbuffer " . full_file_name : "vert sbuffer " . full_file_name
-        else
-          execute bufwinnr(full_file_name) == -1 ? edit_command . full_file_name : "sbuffer " . full_file_name
-        endif
+      let success = s:buffer_open(file_name . "." . l:source, a:arrangement)
+      if success
         return
       endif
     endfor
-    echohl ErrorMsg | echo "Source file not found!" | echohl None
+    echohl ErrorMsg | echo "Alternate file not found in path!" | echohl None
   endif
 endfunction
