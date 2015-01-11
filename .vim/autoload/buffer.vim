@@ -39,7 +39,7 @@ function! s:buffer_open(filename, arrangement)
   return 0
 endfunction
 
-" A dead simple header/source alternater.
+" A dead simple header/source alternator.
 " Without installing a 400+ plugin or having to write some stupid json file.
 function! buffer#alternate(arrangement)
   let file_name = expand("%:t:r")
@@ -57,7 +57,7 @@ function! buffer#alternate(arrangement)
          return
        endif
     endfor
-    echohl ErrorMsg | echo "Alternate file not found in path!" | echohl None
+    echohl ErrorMsg | echo "Header file not found in path!" | echohl None
   elseif is_header
     for l:source in source_list
       let success = s:buffer_open(file_name . "." . l:source, a:arrangement)
@@ -65,6 +65,6 @@ function! buffer#alternate(arrangement)
         return
       endif
     endfor
-    echohl ErrorMsg | echo "Alternate file not found in path!" | echohl None
+    echohl ErrorMsg | echo "Source file not found in path!" | echohl None
   endif
 endfunction
