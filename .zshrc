@@ -14,7 +14,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # Fasd {{{1
-fasd_cache="$HOME/.cache/.fash-init-zsh"
+fasd_cache="$HOME/.cache/.fasd-init-zsh"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
     fasd --init posix-alias zsh-hook >| "$fasd_cache"
 fi
