@@ -15,6 +15,6 @@ setlocal textwidth=80
 
 " Commands
 command! -nargs=0 Format call format#file()
-command! A call buffer#alternate("e")
-command! AV call buffer#alternate("v")
-command! AS call buffer#alternate("s")
+command! A call buffer#alternate("edit")
+command! AV call buffer#alternate("vsplit")
+command! AS call buffer#alternate("split")
