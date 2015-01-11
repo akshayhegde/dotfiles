@@ -40,24 +40,19 @@ endfunction
 function! buffer#alternate(arrangement)
   let file_name = expand("%:t:r")
   let extension = expand("%:t:e")
-
   let source_list = ["cpp", "c", "cc", "cxx"]
   let header_list = ["h", "hpp", "hh", "hxx"]
-  let is_source = index(source_list, extension) >= 0
-  let is_header = index(header_list, extension) >= 0
 
-  if is_source
+  if index(source_list, extension) >= 0
     for header in header_list
-      let success = s:buffer_open(file_name . "." . header, a:arrangement)
-      if success
+      if s:buffer_open(file_name . "." . header, a:arrangement)
         return
       endif
     endfor
     echohl ErrorMsg | echo "Header file not found in path!" | echohl None
-  elseif is_header
+  elseif index(header_list, extension) >= 0
     for l:source in source_list
-      let success = s:buffer_open(file_name . "." . l:source, a:arrangement)
-      if success
+      if s:buffer_open(file_name . "." . l:source, a:arrangement)
         return
       endif
     endfor
