@@ -30,7 +30,7 @@ endfunction
 
 " A dead simple header/source alternator.
 " Without installing a 400+ plugin or having to write some stupid json file.
-function! buffer#alternate(arrangement)
+function! buffer#alternate(edit_command)
   let file_name = expand("%:t:r")
   let extension = expand("%:t:e")
   let source_list = ["cpp", "c", "cc", "cxx"]
@@ -38,14 +38,14 @@ function! buffer#alternate(arrangement)
 
   if index(source_list, extension) >= 0
     for header in header_list
-      if s:buffer_open(file_name . "." . header, a:arrangement)
+      if s:buffer_open(file_name . "." . header, a:edit_command)
         return
       endif
     endfor
     echohl ErrorMsg | echo "Header file not found in path!" | echohl None
   elseif index(header_list, extension) >= 0
     for l:source in source_list
-      if s:buffer_open(file_name . "." . l:source, a:arrangement)
+      if s:buffer_open(file_name . "." . l:source, a:edit_command)
         return
       endif
     endfor
