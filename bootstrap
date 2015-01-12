@@ -11,12 +11,12 @@ function install_homebrew {
     fi
 
     # Install homebrew apps
-    echo "\n${bold}Installing homebrew apps (Go get a coffee)...${norm}"
+    echo -e "\n${bold}Installing homebrew apps (Go get a coffee)...${norm}"
     brew install ag aspell fasd python python3 chruby ruby-install reattach-to-user-namespace tmux
     brew install git --without-completions --with-pcre --with-brewed-curl --with-brewed-openssl
     brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
     brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
-    echo "\n${bold}Done installing homebrew apps!"
+    echo -e "\n${bold}Done installing homebrew apps!${norm}"
 }
 
 function setup_vim {
@@ -49,7 +49,7 @@ function setup_shell_tools {
 }
 
 function setup_osx_defaults {
-    echo "\n${bold}Setting up OS X defaults...${norm}"
+    echo -e "\n${bold}Setting up OS X defaults...${norm}"
     mkdir $HOME/.cache
     defaults write com.apple.Finder QLEnableTextSelection -bool true
     defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -77,5 +77,5 @@ if [ `uname` == "Darwin" ]; then
     setup_vim
     setup_shell_tools
     setup_osx_defaults
-    echo "\n${bold}Done!${norm}"
+    echo -e "\n${bold}Done!${norm}"
 fi
