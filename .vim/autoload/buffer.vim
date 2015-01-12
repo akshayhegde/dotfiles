@@ -22,7 +22,7 @@ endfunction
 " Opens the buffer with the specified arrangement. For buffer#alternate()
 function! s:buffer_open(filename, edit_command)
   if filereadable(a:filename) || bufexists(a:filename)
-    execute bufwinnr(a:filename) == -1 ? a:edit_command . a:filename : "sbuffer " . a:filename
+    execute bufwinnr(a:filename) == -1 ? a:edit_command ." ". a:filename : "sbuffer " . a:filename
     return 1
   endif
   return 0
