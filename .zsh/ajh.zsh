@@ -60,7 +60,6 @@ prompt_ajh_precmd() {
     vi_mode=$vi_insert_mode
 
     vcs_info
-    unset cmd_timestamp
 }
 
 # Prompt setup {{{1
@@ -84,5 +83,6 @@ prompt_ajh_setup() {
     PROMPT='
 %F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f
 %F{yellow}%n%(?.%F{magenta}.%F{red}) ${vi_mode}%f '
+    unset cmd_timestamp
 }
 prompt_ajh_setup "$@"
