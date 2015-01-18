@@ -5,5 +5,4 @@
 .vim/spell
 .vim/session
 .vim/.netrwhist
-.bin/clang-format
 tags

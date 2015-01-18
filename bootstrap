@@ -12,7 +12,8 @@ function install_homebrew {
 
     # Install homebrew apps
     echo -e "\n${bold}Installing homebrew apps (Go get a coffee)...${norm}"
-    brew install ag aspell fasd python python3 chruby ruby-install reattach-to-user-namespace tmux
+    brew install ag aspell fasd python python3 chruby \
+        ruby-install reattach-to-user-namespace tmux clang-format
     brew install git --without-completions --with-pcre --with-brewed-curl --with-brewed-openssl
     brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
     brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
