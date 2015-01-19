@@ -16,7 +16,7 @@ prompt_ajh_git_dirty() {
     command git rev-parse --is-inside-work-tree &>/dev/null || return
     command test -n "$(git status --porcelain --ignore-submodules -unormal)"
     local sha=$(command git rev-parse --short @ 2>/dev/null)
-    (($? == 0)) && echo ':'$sha' ❉]' || echo ':'$sha']'
+    (($? == 0)) && echo ':'$sha' !]' || echo ':'$sha']'
 }
 
 # Preexec {{{1
@@ -33,8 +33,8 @@ prompt_ajh_precmd() {
     print -Pn '\e]0;%~\a'
 
     # Setup vi-mode variables
-    vi_insert_mode="%B%F{green}❯%f%b"
-    vi_cmd_mode="%B%F{red}❮%f%b"
+    vi_insert_mode="%B%F{green}$%f%b"
+    vi_cmd_mode="%B%F{red}%%%f%b"
     vi_mode=$vi_insert_mode
 
     vcs_info
