@@ -99,6 +99,11 @@ function cdf {
     fi
 }
 
+# Create a directory and cd into it
+function mkcd {
+    mkdir -p $1 && cd $1
+}
+
 # Full screen Vim help page.
 function :h () {
     vim +"h $1" +only;
