@@ -22,8 +22,8 @@ prompt_ajh_git_dirty() {
 # Precmd {{{1
 prompt_ajh_precmd() {
     # Setup vi-mode variables
-    vi_insert_mode="%B%F{green}$%f%b"
-    vi_cmd_mode="%B%F{red}%%%f%b"
+    vi_insert_mode="$"
+    vi_cmd_mode="%%"
     vi_mode=$vi_insert_mode
 
     vcs_info
@@ -45,7 +45,7 @@ prompt_ajh_setup() {
     zstyle ':vcs_info:git*' formats '[%b'
     zstyle ':vcs_info:git*' actionformats '[%b (%a)'
 
-    PROMPT=$'\n''(%F{green}%~%f) %F{yellow}%n ${vi_mode}%f '
+    PROMPT=$'\n''(%F{green}%~%f) %F{yellow}%n%f %(?.%F{247}.%F{red})${vi_mode}%f '
     RPROMPT='%F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`'
 }
 prompt_ajh_setup "$@"
