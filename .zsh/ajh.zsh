@@ -30,19 +30,8 @@ prompt_ajh_human_time() {
     echo "${seconds}s"
 }
 
-# Command execution time
-# displays the execution time of the last command
-prompt_ajh_cmd_exec_time() {
-    local stop=$EPOCHSECONDS
-    local start=${cmd_timestamp:-stop}
-    integer elapsed=$stop-$start
-    (($elapsed > 3)) && prompt_ajh_human_time $elapsed
-}
-
 # Preexec {{{1
 prompt_ajh_preexec() {
-    cmd_timestamp=$EPOCHSECONDS
-
     # Show current directory and command in the title if a process is active.
     print -Pn "\e]0;"
     echo -nE "$PWD:t: $1"
@@ -67,7 +56,6 @@ prompt_ajh_setup() {
     export PROMPT_EOL_MARK=''
     prompt_opts=(cr subst percent)
 
-    zmodload zsh/datetime
     autoload -Uz add-zsh-hook
     autoload -Uz vcs_info
 
@@ -81,8 +69,7 @@ prompt_ajh_setup() {
     zstyle ':vcs_info:git*' actionformats '[%b (%a)'
 
     PROMPT='
-%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f %F{red}`prompt_ajh_cmd_exec_time`%f
+%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f
 %F{yellow}%n%(?.%F{magenta}.%F{red}) ${vi_mode}%f '
-    unset cmd_timestamp
 }
 prompt_ajh_setup "$@"
