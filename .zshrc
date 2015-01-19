@@ -140,7 +140,6 @@ function history_stat() {
 
 # Run brew update and upgrade
 function upgrade_pkgs() {
-    brew update --verbose
-    brew outdated
-    brew upgrade
+    brew update --verbose && brew outdated
+    brew upgrade && brew cleanup
 }
