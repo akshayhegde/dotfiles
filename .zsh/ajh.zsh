@@ -19,19 +19,8 @@ prompt_ajh_git_dirty() {
     (($? == 0)) && echo ':'$sha'%F{red}!%f%F{242}]%f' || echo ':'$sha']%f'
 }
 
-# Preexec {{{1
-prompt_ajh_preexec() {
-    # Show current directory and command in the title if a process is active.
-    print -Pn "\e]0;"
-    echo -nE "$PWD:t: $1"
-    print -Pn "\a"
-}
-
 # Precmd {{{1
 prompt_ajh_precmd() {
-    # Show full path in title:
-    print -Pn '\e]0;%~\a'
-
     # Setup vi-mode variables
     vi_insert_mode="%B%F{green}$%f%b"
     vi_cmd_mode="%B%F{red}%%%f%b"
@@ -51,7 +40,6 @@ prompt_ajh_setup() {
     zle -N zle-keymap-select
     zle -N zle-line-finish
     add-zsh-hook precmd prompt_ajh_precmd
-    add-zsh-hook preexec prompt_ajh_preexec
 
     zstyle ':vcs_info:*' enable git hg svn
     zstyle ':vcs_info:git*' formats '[%b'
