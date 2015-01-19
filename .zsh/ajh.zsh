@@ -11,23 +11,12 @@ function zle-line-finish {
     vi_mode=$vi_insert_mode
 }
 
-# Git Dirty {{{2
-# Fastest way possible to check dirtyness (From pure.zsh)
+# Git Functions {{{2
 prompt_ajh_git_dirty() {
     command git rev-parse --is-inside-work-tree &>/dev/null || return
     command test -n "$(git status --porcelain --ignore-submodules -unormal)"
-    (($? == 0)) && echo ' ❉]' || echo ']'
-}
-
-# Human readable time {{{2
-prompt_ajh_human_time() {
-    local tmp=$1
-    local hours=$(( tmp / 60 / 60 % 24 ))
-    local minutes=$(( tmp / 60 % 60 ))
-    local seconds=$(( tmp % 60 ))
-    (( $hours > 0 )) && echo -n "${hours}h "
-    (( $minutes > 0)) && echo -n "${minutes}m "
-    echo "${seconds}s"
+    local sha=$(command git rev-parse --short @ 2>/dev/null)
+    (($? == 0)) && echo ':'$sha' ❉]' || echo ':'$sha']'
 }
 
 # Preexec {{{1
@@ -68,8 +57,7 @@ prompt_ajh_setup() {
     zstyle ':vcs_info:git*' formats '[%b'
     zstyle ':vcs_info:git*' actionformats '[%b (%a)'
 
-    PROMPT='
-%F{green}%~ %F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`%f
-%F{yellow}%n%(?.%F{magenta}.%F{red}) ${vi_mode}%f '
+    PROMPT=$'\n''(%F{green}%~%f) %F{yellow}%n ${vi_mode}%f '
+    RPROMPT='%F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`'
 }
 prompt_ajh_setup "$@"
