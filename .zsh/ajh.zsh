@@ -13,12 +13,7 @@ prompt_ajh_git_dirty() {
     command git rev-parse --is-inside-work-tree &>/dev/null || return
     local sha=$(command git rev-parse --short @ 2>/dev/null)
     command test -n "$(git status --porcelain --ignore-submodules -unormal)"
-    (($? == 0)) && echo ':'$sha'%F{red}!%f%F{242}]%f' || echo ':'$sha']%f'
-}
-
-# Precmd {{{1
-prompt_ajh_precmd() {
-    vcs_info
+    (($? == 0)) && echo ':'$sha'%F{red}!%F{242}]%f' || echo ':'$sha']%f'
 }
 
 # Prompt setup {{{1
@@ -31,7 +26,7 @@ prompt_ajh_setup() {
 
     zle -N zle-line-init
     zle -N zle-keymap-select
-    add-zsh-hook precmd prompt_ajh_precmd
+    add-zsh-hook precmd vcs_info
 
     zstyle ':vcs_info:*' enable git hg svn
     zstyle ':vcs_info:git*' formats '[%b'
