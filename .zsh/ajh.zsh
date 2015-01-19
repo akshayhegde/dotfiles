@@ -3,12 +3,9 @@
 
 # Helpers {{{1
 # Zle {{{2
-function zle-keymap-select {
-    vi_mode="${${KEYMAP/vicmd/${vi_cmd_mode}}/(main|viins)/${vi_insert_mode}}"
+function zle-line-init zle-keymap-select {
+    vi_mode="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
-}
-function zle-line-finish {
-    vi_mode=$vi_insert_mode
 }
 
 # Git Functions {{{2
@@ -21,11 +18,6 @@ prompt_ajh_git_dirty() {
 
 # Precmd {{{1
 prompt_ajh_precmd() {
-    # Setup vi-mode variables
-    vi_insert_mode="$"
-    vi_cmd_mode="%%"
-    vi_mode=$vi_insert_mode
-
     vcs_info
 }
 
@@ -37,8 +29,8 @@ prompt_ajh_setup() {
     autoload -Uz add-zsh-hook
     autoload -Uz vcs_info
 
+    zle -N zle-line-init
     zle -N zle-keymap-select
-    zle -N zle-line-finish
     add-zsh-hook precmd prompt_ajh_precmd
 
     zstyle ':vcs_info:*' enable git hg svn
