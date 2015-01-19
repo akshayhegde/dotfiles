@@ -121,7 +121,6 @@ let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 let [fist_in_private, fist_anonymously] = [0, 0]
 let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
-let [jedi#auto_vim_configuration, jedi#popup_on_dot] = [0, 0]
 let g:no_default_tabular_maps = 1
 
 " Plugin Mappings {{{1
