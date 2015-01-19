@@ -14,8 +14,8 @@ function zle-line-finish {
 # Git Functions {{{2
 prompt_ajh_git_dirty() {
     command git rev-parse --is-inside-work-tree &>/dev/null || return
-    command test -n "$(git status --porcelain --ignore-submodules -unormal)"
     local sha=$(command git rev-parse --short @ 2>/dev/null)
+    command test -n "$(git status --porcelain --ignore-submodules -unormal)"
     (($? == 0)) && echo ':'$sha' !]' || echo ':'$sha']'
 }
 
