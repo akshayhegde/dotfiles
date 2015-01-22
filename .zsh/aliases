@@ -21,9 +21,9 @@ alias vconf="vim ~/dotfiles/.vimrc"
 alias zconf="vim ~/dotfiles/.zshrc"
 
 # Vimutil aliases {{{1
-alias vbund=". ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_bundles"
-alias vins=". ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/install_bundles"
-alias vupd=". ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_vim"
+alias vbund="~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_bundles"
+alias vins="~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/install_bundles"
+alias vupd="~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_vim"
 alias ebund="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_bundles"
 alias eins="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/install_bundles"
 alias eupd="vim ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/upgrade_vim"
