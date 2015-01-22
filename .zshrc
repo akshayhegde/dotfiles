@@ -8,26 +8,21 @@ zstyle ':completion' cache-path $ZCACHEDIR
 autoload -Uz compinit && compinit -i -C -d $ZCACHEDIR/zcompdump
 
 # Completion options.
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
-zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*' verbose true
+zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' format '%F{yellow}Completing %d%f'
 zstyle ':completion:*' warnings '%F{red}No matches for: %d%f'
-zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose true
 zstyle ':completion:*' users ajh root
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32
-
-# Fuzzy matches
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
-
-# man pages
 zstyle ':completion:*:manuals' separate-sections true
+zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 # Source externals {{{1
 source ~/.zsh/aliases
