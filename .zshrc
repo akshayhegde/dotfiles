@@ -1,21 +1,21 @@
 # ajh17's ~/.zshrc
 
 # Autoload {{{1
-autoload -U edit-command-line
+autoload -Uz edit-command-line
 zle -N edit-command-line
 
 # Styles {{{1
 # Cache completions
 ZCACHEDIR=~/.cache/
-zstyle ':completion::complete:*' use-cache true
+zstyle ':completion:*' use-cache true
 zstyle ':completion' cache-path $ZCACHEDIR
 autoload -Uz compinit && compinit -i -C -d $ZCACHEDIR/zcompdump
 
 # Completion options.
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' menu select
 zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' format '%F{yellow}Completing %d%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' users ajh root
@@ -90,8 +90,8 @@ bindkey -M vicmd v edit-command-line
 bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^r' redo
 bindkey -M vicmd '~' vi-swap-case
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
