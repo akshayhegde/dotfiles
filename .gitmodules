@@ -1,9 +1,6 @@
 [submodule ".zsh/plugins/zsh-history-substring-search"]
 	path = .zsh/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
-[submodule ".zsh/plugins/zsh-syntax-highlighting"]
-	path = .zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".bin/tmux-resurrect"]
 	path = .bin/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect.git
