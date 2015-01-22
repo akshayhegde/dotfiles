@@ -4,8 +4,43 @@
 autoload -U edit-command-line
 zle -N edit-command-line
 
+# Styles {{{1
+# Cache completions
+ZCACHEDIR=~/.cache/
+zstyle ':completion::complete:*' use-cache true
+zstyle ':completion' cache-path $ZCACHEDIR
+autoload -Uz compinit && compinit -i -C -d $ZCACHEDIR/zcompdump
+
+# Completion options.
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose true
+zstyle ':completion:*' users ajh root
+zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32
+
+# Fuzzy matches
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# Increase the number of errors based on the length of the typed word.
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+
+# Don't complete unavailable commands.
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
+
+# kill
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;36=0=01'
+zstyle ':completion:*:*:kill:*' force-list always
+
+# man pages
+zstyle ':completion:*:manuals' separate-sections true
+
 # Source externals {{{1
-source ~/.zsh/styles.zsh
 source ~/.zsh/aliases
 source ~/.zsh/ajh.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
