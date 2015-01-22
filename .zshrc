@@ -16,6 +16,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ':completion:*' menu select
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*' format '%F{yellow}Completing %d%f'
+zstyle ':completion:*' warnings '%F{red}No matches for: %d%f'
+zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' users ajh root
@@ -65,7 +67,7 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export PAGER='less'
 
 # Settings {{{1
-setopt alwaystoend completeinword completealiases pathdirs automenu autolist menucomplete
+setopt alwaystoend completeinword completealiases autolist menucomplete
 setopt prompt_subst transientrprompt extendedglob globdots globcomplete correct recexact
 setopt sharehistory histignoredups histreduceblanks histignorespace
 setopt banghist incappendhistory histexpiredupsfirst histignorealldups
@@ -79,8 +81,8 @@ unsetopt flowcontrol caseglob clobber extendedhistory nomatch
 
 # History {{{1
 HISTFILE=$HOME/.cache/.zhistory
-HISTSIZE=200000
-SAVEHIST=200000
+HISTSIZE=20000
+SAVEHIST=20000
 
 # Key Remappings (Vi-mode) {{{1
 bindkey -v
