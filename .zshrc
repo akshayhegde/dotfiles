@@ -43,7 +43,6 @@ zstyle ':completion:*:manuals' separate-sections true
 # Source externals {{{1
 source ~/.zsh/aliases
 source ~/.zsh/ajh.zsh
-source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
@@ -64,7 +63,6 @@ export KEYTIMEOUT=1
 export LANG='en_US.UTF-8'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export PAGER='less'
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=yellow,bold'
 
 # Settings {{{1
 setopt alwaystoend completeinword completealiases pathdirs automenu autolist menucomplete
