@@ -1,9 +1,5 @@
 # ajh17's ~/.zshrc
 
-# Autoload {{{1
-autoload -Uz edit-command-line
-zle -N edit-command-line
-
 # Styles {{{1
 # Cache completions
 ZCACHEDIR=~/.cache/
@@ -27,17 +23,8 @@ zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-# Increase the number of errors based on the length of the typed word.
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
-
-# Don't complete unavailable commands.
-zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
-
-# kill
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;36=0=01'
-zstyle ':completion:*:*:kill:*' force-list always
 
 # man pages
 zstyle ':completion:*:manuals' separate-sections true
@@ -86,6 +73,9 @@ SAVEHIST=20000
 
 # Key Remappings (Vi-mode) {{{1
 bindkey -v
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
 bindkey -M vicmd "?" history-incremental-pattern-search-backward
 bindkey -M vicmd "/" history-incremental-pattern-search-forward
 bindkey -M vicmd v edit-command-line
@@ -143,8 +133,7 @@ function :h () {
 # Copy current git commit sha1 to the clipboard.
 function gcopy() {
     git rev-parse @ | tr -d '\n' | pbcopy
-    echo -n "Copied " && pbpaste
-    echo ''
+    echo -n "Copied " && pbpaste && echo ''
 }
 
 # Open origin remote URL in a browser
@@ -171,6 +160,5 @@ function history_stat() {
 
 # Run brew update and upgrade
 function upgrade_pkgs() {
-    brew update --verbose && brew outdated
-    brew upgrade && brew cleanup
+    brew update --verbose && brew outdated && brew upgrade && brew cleanup
 }
