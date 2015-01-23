@@ -1,22 +1,9 @@
 # ajh.zsh
-# Slightly modeled after pure zsh prompt.
-
-# Helpers {{{1
-# Zle {{{2
 function zle-line-init zle-keymap-select {
     vi_mode="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
 }
 
-# Git Functions {{{2
-prompt_ajh_git_dirty() {
-    command git rev-parse --is-inside-work-tree &>/dev/null || return
-    local sha=$(command git rev-parse --short @ 2>/dev/null)
-    command test -n "$(git status --porcelain --ignore-submodules -unormal)"
-    (($? == 0)) && echo ':'$sha'%F{red}!%F{242}]%f' || echo ':'$sha']%f'
-}
-
-# Prompt setup {{{1
 prompt_ajh_setup() {
     export PROMPT_EOL_MARK=''
     prompt_opts=(cr subst percent)
@@ -29,10 +16,14 @@ prompt_ajh_setup() {
     add-zsh-hook precmd vcs_info
 
     zstyle ':vcs_info:*' enable git hg svn
-    zstyle ':vcs_info:git*' formats '[%b'
-    zstyle ':vcs_info:git*' actionformats '[%b (%a)'
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' get-revision true
+    zstyle ':vcs_info:*' formats '(%F{yellow}%b%f:%.8i%f%c%u)'
+    zstyle ':vcs_info:*' actionformats '%b%c%u [%a]'
+    zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
+    zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
 
-    PROMPT=$'\n''(%F{green}%~%f) %F{yellow}%n%f %(?.%F{247}.%F{red})${vi_mode}%f '
-    RPROMPT='%F{242}$vcs_info_msg_0_`prompt_ajh_git_dirty`'
+    PROMPT=$'\n''%F{green}%~%f$vcs_info_msg_0_ %(?.%F{247}.%F{red})${vi_mode}%f '
+    RPROMPT=''
 }
 prompt_ajh_setup "$@"
