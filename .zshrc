@@ -77,8 +77,8 @@ bindkey -M vicmd v edit-command-line
 bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^r' redo
 bindkey -M vicmd '~' vi-swap-case
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-backward
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
