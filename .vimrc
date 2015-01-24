@@ -38,7 +38,7 @@ set wildmenu wildcharm=<C-z>
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
-set grepprg=ag\ --vimgrep grepformat^=%f:%l:%c:%m
+set grepprg=ag\ --hidden\ --vimgrep grepformat^=%f:%l:%c:%m
 
 " Indent and Fold Settings {{{1
 set softtabstop=4 shiftwidth=4 shiftround
