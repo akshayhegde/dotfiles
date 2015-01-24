@@ -79,8 +79,8 @@ bindkey -M vicmd 'gg' beginning-of-buffer-or-history
 bindkey -M vicmd 'u' undo
 bindkey -M vicmd 'v' edit-command-line
 bindkey -M vicmd '~' vi-swap-case
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-backward
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^?' backward-delete-char
 bindkey '^a' beginning-of-line
@@ -88,7 +88,6 @@ bindkey '^e' end-of-line
 bindkey '^k' kill-line
 bindkey '^l' clear-screen
 bindkey '^n' insert-last-word
-bindkey '^p' history-search-backward
 bindkey '^r' history-incremental-search-backward
 bindkey '^u' backward-kill-line
 
