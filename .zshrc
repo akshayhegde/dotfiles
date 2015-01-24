@@ -65,33 +65,6 @@ HISTFILE=$HOME/.cache/.zhistory
 HISTSIZE=20000
 SAVEHIST=20000
 
-# Key Remappings (Vi-mode) {{{1
-bindkey -v
-autoload -Uz edit-command-line
-zle -N edit-command-line
-
-bindkey -M vicmd "/" history-incremental-pattern-search-forward
-bindkey -M vicmd "?" history-incremental-pattern-search-backward
-bindkey -M vicmd '^g' what-cursor-position
-bindkey -M vicmd '^r' redo
-bindkey -M vicmd 'G' end-of-buffer-or-history
-bindkey -M vicmd 'gg' beginning-of-buffer-or-history
-bindkey -M vicmd 'u' undo
-bindkey -M vicmd 'v' edit-command-line
-bindkey -M vicmd '~' vi-swap-case
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-bindkey '^[[Z' reverse-menu-complete
-bindkey '^?' backward-delete-char
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
-bindkey '^k' kill-line
-bindkey '^l' clear-screen
-bindkey '^n' insert-last-word
-bindkey '^r' history-incremental-search-backward
-bindkey '^s' history-incremental-search-forward
-bindkey '^u' backward-kill-line
-
 # Functions {{{1
 
 # Colorize man pages
@@ -158,6 +131,33 @@ function history_stat() {
 function upgrade_pkgs() {
     brew update --verbose && brew outdated && brew upgrade && brew cleanup
 }
+
+# Key Remappings (Vi-mode) {{{1
+bindkey -v
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+bindkey -M vicmd "/" history-incremental-pattern-search-forward
+bindkey -M vicmd "?" history-incremental-pattern-search-backward
+bindkey -M vicmd '^g' what-cursor-position
+bindkey -M vicmd '^r' redo
+bindkey -M vicmd 'G' end-of-buffer-or-history
+bindkey -M vicmd 'gg' beginning-of-buffer-or-history
+bindkey -M vicmd 'u' undo
+bindkey -M vicmd 'v' edit-command-line
+bindkey -M vicmd '~' vi-swap-case
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+bindkey '^[[Z' reverse-menu-complete
+bindkey '^?' backward-delete-char
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey '^k' kill-line
+bindkey '^l' clear-screen
+bindkey '^n' insert-last-word
+bindkey '^r' history-incremental-search-backward
+bindkey '^s' history-incremental-search-forward
+bindkey '^u' backward-kill-line
 
 # Prompt {{{1
 function zle-line-init zle-keymap-select {
