@@ -128,14 +128,13 @@ function :h () {
 
 # Copy current git commit sha1 to the clipboard.
 function gcopy() {
-    git rev-parse @ | tr -d '\n' | pbcopy
-    echo -n "Copied " && pbpaste && echo ''
+    git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied `pbpaste`"
 }
 
 # Open origin remote URL in a browser
 function gopen() {
     local url
-    url=( $(git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//') )
+    url=$(git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//')
     open $url
 }
 
