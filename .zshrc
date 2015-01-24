@@ -89,6 +89,7 @@ bindkey '^k' kill-line
 bindkey '^l' clear-screen
 bindkey '^n' insert-last-word
 bindkey '^r' history-incremental-search-backward
+bindkey '^s' history-incremental-search-forward
 bindkey '^u' backward-kill-line
 
 # Functions {{{1
