@@ -70,24 +70,27 @@ bindkey -v
 autoload -Uz edit-command-line
 zle -N edit-command-line
 
-bindkey -M vicmd "?" history-incremental-pattern-search-backward
 bindkey -M vicmd "/" history-incremental-pattern-search-forward
-bindkey -M vicmd v edit-command-line
-bindkey -M vicmd 'u' undo
+bindkey -M vicmd "?" history-incremental-pattern-search-backward
+bindkey -M vicmd '^g' what-cursor-position
 bindkey -M vicmd '^r' redo
+bindkey -M vicmd 'G' end-of-buffer-or-history
+bindkey -M vicmd 'gg' beginning-of-buffer-or-history
+bindkey -M vicmd 'u' undo
+bindkey -M vicmd 'v' edit-command-line
 bindkey -M vicmd '~' vi-swap-case
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-backward
 bindkey '^[[Z' reverse-menu-complete
+bindkey '^?' backward-delete-char
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
-bindkey '^l' clear-screen
 bindkey '^k' kill-line
-bindkey '^u' backward-kill-line
-bindkey '^r' history-incremental-search-backward
-bindkey '^p' history-search-backward
+bindkey '^l' clear-screen
 bindkey '^n' insert-last-word
-bindkey '^?' backward-delete-char
+bindkey '^p' history-search-backward
+bindkey '^r' history-incremental-search-backward
+bindkey '^u' backward-kill-line
 
 # Functions {{{1
 
