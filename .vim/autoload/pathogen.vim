@@ -44,7 +44,6 @@ endfunction
 " Split a path into a list.
 function! pathogen#split(path) abort
   if type(a:path) == type([]) | return a:path | endif
-  if empty(a:path) | return [] | endif
   let split = split(a:path,'\\\@<!\%(\\\\\)*\zs,')
   return map(split,'substitute(v:val,''\\\([\\,]\)'',''\1'',"g")')
 endfunction
@@ -76,11 +75,6 @@ function! pathogen#join(...) abort
   return substitute(path,'^,','','')
 endfunction
 
-" Convert a list to a path with escaped spaces for 'path', 'tag', etc.
-function! pathogen#legacyjoin(...) abort
-  return call('pathogen#join',[1] + a:000)
-endfunction
-
 " Turn filetype detection off and back on again if it was already enabled.
 function! pathogen#cycle_filetype() abort
   if exists('g:did_load_filetypes')
@@ -95,7 +89,6 @@ function! pathogen#is_disabled(path) abort
   if a:path =~# '\~$'
     return 1
   endif
-  let sep = pathogen#slash()
   let blacklist = map(
         \ get(g:, 'pathogen_blacklist', get(g:, 'pathogen_disabled', [])) +
         \ pathogen#split($VIMBLACKLIST),
@@ -106,11 +99,10 @@ endfunction "}}}1
 " Prepend the given directory to the runtime path and append its corresponding
 " after directory.  Curly braces are expanded with pathogen#expand().
 function! pathogen#surround(path) abort
-  let sep = pathogen#slash()
   let rtp = pathogen#split(&rtp)
   let path = fnamemodify(a:path, ':p:?[\\/]\=$??')
   let before = filter(pathogen#expand(path), '!pathogen#is_disabled(v:val)')
-  let after = filter(reverse(pathogen#expand(path.sep.'after')), '!pathogen#is_disabled(v:val[0:-7])')
+  let after = filter(reverse(pathogen#expand(path.'/'.'after')), '!pathogen#is_disabled(v:val[0:-7])')
   call filter(rtp, 'index(before + after, v:val) == -1')
   let &rtp = pathogen#join(before, rtp, after)
   return &rtp
@@ -119,7 +111,7 @@ endfunction
 " For each directory in the runtime path, add a second entry with the given
 " argument appended.  Curly braces are expanded with pathogen#expand().
 function! pathogen#interpose(name) abort
-  let sep = pathogen#slash()
+  let sep = '/'
   let name = a:name
   if has_key(s:done_bundles, name)
     return ""
@@ -141,7 +133,7 @@ let s:done_bundles = {}
 
 " Invoke :helptags on all non-$VIM doc directories in runtimepath.
 function! pathogen#helptags() abort
-  let sep = pathogen#slash()
+  let sep = '/'
   for glob in pathogen#split(&rtp)
     for dir in map(split(glob(glob), "\n"), 'v:val.sep."/doc/".sep')
       if (dir)[0 : strlen($VIMRUNTIME)] !=# $VIMRUNTIME.sep && filewritable(dir) == 2 && !empty(split(glob(dir.'*.txt'))) && (!filereadable(dir.'tags') || filewritable(dir.'tags'))
@@ -189,19 +181,10 @@ function! pathogen#expand(pattern) abort
   endif
 endfunction
 
-" \ on Windows unless shellslash is set, / everywhere else.
-function! pathogen#slash() abort
-  return !exists("+shellslash") || &shellslash ? '/' : '\'
-endfunction
-
-function! pathogen#separator() abort
-  return pathogen#slash()
-endfunction
-
 " Convenience wrapper around glob() which returns a list.
 function! pathogen#glob(pattern) abort
   let files = split(glob(a:pattern),"\n")
-  return map(files,'substitute(v:val,"[".pathogen#slash()."/]$","","")')
+  return map(files,'substitute(v:val,"["."/"."/]$","","")')
 endfunction "}}}1
 
 " Like pathogen#glob(), only limit the results to directories.
@@ -261,7 +244,7 @@ endfunction
 " directories in those subdirectories.  Deprecated.
 function! pathogen#runtime_prepend_subdirectories(path) abort
   call s:warn('Change pathogen#runtime_prepend_subdirectories('.string(a:path).') to pathogen#infect('.string(a:path.'/{}').')')
-  return pathogen#surround(a:path . pathogen#slash() . '{}')
+  return pathogen#surround(a:path . "/" . '{}')
 endfunction
 
 function! pathogen#incubate(...) abort
@@ -300,7 +283,7 @@ function! s:find(count,cmd,file,lcd)
 endfunction
 
 function! s:Findcomplete(A,L,P)
-  let sep = pathogen#slash()
+  let sep = '/'
   let cheats = {
         \'a': 'autoload',
         \'d': 'doc',
