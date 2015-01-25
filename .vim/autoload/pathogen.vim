@@ -284,26 +284,18 @@ if exists(':Vedit')
   finish
 endif
 
-let s:vopen_warning = 0
-
 function! s:find(count,cmd,file,lcd)
   let rtp = pathogen#join(1,pathogen#split(&runtimepath))
   let file = pathogen#runtime_findfile(a:file,a:count)
   if file ==# ''
     return "echoerr 'E345: Can''t find file \"".a:file."\" in runtimepath'"
   endif
-  if !s:vopen_warning
-    let s:vopen_warning = 1
-    let warning = '|echohl WarningMsg|echo "Install scriptease.vim to continue using :V'.a:cmd.'"|echohl NONE'
-  else
-    let warning = ''
-  endif
   if a:lcd
     let path = file[0:-strlen(a:file)-2]
     execute 'lcd `=path`'
-    return a:cmd.' '.pathogen#fnameescape(a:file) . warning
+    return a:cmd.' '.pathogen#fnameescape(a:file)
   else
-    return a:cmd.' '.pathogen#fnameescape(file) . warning
+    return a:cmd.' '.pathogen#fnameescape(file)
   endif
 endfunction
 
