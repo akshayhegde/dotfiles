@@ -104,6 +104,9 @@ nnoremap <leader>= :call format#reindent()<CR>
 " Remove trailing whitespace
 nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``
 
+" cd to the current file's path
+nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
+
 " Buffer switching
 nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
 nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
