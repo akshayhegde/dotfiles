@@ -163,6 +163,8 @@ bindkey '^?' backward-delete-char
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 bindkey '^[[Z' reverse-menu-complete
+bindkey "'" quote-line
+bindkey '"' quote-region
 bindkey '^a' beginning-of-line
 bindkey '^b' run-help
 bindkey '^e' end-of-line
