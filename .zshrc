@@ -193,7 +193,7 @@ prompt_ajh_setup() {
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' formats '(%F{yellow}%b%f:%.8i%f%c%u)'
-    zstyle ':vcs_info:*' actionformats '(%F{yellow}%b%f:%.8i%f%c%u [%a])'
+    zstyle ':vcs_info:*' actionformats '(%F{yellow}%b%f|%F{red}%a%f:%.8i%f%c%u)'
     zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
     zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
     zstyle ':vcs_info:git+set-message:*' hooks git-untracked
