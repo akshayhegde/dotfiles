@@ -196,6 +196,13 @@ prompt_ajh_setup() {
     zstyle ':vcs_info:*' actionformats '(%F{yellow}%b%f:%.8i%f%c%u [%a])'
     zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
     zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
+    zstyle ':vcs_info:git+set-message:*' hooks git-untracked
     PROMPT=$'\n''%F{green}%~%f$vcs_info_msg_0_ %(?.%F{247}.%F{red})${vi_mode}%f '
+}
+
+function +vi-git-untracked() {
+if [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]]; then
+        hook_com[unstaged]+="%F{red}?%f"
+    fi
 }
 prompt_ajh_setup "$@"
