@@ -164,6 +164,7 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^a' beginning-of-line
+bindkey '^b' run-help
 bindkey '^e' end-of-line
 bindkey '^j' tmux-pane-words-prefix
 bindkey '^k' kill-line
