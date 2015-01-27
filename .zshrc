@@ -165,16 +165,16 @@ bindkey '^[[B' history-search-forward
 bindkey '^[[Z' reverse-menu-complete
 bindkey "'" quote-line
 bindkey '"' quote-region
-bindkey '^a' beginning-of-line
+bindkey '^a' vi-insert-bol
 bindkey '^b' run-help
-bindkey '^e' end-of-line
+bindkey '^e' vi-add-eol
 bindkey '^j' tmux-pane-words-prefix
 bindkey '^k' kill-line
 bindkey '^l' clear-screen
 bindkey '^n' insert-last-word
 bindkey '^r' history-incremental-search-backward
 bindkey '^s' history-incremental-search-forward
-bindkey '^u' backward-kill-line
+bindkey '^u' vi-change-whole-line
 
 # Prompt {{{1
 function zle-line-init zle-keymap-select {
