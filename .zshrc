@@ -163,8 +163,6 @@ bindkey '^?' backward-delete-char
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 bindkey '^[[Z' reverse-menu-complete
-bindkey "'" quote-line
-bindkey '"' quote-region
 bindkey '^a' vi-insert-bol
 bindkey '^b' run-help
 bindkey '^e' vi-add-eol
