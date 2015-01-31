@@ -22,7 +22,7 @@ if test "x$ITUNES_TRACK" != "x"; then
         end appIsRunning
     EOF)
 
-    if [ "$ITUNES_ARTIST" == "" ]; then
+    if [ "$ITUNES_ARTIST" == "eof" ]; then
         echo ' | ♪' $ITUNES_TRACK
     else
         echo ' | ♪' $ITUNES_TRACK '-' $ITUNES_ARTIST
