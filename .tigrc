@@ -5,7 +5,7 @@ set main-view = line-number:no,interval=4 \
     author:full \
     commit-title:yes,graph,refs,overflow=72
 
-set line-graphics = utf-8
+set line-graphics = default
 set show-changes = yes
 
 # Keybindings
