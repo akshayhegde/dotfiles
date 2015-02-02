@@ -124,9 +124,6 @@ let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -
 let g:no_default_tabular_maps = 1
 
 " Plugin Mappings {{{1
-" CtrlP {{{2
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>F :CtrlPCurWD<CR>
 " Dispatch {{{2
 nnoremap d<space> :Dispatch<space>
 nnoremap d<CR> :Dispatch<CR>
