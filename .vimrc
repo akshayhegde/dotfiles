@@ -148,7 +148,7 @@ augroup VIMRC
   autocmd!
   autocmd VimEnter * call cursor#changeShape()
   autocmd BufReadPost * silent! execute "normal! g`\""
-  autocmd BufWritePost * if &diff == 1 | diffupdate | endif
+  autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 augroup END
 
