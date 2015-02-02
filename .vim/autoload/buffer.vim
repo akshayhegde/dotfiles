@@ -8,17 +8,6 @@ function! buffer#switchBySplitting(arrangement)
   endif
 endfunction
 
-" Get the names of buffers as a string separated by a space.
-function! buffer#list()
-  let buflist = []
-  for i in range(1, bufnr('$'))
-    if bufexists(i)
-      let buflist += [bufname(i)]
-    endif
-  endfor
-  return join(map(buflist, 'escape(v:val, " ")'), ' ')
-endfunction
-
 " Opens the buffer with the specified arrangement. For buffer#alternate()
 function! s:buffer_open(filename, edit_command)
   if filereadable(a:filename) || bufexists(a:filename)

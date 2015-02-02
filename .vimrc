@@ -79,9 +79,6 @@ nnoremap <expr> k  v:count == 0 ? 'gk' : 'k'
 nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
 nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 
-" Expand buffer list similar to ## for the argslist
-cnoremap %% <C-R>=buffer#list()<CR>
-
 " Remap some default keys to be more useful
 nnoremap Q gq
 nnoremap Y y$
@@ -138,7 +135,6 @@ nnoremap m<CR> :Make<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gp :Gpush<CR>
 " Tabular {{{2
 nnoremap <leader>t :Tabularize<space>/
 xnoremap <leader>t :Tabularize<space>/
