@@ -120,7 +120,6 @@ let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types] = [1, 1,
 let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 let [fist_in_private, fist_anonymously] = [0, 0]
-let [ctrlp_use_caching, ctrlp_user_command] = [0, 'ag %s -l --nocolor --hidden -g ""']
 let g:no_default_tabular_maps = 1
 
 " Plugin Mappings {{{1
