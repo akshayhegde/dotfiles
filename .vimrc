@@ -132,9 +132,6 @@ nnoremap m<CR> :Make<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
-" Tabular {{{2
-nnoremap <leader>t :Tabularize<space>/
-xnoremap <leader>t :Tabularize<space>/
 
 " Autocommands {{{1
 augroup VIMRC
