@@ -1,6 +1,7 @@
 " Compiler settings
 compiler clang
 let b:dispatch = 'clang %'
+let b:vcm_tab_complete = 'user'
 setlocal makeprg=clang\ %
 let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%f:%l:%c: error: %m,' .
