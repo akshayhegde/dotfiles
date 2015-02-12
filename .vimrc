@@ -140,6 +140,7 @@ augroup VIMRC
   autocmd BufReadPost * silent! execute "normal! g`\""
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+  autocmd CompleteDone * pclose
 augroup END
 
 " Commands {{{1
