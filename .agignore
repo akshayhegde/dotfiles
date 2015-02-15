@@ -2,7 +2,6 @@ tags
 *.out
 *.pyc
 *.out
-*.git
 *.DS_Store
 *.class
 *.jpg
@@ -17,3 +16,6 @@ tags
 *.spl
 %*
 *~
+.git
+.svn
+.hg
