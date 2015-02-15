@@ -47,6 +47,9 @@ function setup_shell_tools {
 
     echo "${bold}Linking ag ignore file...${norm}"
     /bin/ln -sfv ~/dotfiles/.agignore $HOME
+
+    echo "${bold}Linking iPython...${norm}"
+    /bin/ln -sfv ~/dotfiles/.ipython $HOME
 }
 
 function setup_osx_defaults {
