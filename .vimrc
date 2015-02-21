@@ -122,10 +122,6 @@ let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 let [fist_in_private, fist_anonymously] = [0, 0]
 
 " Plugin Mappings {{{1
-" Dispatch {{{2
-nnoremap d<space> :Dispatch<space>
-nnoremap d<CR> :Dispatch<CR>
-nnoremap m<CR> :Make<CR>
 " Fugitive {{{2
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>

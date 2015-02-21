@@ -1,3 +1,3 @@
 " General settings
-let b:dispatch = 'javac %'
+setlocal makeprg=javac\ %
 command! -nargs=0 Format call format#file()
