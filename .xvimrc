@@ -54,5 +54,5 @@ nmap <space>j :xccmd toggleDebuggerVisibility<CR>
 nmap <space>l :xccmd toggleUtilitiesVisibility<CR>
 
 " Jump to issues
-nmap <space>n :xcmenucmd Jump to Next Issue<CR>
-nmap <space>p :xcmenucmd Jump to Previous Issue<CR>
+nmap <space>n :nissue<CR>
+nmap <space>p :pissue<CR>
