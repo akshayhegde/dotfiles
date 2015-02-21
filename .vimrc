@@ -28,7 +28,6 @@ set nostartofline
 set nrformats-=octal
 set number relativenumber
 set path=.,**
-set report=0
 set showcmd showbreak=↪
 set splitbelow splitright
 set switchbuf=useopen,usetab
