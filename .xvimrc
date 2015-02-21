@@ -10,8 +10,6 @@ set laststatus=0
 
 " Mappings {{{1
 " Vim Mappings {{{2
-
-" Remap some default keys to be more useful
 nmap Y y$
 nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
@@ -22,37 +20,20 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 " Xcode Mappings {{{2
-
-" Toggle commenting
 nmap gcc :xccmd commentAndUncommentCurrentLines<CR>
 vmap gc :xccmd commentAndUncommentCurrentLines<CR>
 
-" Grep for selected text
-nmap <space>g viw:xccmd findSelectedTextInWorkspace<CR>
-
-" Build/Clean/Run
-nmap <space>b :xcmenucmd Build<CR>
-nmap <space>r :xcmenucmd Run<CR>
-nmap <space>c :xcmenucmd Clean<CR>
-nmap <space>C :xcmenucmd Clean Build Folder...<CR>
-
-" Go to file/symbol
+" Navigation
 nmap <space>f :xcmenucmd Open Quickly...<CR>
+nmap <space>n :nissue<CR>
+nmap <space>p :pissue<CR>
 
-" Show in Finder
+" Show
 nmap <space>F :xccmd showInFinder<CR>
-
-" Show API Reference
 nmap <space>D :xccmd showDeveloperDocumentation<CR>
-
-" Show Quick Help
 nmap <space>d :xcmenucmd Quick Help for Selected Item<CR>
 
-" Toggle various toolbars
+" Toggle Toolbars
 nmap <space>h :xccmd toggleNavigatorsVisibility<CR>
 nmap <space>j :xccmd toggleDebuggerVisibility<CR>
 nmap <space>l :xccmd toggleUtilitiesVisibility<CR>
-
-" Jump to issues
-nmap <space>n :nissue<CR>
-nmap <space>p :pissue<CR>
