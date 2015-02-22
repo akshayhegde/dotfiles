@@ -1,7 +1,9 @@
-setlocal winheight=3
-setlocal wrap
+" Quickfix/Location List
+
+" Options
+setlocal nowrap
 setlocal norelativenumber number
-setlocal linebreak
-setlocal nolist
+setlocal nobuflisted
+
+" Open quickfix list below the window.
 wincmd J
-nnoremap <buffer> <CR> <CR>zzzv
