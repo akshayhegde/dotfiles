@@ -141,3 +141,5 @@ augroup END
 command! BD silent e# | bd#
 command! -bar Scriptnames call setqflist(scripts#get()) | copen
 command! Mvim silent! execute "!mvim %" | redraw!
+command! Make silent make % | silent redraw! | cwindow
+command! Lmake silent lmake % | silent redraw! | lwindow
