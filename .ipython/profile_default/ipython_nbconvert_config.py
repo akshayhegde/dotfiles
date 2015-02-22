@@ -8,7 +8,7 @@ c = get_config()
 
 # This application is used to convert notebook files (*.ipynb) to various other
 # formats.
-# 
+#
 # WARNING: THE COMMANDLINE INTERFACE MAY CHANGE IN FUTURE RELEASES.
 
 # NbConvertApp will inherit config from: BaseIPythonApplication, Application
@@ -65,7 +65,7 @@ c = get_config()
 # c.NbConvertApp.log_format = '[%(name)s]%(highlevel)s %(message)s'
 
 # Path to an extra config file to load.
-# 
+#
 # If specified, load this config file in addition to any other IPython config.
 # c.NbConvertApp.extra_config_file = ''
 
@@ -74,7 +74,7 @@ c = get_config()
 #------------------------------------------------------------------------------
 
 # Global configurable class for shared config
-# 
+#
 # Useful for display data priority that might be use by many transformers
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -89,10 +89,10 @@ c = get_config()
 #------------------------------------------------------------------------------
 
 # An object to manage the profile directory and its resources.
-# 
+#
 # The profile directory is used by all IPython applications, to manage
 # configuration, logging and security.
-# 
+#
 # This object knows how to find, create and manage these directories. This
 # should be used by any code that wants to handle profiles.
 
@@ -132,7 +132,7 @@ c = get_config()
 # List of preprocessors, by name or namespace, to enable.
 # c.HTMLExporter.preprocessors = []
 
-# 
+#
 # c.HTMLExporter.template_path = ['.']
 
 # Extension of the file that should be written to disk
@@ -145,31 +145,31 @@ c = get_config()
 # type.
 # c.HTMLExporter.default_preprocessors = ['IPython.nbconvert.preprocessors.coalesce_streams', 'IPython.nbconvert.preprocessors.SVG2PDFPreprocessor', 'IPython.nbconvert.preprocessors.ExtractOutputPreprocessor', 'IPython.nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'IPython.nbconvert.preprocessors.RevealHelpPreprocessor', 'IPython.nbconvert.preprocessors.LatexPreprocessor', 'IPython.nbconvert.preprocessors.HighlightMagicsPreprocessor']
 
-# 
+#
 # c.HTMLExporter.jinja_comment_block_start = ''
 
-# 
+#
 # c.HTMLExporter.jinja_variable_block_end = ''
 
 # Dictionary of filters, by name and namespace, to add to the Jinja environment.
 # c.HTMLExporter.filters = {}
 
-# 
+#
 # c.HTMLExporter.jinja_variable_block_start = ''
 
-# 
+#
 # c.HTMLExporter.jinja_comment_block_end = ''
 
-# 
+#
 # c.HTMLExporter.jinja_logic_block_end = ''
 
 # Name of the template file to use
 # c.HTMLExporter.template_file = 'default'
 
-# 
+#
 # c.HTMLExporter.template_extension = '.tpl'
 
-# 
+#
 # c.HTMLExporter.jinja_logic_block_start = ''
 
 #------------------------------------------------------------------------------
@@ -188,7 +188,7 @@ c = get_config()
 # List of preprocessors, by name or namespace, to enable.
 # c.LatexExporter.preprocessors = []
 
-# 
+#
 # c.LatexExporter.template_path = ['.']
 
 # Extension of the file that should be written to disk
@@ -201,31 +201,31 @@ c = get_config()
 # type.
 # c.LatexExporter.default_preprocessors = ['IPython.nbconvert.preprocessors.coalesce_streams', 'IPython.nbconvert.preprocessors.SVG2PDFPreprocessor', 'IPython.nbconvert.preprocessors.ExtractOutputPreprocessor', 'IPython.nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'IPython.nbconvert.preprocessors.RevealHelpPreprocessor', 'IPython.nbconvert.preprocessors.LatexPreprocessor', 'IPython.nbconvert.preprocessors.HighlightMagicsPreprocessor']
 
-# 
+#
 # c.LatexExporter.jinja_comment_block_start = '((='
 
-# 
+#
 # c.LatexExporter.jinja_variable_block_end = ')))'
 
 # Dictionary of filters, by name and namespace, to add to the Jinja environment.
 # c.LatexExporter.filters = {}
 
-# 
+#
 # c.LatexExporter.jinja_variable_block_start = '((('
 
-# 
+#
 # c.LatexExporter.jinja_comment_block_end = '=))'
 
-# 
+#
 # c.LatexExporter.jinja_logic_block_end = '*))'
 
 # Name of the template file to use
 # c.LatexExporter.template_file = 'default'
 
-# 
+#
 # c.LatexExporter.template_extension = '.tplx'
 
-# 
+#
 # c.LatexExporter.jinja_logic_block_start = '((*'
 
 #------------------------------------------------------------------------------
@@ -239,7 +239,7 @@ c = get_config()
 # List of preprocessors, by name or namespace, to enable.
 # c.MarkdownExporter.preprocessors = []
 
-# 
+#
 # c.MarkdownExporter.template_path = ['.']
 
 # Extension of the file that should be written to disk
@@ -252,31 +252,31 @@ c = get_config()
 # type.
 # c.MarkdownExporter.default_preprocessors = ['IPython.nbconvert.preprocessors.coalesce_streams', 'IPython.nbconvert.preprocessors.SVG2PDFPreprocessor', 'IPython.nbconvert.preprocessors.ExtractOutputPreprocessor', 'IPython.nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'IPython.nbconvert.preprocessors.RevealHelpPreprocessor', 'IPython.nbconvert.preprocessors.LatexPreprocessor', 'IPython.nbconvert.preprocessors.HighlightMagicsPreprocessor']
 
-# 
+#
 # c.MarkdownExporter.jinja_comment_block_start = ''
 
-# 
+#
 # c.MarkdownExporter.jinja_variable_block_end = ''
 
 # Dictionary of filters, by name and namespace, to add to the Jinja environment.
 # c.MarkdownExporter.filters = {}
 
-# 
+#
 # c.MarkdownExporter.jinja_variable_block_start = ''
 
-# 
+#
 # c.MarkdownExporter.jinja_comment_block_end = ''
 
-# 
+#
 # c.MarkdownExporter.jinja_logic_block_end = ''
 
 # Name of the template file to use
 # c.MarkdownExporter.template_file = 'default'
 
-# 
+#
 # c.MarkdownExporter.template_extension = '.tpl'
 
-# 
+#
 # c.MarkdownExporter.jinja_logic_block_start = ''
 
 #------------------------------------------------------------------------------
@@ -290,7 +290,7 @@ c = get_config()
 # List of preprocessors, by name or namespace, to enable.
 # c.PythonExporter.preprocessors = []
 
-# 
+#
 # c.PythonExporter.template_path = ['.']
 
 # Extension of the file that should be written to disk
@@ -303,31 +303,31 @@ c = get_config()
 # type.
 # c.PythonExporter.default_preprocessors = ['IPython.nbconvert.preprocessors.coalesce_streams', 'IPython.nbconvert.preprocessors.SVG2PDFPreprocessor', 'IPython.nbconvert.preprocessors.ExtractOutputPreprocessor', 'IPython.nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'IPython.nbconvert.preprocessors.RevealHelpPreprocessor', 'IPython.nbconvert.preprocessors.LatexPreprocessor', 'IPython.nbconvert.preprocessors.HighlightMagicsPreprocessor']
 
-# 
+#
 # c.PythonExporter.jinja_comment_block_start = ''
 
-# 
+#
 # c.PythonExporter.jinja_variable_block_end = ''
 
 # Dictionary of filters, by name and namespace, to add to the Jinja environment.
 # c.PythonExporter.filters = {}
 
-# 
+#
 # c.PythonExporter.jinja_variable_block_start = ''
 
-# 
+#
 # c.PythonExporter.jinja_comment_block_end = ''
 
-# 
+#
 # c.PythonExporter.jinja_logic_block_end = ''
 
 # Name of the template file to use
 # c.PythonExporter.template_file = 'default'
 
-# 
+#
 # c.PythonExporter.template_extension = '.tpl'
 
-# 
+#
 # c.PythonExporter.jinja_logic_block_start = ''
 
 #------------------------------------------------------------------------------
@@ -341,7 +341,7 @@ c = get_config()
 # List of preprocessors, by name or namespace, to enable.
 # c.RSTExporter.preprocessors = []
 
-# 
+#
 # c.RSTExporter.template_path = ['.']
 
 # Extension of the file that should be written to disk
@@ -354,31 +354,31 @@ c = get_config()
 # type.
 # c.RSTExporter.default_preprocessors = ['IPython.nbconvert.preprocessors.coalesce_streams', 'IPython.nbconvert.preprocessors.SVG2PDFPreprocessor', 'IPython.nbconvert.preprocessors.ExtractOutputPreprocessor', 'IPython.nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'IPython.nbconvert.preprocessors.RevealHelpPreprocessor', 'IPython.nbconvert.preprocessors.LatexPreprocessor', 'IPython.nbconvert.preprocessors.HighlightMagicsPreprocessor']
 
-# 
+#
 # c.RSTExporter.jinja_comment_block_start = ''
 
-# 
+#
 # c.RSTExporter.jinja_variable_block_end = ''
 
 # Dictionary of filters, by name and namespace, to add to the Jinja environment.
 # c.RSTExporter.filters = {}
 
-# 
+#
 # c.RSTExporter.jinja_variable_block_start = ''
 
-# 
+#
 # c.RSTExporter.jinja_comment_block_end = ''
 
-# 
+#
 # c.RSTExporter.jinja_logic_block_end = ''
 
 # Name of the template file to use
 # c.RSTExporter.template_file = 'default'
 
-# 
+#
 # c.RSTExporter.template_extension = '.tpl'
 
-# 
+#
 # c.RSTExporter.jinja_logic_block_start = ''
 
 #------------------------------------------------------------------------------
@@ -393,7 +393,7 @@ c = get_config()
 # List of preprocessors, by name or namespace, to enable.
 # c.SlidesExporter.preprocessors = []
 
-# 
+#
 # c.SlidesExporter.template_path = ['.']
 
 # Extension of the file that should be written to disk
@@ -406,31 +406,31 @@ c = get_config()
 # type.
 # c.SlidesExporter.default_preprocessors = ['IPython.nbconvert.preprocessors.coalesce_streams', 'IPython.nbconvert.preprocessors.SVG2PDFPreprocessor', 'IPython.nbconvert.preprocessors.ExtractOutputPreprocessor', 'IPython.nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'IPython.nbconvert.preprocessors.RevealHelpPreprocessor', 'IPython.nbconvert.preprocessors.LatexPreprocessor', 'IPython.nbconvert.preprocessors.HighlightMagicsPreprocessor']
 
-# 
+#
 # c.SlidesExporter.jinja_comment_block_start = ''
 
-# 
+#
 # c.SlidesExporter.jinja_variable_block_end = ''
 
 # Dictionary of filters, by name and namespace, to add to the Jinja environment.
 # c.SlidesExporter.filters = {}
 
-# 
+#
 # c.SlidesExporter.jinja_variable_block_start = ''
 
-# 
+#
 # c.SlidesExporter.jinja_comment_block_end = ''
 
-# 
+#
 # c.SlidesExporter.jinja_logic_block_end = ''
 
 # Name of the template file to use
 # c.SlidesExporter.template_file = 'default'
 
-# 
+#
 # c.SlidesExporter.template_extension = '.tpl'
 
-# 
+#
 # c.SlidesExporter.jinja_logic_block_start = ''
 
 #------------------------------------------------------------------------------
@@ -443,7 +443,7 @@ c = get_config()
 # preprocessors provided by default suffice, there is no need to inherit from
 # this class.  Instead, override the template_file and file_extension traits via
 # a config file.
-# 
+#
 # - escape_latex - add_prompts - get_lines - html2text - strip_ansi -
 # ipython2python - ansi2html - wrap_text - citation2latex - markdown2html -
 # ansi2latex - add_anchor - highlight2latex - highlight2html - strip_dollars -
@@ -455,7 +455,7 @@ c = get_config()
 # List of preprocessors, by name or namespace, to enable.
 # c.TemplateExporter.preprocessors = []
 
-# 
+#
 # c.TemplateExporter.template_path = ['.']
 
 # Extension of the file that should be written to disk
@@ -468,31 +468,31 @@ c = get_config()
 # type.
 # c.TemplateExporter.default_preprocessors = ['IPython.nbconvert.preprocessors.coalesce_streams', 'IPython.nbconvert.preprocessors.SVG2PDFPreprocessor', 'IPython.nbconvert.preprocessors.ExtractOutputPreprocessor', 'IPython.nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'IPython.nbconvert.preprocessors.RevealHelpPreprocessor', 'IPython.nbconvert.preprocessors.LatexPreprocessor', 'IPython.nbconvert.preprocessors.HighlightMagicsPreprocessor']
 
-# 
+#
 # c.TemplateExporter.jinja_comment_block_start = ''
 
-# 
+#
 # c.TemplateExporter.jinja_variable_block_end = ''
 
 # Dictionary of filters, by name and namespace, to add to the Jinja environment.
 # c.TemplateExporter.filters = {}
 
-# 
+#
 # c.TemplateExporter.jinja_variable_block_start = ''
 
-# 
+#
 # c.TemplateExporter.jinja_comment_block_end = ''
 
-# 
+#
 # c.TemplateExporter.jinja_logic_block_end = ''
 
 # Name of the template file to use
 # c.TemplateExporter.template_file = 'default'
 
-# 
+#
 # c.TemplateExporter.template_extension = '.tpl'
 
-# 
+#
 # c.TemplateExporter.jinja_logic_block_start = ''
 
 #------------------------------------------------------------------------------
@@ -505,7 +505,7 @@ c = get_config()
 # CSSHTMLHeaderPreprocessor will inherit config from: Preprocessor,
 # NbConvertBase
 
-# 
+#
 # c.CSSHTMLHeaderPreprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -527,7 +527,7 @@ c = get_config()
 # ConvertFiguresPreprocessor will inherit config from: Preprocessor,
 # NbConvertBase
 
-# 
+#
 # c.ConvertFiguresPreprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -553,17 +553,17 @@ c = get_config()
 # ExtractOutputPreprocessor will inherit config from: Preprocessor,
 # NbConvertBase
 
-# 
+#
 # c.ExtractOutputPreprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
 # be used when converting discarding the others.
 # c.ExtractOutputPreprocessor.display_data_priority = ['html', 'application/pdf', 'svg', 'latex', 'png', 'jpg', 'jpeg', 'text']
 
-# 
+#
 # c.ExtractOutputPreprocessor.output_filename_template = '{unique_key}_{cell_index}_{index}{extension}'
 
-# 
+#
 # c.ExtractOutputPreprocessor.extract_output_types = {'application/pdf', 'png', 'svg', 'jpeg'}
 
 # default highlight language
@@ -578,7 +578,7 @@ c = get_config()
 # HighlightMagicsPreprocessor will inherit config from: Preprocessor,
 # NbConvertBase
 
-# 
+#
 # c.HighlightMagicsPreprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -597,13 +597,13 @@ c = get_config()
 #------------------------------------------------------------------------------
 
 # Preprocessor for latex destined documents.
-# 
+#
 # Mainly populates the `latex` key in the resources dict, adding definitions for
 # pygments highlight styles.
 
 # LatexPreprocessor will inherit config from: Preprocessor, NbConvertBase
 
-# 
+#
 # c.LatexPreprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -618,23 +618,23 @@ c = get_config()
 #------------------------------------------------------------------------------
 
 # A configurable preprocessor
-# 
+#
 # Inherit from this class if you wish to have configurability for your
 # preprocessor.
-# 
+#
 # Any configurable traitlets this class exposed will be configurable in profiles
 # using c.SubClassName.attribute = value
-# 
+#
 # you can overwrite :meth:`preprocess_cell` to apply a transformation
 # independently on each cell or :meth:`preprocess` if you prefer your own logic.
 # See corresponding docstring for informations.
-# 
+#
 # Disabled by default and can be enabled via the config by
 #     'c.YourPreprocessorName.enabled = True'
 
 # Preprocessor will inherit config from: NbConvertBase
 
-# 
+#
 # c.Preprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -650,7 +650,7 @@ c = get_config()
 
 # RevealHelpPreprocessor will inherit config from: Preprocessor, NbConvertBase
 
-# 
+#
 # c.RevealHelpPreprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -662,7 +662,7 @@ c = get_config()
 
 # The URL prefix for reveal.js. This can be a a relative URL for a local copy of
 # reveal.js, or point to a CDN.
-# 
+#
 # For speaker notes to work, a local reveal.js prefix must be used.
 # c.RevealHelpPreprocessor.url_prefix = 'reveal.js'
 
@@ -675,7 +675,7 @@ c = get_config()
 # SVG2PDFPreprocessor will inherit config from: ConvertFiguresPreprocessor,
 # Preprocessor, NbConvertBase
 
-# 
+#
 # c.SVG2PDFPreprocessor.enabled = False
 
 # An ordered list of preferred output type, the first encountered will usually
@@ -692,10 +692,10 @@ c = get_config()
 # c.SVG2PDFPreprocessor.inkscape = ''
 
 # The command to use for converting SVG to PDF
-# 
+#
 # This string is a template, which will be formatted with the keys to_filename
 # and from_filename.
-# 
+#
 # The conversion call must read the SVG from {from_flename}, and write a PDF to
 # {to_filename}.
 # c.SVG2PDFPreprocessor.command = ''

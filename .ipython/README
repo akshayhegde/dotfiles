@@ -7,4 +7,3 @@ ipython -h
 or to create an empty default profile, populated with default config files:
 
 ipython profile create
-

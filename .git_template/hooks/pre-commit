@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if git-revparse --verify @ > /dev/null 2>&1; then
+    against = @
+else
+    # If this is the initial commit, use an empty tree object to diff against
+    against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+# Fail to commit if there are whitespace errors
+exec git diff-index --check --cached $against --
