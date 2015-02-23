@@ -8,7 +8,7 @@ to suit others.
 ## Screenshots:
 
 ### vim/tmux:
-![Vim](http://cl.ly/ZDH1/dotfiles.png "vim/tmux")
+![Vim](http://cl.ly/Zsx5/dotfiles.png "vim/tmux")
 
 ### zsh:
 ![Zsh](http://cl.ly/Ztfd/zsh.png "zsh")
