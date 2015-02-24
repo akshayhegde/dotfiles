@@ -124,6 +124,17 @@ function gopen() {
     open $url
 }
 
+# Fetch the pull request on a local branch for easy diffing
+function pull_github_request {
+    if [ -z "$1" ]; then
+        echo "You forgot to specify the Pull Request id number!"
+    elif [ -z "$2" ]; then
+        echo "You forgot to specify a local branch!"
+    else
+        git fetch origin pull/$1/head:$2
+    fi
+}
+
 # Attach or if a tmux server is not running, then create a new one.
 function tmux_init() {
     tmux attach || tmux new -s default
