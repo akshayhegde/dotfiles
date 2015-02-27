@@ -91,10 +91,6 @@ nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "nam
 " Visually Select a line without indentation
 nnoremap <leader>v ^vg_
 
-" Autoclose
-inoremap {<CR> {<CR>}<ESC>O
-inoremap (<CR> (<CR>)<ESC>O
-
 " re-indent file while retaining cursor position.
 nnoremap <leader>= :call format#reindent()<CR>
 
