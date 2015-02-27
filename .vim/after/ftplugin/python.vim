@@ -1,6 +1,12 @@
-setlocal errorformat=%f:%l:%c:\ %m
-setlocal errorformat+=%f:%l:\ %m
-setlocal makeprg=flake8\ --max-complexity\ 11\ %
+setlocal makeprg=python\ %
+setlocal errorformat=%A\ \ File\ \"%f\"\\\,\ line\ %l\\\,%m,
+      \%C\ \ \ \ %.%#,
+      \%+Z%.%#Error\:\ %.%#,
+      \%A\ \ File\ \"%f\"\\\,\ line\ %l,
+      \%+C\ \ %.%#,
+      \%-C%p^,
+      \%Z%m,
+      \%-G%.%#
 
 let b:vcm_tab_complete = "omni"
 
