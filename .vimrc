@@ -47,7 +47,8 @@ set autoindent breakindent breakindentopt=shift:4,sbr
 set nofoldenable
 
 " Status Line {{{1
-set statusline=[%n]\ %<%.99f\ %m%r%w%y\ %{fugitive#head()}%=[%{&fenc},\ %{&ff}]\ L:%l/\%L\ C:%c
+set statusline=%f\ [%n:%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{fugitive#head()}
+set statusline+=%=%<[0x%04.4B][L:%l/%L\ C:%c\ %P]
 
 " Wildignore Settings {{{1
 set wildignore+=.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*
