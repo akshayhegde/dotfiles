@@ -11,17 +11,17 @@ message_file = sys.argv[1]
 def check_format_rules(lineno, line):
     if lineno == 0:
         if not line[0].isupper():
-            return "ERROR: The first line should be capitalized."
+            return "The first line should be capitalized."
         if len(line) > 50:
-            return "ERROR: The first line should be less than 50 characters long"
+            return "The first line should be less than 50 chars long"
         if line.endswith("."):
-            return "ERROR: The first line should not end with a period"
+            return "The first line should not end with a period"
     if lineno == 1 and line:
-        return "ERROR: The second line should be blank"
+        return "The second line should be blank"
     if not line.startswith("#") and not line.startswith("diff --git a/") \
             and not line.startswith("+") and not line.startswith("-") \
             and len(line) > 72:
-                return "ERROR: Line {} is longer than 72 characters".format(lineno + 1)
+                return "Line {} is longer than 72 chars".format(lineno + 1)
     return False
 
 
