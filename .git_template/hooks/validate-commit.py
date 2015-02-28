@@ -16,7 +16,7 @@ def check_format_rules(lineno, line):
             return "The first line should be less than 50 chars long"
         if line.endswith("."):
             return "The first line should not end with a period"
-    if lineno == 1 and line:
+    if lineno == 1 and not line.startswith("#") and line:
         return "The second line should be blank"
     if not line.startswith("#") and not line.startswith("diff --git a/") \
             and not line.startswith("+") and not line.startswith("-") \
