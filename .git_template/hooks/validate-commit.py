@@ -38,11 +38,11 @@ while True:
 
     if errors:
         with open(message_file, 'w') as commit_file:
+            for line in commit_msg:
+                commit_file.write(line)
             commit_file.write("# GIT COMMIT MSG FORMAT ERRORS:\n")
             for error in errors:
                 commit_file.write("#    {}\n".format(error))
-            for line in commit_msg:
-                commit_file.write(line)
 
         print("Invalid git commit message.")
         confirm_edit = input("Edit message? [yn] > ")
