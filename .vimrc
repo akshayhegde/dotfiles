@@ -139,6 +139,6 @@ augroup END
 
 " Commands {{{1
 command! BD silent e# | bd#
-command! -bar Scriptnames call setqflist(scripts#get()) | copen
+command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | silent redraw! | cwindow
 command! Lmake silent lmake! | silent redraw! | lwindow
