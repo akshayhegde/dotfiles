@@ -36,6 +36,11 @@ set number relativenumber
 set showcmd showbreak=↪
 set splitbelow splitright
 
+" GUI {{{1
+if has("gui_running")
+  set guioptions= lines=40 columns=140 guifont=InputMono\ ExLight:h12
+endif
+
 " Statusline {{{1
 set laststatus=2
 set statusline=%f\ [%n:%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{fugitive#head()}
@@ -48,14 +53,10 @@ set showmatch matchtime=2
 set grepprg=ag\ --hidden\ --vimgrep grepformat^=%f:%l:%c:%m
 
 " Indenting {{{1
-set softtabstop=4 shiftwidth=4 shiftround
-set smarttab expandtab
 set autoindent
 set breakindent breakindentopt=shift:4,sbr
-
-" Wildignore {{{1
-set wildignore+=.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*
-set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,*.xc*,*.pbxproj,*.xcodeproj/**,*.xcassets/**
+set smarttab expandtab
+set softtabstop=4 shiftwidth=4 shiftround
 
 " Backup {{{1
 set history=10000
@@ -63,10 +64,9 @@ set noswapfile
 set backup backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
 
-" GUI {{{1
-if has("gui_running")
-  set guioptions= lines=40 columns=140 guifont=InputMono\ ExLight:h12
-endif
+" Wildignore {{{1
+set wildignore+=.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,*.xc*,*.pbxproj,*.xcodeproj/**,*.xcassets/**
 
 " General Mappings {{{1
 let g:mapleader = ' '
