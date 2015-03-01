@@ -131,7 +131,7 @@ nnoremap <leader>gs :Gstatus<CR>
 augroup VIMRC
   autocmd!
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  autocmd BufReadPost * silent! execute "normal! g`\""
+  autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd InsertLeave * pclose
   autocmd VimEnter * call cursor#changeShape()
