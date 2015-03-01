@@ -18,6 +18,7 @@ function install_homebrew {
     brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
     brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
     echo -e "\n${bold}Done installing homebrew apps!${norm}"
+    pip3 install ipython flake8
 }
 
 function setup_vim {
