@@ -124,7 +124,7 @@ let [fist_in_private, fist_anonymously] = [0, 0]
 " Plugin Maps {{{1
 " Fugitive {{{2
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gd :Gdiff<bar>wincmd p<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
 " Autocommands {{{1
