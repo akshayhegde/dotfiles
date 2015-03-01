@@ -114,7 +114,7 @@ nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
 
-" Plugin {{{1
+" Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
 let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types] = [1, 1, 1]
 let [python_highlight_all, java_highlight_all] = [1, 1]
