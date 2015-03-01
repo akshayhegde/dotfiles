@@ -10,6 +10,8 @@ message_file = sys.argv[1]
 
 def check_format_rules(lineno, line):
     if lineno == 0:
+        if not line:
+            return False
         if not line[0].isupper():
             return "The first line should be capitalized."
         if len(line) > 50:
