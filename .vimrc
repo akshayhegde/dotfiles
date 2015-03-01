@@ -8,7 +8,7 @@ syntax on
 filetype plugin indent on
 colorscheme spacegray
 
-" General Settings {{{1
+" General {{{1
 set autoread autowrite
 set backspace=indent,eol,start
 set clipboard^=unnamed
@@ -16,45 +16,48 @@ set completeopt+=longest,menuone
 set dictionary+=/usr/share/dict/words
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set fileformats+=mac
-set formatoptions+=1j
 set hidden
-set laststatus=2
-set lazyredraw
-set linebreak
-set list listchars=eol:\ ,tab:▸\ ,trail:·
 set mouse=n ttymouse=sgr
-set nojoinspaces
 set nostartofline
 set nrformats-=octal
-set number relativenumber
 set path=.,**
-set showcmd showbreak=↪
-set splitbelow splitright
 set switchbuf=useopen,usetab
 set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
-" Search Settings {{{1
+" UI {{{1
+set formatoptions+=1j
+set lazyredraw
+set linebreak
+set list listchars=eol:\ ,tab:▸\ ,trail:·
+set nofoldenable
+set nojoinspaces
+set number relativenumber
+set showcmd showbreak=↪
+set splitbelow splitright
+
+" Statusline {{{1
+set laststatus=2
+set statusline=%f\ [%n:%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{fugitive#head()}
+set statusline+=%=%<[0x%04.4B][L:%l/%L\ C:%c\ %P]
+
+" Searching {{{1
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
 set grepprg=ag\ --hidden\ --vimgrep grepformat^=%f:%l:%c:%m
 
-" Indent and Fold Settings {{{1
+" Indenting {{{1
 set softtabstop=4 shiftwidth=4 shiftround
 set smarttab expandtab
-set autoindent breakindent breakindentopt=shift:4,sbr
-set nofoldenable
+set autoindent
+set breakindent breakindentopt=shift:4,sbr
 
-" Status Line {{{1
-set statusline=%f\ [%n:%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{fugitive#head()}
-set statusline+=%=%<[0x%04.4B][L:%l/%L\ C:%c\ %P]
-
-" Wildignore Settings {{{1
+" Wildignore {{{1
 set wildignore+=.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,*.xc*,*.pbxproj,*.xcodeproj/**,*.xcassets/**
 
-" History, Backup, Undo {{{1
+" Backup {{{1
 set history=10000
 set noswapfile
 set backup backupdir=~/.vim/backup/
@@ -111,14 +114,14 @@ nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
 
-" Plugin Settings {{{1
+" Plugin {{{1
 let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
 let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types] = [1, 1, 1]
 let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 let [fist_in_private, fist_anonymously] = [0, 0]
 
-" Plugin Mappings {{{1
+" Plugin Maps {{{1
 " Fugitive {{{2
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>
