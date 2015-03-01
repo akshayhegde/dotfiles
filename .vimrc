@@ -60,9 +60,9 @@ set noswapfile
 set backup backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
 
-" GUI Settings {{{1
+" GUI {{{1
 if has("gui_running")
-  set guioptions= lines=40 columns=140 guifont=Fira\ Mono:h13
+  set guioptions= lines=40 columns=140 guifont=InputMono\ ExLight:h12
 endif
 
 " General Mappings {{{1
