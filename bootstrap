@@ -15,7 +15,7 @@ function install_homebrew {
     brew install ag aspell fasd python python3 chruby \
         ruby-install reattach-to-user-namespace tmux clang-format
     brew install git --without-completions --with-pcre --with-brewed-curl --with-brewed-openssl
-    brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
+    brew install macvim --override-system-vi --custom-icons --without-cscope
     brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
     echo -e "\n${bold}Done installing homebrew apps!${norm}"
     pip3 install ipython flake8
