@@ -42,7 +42,7 @@ source "$fasd_cache" && unset fasd_cache
 export ARCHFLAGS="-arch x86_64"
 export BROWSER='open'
 export CORRECT_IGNORE='_*'
-export EDITOR="mvim -v"
+export EDITOR=vim
 export GREP_COLOR='1;33'
 export KEYTIMEOUT=1
 export LANG='en_US.UTF-8'

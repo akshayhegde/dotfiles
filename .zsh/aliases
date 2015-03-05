@@ -16,7 +16,6 @@ alias j="z"
 alias v="f -e vim"
 
 # Edit stuff {{{1
-alias vim="mvim -v"
 alias tconf="vim ~/dotfiles/.tmux.conf"
 alias vconf="vim ~/dotfiles/.vimrc"
 alias zconf="vim ~/dotfiles/.zshrc"
