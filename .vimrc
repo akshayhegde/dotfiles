@@ -143,7 +143,7 @@ augroup VIMRC
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
   autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
   autocmd BufWritePost * if &diff | diffupdate | endif
-  autocmd InsertLeave * pclose
+  autocmd InsertLeave * if bufname('%') != "[Command Line]" | pclose | endif
   autocmd VimEnter * call cursor#changeShape()
 augroup END
 
