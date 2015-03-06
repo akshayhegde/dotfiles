@@ -150,5 +150,6 @@ augroup END
 " Commands {{{1
 command! BD silent e# | bd#
 command! Scriptnames call setqflist(scripts#get()) | copen
+command! -nargs=+ -complete=file_in_path Grep silent grep! <args> | silent redraw! | cwindow
 command! Make silent make! | silent redraw! | cwindow
 command! Lmake silent lmake! | silent redraw! | lwindow
