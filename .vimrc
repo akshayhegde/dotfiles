@@ -9,7 +9,7 @@ filetype plugin indent on
 colorscheme spacegray
 
 " General {{{1
-set autoread autowrite
+set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
 set completeopt+=longest,menuone
