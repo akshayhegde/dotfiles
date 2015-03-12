@@ -1,4 +1,4 @@
-" Functions
+" Run `pydoc` on a given string
 function! pydoc#run_pydoc(cmd)
   let reg_save = @/
 
