@@ -92,13 +92,13 @@ xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
-" Poor man's unimpaired
+" The only mappings I used from vim-unimpaired
 nnoremap ]q :cnext<CR>zz
 nnoremap [q :cprevious<CR>zz
 nnoremap ]l :lnext<CR>zz
 nnoremap [l :lprevious<CR>zz
-nnoremap cos :set spell!<CR>
-nnoremap coh :set hlsearch!<CR>
+nnoremap cos :set spell! <bar> set spell?<CR>
+nnoremap coh :set hlsearch! <bar> set hlsearch?<CR>
 
 " Visually Select a line without indentation
 nnoremap <leader>v ^vg_
