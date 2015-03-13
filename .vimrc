@@ -44,7 +44,7 @@ endif
 " Statusline {{{1
 set laststatus=2
 set statusline=%f\ [%n:%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{fugitive#head()}
-set statusline+=%=%<[0x%B][%P\ line\ %l\ of\ %L\ at\ %c]
+set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 
 " Searching {{{1
 set hlsearch incsearch
