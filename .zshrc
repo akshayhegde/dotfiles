@@ -120,7 +120,7 @@ function gcopy() {
 # Open origin remote URL in a browser
 function gopen() {
     local url
-    url=$(git remote show origin | ag 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//')
+    url=$(git remote show origin | grep 'Fetch URL' | cut -d' ' -f5 | sed -e 's/\.git//')
     open $url
 }
 
