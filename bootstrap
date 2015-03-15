@@ -2,6 +2,16 @@
 bold=`tput bold`
 norm=`tput sgr0`
 
+function link_file {
+    echo -e "${bold}Linking $1...${norm}"
+    /bin/ln -sfv $1 $HOME
+}
+
+function link_folder {
+    echo -e "${bold}Linking $1...${norm}"
+    /bin/ln -sFv $1 $HOME
+}
+
 function install_homebrew {
     # Install homebrew if needed
     echo "${bold}Checking if Homebrew is installed...${norm}"
@@ -22,35 +32,29 @@ function install_homebrew {
 }
 
 function setup_vim {
-    echo "${bold}Linking vim...${norm}"
-    /bin/ln -sfv ~/dotfiles/.vimrc $HOME
-    /bin/ln -sFv ~/dotfiles/.vim $HOME
+    link_folder ~/dotfiles/.vim
+    link_file ~/dotfiles/.vimrc
+
+    echo -e "${bold}Creating vim backup folders...${norm}"
     mkdir -p ~/.vim/backup/undo
     if [ ! -d ~/.vim/bundle/ ]; then
         mkdir ~/.vim/bundle
     fi
+
     . ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/install_bundles
 }
 
 function setup_shell_tools {
-    echo "${bold}Linking zsh...${norm}"
     cd $HOME
-    /bin/ln -sFv ~/dotfiles/.zsh
-    /bin/ln -sfv ~/dotfiles/.zshrc
-    /bin/ln -sfv ~/dotfiles/.zshenv
-    cd ~/dotfiles && git submodule update --init --recursive && cd $HOME
 
-    echo "${bold}Linking tmux...${norm}"
-    /bin/ln -sfv ~/dotfiles/.tmux.conf $HOME
+    link_folder ~/dotfiles/.zsh
+    link_file ~/dotfiles/.zshrc
+    link_file ~/dotfiles/.zshenv
 
-    echo "${bold}Linking user scripts...${norm}"
-    /bin/ln -sFv ~/dotfiles/.bin $HOME
-
-    echo "${bold}Linking ag ignore file...${norm}"
-    /bin/ln -sfv ~/dotfiles/.agignore $HOME
-
-    echo "${bold}Linking iPython...${norm}"
-    /bin/ln -sfv ~/dotfiles/.ipython $HOME
+    link_folder ~/dotfiles/.ipython
+    link_folder ~/dotfiles/.bin
+    link_file ~/dotfiles/.tmux.conf
+    link_file ~/dotfiles/.agignore
 }
 
 function setup_osx_defaults {
@@ -63,10 +67,8 @@ function setup_osx_defaults {
 }
 
 function setup_git {
-    echo "${bold}Linking tig...${norm}"
-    /bin/ln -sfv ~/dotfiles/.tigrc $HOME
-    echo "${bold}Linking git templates...${norm}"
-    /bin/ln -sFv ~/dotfiles/.git_template/ $HOME
+    link_file ~/dotfiles/.tigrc
+    link_folder ~/dotfiles/.git_template
 }
 
 echo "${bold}==> Do you wish to proceed with bootstrapping?${norm}"
