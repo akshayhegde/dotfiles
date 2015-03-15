@@ -83,6 +83,7 @@ if [ `uname` == "Darwin" ]; then
     install_homebrew
     setup_vim
     setup_shell_tools
+    setup_git
     setup_osx_defaults
     echo -e "\n${bold}Done!${norm}"
 fi
