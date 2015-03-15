@@ -4,12 +4,20 @@ norm=`tput sgr0`
 
 function link_file {
     echo -e "${bold}Linking $1...${norm}"
-    /bin/ln -sfv $1 $HOME
+
+    local prev=`pwd`
+    cd $HOME
+    /bin/ln -sfv $1
+    cd $prev
 }
 
 function link_folder {
     echo -e "${bold}Linking $1...${norm}"
-    /bin/ln -sFv $1 $HOME
+
+    local prev=`pwd`
+    cd $HOME
+    /bin/ln -sFv $1
+    cd $prev
 }
 
 function install_homebrew {
