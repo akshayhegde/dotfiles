@@ -42,6 +42,7 @@ function install_homebrew {
 function setup_vim {
     link_folder ~/dotfiles/.vim
     link_file ~/dotfiles/.vimrc
+    link_file ~/dotfiles/.xvimrc
 
     echo -e "${bold}Creating vim backup folders...${norm}"
     mkdir -p ~/.vim/backup/undo
