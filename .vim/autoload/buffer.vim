@@ -2,9 +2,9 @@
 function! buffer#switchBySplitting(arrangement)
   let moreThanOneBuffer = len(filter(map(range(bufnr('$')), 'buflisted(v:val)'), 'v:val == 1')) > 1
   if a:arrangement ==? "horizontally"
-    return moreThanOneBuffer ? ":buffer \<C-z>\<S-Tab>" : ":buffer "
+    return moreThanOneBuffer ? ":buffer \<C-z>\<S-Tab>\<C-d>" : ":buffer \<C-d>"
   elseif a:arrangement ==? "vertically"
-    return moreThanOneBuffer ? ":vertical sbuffer \<C-z>\<S-Tab>" : ":vertical sbuffer "
+    return moreThanOneBuffer ? ":vertical sbuffer \<C-z>\<S-Tab>\<C-d>" : ":vertical sbuffer \<C-d>"
   endif
 endfunction
 
