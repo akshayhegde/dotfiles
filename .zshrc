@@ -59,7 +59,7 @@ setopt pushdtohome pushdsilent autopushd pushdminus
 setopt longlistjobs autoresume multios
 setopt autocd cdablevars multios rmstarwait
 setopt rcquotes autoparamslash markdirs
-setopt chaselinks combiningchars
+setopt chaselinks combiningchars interactivecomments
 unsetopt flowcontrol caseglob clobber extendedhistory nomatch
 
 # History {{{1
