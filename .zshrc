@@ -201,7 +201,7 @@ prompt_ajh_setup() {
     zle -N zle-keymap-select
     add-zsh-hook precmd vcs_info
 
-    zstyle ':vcs_info:*' enable git svn
+    zstyle ':vcs_info:*' enable git hg
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' formats '(%F{yellow}%b%f:%.8i%f%c%u)'
