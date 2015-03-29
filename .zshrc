@@ -23,8 +23,6 @@ zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
-zstyle ':completion:tmux-pane-words-prefix:*' completer _tmux_pane_words
-zstyle ':completion:tmux-pane-words-prefix:*' ignore-line current
 
 # Source externals {{{1
 source ~/.zsh/aliases
@@ -68,17 +66,6 @@ HISTSIZE=20000
 SAVEHIST=20000
 
 # Functions {{{1
-_tmux_pane_words() {
-  local expl
-  local -a w
-  if [[ -z "$TMUX_PANE" ]]; then
-    _message "error: not running inside tmux!"
-    return 1
-  fi
-  w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
-  _wanted values expl 'words from current tmux pane' compadd -a w
-}
-
 # Colorize man pages
 man() {
       env \
@@ -159,7 +146,6 @@ function upgrade_pkgs() {
 bindkey -v
 autoload -Uz edit-command-line
 zle -N edit-command-line
-zle -C tmux-pane-words-prefix complete-word _generic
 
 bindkey -M vicmd "/" history-incremental-pattern-search-forward
 bindkey -M vicmd "?" history-incremental-pattern-search-backward
@@ -177,7 +163,6 @@ bindkey '^[[Z' reverse-menu-complete
 bindkey '^a' vi-insert-bol
 bindkey '^_' run-help
 bindkey '^e' vi-add-eol
-bindkey '^j' tmux-pane-words-prefix
 bindkey '^k' kill-line
 bindkey '^l' clear-screen
 bindkey '^n' insert-last-word
