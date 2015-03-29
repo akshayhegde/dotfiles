@@ -199,7 +199,7 @@ prompt_ajh_setup() {
 
 function +vi-git-untracked() {
 if [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]]; then
-        hook_com[unstaged]+="%F{red}?%f"
-    fi
+    hook_com[unstaged]+="%F{red}?%f"
+fi
 }
 prompt_ajh_setup "$@"
