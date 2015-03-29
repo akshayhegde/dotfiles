@@ -106,6 +106,10 @@ nnoremap coh :set hlsearch! <bar> set hlsearch?<CR>
 nnoremap col :set list! <bar> set list?<CR>
 nnoremap cos :set spell! <bar> set spell?<CR>
 
+" Quicker cgn/cgN
+nnoremap <leader>* *``cgn
+nnoremap <leader># #``cgN
+
 " Visually Select a line without indentation
 nnoremap <leader>v ^vg_
 
