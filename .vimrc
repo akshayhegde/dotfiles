@@ -34,7 +34,7 @@ endif
 set formatoptions+=1j
 set lazyredraw
 set linebreak
-set list listchars=eol:¬,tab:▸\ ,trail:·
+set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set nofoldenable
 set nojoinspaces
 set number relativenumber
