@@ -184,7 +184,6 @@ function zle-line-init zle-keymap-select {
 }
 
 prompt_ajh_setup() {
-    export PROMPT_EOL_MARK=''
     prompt_opts=(cr subst percent)
     autoload -Uz add-zsh-hook
     autoload -Uz vcs_info
