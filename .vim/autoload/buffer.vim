@@ -26,7 +26,7 @@ function! buffer#alternate(edit_command)
   let header_list = ["h", "hpp", "hh", "hxx"]
 
   if index(source_list, extension) >= 0
-    for header in header_list
+    for l:header in header_list
       if s:buffer_open(file_name . "." . header, a:edit_command)
         return
       endif
