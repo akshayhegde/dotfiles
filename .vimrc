@@ -43,7 +43,7 @@ set splitbelow splitright
 
 " GUI {{{1
 if has("gui_running")
-  set guioptions= lines=40 columns=140 guifont=Fira\ Mono:h10
+  set guioptions= lines=40 columns=140 guifont=Fira\ Mono:h11
 endif
 
 " Statusline {{{1
