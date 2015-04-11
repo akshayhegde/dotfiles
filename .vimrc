@@ -14,7 +14,6 @@ set backspace=indent,eol,start
 set clipboard^=unnamed
 set completeopt+=longest,menuone
 set dictionary+=/usr/share/dict/words
-set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set fileformats+=mac
 set hidden
 set mouse=n ttymouse=sgr
