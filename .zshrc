@@ -45,7 +45,8 @@ export GREP_COLOR='1;33'
 export KEYTIMEOUT=1
 export LANG='en_US.UTF-8'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
-export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod noma nolist nonu' -c 'nnoremap q :q<CR>' -"
+export MANPAGER='bash -c "vim -MR -c \"set ft=man nomod nolist nonu nornu \" \
+    -c \"nnoremap q :qa!<CR>\" < /dev/tty <(col -b)"'
 export PAGER='less'
 
 # Settings {{{1
