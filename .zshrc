@@ -99,6 +99,10 @@ function :h () {
     vim +"h $1" +only;
 }
 
+function zman() {
+  PAGER="less -g -s '+/^       "$1"'" man zshall
+}
+
 # Open Vim and invoke CtrlP
 function ctrlp() {
     < /dev/tty vim -c CtrlP
