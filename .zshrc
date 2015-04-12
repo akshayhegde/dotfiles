@@ -45,6 +45,7 @@ export GREP_COLOR='1;33'
 export KEYTIMEOUT=1
 export LANG='en_US.UTF-8'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
+export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod noma nolist nonu' -c 'nnoremap q :q<CR>' -"
 export PAGER='less'
 
 # Settings {{{1
@@ -66,19 +67,6 @@ HISTSIZE=20000
 SAVEHIST=20000
 
 # Functions {{{1
-# Colorize man pages
-man() {
-      env \
-          LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-          LESS_TERMCAP_md=$(printf "\e[1;31m") \
-          LESS_TERMCAP_me=$(printf "\e[0m") \
-          LESS_TERMCAP_se=$(printf "\e[0m") \
-          LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-          LESS_TERMCAP_ue=$(printf "\e[0m") \
-          LESS_TERMCAP_us=$(printf "\e[1;32m") \
-          man "$@"
-}
-
 # Go to the open Finder window's path
 function cdf {
     target=`osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)'`
