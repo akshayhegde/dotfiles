@@ -190,12 +190,12 @@ add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats '» %F{yellow}%b%f%c%u'
-zstyle ':vcs_info:*' actionformats '» %F{yellow}%b%f|%F{red}%a%f%c%u'
+zstyle ':vcs_info:*' formats '%F{239}»%f %F{yellow}%b%f%c%u'
+zstyle ':vcs_info:*' actionformats '%F{239}»%f %F{yellow}%b%f|%F{red}%a%f%c%u'
 zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-PROMPT=$'\n'$'%(#.%F{1}.%F{242})%n%f@%F{247}%m%f » %F{green}%~%f $vcs_info_msg_0_ %f'$'\n'$'%(?.%F{247}.%F{1})${vi_mode}%f '
+PROMPT=$'\n'$'%(#.%F{1}.%F{242})%n%f@%F{247}%m%f %F{239}»%f %F{green}%~%f $vcs_info_msg_0_ %f'$'\n'$'%(?.%F{247}.%F{1})${vi_mode}%f '
 
 function +vi-git-untracked() {
     [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
