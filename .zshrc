@@ -48,17 +48,11 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export PAGER='less'
 
 # Settings {{{1
-setopt alwaystoend completeinword completealiases autolist menucomplete
-setopt prompt_subst transientrprompt extendedglob globdots globcomplete correct recexact
-setopt sharehistory histignoredups histreduceblanks histignorespace
-setopt banghist incappendhistory histexpiredupsfirst histignorealldups
-setopt histfindnodups histsavenodups histverify
-setopt pushdtohome pushdsilent autopushd pushdminus
-setopt longlistjobs autoresume multios
-setopt autocd cdablevars multios rmstarwait
-setopt rcquotes autoparamslash markdirs
-setopt chaselinks combiningchars interactivecomments
-unsetopt flowcontrol caseglob clobber extendedhistory nomatch
+setopt completeinword menucomplete chaselinks rmstarwait
+setopt autocd cdablevars autopushd pushdsilent autoresume
+setopt promptsubst extendedglob globdots interactivecomments
+setopt appendhistory histignoredups banghist
+unsetopt flowcontrol clobber nomatch
 
 # History {{{1
 HISTFILE=$HOME/.cache/.zhistory
