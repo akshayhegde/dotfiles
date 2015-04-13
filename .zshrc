@@ -181,29 +181,24 @@ function zle-line-init zle-keymap-select {
     zle reset-prompt
 }
 
-prompt_ajh_setup() {
-    prompt_opts=(cr subst percent)
-    autoload -Uz add-zsh-hook
-    autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
 
-    zle -N zle-line-init
-    zle -N zle-keymap-select
-    add-zsh-hook precmd vcs_info
+zle -N zle-line-init
+zle -N zle-keymap-select
+add-zsh-hook precmd vcs_info
 
-    zstyle ':vcs_info:*' enable git hg
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' get-revision true
-    zstyle ':vcs_info:*' formats '(%F{yellow}%b%f:%.8i%f%c%u)'
-    zstyle ':vcs_info:*' actionformats '(%F{yellow}%b%f|%F{red}%a%f:%.8i%f%c%u)'
-    zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
-    zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
-    zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-    PROMPT=$'\n''%F{green}%~%f$vcs_info_msg_0_ %(?.%F{247}.%F{red})${vi_mode}%f '
-}
+zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' formats '(%F{yellow}%b%f:%.8i%f%c%u)'
+zstyle ':vcs_info:*' actionformats '(%F{yellow}%b%f|%F{red}%a%f:%.8i%f%c%u)'
+zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
+zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
+zstyle ':vcs_info:git+set-message:*' hooks git-untracked
+PROMPT=$'\n''%F{green}%~%f$vcs_info_msg_0_ %(?.%F{247}.%F{red})${vi_mode}%f '
 
 function +vi-git-untracked() {
-if [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]]; then
+[[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
     hook_com[unstaged]+="%F{red}?%f"
-fi
 }
-prompt_ajh_setup "$@"
