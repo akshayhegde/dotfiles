@@ -199,6 +199,6 @@ zstyle ':vcs_info:git+set-message:*' hooks git-untracked
 PROMPT=$'\n''%F{green}%~%f$vcs_info_msg_0_ %(?.%F{247}.%F{red})${vi_mode}%f '
 
 function +vi-git-untracked() {
-[[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
-    hook_com[unstaged]+="%F{red}?%f"
+    [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
+        hook_com[unstaged]+="%F{red}?%f"
 }
