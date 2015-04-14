@@ -50,7 +50,7 @@ export PAGER='less'
 setopt completeinword menucomplete chaselinks rmstarwait autocd \
     cdablevars autopushd pushdsilent interactivecomments \
     promptsubst transientrprompt extendedglob globdots \
-    appendhistory histignoredups banghist
+    incappendhistory histignoredups banghist
 unsetopt flowcontrol clobber nomatch
 
 # History {{{1
