@@ -96,11 +96,6 @@ function zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
-# Open Vim and invoke CtrlP
-function ctrlp() {
-    < /dev/tty vim -c CtrlP
-}
-
 # Copy current git commit sha1 to the clipboard.
 function gcopy() {
     git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied `pbpaste`"
@@ -148,7 +143,6 @@ function upgrade_pkgs() {
 bindkey -v
 autoload -Uz edit-command-line
 zle -N edit-command-line
-zle -N ctrlp
 
 bindkey -M vicmd "/" history-incremental-pattern-search-forward
 bindkey -M vicmd "?" history-incremental-pattern-search-backward
@@ -169,7 +163,6 @@ bindkey '^e' vi-add-eol
 bindkey '^k' kill-line
 bindkey '^l' clear-screen
 bindkey '^n' insert-last-word
-bindkey '^p' ctrlp
 bindkey '^r' history-incremental-search-backward
 bindkey '^s' history-incremental-search-forward
 bindkey '^u' vi-change-whole-line
