@@ -196,10 +196,9 @@ zstyle ':vcs_info:*' actionformats '%F{239}»%f %F{yellow}%b%f|%F{red}%a%f%c%u'
 zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-PROMPT=$'\n%(#.%F{1}.%F{242})%n%f@%F{247}%m%f %F{239}»%f %F{green}%~%f $vcs_info_msg_0_ %f'$'\n${vi_mode}%f '
-RPROMPT=$'%(0?,,%F{red}<%?>%f)'
-
 function +vi-git-untracked() {
     [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
         hook_com[unstaged]+="%F{red}?%f"
 }
+PROMPT=$'\n%(#.%F{1}.%F{242})%n%f@%F{247}%m%f %F{239}»%f %F{green}%~%f $vcs_info_msg_0_ %f'$'\n${vi_mode}%f '
+RPROMPT=$'%(0?,,%F{red}<%?>%f)'
