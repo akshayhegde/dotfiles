@@ -49,10 +49,10 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export PAGER='less'
 
 # Settings {{{1
-setopt completeinword menucomplete chaselinks rmstarwait
-setopt autocd cdablevars autopushd pushdsilent autoresume
-setopt promptsubst extendedglob globdots interactivecomments
-setopt appendhistory histignoredups banghist transientrprompt
+setopt completeinword menucomplete chaselinks rmstarwait autocd \
+    cdablevars autopushd pushdsilent interactivecomments \
+    promptsubst transientrprompt extendedglob globdots \
+    appendhistory histignoredups banghist
 unsetopt flowcontrol clobber nomatch
 
 # History {{{1
