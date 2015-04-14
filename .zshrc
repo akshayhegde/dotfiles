@@ -38,14 +38,12 @@ fi
 source "$fasd_cache" && unset fasd_cache
 
 # Variables {{{1
-export ARCHFLAGS="-arch x86_64"
 export BROWSER='open'
 export CORRECT_IGNORE='_*'
 export EDITOR=vim
 export GREP_COLOR='1;33'
 export KEYTIMEOUT=1
-export LANG='en_US.UTF-8'
-export LESS='-F -g -i -M -R -S -w -X -z-4'
+export LESS='-FigXR'
 export PAGER='less'
 
 # Settings {{{1
