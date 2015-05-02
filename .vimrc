@@ -100,7 +100,7 @@ nnoremap ]q :cnext<CR>zz
 nnoremap [q :cprevious<CR>zz
 nnoremap ]l :lnext<CR>zz
 nnoremap [l :lprevious<CR>zz
-nnoremap coh :set hlsearch! <bar> set hlsearch?<CR>
+nnoremap coh :nohlsearch<CR>
 nnoremap col :set list! <bar> set list?<CR>
 nnoremap cos :set spell! <bar> set spell?<CR>
 
