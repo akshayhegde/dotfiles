@@ -25,11 +25,6 @@ set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
 " UI {{{1
-if has("termtruecolor")
-  let &t_8f="\e[38;2;%ld;%ld;%ldm"
-  let &t_8b="\e[48;2;%ld;%ld;%ldm"
-  set guicolors
-endif
 set formatoptions+=1j
 set lazyredraw
 set linebreak
