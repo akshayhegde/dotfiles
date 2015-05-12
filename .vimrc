@@ -12,6 +12,7 @@ colorscheme spacegray
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
+set complete=.,w,b,t
 set completeopt+=longest,menuone
 set dictionary+=/usr/share/dict/words
 set fileformats+=mac
