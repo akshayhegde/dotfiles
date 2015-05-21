@@ -39,6 +39,7 @@ set nofoldenable
 set nojoinspaces
 set number relativenumber
 set showcmd showbreak=↪
+set splitright
 
 " GUI {{{1
 if has("gui_running")
