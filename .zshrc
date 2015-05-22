@@ -121,7 +121,7 @@ function pull_github_request {
 
 # Attach or if a tmux server is not running, then create a new one.
 function tmux_init() {
-    tmux attach || tmux new -s default
+    tmux attach > /dev/null 2>&1 || tmux new -s default
 }
 
 # Clear out completion caches and rebuild.
