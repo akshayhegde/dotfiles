@@ -151,8 +151,8 @@ bindkey -M vicmd '^r' redo
 bindkey -M vicmd 'G' end-of-buffer-or-history
 bindkey -M vicmd 'gg' beginning-of-buffer-or-history
 bindkey -M vicmd 'u' undo
-bindkey -M vicmd 'v' edit-command-line
 bindkey -M vicmd '~' vi-swap-case
+bindkey '^b' edit-command-line
 bindkey '^?' backward-delete-char
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
