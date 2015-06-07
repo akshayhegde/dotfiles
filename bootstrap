@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
-bold=`tput bold`
-norm=`tput sgr0`
+
+function header() {
+    echo -e "`tput bold`$1`tput sgr0`"
+}
 
 function link_file {
-    echo -e "${bold}Linking $1...${norm}"
+    header "Linking $1..."
     local prev=`pwd`
     cd $HOME && /bin/ln -sfv $1 && cd $prev
 }
 
 function link_folder {
-    echo -e "${bold}Linking $1...${norm}"
+    header "Linking $1..."
     local prev=`pwd`
     cd $HOME && /bin/ln -sFv $1 && cd $prev
 }
@@ -23,13 +25,13 @@ function install_homebrew {
     fi
 
     # Install homebrew apps
-    echo -e "\n${bold}Installing homebrew apps (Go get a coffee)...${norm}"
+    header "\nInstalling homebrew apps..."
     brew install ag aspell fasd python3 chruby \
         ruby-install reattach-to-user-namespace tmux clang-format
     brew install git --without-completions --with-pcre --with-brewed-curl --with-brewed-openssl
     brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
     brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
-    echo -e "\n${bold}Done installing homebrew apps!${norm}"
+    header "\nDone installing homebrew apps!"
     pip3 install ipython flake8
 }
 
@@ -38,7 +40,7 @@ function setup_vim {
     link_file ~/dotfiles/.vimrc
     link_file ~/dotfiles/.xvimrc
 
-    echo -e "${bold}Creating vim backup folders...${norm}"
+    header "Creating vim backup folders..."
     mkdir -p ~/.vim/backup/undo
     if [ ! -d ~/.vim/bundle/ ]; then
         mkdir ~/.vim/bundle
@@ -61,8 +63,8 @@ function setup_shell_tools {
 }
 
 function setup_osx_defaults {
-    echo -e "\n${bold}Setting up OS X defaults...${norm}"
-    mkdir $HOME/.cache
+    header "\nSetting up OS X defaults..."
+    [ ! -d $HOME/.cache ] && mkdir $HOME/.cache
     defaults write com.apple.Finder QLEnableTextSelection -bool true
     defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
     defaults write NSGlobalDomain KeyRepeat -int 0
@@ -74,7 +76,7 @@ function setup_git {
     link_folder ~/dotfiles/.git_template
 }
 
-echo "${bold}==> Do you wish to proceed with bootstrapping?${norm}"
+header "==> Do you wish to proceed with bootstrapping?"
 select yn in "Yes" "No"; do
 case $yn in
     Yes ) echo "Okay, proceeding..." && break;;
@@ -88,5 +90,5 @@ if [ `uname` == "Darwin" ]; then
     setup_shell_tools
     setup_git
     setup_osx_defaults
-    echo -e "\n${bold}Done!${norm}"
+    header "\nDone!"
 fi
