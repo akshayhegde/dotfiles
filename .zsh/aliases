@@ -10,6 +10,7 @@ alias ls="ls -GAp"
 alias mv="mv -vi"
 alias pgrep="pgrep -l"
 alias rm="rm -v"
+alias show="find . -iname"
 alias gst="git status -sb"
 
 # Fasd Aliases {{{1
