@@ -27,7 +27,7 @@ function install_homebrew {
     # Install homebrew apps
     header "\nInstalling homebrew apps..."
     brew install ag aspell fasd python3 chruby \
-        ruby-install reattach-to-user-namespace tmux clang-format
+        ruby-install reattach-to-user-namespace clang-format
     brew install git --without-completions --with-pcre --with-brewed-curl --with-brewed-openssl
     brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
     brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
@@ -58,7 +58,6 @@ function setup_shell_tools {
 
     link_folder ~/dotfiles/.ipython
     link_folder ~/dotfiles/.bin
-    link_file ~/dotfiles/.tmux.conf
     link_file ~/dotfiles/.agignore
 }
 
