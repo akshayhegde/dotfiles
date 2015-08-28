@@ -38,15 +38,6 @@ if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
 fi
 source "$fasd_cache" && unset fasd_cache
 
-# Variables {{{1
-export BROWSER='open'
-export CORRECT_IGNORE='_*'
-export EDITOR=vim
-export GREP_COLOR='1;33'
-export KEYTIMEOUT=1
-export LESS='-FigXR'
-export PAGER='less'
-
 # Settings {{{1
 setopt completeinword menucomplete chaselinks rmstarwait autocd \
     cdablevars autopushd pushdsilent interactivecomments \
