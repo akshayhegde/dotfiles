@@ -5,8 +5,6 @@
 import sys
 import subprocess
 
-message_file = sys.argv[1]
-
 
 def check_format_rules(lineno, line):
     if lineno == 0:
@@ -27,30 +25,32 @@ def check_format_rules(lineno, line):
     return False
 
 
-commit_msg = []
-errors = []
+def validate_commit(message_file):
+    commit_msg = []
+    errors = []
 
-with open(message_file) as commit_file:
-    for lineno, line in enumerate(commit_file):
-        commit_msg.append(line)
-        e = check_format_rules(lineno, line.strip())
-        if e:
-            errors.append(e)
+    with open(message_file) as commit_file:
+        for lineno, line in enumerate(commit_file):
+            commit_msg.append(line)
+            e = check_format_rules(lineno, line.strip())
+            if e:
+                errors.append(e)
+    if errors:
+        with open(message_file, 'w') as commit_file:
+            for line in commit_msg:
+                commit_file.write(line)
+            commit_file.write("# Commit Message Errors:\n")
+            for error in errors:
+                commit_file.write("#    {}\n".format(error))
 
-if errors:
-    with open(message_file, 'w') as commit_file:
-        for line in commit_msg:
-            commit_file.write(line)
-        commit_file.write("# GIT COMMIT MSG FORMAT ERRORS:\n")
-        for error in errors:
-            commit_file.write("#    {}\n".format(error))
+        print("Invalid git commit message.")
+        confirm_edit = input("Edit message? [yn] > ")
+        if confirm_edit.lower() in ['n', 'no']:
+            force_commit = input("Force commit? [yn] > ")
+            if force_commit.lower() in ['n', 'no']:
+                sys.exit(1)
+        elif confirm_edit.lower() in ['y', 'yes']:
+            edit_command = "vim {}".format(message_file)
+            subprocess.call(edit_command.split())
 
-    print("Invalid git commit message.")
-    confirm_edit = input("Edit message? [yn] > ")
-    if confirm_edit.lower() in ['n', 'no']:
-        force_commit = input("Force commit? [yn] > ")
-        if force_commit.lower() in ['n', 'no']:
-            sys.exit(1)
-    elif confirm_edit.lower() in ['y', 'yes']:
-        edit_command = "vim {}".format(message_file)
-        subprocess.call(edit_command.split())
+validate_commit(sys.argv[1])
