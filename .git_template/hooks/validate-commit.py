@@ -49,7 +49,10 @@ while True:
         print("Invalid git commit message.")
         confirm_edit = input("Edit message? [yn] > ")
         if confirm_edit.lower() in ['n', 'no']:
-            sys.exit(1)
-        subprocess.call("vim {}".format(message_file), shell=True)
-        continue
+            force_commit = input("Force commit? [yn] > ")
+            if force_commit.lower() in ['n', 'no']:
+                sys.exit(1)
+        else:
+            subprocess.call("vim {}".format(message_file), shell=True)
+            continue
     break
