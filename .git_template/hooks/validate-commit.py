@@ -52,4 +52,5 @@ if errors:
         if force_commit.lower() in ['n', 'no']:
             sys.exit(1)
     elif confirm_edit.lower() in ['y', 'yes']:
-        subprocess.call("vim {}".format(message_file), shell=True)
+        edit_command = "vim {}".format(message_file)
+        subprocess.call(edit_command.split())
