@@ -53,4 +53,3 @@ if errors:
             sys.exit(1)
     elif confirm_edit.lower() in ['y', 'yes']:
         subprocess.call("vim {}".format(message_file), shell=True)
-        continue
