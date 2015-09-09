@@ -43,7 +43,7 @@ endif
 
 " Statusline {{{1
 set laststatus=2
-set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{fugitive#head()}
+set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q
 set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 
 " Searching {{{1
@@ -121,6 +121,9 @@ nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
 nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
 nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
 
+" Tig
+nnoremap <leader>g :silent !tig<CR>:silent redraw!<CR>
+
 " Search mappings
 nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
 nnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
@@ -138,11 +141,6 @@ let g:clang_complete_auto = 0
 let g:clang_library_path='/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 
 " Plugin Maps {{{1
-" Fugitive {{{2
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gdiff<bar>wincmd p<CR>
-nnoremap <leader>gs :Gstatus<CR>
-
 " Autocommands {{{1
 augroup VIMRC
   autocmd!
