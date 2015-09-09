@@ -43,7 +43,7 @@ endif
 
 " Statusline {{{1
 set laststatus=2
-set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q
+set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{git#branch()}
 set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 
 " Searching {{{1
