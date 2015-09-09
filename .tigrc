@@ -11,6 +11,7 @@ set show-changes = yes
 # Keybindings
 bind main g move-first-line
 bind main G move-last-line
+bind status c !git commit --verbose
 
 # Colors
 color author green default
