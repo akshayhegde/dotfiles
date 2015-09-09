@@ -32,7 +32,10 @@ def validate_commit(message_file):
     with open(message_file) as commit_file:
         for lineno, line in enumerate(commit_file):
             commit_msg.append(line)
-            e = check_format_rules(lineno, line.strip())
+            stripped = line.strip()
+            if stripped.contains("diff --git a"):
+                break
+            e = check_format_rules(lineno, stripped)
             if e:
                 errors.append(e)
     if errors:
