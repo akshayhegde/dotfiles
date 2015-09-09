@@ -43,7 +43,7 @@ endif
 
 " Statusline {{{1
 set laststatus=2
-set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{git#branch()}
+set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{git#branch_name()}
 set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 
 " Searching {{{1
@@ -145,6 +145,7 @@ let g:clang_library_path='/Applications/Xcode-beta.app/Contents/Developer/Toolch
 augroup VIMRC
   autocmd!
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+  autocmd BufEnter * call git#branch_detect()
   autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd InsertLeave * if bufname('%') != "[Command Line]" | pclose | endif
