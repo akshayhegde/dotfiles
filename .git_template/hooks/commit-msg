@@ -18,10 +18,8 @@ def check_format_rules(lineno, line):
             return "The first line should not end with a period"
     if lineno == 1 and not line.startswith("#") and line:
         return "The second line should be blank"
-    if not line.startswith("#") and not line.startswith("diff --git a/") \
-            and not line.startswith("+") and not line.startswith("-") \
-            and len(line) > 72:
-                return "Line {} is longer than 72 chars".format(lineno + 1)
+    if len(line) > 72:
+        return "Line {} is longer than 72 chars".format(lineno + 1)
     return False
 
 
