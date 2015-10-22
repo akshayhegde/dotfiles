@@ -24,17 +24,18 @@ function! buffer#alternate(edit_command)
   let extension = expand("%:t:e")
   let source_list = ["cpp", "c", "cc", "cxx"]
   let header_list = ["h", "hpp", "hh", "hxx"]
+  let dir = expand("%:p:h")
 
   if index(source_list, extension) >= 0
     for l:header in header_list
-      if s:buffer_open(file_name . "." . header, a:edit_command)
+      if s:buffer_open(dir . "/" . file_name . "." . header, a:edit_command)
         return
       endif
     endfor
     echohl ErrorMsg | echo "Header file not found in path!" | echohl None
   elseif index(header_list, extension) >= 0
     for l:source in source_list
-      if s:buffer_open(file_name . "." . l:source, a:edit_command)
+      if s:buffer_open(dir . "/" . file_name . "." . l:source, a:edit_command)
         return
       endif
     endfor
