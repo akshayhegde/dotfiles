@@ -130,7 +130,8 @@ nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
 nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
 
 " Tig
-nnoremap <leader>g :silent !tig<CR>:silent redraw!<CR>
+nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
+nnoremap <leader>gb :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 
 " Search mappings
 nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
