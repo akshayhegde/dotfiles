@@ -31,7 +31,7 @@ def validate_commit(message_file):
         for lineno, line in enumerate(commit_file):
             commit_msg.append(line)
             stripped = line.strip()
-            if stripped.contains("diff --git a"):
+            if "diff --git a" in stripped:
                 break
             e = check_format_rules(lineno, stripped)
             if e:
@@ -45,13 +45,17 @@ def validate_commit(message_file):
                 commit_file.write("#    {}\n".format(error))
 
         print("Invalid git commit message.")
-        confirm_edit = input("Edit message? [yn] > ")
-        if confirm_edit.lower() in ['n', 'no']:
-            force_commit = input("Force commit? [yn] > ")
-            if force_commit.lower() in ['n', 'no']:
-                sys.exit(1)
+        confirm_edit, force_commit = (None, None)
+        with open('/dev/tty') as sys.stdin:
+            confirm_edit = input("Edit message? [yn] > ")
+
+        if confirm_edit is not None and confirm_edit.lower() in ['n', 'no']:
+            with open('/dev/tty') as sys.stdin:
+                force_commit = input("Force commit? [yn] > ")
         elif confirm_edit.lower() in ['y', 'yes']:
-            edit_command = "vim {}".format(message_file)
+            edit_command = "vim {} -".format(message_file)
             subprocess.call(edit_command.split())
+        if force_commit is not None and force_commit.lower() in ['n', 'no']:
+            sys.exit(1)
 
 validate_commit(sys.argv[1])
