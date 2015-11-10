@@ -74,7 +74,7 @@ let g:mapleader = ' '
 " Switch between files
 nnoremap <leader>f :find *
 nnoremap <leader>F :find <C-r>=expand('%:p:h').'/**/*'<CR>
-nnoremap <leader>/ :vertical sfind *
+nnoremap <leader>\ :vertical sfind *
 nnoremap <leader><bar> :vertical sfind <C-r>=expand('%:p:h').'/**/*'<CR>
 nnoremap <leader>- :sfind *
 nnoremap <leader>_ :sfind <C-r>=expand('%:p:h').'/**/*'<CR>
