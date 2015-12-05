@@ -9,6 +9,6 @@ endfunction
 
 function! format#reindent()
   let winview = winsaveview()
-  execute "normal! gg=G"
+  keepjumps normal! gg=G
   call winrestview(winview)
 endfunction
