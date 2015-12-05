@@ -147,7 +147,8 @@ let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 let [fist_in_private, fist_anonymously] = [0, 0]
 let g:clang_complete_auto = 0
-let g:clang_library_path='/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+
 
 " Plugin Maps {{{1
 " Autocommands {{{1
