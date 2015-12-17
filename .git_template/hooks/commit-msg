@@ -52,12 +52,12 @@ def validate_commit(message_file):
 
         print("Invalid git commit message.")
         confirm_edit = input_by_reading_stdin("Edit message? [yn] > ")
-        if confirm_edit in ['y', 'yes']:
+        if confirm_edit in ('y', 'yes'):
             edit_command = "vim {} -".format(message_file)
             subprocess.call(edit_command.split())
         else:
-            force_commit = input("Force commit? [yn] > ")
-            if force_commit in ['n', 'no']:
+            force_commit = input_by_reading_stdin("Force commit? [yn] > ")
+            if force_commit not in ('y', 'yes'):
                 sys.exit(1)
 
 validate_commit(sys.argv[1])
