@@ -23,12 +23,6 @@ def check_format_rules(lineno, line):
     return False
 
 
-def input_by_reading_stdin(message):
-    with open('/dev/tty') as sys.stdin:
-        user_input = input(message)
-    return user_input.lower() if user_input is not None else ""
-
-
 def validate_commit(message_file):
     err_header = "# Commit Message Errors:\n"
 
@@ -48,22 +42,20 @@ def validate_commit(message_file):
 
         if not errors:
             break
-        else:
-            with open(message_file, 'w') as commit_file:
-                for line in commit_msg:
-                    commit_file.write(line)
-                commit_file.write(err_header)
-                for error in errors:
-                    commit_file.write("#    {}\n".format(error))
+        with open(message_file, 'w') as commit_file:
+            for line in commit_msg:
+                commit_file.write(line)
+            commit_file.write(err_header)
+            for error in errors:
+                commit_file.write("#    {}\n".format(error))
 
-            print("Invalid git commit message.")
-            confirm_edit = input_by_reading_stdin("Edit message? [yn] > ")
-            if confirm_edit in ('y', 'yes'):
-                with open('/dev/tty') as sys.stdin:
-                    cmd = "vim - +'e {}'".format(message_file)
-                    subprocess.call(cmd, shell=True)
+        print("Invalid git commit message.")
+        with open('/dev/tty') as sys.stdin:
+            force_commit = input("Force commit? [nye] > ")
+            if force_commit in ("e", "edit"):
+                cmd = "vim - +'e {}'".format(message_file)
+                subprocess.call(cmd, shell=True)
             else:
-                force_commit = input_by_reading_stdin("Force commit? [yn] > ")
-                sys.exit(0) if force_commit in ('y', 'yes') else sys.exit(1)
+                sys.exit(0) if force_commit in ("y", "yes") else sys.exit(1)
 
 validate_commit(sys.argv[1])
