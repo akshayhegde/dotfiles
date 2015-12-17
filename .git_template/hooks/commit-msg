@@ -29,10 +29,6 @@ def input_by_reading_stdin(message):
     return user_input.lower() if user_input is not None else ""
 
 
-def check_if(func):
-    sys.exit(1) if func() else sys.exit(0)
-
-
 def validate_commit(message_file):
     err_header = "# Commit Message Errors:\n"
 
@@ -43,7 +39,7 @@ def validate_commit(message_file):
         with open(message_file) as commit_file:
             for lineno, line in enumerate(commit_file):
                 stripped = line.strip()
-                if "diff --git a" in stripped or err_header in stripped:
+                if "diff --git a" in stripped or err_header in line:
                     break
                 commit_msg.append(line)
                 commit_error = check_format_rules(lineno, stripped)
@@ -65,10 +61,9 @@ def validate_commit(message_file):
             if confirm_edit in ('y', 'yes'):
                 with open('/dev/tty') as sys.stdin:
                     cmd = "vim - +'e {}'".format(message_file)
-                    success = subprocess.call(cmd, shell=True)
-                    check_if(lambda: success != 0)
+                    subprocess.call(cmd, shell=True)
             else:
                 force_commit = input_by_reading_stdin("Force commit? [yn] > ")
-                check_if(lambda: force_commit not in ('y', 'yes'))
+                sys.exit(0) if force_commit in ('y', 'yes') else sys.exit(1)
 
 validate_commit(sys.argv[1])
