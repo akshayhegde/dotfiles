@@ -34,26 +34,29 @@ def check_if(func):
 
 
 def validate_commit(message_file):
+    err_header = "# Commit Message Errors:\n"
+
     while True:
         commit_msg = []
         errors = []
 
         with open(message_file) as commit_file:
             for lineno, line in enumerate(commit_file):
-                commit_msg.append(line)
                 stripped = line.strip()
-                if "diff --git a" in stripped:
+                if "diff --git a" in stripped or err_header in stripped:
                     break
+                commit_msg.append(line)
                 commit_error = check_format_rules(lineno, stripped)
                 if commit_error:
                     errors.append(commit_error)
+
         if not errors:
             break
         else:
             with open(message_file, 'w') as commit_file:
                 for line in commit_msg:
                     commit_file.write(line)
-                commit_file.write("# Commit Message Errors:\n")
+                commit_file.write(err_header)
                 for error in errors:
                     commit_file.write("#    {}\n".format(error))
 
