@@ -29,6 +29,11 @@ def input_by_reading_stdin(message):
     return user_input.lower() if user_input is not None else ""
 
 
+def exit_if_not(func):
+    if not func():
+        sys.exit(1)
+
+
 def validate_commit(message_file):
     while True:
         commit_msg = []
@@ -57,10 +62,10 @@ def validate_commit(message_file):
                 with open('/dev/tty') as sys.stdin:
                     cmd = "vim - +'e {}'".format(message_file)
                     success = subprocess.call(cmd, shell=True)
+                    exit_if_not(lambda: success != 0)
             else:
                 force_commit = input_by_reading_stdin("Force commit? [yn] > ")
-                if force_commit not in ('y', 'yes'):
-                    sys.exit(1)
+                exit_if_not(lambda: force_commit not in ('y', 'yes'))
         break
 
 validate_commit(sys.argv[1])
