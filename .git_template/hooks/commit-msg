@@ -30,34 +30,36 @@ def input_by_reading_stdin(message):
 
 
 def validate_commit(message_file):
-    commit_msg = []
-    errors = []
+    while True:
+        commit_msg = []
+        errors = []
 
-    with open(message_file) as commit_file:
-        for lineno, line in enumerate(commit_file):
-            commit_msg.append(line)
-            stripped = line.strip()
-            if "diff --git a" in stripped:
-                break
-            commit_error = check_format_rules(lineno, stripped)
-            if commit_error:
-                errors.append(commit_error)
-    if errors:
-        with open(message_file, 'w') as commit_file:
-            for line in commit_msg:
-                commit_file.write(line)
-            commit_file.write("# Commit Message Errors:\n")
-            for error in errors:
-                commit_file.write("#    {}\n".format(error))
+        with open(message_file) as commit_file:
+            for lineno, line in enumerate(commit_file):
+                commit_msg.append(line)
+                stripped = line.strip()
+                if "diff --git a" in stripped:
+                    break
+                commit_error = check_format_rules(lineno, stripped)
+                if commit_error:
+                    errors.append(commit_error)
+        if errors:
+            with open(message_file, 'w') as commit_file:
+                for line in commit_msg:
+                    commit_file.write(line)
+                commit_file.write("# Commit Message Errors:\n")
+                for error in errors:
+                    commit_file.write("#    {}\n".format(error))
 
-        print("Invalid git commit message.")
-        confirm_edit = input_by_reading_stdin("Edit message? [yn] > ")
-        if confirm_edit in ('y', 'yes'):
-            edit_command = "vim {} -".format(message_file)
-            subprocess.call(edit_command.split())
-        else:
-            force_commit = input_by_reading_stdin("Force commit? [yn] > ")
-            if force_commit not in ('y', 'yes'):
-                sys.exit(1)
+            print("Invalid git commit message.")
+            confirm_edit = input_by_reading_stdin("Edit message? [yn] > ")
+            if confirm_edit in ('y', 'yes'):
+                edit_command = "vim {} -".format(message_file)
+                subprocess.call(edit_command.split())
+            else:
+                force_commit = input_by_reading_stdin("Force commit? [yn] > ")
+                if force_commit not in ('y', 'yes'):
+                    sys.exit(1)
+        break
 
 validate_commit(sys.argv[1])
