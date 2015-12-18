@@ -1,0 +1,18 @@
+#!/bin/sh
+# Author: Akshay
+# Date Modified: Dec 17, 2015
+
+# Called by "git commit" with the name of the file that has the commit message,
+# followed by the description of the commit message's source.  The hook's
+# purpose is to edit the commit message file.  If the hook fails with
+# a non-zero status, the commit is aborted.
+
+# This hook was a part of a three examples that were included in default `git
+# init`, then modified to *un-comment* the "Conflicts:" part of a merge commit,
+# which git comments out automatically v2.3 onwards.
+
+case "$2,$3" in
+  merge,)
+    /usr/bin/perl -i.bak -ne 's/^# //, s/^#\t/\t/ if /^# Conflicts/ .. /^#$/; print' "$1" ;;
+  *) ;;
+esac
