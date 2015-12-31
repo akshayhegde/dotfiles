@@ -14,6 +14,9 @@ set laststatus=0
 nmap Y y$
 nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
+" Whitespace removal
+nmap <space>w m`:%s/^\s+$//g<CR>``zz
+
 " Windows
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
