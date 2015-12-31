@@ -15,7 +15,7 @@ nmap Y y$
 nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
 " Whitespace removal
-nmap <space>w m`:%s/^\s+$//g<CR>``zz
+cmap w<CR> :%s/^\s+$//g<CR>:w<CR>:echo "Written and trimmed whitespace"<CR>
 
 " Windows
 nmap <C-h> <C-w>h
