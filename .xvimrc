@@ -33,6 +33,7 @@ nmap <space>n :nissue<CR>
 nmap <space>p :pissue<CR>
 
 " Show
+nmap <space>g :xcmenucmd History...<CR>
 nmap <space>F :xccmd showInFinder<CR>
 nmap <space>D :xccmd showDeveloperDocumentation<CR>
 nmap <space>d :xcmenucmd Quick Help for Selected Item<CR>
