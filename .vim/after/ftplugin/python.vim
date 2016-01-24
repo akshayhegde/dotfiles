@@ -15,6 +15,7 @@ let b:vcm_tab_complete = "omni"
 " Commands
 command! -nargs=+ -buffer Pydoc call pydoc#run_pydoc("<args>")
 command! -buffer Flake silent lexpr system("flake8 ".expand("%")) | silent redraw! | lwindow
+command! -buffer Python silent lexpr system("python -m py_compile ".expand("%")) | silent redraw! | lwindow
 
 " Maps
 nnoremap <buffer> <leader>d o""""""2F"
