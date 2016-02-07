@@ -111,11 +111,6 @@ function pull_github_request {
     fi
 }
 
-# Attach or if a tmux server is not running, then create a new one.
-function tmux_init() {
-    tmux attach > /dev/null 2>&1 || tmux new -s default
-}
-
 # Clear out completion caches and rebuild.
 function remove_compl_cache() {
     rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit
