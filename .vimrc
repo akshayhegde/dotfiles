@@ -43,7 +43,7 @@ endif
 
 " Statusline {{{1
 set laststatus=2
-set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q%{git#branch_name()}
+set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q
 set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 
 " Searching {{{1
@@ -129,9 +129,10 @@ nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
 nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
 nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
 
-" Tig
+" Git
+nnoremap <leader>gb :echo system("git rev-parse --abbrev-ref @ <bar> tr -d '\n'")<CR>
 nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
-nnoremap <leader>gb :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
+nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 
 " Search mappings
 nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
@@ -154,7 +155,6 @@ let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/
 augroup VIMRC
   autocmd!
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  autocmd BufEnter * call git#branch_detect()
   autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd InsertLeave * if bufname('%') != "[Command Line]" | pclose | endif
