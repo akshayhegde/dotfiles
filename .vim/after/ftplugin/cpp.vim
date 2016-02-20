@@ -1,4 +1,3 @@
-" Dispatch
 setlocal makeprg=clang++\ %
 let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%f:%l:%c: error: %m,' .
