@@ -29,7 +29,7 @@ zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numer
 source ~/.zsh/aliases
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
-source /Users/ajh/.bin/iterm2_shell_integration.zsh
+source ~/.bin/iterm2_shell_integration.zsh
 
 # Fasd {{{1
 fasd_cache="$HOME/.cache/.fasd-init-zsh"
