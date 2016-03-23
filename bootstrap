@@ -20,7 +20,7 @@ function install_homebrew {
     # Install homebrew if needed
     echo "${bold}Checking if Homebrew is installed...${norm}"
     if [ ! -x /usr/local/bin/brew ]; then
-        echo "${bold}\nHomebrew not installed. Installing it now...${norm}"
+        echo -e "${bold}\nHomebrew not installed. Installing it now...${norm}"
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
