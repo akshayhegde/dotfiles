@@ -27,8 +27,6 @@ zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numer
 
 # Source externals {{{1
 source ~/.zsh/aliases
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
 source ~/.bin/iterm2_shell_integration.zsh
 
 # Fasd {{{1
