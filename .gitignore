@@ -1,7 +1,7 @@
 .DS_Store
 .vim/backup
 .vim/custom-dictionary.utf-8.add
-.vim/bundle
+.vim/pack/*/start
 .vim/spell
 .vim/session
 .vim/.netrwhist

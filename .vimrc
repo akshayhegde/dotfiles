@@ -1,14 +1,11 @@
 " ------------ ajh's .vimrc ------------
-" Plugins {{{1
-execute pathogen#infect()
-runtime macros/matchit.vim
-
 " Syntax, FileType, Colorscheme {{{1
 syntax on
 filetype plugin indent on
 colorscheme spacegray
 
 " General {{{1
+runtime macros/matchit.vim
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
