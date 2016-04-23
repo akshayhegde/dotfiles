@@ -31,6 +31,7 @@ function install_homebrew {
     brew install git --without-completions --with-pcre --with-brewed-curl --with-brewed-openssl
     brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
     brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
+    brew install pinentry-mac gpg gpg-agent
     header "\nDone installing homebrew apps!"
     pip3 install ipython flake8
 }
@@ -56,6 +57,7 @@ function setup_shell_tools {
     link_file ~/dotfiles/.zshrc
     link_file ~/dotfiles/.zshenv
 
+    link_folder ~/Library/Mobile\ Documents/com~apple~CloudDocs/.gnupg
     link_folder ~/dotfiles/.ipython
     link_folder ~/dotfiles/.bin
     link_file ~/dotfiles/.agignore
