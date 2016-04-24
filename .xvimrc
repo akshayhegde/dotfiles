@@ -31,6 +31,7 @@ vmap gc :xccmd commentAndUncommentCurrentLines<CR>
 nmap <space>f :xcmenucmd Open Quickly...<CR>
 nmap <space>n :nissue<CR>
 nmap <space>p :pissue<CR>
+nmap <space>i :xcmenucmd Jump to Generated Interface<CR>
 
 " Show
 nmap <space>g :xcmenucmd History...<CR>
