@@ -1,0 +1,81 @@
+[user]
+    name = Akshay Hegde
+[credential]
+    helper = osxkeychain
+[github]
+    user = ajh17
+    token = "<%= Keychain['github.com/api'].password %>"
+    password = "<%= Keychain['github.com'].password %>"
+    ssl=true
+[bitbucket]
+    user = ajh_17
+    password = "<%= Keychain['bitbucket.com'].password %>"
+    ssl = true
+[init]
+    templatedir = ~/.git_template
+[commit]
+    gpgsign = true
+[push]
+    default = current
+[color]
+    ui = auto
+[advice]
+    statusHints = false
+    resolveConflict = false
+[core]
+    excludesfile = /Users/ajh/.gitignore
+    autocrlf = false
+[alias]
+    # Commit actions
+    amend = commit --amend --no-edit
+    edit = commit --amend
+    diffcommit = commit --verbose --quiet
+
+    # Helper
+    unmerged = diff --name-only --diff-filter=U
+    discard = !git stash save `date`
+
+    # Stash utils
+    discard = !git stash save `date`
+    restore = stash apply
+
+    # Utility
+    ctags = !.git/hooks/ctags
+    dirdiff = difftool --tool vdwrap --dir-diff
+
+    # Type of merge
+    fastforward = merge --ff-only
+    mergecommit = merge --no-ff
+
+    # Switch back to the previous branch
+    previous = checkout -
+
+    # Listing
+    tags = tag -l
+    branches = branch -av
+    stashes = stash list
+    refs = reflog -10
+    logs = log --no-merges --format='(%h) %an: %s' -15
+
+    # Log Formats
+    patchlog = log --decorate --graph -p
+    logstat = log --decorate --graph --stat
+    graph = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
+    graph2 = log --decorate --graph --pretty=format:'%Cred%h %C(yellow)%ad%Creset | %s%d %C(blue)[%an]' --date=local
+[grep]
+    extendRegexp = true
+    lineNumber = true
+[diff]
+    tool = vdwrap
+[difftool]
+    prompt = false
+[difftool "vdwrap"]
+    cmd = vdwrap $LOCAL $REMOTE
+[merge]
+    tool = vimdiff
+    log = true
+[mergetool]
+    prompt = false
+    keepBackup = false
+[rerere]
+    enabled = true
