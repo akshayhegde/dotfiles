@@ -33,7 +33,6 @@
 
     # Helper
     unmerged = diff --name-only --diff-filter=U
-    discard = !git stash save `date`
 
     # Stash utils
     discard = !git stash save `date`
@@ -58,8 +57,8 @@
     logs = log --no-merges --format='(%h) %an: %s' -15
 
     # Log Formats
-    patchlog = log --decorate --graph -p
-    logstat = log --decorate --graph --stat
+    patchlog = log --decorate -p
+    statlog = log --decorate --stat
     graph = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
     graph2 = log --decorate --graph --pretty=format:'%Cred%h %C(yellow)%ad%Creset | %s%d %C(blue)[%an]' --date=local
 [grep]
