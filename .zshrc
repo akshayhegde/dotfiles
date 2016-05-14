@@ -29,13 +29,6 @@ zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numer
 source ~/.zsh/aliases
 source ~/.bin/iterm2_shell_integration.zsh
 
-# Fasd {{{1
-fasd_cache="$HOME/.cache/.fasd-init-zsh"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init posix-alias zsh-hook >| "$fasd_cache"
-fi
-source "$fasd_cache" && unset fasd_cache
-
 # Settings {{{1
 setopt completeinword menucomplete chaselinks rmstarwait autocd \
     cdablevars autopushd pushdsilent interactivecomments \
