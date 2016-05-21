@@ -112,11 +112,6 @@ function history_stat() {
     history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head
 }
 
-# Run brew update and upgrade
-function upgrade_pkgs() {
-    brew update --verbose && brew outdated && brew upgrade --all && brew cleanup
-}
-
 # Key Remappings (Vi-mode) {{{1
 bindkey -v
 autoload -Uz edit-command-line

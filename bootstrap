@@ -16,26 +16,6 @@ function link_folder {
     cd $HOME && /bin/ln -sFv $1 && cd $prev
 }
 
-function install_homebrew {
-    # Install homebrew if needed
-    echo "${bold}Checking if Homebrew is installed...${norm}"
-    if [ ! -x /usr/local/bin/brew ]; then
-        echo -e "${bold}\nHomebrew not installed. Installing it now...${norm}"
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-
-    # Install homebrew apps
-    header "\nInstalling homebrew apps..."
-    brew install ag aspell chruby clang-format ctags colordiff diff-so-fancy fasd \
-        python3 ruby-install reattach-to-user-namespace tig
-    brew install git --without-completions --with-pcre --with-brewed-curl --with-brewed-openssl
-    brew install vim --disable-nls --without-perl --without-ruby --override-system-vi
-    brew install weechat --with-aspell --with-lua --with-perl --with-python --with-ruby
-    brew install pinentry-mac gpg gpg-agent
-    header "\nDone installing homebrew apps!"
-    pip3 install ipython flake8
-}
-
 function setup_vim {
     link_folder ~/dotfiles/.vim
     link_file ~/dotfiles/.vimrc
@@ -86,7 +66,6 @@ esac; done
 
 # OS X specific config
 if [ `uname` == "Darwin" ]; then
-    install_homebrew
     setup_vim
     setup_shell_tools
     setup_git
