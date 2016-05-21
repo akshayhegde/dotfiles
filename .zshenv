@@ -12,10 +12,3 @@ export GREP_COLOR='1;33'
 export KEYTIMEOUT=1
 export LESS='-FigXR'
 export PAGER='less'
-
-if [[ -f ~/.gnupg/.gpg-agent-info ]] && [[ -n "$(pgrep gpg-agent)" ]]; then
-    source ~/.gnupg/.gpg-agent-info
-    export GPG_AGENT_INFO
-else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-fi
