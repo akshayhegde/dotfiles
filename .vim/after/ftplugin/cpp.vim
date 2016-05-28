@@ -1,4 +1,4 @@
-setlocal makeprg=clang++\ %
+setlocal makeprg=clang++\ -std=c++14\ -Wall\ -Wpedantic\ %
 let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%f:%l:%c: error: %m,' .
       \ '%W%f:%l:%c: warning: %m,' .
