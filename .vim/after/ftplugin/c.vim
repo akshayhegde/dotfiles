@@ -2,7 +2,7 @@
 setlocal nofoldenable foldmethod=syntax
 setlocal commentstring=//\ %s
 setlocal textwidth=80
-setlocal makeprg=clang\ %
+setlocal makeprg=clang\ -Wall\ -Wpedantic\ %
 let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%f:%l:%c: error: %m,' .
       \ '%W%f:%l:%c: warning: %m,' .
@@ -10,6 +10,11 @@ let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%m'
 
 let b:vcm_tab_complete = 'omni'
+
+" Mappings
+nnoremap <buffer> m<CR> :Make<CR>
+nnoremap <buffer> M<CR> :make!<CR>
+nnoremap <buffer> r<CR> :Make<CR>:!./a.out<CR>
 
 " Commands
 command! -nargs=0 Format call format#file()
