@@ -9,8 +9,6 @@ let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%-G%\m%\%%(LLVM ERROR:%\|No compilation database found%\)%\@!%.%#,' .
       \ '%E%m'
 
-let b:vcm_tab_complete = 'omni'
-
 " Mappings
 nnoremap <buffer> m<CR> :Make<CR>
 nnoremap <buffer> M<CR> :make!<CR>
