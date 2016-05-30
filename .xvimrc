@@ -15,7 +15,7 @@ nmap Y y$
 nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
 " Whitespace removal
-cmap w<CR> :%s/^\s+$//g<CR>:w<CR>:echo "Written and trimmed whitespace"<CR>
+nmap :w<CR> :%s/^\s+$//g<CR>:w<CR>:echo "Written and trimmed whitespace"<CR>
 
 " Poor man's surround.vim
 nmap <space>` gewi`<ESC>ea`<ESC>
