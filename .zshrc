@@ -27,7 +27,6 @@ zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numer
 
 # Source externals {{{1
 source ~/.zsh/aliases
-source ~/.bin/iterm2_shell_integration.zsh
 
 # Settings {{{1
 setopt completeinword menucomplete chaselinks rmstarwait autocd \
