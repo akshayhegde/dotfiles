@@ -15,7 +15,6 @@ nnoremap <buffer> M<CR> :make!<CR>
 nnoremap <buffer> r<CR> :Make<CR>:!./a.out<CR>
 
 " Commands
-command! -nargs=0 Format call format#file()
 command! A call buffer#alternate("edit")
 command! AV call buffer#alternate("vsplit")
 command! AS call buffer#alternate("split")

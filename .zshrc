@@ -70,11 +70,13 @@ function cdf {
     fi
 }
 
+# Case sensitive grep
 function search {
     egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
         --exclude-dir=*.xcodeproj -HIrn $1 .
 }
 
+# Case insensitive grep
 function isearch {
     egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
         --exclude-dir=*.xcodeproj -HIrn $1 .
@@ -88,10 +90,6 @@ function mkcd {
 # Full screen Vim help page.
 function :h () {
     vim +"h $1" +only;
-}
-
-function zman() {
-  PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
 # Copy current git commit sha1 to the clipboard.
