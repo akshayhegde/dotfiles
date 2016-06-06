@@ -11,8 +11,7 @@ function! visualfuncs#getSelection()
   try
     let reg_save = @v
     normal! gv"vy
-    let escaped_for_ag = escape(@v, '\/$*~[]^.')
-    let enclose_in_quotes = substitute(escaped_for_ag, '^\|$', '"', 'g')
+    let enclose_in_quotes = substitute(@v, '^\|$', '"', 'g')
     return substitute(enclose_in_quotes, '\n', '\\n', 'g')
   finally
     let @v = reg_save

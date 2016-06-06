@@ -70,6 +70,16 @@ function cdf {
     fi
 }
 
+function search {
+    egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
+        --exclude-dir=*.xcodeproj -HIrn $1 .
+}
+
+function isearch {
+    egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
+        --exclude-dir=*.xcodeproj --binary-files=without-match -HIrn $1 .
+}
+
 # Create a directory and cd into it
 function mkcd {
     mkdir -p $1 && cd $1

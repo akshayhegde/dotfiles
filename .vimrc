@@ -48,7 +48,8 @@ set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
-set grepprg=ag\ --hidden\ --vimgrep grepformat^=%f:%l:%c:%m
+set grepprg=grep\ --mmap\ -HIrn\ --exclude-dir='.git'\ --exclude=tags\ --exclude-dir=backup\ --exclude-dir='*.xcodeproj'\ $*\ .
+set grepformat^=%f:%l:%c:%m
 
 " Indenting {{{1
 set autoindent
@@ -133,8 +134,8 @@ nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
 nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 
 " Search mappings
-nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
-xnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR> <bar> cwindow <bar> redraw!<CR>
+nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
+xnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
@@ -162,6 +163,5 @@ augroup END
 " Commands {{{1
 command! BD silent e# | bd#
 command! Scriptnames call setqflist(scripts#get()) | copen
-command! -nargs=+ -complete=file_in_path Grep silent grep! <args> | silent redraw! | cwindow
 command! Make silent make! | silent redraw! | cwindow
 command! Lmake silent lmake! | silent redraw! | lwindow
