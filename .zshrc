@@ -77,7 +77,7 @@ function search {
 
 function isearch {
     egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
-        --exclude-dir=*.xcodeproj --binary-files=without-match -HIrn $1 .
+        --exclude-dir=*.xcodeproj -HIrn $1 .
 }
 
 # Create a directory and cd into it
