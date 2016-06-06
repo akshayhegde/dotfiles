@@ -40,7 +40,6 @@ function setup_shell_tools {
     link_folder ~/Library/Mobile\ Documents/com~apple~CloudDocs/.gnupg
     link_folder ~/dotfiles/.ipython
     link_folder ~/dotfiles/.bin
-    link_file ~/dotfiles/.agignore
 }
 
 function setup_osx_defaults {
