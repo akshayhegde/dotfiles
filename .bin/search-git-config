@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-man git-config | less +"/$1"
