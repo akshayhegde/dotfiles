@@ -25,8 +25,14 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle -e ':completion:*' hosts 'reply=()'
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
-# Source externals {{{1
-source ~/.zsh/aliases
+# Aliases {{{1
+alias grep='grep --color=auto'
+alias head='head -n $(( $LINES - 10 ))'
+alias pgrep="pgrep -l"
+alias cp="cp -vi"
+alias ls="ls -GAp"
+alias mv="mv -vi"
+alias rm="rm -v"
 
 # Settings {{{1
 setopt completeinword menucomplete chaselinks rmstarwait autocd \
