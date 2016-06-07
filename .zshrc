@@ -72,14 +72,14 @@ function cdf {
 
 # Case sensitive grep
 function search {
-    egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
-        --exclude-dir=*.xcodeproj -HIrn $1 .
+    egrep --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
+        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrn $1 .
 }
 
 # Case insensitive grep
 function isearch {
-    egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
-        --exclude-dir=*.xcodeproj -HIrin $1 .
+    egrep --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
+        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrin $1 .
 }
 
 # Create a directory and cd into it
