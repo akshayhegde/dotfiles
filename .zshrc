@@ -79,7 +79,7 @@ function search {
 # Case insensitive grep
 function isearch {
     egrep --color --mmap --exclude=tags --exclude-dir=backup --exclude-dir=.git \
-        --exclude-dir=*.xcodeproj -HIrn $1 .
+        --exclude-dir=*.xcodeproj -HIrin $1 .
 }
 
 # Create a directory and cd into it
