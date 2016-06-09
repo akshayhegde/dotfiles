@@ -69,6 +69,11 @@ function isearch {
         --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrin $1 .
 }
 
+# Redirect info to vim to use vim keybindings, rather than emacs
+function info {
+    command info "$@" | vim -u NONE -N -RM -
+}
+
 # Create a directory and cd into it
 function mkcd {
     mkdir -p $1 && cd $1
