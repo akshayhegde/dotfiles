@@ -49,7 +49,6 @@ set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
 set grepprg=grep\ --mmap\ -HIrn\ --exclude-dir='.git'\ --exclude=tags\ --exclude-dir=backup\ --exclude-dir='*.xcodeproj'\ $*\ .
-set grepformat^=%f:%l:%c:%m
 
 " Indenting {{{1
 set autoindent
