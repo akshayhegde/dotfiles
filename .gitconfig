@@ -15,6 +15,7 @@
     templatedir = ~/.git_template
 [commit]
     gpgsign = true
+    verbose = true
 [push]
     default = current
 [color]
@@ -29,7 +30,7 @@
     # Commit actions
     amend = commit --amend --no-edit
     edit = commit --amend
-    diffcommit = commit --verbose --quiet
+    diffcommit = commit --quiet
 
     # Helper
     unmerged = diff --name-only --diff-filter=U
