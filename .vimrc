@@ -131,8 +131,6 @@ nnoremap <leader>gb :echo system("git rev-parse --abbrev-ref @ <bar> tr -d '\n'"
 nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
 nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 
-nnoremap g :echo "Done!"<CR>
-
 " Search mappings
 nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 xnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
