@@ -48,7 +48,6 @@ set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
-set grepprg=grep\ --mmap\ -HIrn\ --exclude-dir='.git'\ --exclude=tags\ --exclude-dir=backup\ --exclude-dir='*.xcodeproj'\ $*\ .
 
 " Indenting {{{1
 set autoindent
@@ -132,6 +131,8 @@ nnoremap <leader>gb :echo system("git rev-parse --abbrev-ref @ <bar> tr -d '\n'"
 nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
 nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 
+nnoremap g :echo "Done!"<CR>
+
 " Search mappings
 nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 xnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
@@ -163,3 +164,4 @@ command! Scriptnames call setqflist(scripts#get()) | copen
 command! -nargs=+ -complete=file_in_path Grep call grep#search(<f-args>)
 command! Make silent make! | silent redraw! | cwindow
 command! Lmake silent lmake! | silent redraw! | lwindow
+command! -nargs=1 Grep vimgrep /<args>/ ** | copen
