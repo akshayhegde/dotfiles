@@ -20,6 +20,9 @@
     default = current
 [color]
     ui = auto
+[color "diff"]
+    old = red strike
+    new = green italic
 [advice]
     statusHints = false
     resolveConflict = false
@@ -48,9 +51,6 @@
     # Type of merge
     fastforward = merge --ff-only
     mergecommit = merge --no-ff
-
-    # Switch to previous branch
-    previous = checkout -
 
     # Listing
     tags = tag -l
