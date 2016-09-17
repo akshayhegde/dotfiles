@@ -1,5 +1,6 @@
 [user]
     name = Akshay Hegde
+    email = akshay.hegde17@gmail.com
 [credential]
     helper = osxkeychain
 [github]
@@ -10,6 +11,10 @@
 [bitbucket]
     user = ajh_17
     password = "<%= Keychain['bitbucket.com'].password %>"
+    ssl = true
+[gitlab]
+    user = ajh17
+    password = "<%= Keychain['gitlab.com'].password %>"
     ssl = true
 [init]
     templatedir = ~/.git_template

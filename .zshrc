@@ -38,7 +38,7 @@ alias rm="rm -v"
 # Settings {{{1
 setopt completeinword menucomplete chaselinks rmstarwait autocd \
     cdablevars autopushd pushdsilent interactivecomments \
-    promptsubst transientrprompt extendedglob globdots \
+    promptsubst transientrprompt extendedglob globdots globstarshort \
     incappendhistory histignoredups banghist
 unsetopt flowcontrol clobber nomatch
 
