@@ -62,7 +62,7 @@ set backup backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
 
 " Wildignore {{{1
-set wildignore+=.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*
+set wildignore+=tags,.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,*.xc*,*.pbxproj,*.xcodeproj/**,*.xcassets/**
 
 " General Mappings {{{1
