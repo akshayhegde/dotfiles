@@ -133,8 +133,8 @@ bindkey -M vicmd 'u' undo
 bindkey -M vicmd '~' vi-swap-case
 bindkey '^b' edit-command-line
 bindkey '^?' backward-delete-char
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^a' vi-insert-bol
 bindkey '^_' run-help
