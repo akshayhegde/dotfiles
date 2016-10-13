@@ -50,24 +50,24 @@ SAVEHIST=20000
 # Functions {{{1
 # Go to the open Finder window's path
 function cdf {
-    target=`osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)'`
+    target=$(osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)')
     if [[ "$target" != "" ]]; then
-        cd "$target"; echo "Going to $target"
+        cd "$target" || exit 1
     else
-        echo -e 'There are no Finder windows!' >$2
+        echo -e 'There are no Finder windows!' >"$2"
     fi
 }
 
 # Case sensitive grep
 function search {
     egrep --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
-        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrn $1 .
+        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrn "$1" .
 }
 
 # Case insensitive grep
 function isearch {
     egrep --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
-        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrin $1 .
+        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrin "$1" .
 }
 
 # Redirect info to vim to use vim keybindings, rather than emacs
@@ -77,7 +77,7 @@ function info {
 
 # Create a directory and cd into it
 function mkcd {
-    mkdir -p $1 && cd $1
+    mkdir -p "$1" && cd "$1"
 }
 
 # Full screen Vim help page.
@@ -87,14 +87,14 @@ function :h () {
 
 # Copy current git commit sha1 to the clipboard.
 function gcopy() {
-    git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied `pbpaste`"
+    git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
 }
 
 # Open origin remote URL in a browser
 function gopen() {
     local url
     url=$(git remote show origin | sed -n 2p | awk '{sub(/\.git/, ""); print $3}')
-    open $url
+    open "$url"
 }
 
 # Fetch the pull request on a local branch for easy diffing
@@ -104,7 +104,7 @@ function pull_github_request {
     elif [[ -z "$2" ]]; then
         echo "You forgot to specify a local branch!"
     else
-        git fetch origin pull/$1/head:$2
+        git fetch origin pull/"$1"/head:"$2"
     fi
 }
 
