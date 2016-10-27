@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 
 function header() {
-    echo -e "`tput bold`$1`tput sgr0`"
+    echo -e "$(tput bold)$1$(tput sgr0)"
 }
 
 function link_file {
     header "Linking $1..."
-    local prev=`pwd`
-    cd $HOME && /bin/ln -sfv $1 && cd $prev
+    local prev
+    prev=$(pwd)
+    cd "$HOME" && /bin/ln -sfv "$1" && cd "$prev" || exit 1
 }
 
 function link_folder {
     header "Linking $1..."
-    local prev=`pwd`
-    cd $HOME && /bin/ln -sFv $1 && cd $prev
+    local prev
+    prev=$(pwd)
+    cd "$HOME" && /bin/ln -sFv "$1" && cd "$prev" || exit 1
 }
 
 function setup_vim {
@@ -27,11 +29,11 @@ function setup_vim {
         mkdir ~/.vim/bundle
     fi
 
-    . ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/install_bundles
+    . "~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/vimutil/install_bundles"
 }
 
 function setup_shell_tools {
-    cd $HOME
+    cd "$HOME" || exit 1
 
     link_folder ~/dotfiles/.zsh
     link_file ~/dotfiles/.zshrc
@@ -44,7 +46,7 @@ function setup_shell_tools {
 
 function setup_osx_defaults {
     header "\nSetting up OS X defaults..."
-    [ ! -d $HOME/.cache ] && mkdir $HOME/.cache
+    [ ! -d "$HOME/.cache" ] && mkdir "$HOME/.cache"
     defaults write com.apple.Finder QLEnableTextSelection -bool true
     defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
     defaults write NSGlobalDomain KeyRepeat -int 0
@@ -64,7 +66,7 @@ case $yn in
 esac; done
 
 # OS X specific config
-if [ `uname` == "Darwin" ]; then
+if [ "$(uname)" == "Darwin" ]; then
     setup_vim
     setup_shell_tools
     setup_git
