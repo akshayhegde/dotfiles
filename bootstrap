@@ -47,7 +47,6 @@ function setup_shell_tools {
 function setup_osx_defaults {
     header "\nSetting up OS X defaults..."
     [ ! -d "$HOME/.cache" ] && mkdir "$HOME/.cache"
-    defaults write com.apple.Finder QLEnableTextSelection -bool true
     defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
     defaults write NSGlobalDomain KeyRepeat -int 0
     defaults write com.apple.dock expose-animation-duration -float 0.15
