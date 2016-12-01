@@ -2,6 +2,7 @@ skip_global_compinit=1
 
 fpath=(~/.zsh/Completion $fpath)
 path=(~/build/bin /usr/local/sbin ~/.bin $path)
+manpath=(~/build/share/man $manpath)
 
 # Environmental Variables
 export BROWSER='open'
