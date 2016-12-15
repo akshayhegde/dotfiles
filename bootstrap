@@ -27,7 +27,7 @@ function setup_vim {
     mkdir -p ~/.vim/backup/undo
 
     header "Copying over vim packages from iCloud..."
-    cp -p -R ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/pack ~/.vim/pack
+    rsync -avz --info=progress2 ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/pack ~/.vim/
 }
 
 function setup_shell_tools {
