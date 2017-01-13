@@ -42,6 +42,11 @@ function setup_shell_tools {
     link_folder ~/dotfiles/.bin
 }
 
+function setup_misc_tools {
+    cd "$HOME/.config" || mkdir ~/.config && cd "$HOME/.config" || exit 1
+    link_folder ~/dotfiles/mpv
+}
+
 function setup_osx_defaults {
     header "\nSetting up OS X defaults..."
     [ ! -d "$HOME/.cache" ] && mkdir "$HOME/.cache"
@@ -65,6 +70,7 @@ esac; done
 if [ "$(uname)" == "Darwin" ]; then
     setup_vim
     setup_shell_tools
+    setup_misc_tools
     setup_git
     setup_osx_defaults
     header "\nDone!"
