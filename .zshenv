@@ -12,3 +12,4 @@ export GREP_COLOR='1;33'
 export KEYTIMEOUT=1
 export LESS='-FigXR'
 export PAGER='less'
+export CC=clang
