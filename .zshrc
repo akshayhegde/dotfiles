@@ -163,7 +163,7 @@ add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats '%F{239}»%f %F{yellow}%b%f%c%u'
+zstyle ':vcs_info:*' formats ' %F{239}»%f %F{yellow}%b%f%c%u'
 zstyle ':vcs_info:*' actionformats '%F{239}»%f %F{yellow}%b%f|%F{red}%a%f%c%u'
 zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
@@ -176,5 +176,5 @@ function +vi-git-untracked() {
 # Use iTerm's shell integration feature if it exists
 [[ -f "${HOME}/.bin/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.bin/.iterm2_shell_integration.zsh"
 
-PROMPT=$'\n%(#.%F{1}.%f)%n%f@%m%f %F{239}»%f %F{green}%~%f $vcs_info_msg_0_ %f'$'${vi_mode}%f '
+PROMPT=$'\n%(#.%F{1}.%f)%n%f@%m%f %F{239}»%f %F{green}%~%f$vcs_info_msg_0_ %f'$'${vi_mode}%f '
 RPROMPT=$'%(0?,,%F{red}<%?>%f)'
