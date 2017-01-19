@@ -1,6 +1,5 @@
 [user]
     name = Akshay Hegde
-    email = akshay.hegde17@gmail.com
 [credential]
     helper = osxkeychain
 [github]
@@ -42,7 +41,7 @@
     unmerged = diff --name-only --diff-filter=U
     staged = diff --cached
     download = clone --depth=1
-    show-latest-changes = !git fetch && git log @..@{u}
+    show-latest-changes = !git fetch && git log --oneline @..@{u}
 
     # Stash utils
     # Like "git checkout -- ." but actually stash it
