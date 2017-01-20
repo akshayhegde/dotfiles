@@ -92,13 +92,6 @@ function gcopy() {
     git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
 }
 
-# Open origin remote URL in a browser
-function gopen() {
-    local url
-    url=$(git remote show origin | sed -n 2p | awk '{sub(/\.git/, ""); print $3}')
-    open "$url"
-}
-
 # Fetch the pull request on a local branch for easy diffing
 function pull_github_request {
     if [[ -z "$1" ]]; then
