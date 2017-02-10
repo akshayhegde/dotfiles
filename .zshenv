@@ -15,3 +15,4 @@ export KEYTIMEOUT=1
 export LESS='-FigXR'
 export PAGER='less'
 export CC=clang
+export CXX=clang++
