@@ -12,7 +12,6 @@ set clipboard^=unnamed
 set complete=.,w,b,t,kspell
 set completeopt+=longest,menuone
 set dictionary+=/usr/share/dict/words
-set fileformats+=mac
 set hidden
 set mouse=n ttymouse=sgr
 set nostartofline
