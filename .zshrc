@@ -155,16 +155,8 @@ zle -N zle-keymap-select
 add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git hg
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats ' %F{239}»%f %F{yellow}%b%f%c%u'
-zstyle ':vcs_info:*' actionformats '%F{239}»%f %F{yellow}%b%f|%F{red}%a%f%c%u'
-zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
-zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
-zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-function +vi-git-untracked() {
-    [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
-        hook_com[unstaged]+="%F{red}?%f"
-}
+zstyle ':vcs_info:*' formats ' %F{239}»%f %F{yellow}%b%f'
+zstyle ':vcs_info:*' actionformats '%F{239}»%f %F{yellow}%b%f|%F{red}%a%f'
 
 # Use iTerm's shell integration feature if it exists
 [[ -f "${HOME}/.bin/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.bin/.iterm2_shell_integration.zsh"
