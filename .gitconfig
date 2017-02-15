@@ -11,10 +11,6 @@
     user = ajh_17
     password = "<%= Keychain['bitbucket.com'].password %>"
     ssl = true
-[gitlab]
-    user = ajh17
-    password = "<%= Keychain['gitlab.com'].password %>"
-    ssl = true
 [init]
     templatedir = ~/.git_template
 [commit]
@@ -52,10 +48,6 @@
     # Utility
     ctags = !.git/hooks/ctags
     dirdiff = difftool --tool vdwrap --dir-diff
-
-    # Type of merge
-    fastforward = merge --ff-only
-    mergecommit = merge --no-ff
 
     # Listing
     tags = tag -l
