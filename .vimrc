@@ -1,11 +1,11 @@
 " ------------ ajh's .vimrc ------------
-" Syntax, FileType, Colorscheme {{{1
+" Syntax, FileType, Colorscheme, RTP {{{1
 syntax on
 filetype plugin indent on
 colorscheme spacegray
+runtime macros/matchit.vim
 
 " General {{{1
-runtime macros/matchit.vim
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
@@ -32,11 +32,6 @@ set nojoinspaces
 set number relativenumber
 set showcmd showbreak=↪
 set splitright
-
-" GUI {{{1
-if has("gui_running")
-  set guioptions= lines=40 columns=140 guifont=Fira\ Mono:h11
-endif
 
 " Statusline {{{1
 set laststatus=2
