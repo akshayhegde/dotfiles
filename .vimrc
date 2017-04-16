@@ -156,5 +156,3 @@ command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | silent redraw! | cwindow
 command! Lmake silent lmake! | silent redraw! | lwindow
 command! -nargs=1 Grep vimgrep /<args>/ ** | copen
-
-let g:vcm_s_tab_mapping = "\<C-o>a"
