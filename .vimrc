@@ -147,7 +147,6 @@ augroup VIMRC
   autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd InsertLeave * if bufname('%') != "[Command Line]" | pclose | endif
-  autocmd VimEnter * call cursor#changeShape()
 augroup END
 
 " Commands {{{1
