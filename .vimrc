@@ -15,6 +15,8 @@ set dictionary+=/usr/share/dict/words
 set hidden
 set mouse=n ttymouse=sgr
 set nostartofline
+set nojoinspaces
+set nofoldenable
 set nrformats-=octal
 set path=.,**
 set switchbuf=useopen,usetab
@@ -27,8 +29,6 @@ set formatoptions+=1j
 set lazyredraw
 set linebreak
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-set nofoldenable
-set nojoinspaces
 set number relativenumber
 set showcmd showbreak=↪
 set splitright
@@ -156,3 +156,5 @@ command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | silent redraw! | cwindow
 command! Lmake silent lmake! | silent redraw! | lwindow
 command! -nargs=1 Grep vimgrep /<args>/ ** | copen
+
+let g:vcm_s_tab_mapping = "\<C-o>a"
