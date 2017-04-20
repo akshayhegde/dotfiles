@@ -39,7 +39,7 @@ alias rm="rm -v"
 setopt completeinword menucomplete chaselinks rmstarwait autocd \
     cdablevars autopushd pushdsilent interactivecomments \
     promptsubst transientrprompt extendedglob globdots globstarshort \
-    incappendhistory histignoredups banghist
+    incappendhistory histignoredups histignorespace banghist
 unsetopt flowcontrol clobber nomatch
 
 # History {{{1
