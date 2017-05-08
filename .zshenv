@@ -1,18 +1,23 @@
-skip_global_compinit=1
-
+# Environmental Variables {{{1
+# path
 fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
 path=(~/build/bin /usr/local/sbin ~/.bin $path)
 manpath=(~/build/share/man $manpath)
 
-# Environmental Variables
-export CFLAGS="-I/Users/ajh/build/include $CFLAGS"
-export LDFLAGS="-L/Users/ajh/build/lib $LDFLAGS"
-export BROWSER='open'
+# zsh
+skip_global_compinit=1
 export CORRECT_IGNORE='_*'
-export EDITOR=vim
-export GREP_COLOR='1;33'
 export KEYTIMEOUT=1
+
+# general
+export BROWSER='open'
+export EDITOR=vim
 export LESS='-FigXR'
 export PAGER='less'
+
+# compilation
 export CC=clang
+export CFLAGS="-I/Users/ajh/build/include $CFLAGS"
 export CXX=clang++
+export CXXFLAGS="-I/Users/ajh/build/include $CXXFLAGS"
+export LDFLAGS="-L/Users/ajh/build/lib $LDFLAGS"
