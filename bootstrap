@@ -59,19 +59,10 @@ function setup_git {
     link_folder ~/dotfiles/.git_template
 }
 
-header "==> Do you wish to proceed with bootstrapping?"
-select yn in "Yes" "No"; do
-case $yn in
-    Yes ) echo "Okay, proceeding..." && break;;
-    No) echo "Okay, stopping..." && exit;;
-esac; done
-
-# OS X specific config
-if [ "$(uname)" == "Darwin" ]; then
-    setup_vim
-    setup_shell_tools
-    setup_misc_tools
-    setup_git
-    setup_osx_defaults
-    header "\nDone!"
-fi
+header "\nBootstrapping..."
+setup_vim
+setup_shell_tools
+setup_misc_tools
+setup_git
+setup_osx_defaults
+header "\nDone!"
