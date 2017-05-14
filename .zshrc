@@ -163,5 +163,5 @@ function +vi-git-untracked() {
         hook_com[unstaged]+="%F{red}?%f"
 }
 
-PROMPT=$'\n%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m%f %F{green}%~%f '$'%(#.#.$prompt_char)%f '
+PROMPT=$'\n%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m %F{green}%~%f %(#.#.$prompt_char) '
 RPROMPT=$'$vcs_info_msg_0_'
