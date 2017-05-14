@@ -155,13 +155,13 @@ zle -N zle-keymap-select
 add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git hg
-zstyle ':vcs_info:*' formats ' %F{239}»%f %F{yellow}%b%f%u'
-zstyle ':vcs_info:*' actionformats '%F{239}»%f %F{yellow}%b%f|%F{red}%a%f%u'
+zstyle ':vcs_info:*' formats '%F{yellow}%b%f%u'
+zstyle ':vcs_info:*' actionformats '%F{yellow}%b%f|%F{red}%a%f%u'
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
 function +vi-git-untracked() {
     [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
         hook_com[unstaged]+="%F{red}?%f"
 }
 
-PROMPT=$'\n%(#.%F{1}.%f)%n%f@%m%f %F{239}»%f %F{green}%~%f$vcs_info_msg_0_ %f'$'${vi_mode}%f '
-RPROMPT=$'%(0?,,%F{red}<%?>%f)' 
+PROMPT=$'\n%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m%f %F{green}%~%f '$'${vi_mode}%f '
+RPROMPT=$'$vcs_info_msg_0_'
