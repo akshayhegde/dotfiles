@@ -143,7 +143,7 @@ bindkey '^u' vi-change-whole-line
 
 # Prompt {{{1
 function zle-line-init zle-keymap-select {
-    vi_mode="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
+    prompt_char="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
 }
 
@@ -163,5 +163,5 @@ function +vi-git-untracked() {
         hook_com[unstaged]+="%F{red}?%f"
 }
 
-PROMPT=$'\n%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m%f %F{green}%~%f '$'${vi_mode}%f '
+PROMPT=$'\n%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m%f %F{green}%~%f '$'%(#.#.$prompt_char)%f '
 RPROMPT=$'$vcs_info_msg_0_'
