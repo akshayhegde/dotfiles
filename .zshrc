@@ -36,7 +36,7 @@ alias mv="mv -vi"
 alias rm="rm -v"
 
 # Settings {{{1
-setopt completeinword menucomplete chaselinks rmstarwait autocd \
+setopt completeinword menucomplete chaselinks rmstarwait \
     cdablevars autopushd pushdsilent interactivecomments \
     promptsubst transientrprompt extendedglob globdots globstarshort \
     incappendhistory histignoredups histignorespace banghist
