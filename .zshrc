@@ -30,7 +30,7 @@ alias grep='grep --color=auto'
 alias head='head -n $(( $LINES - 10 ))'
 alias pgrep="pgrep -l"
 alias gs="git status -sb"
-alias cp="rsync -hav --info=progress2"
+alias cp="cp -vi"
 alias ls="ls -GAp"
 alias mv="mv -vi"
 alias rm="rm -v"
