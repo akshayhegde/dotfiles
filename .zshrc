@@ -61,14 +61,14 @@ function cdf {
 # Case sensitive grep
 function search {
     [[ -n "$2" ]] && dir="$2" || dir="."
-    grep -E --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
+    =grep -E --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
         --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrn "$1" "$dir"
 }
 
 # Case insensitive grep
 function isearch {
     [[ -n "$2" ]] && dir="$2" || dir="."
-    grep -E --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
+    =grep -E --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
         --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrin "$1" "$dir"
 }
 
