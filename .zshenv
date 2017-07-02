@@ -1,11 +1,4 @@
 # Environmental Variables {{{1
-# path
-fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
-path=(~/build/bin /usr/local/sbin ~/.bin $path)
-manpath=(~/build/share/man $manpath)
-
-# zsh
-skip_global_compinit=1
 export CORRECT_IGNORE='_*'
 export KEYTIMEOUT=1
 

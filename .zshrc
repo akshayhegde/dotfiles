@@ -1,5 +1,11 @@
 # ajh17's ~/.zshrc
 
+# Path {{{1
+fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
+path=(~/build/bin /usr/local/sbin ~/.bin $path)
+manpath=(~/build/share/man $manpath)
+skip_global_compinit=1
+
 # Styles {{{1
 # Cache completions
 ZCACHEDIR=~/.cache/
