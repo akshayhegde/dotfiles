@@ -19,15 +19,16 @@ function link_folder {
 }
 
 function setup_vim {
+    header "Linking vim files and folders..."
+
     link_folder ~/dotfiles/.vim
     link_file ~/dotfiles/.vimrc
     link_file ~/dotfiles/.xvimrc
 
-    header "Creating vim backup folders..."
-    mkdir -p ~/.vim/backup/undo
+    link_folder ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/pack ~/.vim/
+    link_folder ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/spell ~/.vim/
 
-    header "Copying over vim packages from iCloud..."
-    rsync -avz --info=progress2 ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/pack ~/.vim/
+    mkdir -p ~/.vim/backup/undo
 }
 
 function setup_shell_tools {
