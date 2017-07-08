@@ -111,7 +111,7 @@ nnoremap <leader>v ^vg_
 nnoremap <leader>= :call format#reindent()<CR>
 
 " Remove trailing whitespace
-nnoremap <leader>w m`:silent! %s/\s\+$//<CR>:let @/ = ''<CR>``
+nnoremap <leader>w m`:let @s = @/<CR>:silent! %s/\s\+$//<CR>:let @/ = @s<CR>``
 
 " cd to the current file's path
 nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
