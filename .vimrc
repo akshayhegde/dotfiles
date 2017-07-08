@@ -89,7 +89,7 @@ nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
 nnoremap + za
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
-nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
+nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, 'name')')<CR>
 
 " The only mappings I used from vim-unimpaired
 nnoremap ]q :cnext<CR>zz
@@ -111,17 +111,17 @@ nnoremap <leader>v ^vg_
 nnoremap <leader>= :call format#reindent()<CR>
 
 " Remove trailing whitespace
-nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``
+nnoremap <leader>w m`:silent! %s/\s\+$//<CR>:let @/ = ''<CR>``
 
 " cd to the current file's path
 nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
 
 " Buffer switching
-nnoremap <expr> <leader>b buffer#switchBySplitting("horizontally")
-nnoremap <expr> <leader>B buffer#switchBySplitting("vertically")
+nnoremap <expr> <leader>b buffer#switchBySplitting('horizontally')
+nnoremap <expr> <leader>B buffer#switchBySplitting('vertically')
 
 " Git
-nnoremap <leader>gb :echo system("git rev-parse --abbrev-ref @ <bar> tr -d '\n'")<CR>
+nnoremap <leader>gb :echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
 nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
 nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 
@@ -133,7 +133,7 @@ nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
 
 " Plugin Settings {{{1
-let [html_indent_script1, html_indent_style1] = ["inc", "inc"]
+let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types] = [1, 1, 1]
 let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
@@ -144,9 +144,9 @@ let g:fist_anonymously = 0
 augroup VIMRC
   autocmd!
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
+  autocmd BufReadPost * silent! execute 'normal! g`'zzzv'
   autocmd BufWritePost * if &diff | diffupdate | endif
-  autocmd InsertLeave * if bufname('%') != "[Command Line]" | pclose | endif
+  autocmd InsertLeave * if bufname('%') != '[Command Line]' | pclose | endif
 augroup END
 
 " Commands {{{1
