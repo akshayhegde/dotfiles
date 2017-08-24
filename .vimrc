@@ -87,7 +87,7 @@ nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
 nnoremap + za
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
-nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, 'name')')<CR>
+nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
 " The only mappings I used from vim-unimpaired
 nnoremap ]q :cnext<CR>zz
@@ -142,7 +142,7 @@ let g:fist_anonymously = 0
 augroup VIMRC
   autocmd!
   autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  autocmd BufReadPost * silent! execute 'normal! g`'zzzv'
+  autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd InsertLeave * if bufname('%') != '[Command Line]' | pclose | endif
 augroup END
