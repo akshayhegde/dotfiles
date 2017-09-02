@@ -24,6 +24,7 @@ set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
 " UI {{{1
+set termguicolors
 set formatoptions+=1j
 set lazyredraw
 set linebreak
@@ -97,6 +98,7 @@ nnoremap [l :lprevious<CR>zz
 nnoremap coh :nohlsearch<CR>
 nnoremap col :set list! <bar> set list?<CR>
 nnoremap cos :set spell! <bar> set spell?<CR>
+nnoremap con :set relativenumber! number!<CR>
 
 " Quicker cgn/cgN
 nnoremap <leader>* *``cgn
