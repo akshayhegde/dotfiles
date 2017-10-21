@@ -37,6 +37,7 @@ alias head='head -n $(( $LINES - 10 ))'
 alias pgrep="pgrep -l"
 alias gs="git status -sb"
 alias cp="cp -vip"
+alias rcp="rsync -av --info=progress2"
 alias ls="ls -GAp"
 alias mv="mv -vi"
 alias rm="rm -v"
