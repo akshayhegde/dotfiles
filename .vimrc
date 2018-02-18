@@ -19,6 +19,7 @@ set nofoldenable
 set nrformats-=octal
 set path=.,**
 set switchbuf=useopen,usetab
+set tags^=.git/tags
 set ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
