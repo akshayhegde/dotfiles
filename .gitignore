@@ -10,5 +10,6 @@
 .ipython/profile_default/db
 .ipython/profile_default/security/
 .ipython/profile_default/startup/
-
+.ctags
 tags
+*.xcworkspace
