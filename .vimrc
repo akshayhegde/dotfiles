@@ -85,6 +85,10 @@ nnoremap Q gq
 nnoremap Y y$
 nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
 nnoremap + za
+nnoremap * *zz
+nnoremap # #zz
+nnoremap n nzz
+nnoremap N Nzz
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
