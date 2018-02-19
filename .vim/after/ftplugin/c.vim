@@ -10,6 +10,6 @@ let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%m'
 
 " Commands
-command! A call buffer#alternate("edit")
-command! AV call buffer#alternate("vsplit")
-command! AS call buffer#alternate("split")
+command! -buffer A call buffer#alternate("edit")
+command! -buffer AV call buffer#alternate("vsplit")
+command! -buffer AS call buffer#alternate("split")
