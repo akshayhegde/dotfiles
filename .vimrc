@@ -141,7 +141,6 @@ let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types] = [1, 1, 1]
 let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
-let g:fist_anonymously = 0
 
 " Plugin Maps {{{1
 " Autocommands {{{1
