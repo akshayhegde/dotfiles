@@ -1,5 +1,4 @@
 setlocal textwidth=89
-setlocal makeprg=swift\ %
 let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%f:%l:%c: error: %m,' .
       \ '%W%f:%l:%c: warning: %m,' .
