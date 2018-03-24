@@ -23,14 +23,8 @@
     excludesfile = /Users/ajh/.gitignore
     autocrlf = false
 [alias]
-    # Commit actions
-    amend = commit --amend --no-edit
-    edit = commit --amend
-
     # Helper
     unmerged = diff --name-only --diff-filter=U
-    staged = diff --cached
-    download = clone --depth=1
     show-latest-changes = !git fetch && git log --oneline @..@{u}
     open-remote = !open $(git remote show origin | sed -n 2p | cut -d' ' -f5)
     sha1 = rev-parse @
