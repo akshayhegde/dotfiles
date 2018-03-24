@@ -1,16 +1,8 @@
 [user]
     name = Akshay Hegde
+    email = git@akshay"-hegde".com
 [credential]
     helper = osxkeychain
-[github]
-    user = ajh17
-    token = "<%= Keychain['github.com/api'].password %>"
-    password = "<%= Keychain['github.com'].password %>"
-    ssl=true
-[bitbucket]
-    user = ajh_17
-    password = "<%= Keychain['bitbucket.com'].password %>"
-    ssl = true
 [init]
     templatedir = ~/.git_template
 [commit]
@@ -55,7 +47,7 @@
     branches = branch -av
     stashes = stash list
     refs = reflog -10
-    logs = log --no-merges --format='%ad (%h) %an: %s' -15 --date=iso8601
+    logs = log --no-merges --pretty=format:'%h%x09%an%x09%ad%x09%s' -15
 
     # Log Formats
     patchlog = log --decorate -p
