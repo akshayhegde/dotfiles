@@ -39,6 +39,7 @@
     download = clone --depth=1
     show-latest-changes = !git fetch && git log --oneline @..@{u}
     open-remote = !open $(git remote show origin | sed -n 2p | cut -d' ' -f5)
+    sha1 = rev-parse @
 
     # Stash utils
     # Like "git checkout -- ." but actually stash it
