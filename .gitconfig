@@ -1,6 +1,8 @@
 [user]
     name = Akshay Hegde
     email = git@akshay"-hegde".com
+[log]
+    date = iso
 [credential]
     helper = osxkeychain
 [init]
