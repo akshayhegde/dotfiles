@@ -43,7 +43,7 @@
     branches = branch -av
     stashes = stash list
     refs = reflog -10
-    logs = log --no-merges --pretty=format:'%h%x09%an%x09%ad%x09%s' -15
+    logs = log --no-merges --pretty=format:'%C(auto)%h%x09%an%x09%ad%x09%s%x09%d' -15
 
     # Log Formats
     patchlog = log --decorate -p
