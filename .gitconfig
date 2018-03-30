@@ -63,7 +63,5 @@
 [mergetool]
     prompt = false
     keepBackup = false
-[rerere]
-    enabled = true
 [gpg]
     program = gpg2
