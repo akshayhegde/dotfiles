@@ -31,7 +31,8 @@ zstyle -e ':completion:*' hosts 'reply=()'
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 # Aliases {{{1
-alias grep='grep --color=auto'
+alias grep="grep -EHIrn --color=auto --exclude-dir=backup --exclude-dir=*.{xcodeproj,git,svn,hg} --exclude={tags,Session.vim}"
+alias ggrep="git grep --break --heading --line-number"
 alias head='head -n $(( $LINES - 10 ))'
 alias pgrep="pgrep -l"
 alias gs="git status -sb"
@@ -62,20 +63,6 @@ function cdf {
     else
         echo -e 'There are no Finder windows!' >"$2"
     fi
-}
-
-# Case sensitive grep
-function search {
-    [[ -n "$2" ]] && dir="$2" || dir="."
-    =grep -E --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
-        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrn "$1" "$dir"
-}
-
-# Case insensitive grep
-function isearch {
-    [[ -n "$2" ]] && dir="$2" || dir="."
-    =grep -E --color --mmap --exclude=tags --exclude=Session.vim --exclude=*.{png,jpg,gif} \
-        --exclude-dir=backup --exclude-dir=.{git,svn,hg} --exclude-dir=*.xcodeproj -HIrin "$1" "$dir"
 }
 
 # Redirect info to vim to use vim keybindings, rather than emacs
