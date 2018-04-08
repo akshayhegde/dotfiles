@@ -4,7 +4,6 @@
 fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
 path=(~/build/bin /usr/local/sbin ~/.bin $path)
 manpath=(~/build/share/man $manpath)
-skip_global_compinit=1
 
 # Styles {{{1
 # Cache completions
@@ -87,16 +86,6 @@ function info {
 # Create a directory and cd into it
 function mkcd {
     mkdir -p "$1" && cd "$1"
-}
-
-# Full screen Vim help page.
-function :h () {
-    vim +"h $1" +only;
-}
-
-# Copy current git commit sha1 to the clipboard.
-function gcopy() {
-    git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
 }
 
 # Fetch the pull request on a local branch for easy diffing
