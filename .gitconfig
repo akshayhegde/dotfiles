@@ -14,8 +14,6 @@
     default = current
 [color]
     ui = auto
-[color "diff"]
-    old = red strike
 [advice]
     statusHints = false
     resolveConflict = false
