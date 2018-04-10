@@ -5,8 +5,10 @@ export KEYTIMEOUT=1
 # general
 export BROWSER='open'
 export EDITOR=vim
-export LESS='-FigXR'
-export PAGER='less'
+export PAGER=less
+export MANPAGER=$PAGER
+export LESS='--quit-if-one-screen --ignore-case --hilite-search --LONG-PROMPT --RAW-CONTROL-CHARS'
+export LESSHISTFILE="$HOME/.cache/.lesshst"
 
 # compilation
 export CC=clang
