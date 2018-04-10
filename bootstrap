@@ -1,32 +1,31 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-function header() {
-    echo -e "$(tput bold)$1$(tput sgr0)"
-}
-
-function link_file {
-    header "Linking $1..."
+function makelink {
     local prev
-    prev=$(pwd)
-    cd "$HOME" && /bin/ln -sfv "$1" && cd "$prev" || exit 1
-}
+    local dst
 
-function link_folder {
-    header "Linking $1..."
-    local prev
-    prev=$(pwd)
-    cd "$HOME" && /bin/ln -sFv "$1" && cd "$prev" || exit 1
+    prev="$(pwd)"
+    [[ -n "$2" ]] && dst="$2" || dst="$HOME"
+    cd "$dst" || exit 1
+
+    echo -e "Linking $1 to $dst\n"
+    if [[ -d "$1" ]]; then
+        /bin/ln -sF "$1" && cd "$prev" || exit 1
+    elif [[ -f "$1" ]]; then
+        /bin/ln -sf "$1" && cd "$prev" || exit 1
+    else
+        echo -e "Could not find '$1', not linking!\n"
+    fi
+    cd "$prev"
 }
 
 function setup_vim {
-    header "Linking vim files and folders..."
+    makelink ~/dotfiles/.vim
+    makelink ~/dotfiles/.vimrc
+    makelink ~/dotfiles/.xvimrc
 
-    link_folder ~/dotfiles/.vim
-    link_file ~/dotfiles/.vimrc
-    link_file ~/dotfiles/.xvimrc
-
-    link_folder ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/pack ~/.vim/
-    link_folder ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/spell ~/.vim/
+    makelink ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/pack ~/.vim
+    makelink ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/spell ~/.vim
 
     mkdir -p ~/.vim/backup/undo
 }
@@ -34,36 +33,29 @@ function setup_vim {
 function setup_shell_tools {
     cd "$HOME" || exit 1
 
-    link_folder ~/dotfiles/.zsh
-    link_file ~/dotfiles/.zshrc
-    link_file ~/dotfiles/.zshenv
+    makelink ~/dotfiles/.zsh
+    makelink ~/dotfiles/.zshrc
+    makelink ~/dotfiles/.zshenv
 
-    link_folder ~/Library/Mobile\ Documents/com~apple~CloudDocs/.gnupg
-    link_folder ~/dotfiles/.ipython
-    link_folder ~/dotfiles/.bin
-}
-
-function setup_misc_tools {
-    cd "$HOME/.config" || mkdir ~/.config && cd "$HOME/.config" || exit 1
-    link_folder ~/dotfiles/mpv
+    makelink ~/dotfiles/.ipython
+    makelink ~/dotfiles/.bin
 }
 
 function setup_osx_defaults {
-    header "\nSetting up OS X defaults..."
+    echo -e "Setting up OS X defaults...\n"
     [ ! -d "$HOME/.cache" ] && mkdir "$HOME/.cache"
     defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
     defaults write NSGlobalDomain KeyRepeat -int 0
 }
 
 function setup_git {
-    link_file ~/dotfiles/.tigrc
-    link_folder ~/dotfiles/.git_template
+    makelink ~/dotfiles/.tigrc
+    makelink ~/dotfiles/.git_template
 }
 
-header "\nBootstrapping..."
+echo -e "Bootstrapping...\n"
 setup_vim
 setup_shell_tools
-setup_misc_tools
 setup_git
 setup_osx_defaults
-header "\nDone!"
+echo -e "Done!\n"
