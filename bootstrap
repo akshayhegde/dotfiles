@@ -51,6 +51,8 @@ function setup_osx_defaults {
 function setup_git {
     makelink ~/dotfiles/.tigrc
     makelink ~/dotfiles/.git_template
+    makelink ~/dotfiles/.gitignore
+    makelink ~/dotfiles/.gitconfig
 }
 
 echo -e "Bootstrapping...\n"
