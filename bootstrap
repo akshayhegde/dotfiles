@@ -10,9 +10,9 @@ function makelink {
 
     echo -e "Linking $1 to $dst"
     if [[ -d "$1" ]]; then
-        /bin/ln -sF "$1" && cd "$prev" || exit 1
+        /bin/ln -sF "$1"
     elif [[ -f "$1" ]]; then
-        /bin/ln -sf "$1" && cd "$prev" || exit 1
+        /bin/ln -sf "$1"
     else
         echo -e "Could not find '$1', not linking!"
     fi
