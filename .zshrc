@@ -35,7 +35,7 @@ zstyle -e ':completion:*' hosts 'reply=()'
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 # Aliases {{{1
-alias grep="grep -EHIrn --color=auto --exclude-dir=backup --exclude-dir=*.{xcodeproj,git,svn,hg} --exclude={tags,Session.vim}"
+alias grep="grep -I --color=auto --exclude-dir=backup --exclude-dir=*.{xcodeproj,git,svn,hg} --exclude={tags,Session.vim}"
 alias ggrep="git grep --break --heading --line-number"
 alias head='head -n $(( $LINES - 10 ))'
 alias pgrep="pgrep -l"
