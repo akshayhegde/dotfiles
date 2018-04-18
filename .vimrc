@@ -88,8 +88,6 @@ nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
 nnoremap + za
 nnoremap * *zz
 nnoremap # #zz
-nnoremap n nzz
-nnoremap N Nzz
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
@@ -135,6 +133,9 @@ xnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<
 nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
+" These need to be recursive in order to work with foldopen=search
+nmap n nzz
+nmap N Nzz
 
 " Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
