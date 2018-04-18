@@ -5,6 +5,10 @@ fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
 path=(~/build/bin /usr/local/sbin ~/.bin $path)
 manpath=(~/build/share/man $manpath)
 
+typeset -U PATH
+typeset -U FPATH
+typeset -U MANPATH
+
 # Styles {{{1
 # Cache completions
 ZCACHEDIR=~/.cache/
