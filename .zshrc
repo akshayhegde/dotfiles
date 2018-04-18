@@ -23,7 +23,6 @@ zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' format '%F{yellow}Completing %d%f'
 zstyle ':completion:*' warnings '%F{red}No matches for: %d%f'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' users ajh root
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32
 zstyle ':completion:*' completer _complete _match _approximate
