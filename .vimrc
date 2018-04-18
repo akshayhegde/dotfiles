@@ -133,9 +133,6 @@ xnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<
 nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
-" These need to be recursive in order to work with foldopen=search
-nmap n nzz
-nmap N Nzz
 
 " Plugin Settings {{{1
 let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
