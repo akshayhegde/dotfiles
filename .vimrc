@@ -58,7 +58,7 @@ set undofile undodir=~/.vim/backup/undo/
 set wildignore+=tags,.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,*.xc*,*.pbxproj,*.xcodeproj/**,*.xcassets/**
 
-" General Mappings {{{1
+" Mappings {{{1
 let g:mapleader = ' '
 
 " Switch between files
@@ -85,9 +85,6 @@ nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 nnoremap Q gq
 nnoremap Y y$
 nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
-nnoremap + za
-nnoremap * *zz
-nnoremap # #zz
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
@@ -121,6 +118,7 @@ nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
 " Buffer switching
 nnoremap <expr> <leader>b buffer#switchBySplitting('horizontally')
 nnoremap <expr> <leader>B buffer#switchBySplitting('vertically')
+nnoremap <leader>l :ls<CR>:b
 
 " Git
 nnoremap <leader>gb :echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
@@ -134,13 +132,11 @@ nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
 
-" Plugin Settings {{{1
+" Plugin/Filetype Settings {{{1
+let g:python_highlight_all = 1
 let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
-let [hs_highlight_boolean, hs_highlight_types, hs_highlight_more_types] = [1, 1, 1]
-let [python_highlight_all, java_highlight_all] = [1, 1]
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 
-" Plugin Maps {{{1
 " Autocommands {{{1
 augroup VIMRC
   autocmd!
