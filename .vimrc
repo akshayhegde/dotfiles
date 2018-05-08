@@ -20,7 +20,7 @@ set nrformats-=octal
 set path=.,**
 set switchbuf=useopen,usetab
 set tags^=.git/tags
-set ttimeoutlen=50
+set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
 " UI {{{1
@@ -140,8 +140,7 @@ let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 " Autocommands {{{1
 augroup VIMRC
   autocmd!
-  autocmd BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  autocmd BufReadPost * silent! execute 'normal! g`"zzzv'
+  autocmd BufReadPost * if &ft !~# 'commit' | silent! execute 'normal! g`"zzzv' | endif
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd InsertLeave * if bufname('%') != '[Command Line]' | pclose | endif
 augroup END
