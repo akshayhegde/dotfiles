@@ -2,15 +2,10 @@
 let b:vcm_tab_complete = "omni"
 
 " Compiler
-
-" Use python3 completion if we're linked against python3. For some reason,
-" this isn't done by default
 let b:python_exe = has("python3") ? "python3" : "python"
 if b:python_exe ==# "python3"
-  setlocal omnifunc=python3complete#Complete
   setlocal makeprg=python3\ %
 else
-  " Omnifunc is correctly set here by built-in pythoncomplete.vim
   setlocal makeprg=python\ %
 endif
 
