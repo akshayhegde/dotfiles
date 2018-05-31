@@ -17,7 +17,6 @@ set nostartofline
 set nojoinspaces
 set nofoldenable
 set nrformats-=octal
-set path=.,**
 set switchbuf=useopen,usetab
 set tags^=.git/tags
 set ttimeout ttimeoutlen=50
