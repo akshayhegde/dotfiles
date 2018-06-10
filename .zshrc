@@ -49,13 +49,14 @@ alias rm="rm -v"
 setopt completeinword menucomplete chaselinks rmstarwait \
     cdablevars autopushd pushdsilent interactivecomments \
     promptsubst transientrprompt extendedglob globdots globstarshort \
-    incappendhistory histignoredups histignorespace banghist
+    incappendhistory histignoredups histignorealldups histreduceblanks \
+    histignorespace banghist
 unsetopt flowcontrol clobber nomatch
 
 # History {{{1
-HISTFILE=$HOME/.cache/.zhistory
-HISTSIZE=20000
-SAVEHIST=20000
+export HISTFILE=$HOME/.cache/.zhistory
+export HISTSIZE=6000000
+export SAVEHIST=$HISTSIZE
 
 # Functions {{{1
 # Go to the open Finder window's path
