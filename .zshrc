@@ -43,7 +43,7 @@ alias cp="cp -vip"
 alias rcp="rsync -av --info=progress2"
 alias ls="ls -GAp"
 alias mv="mv -vi"
-alias rm="rm -v"
+alias rm="rm -vi"
 
 # Settings {{{1
 setopt completeinword menucomplete chaselinks rmstarwait \
