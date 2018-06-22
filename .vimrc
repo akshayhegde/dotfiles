@@ -126,8 +126,8 @@ nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
 nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 
 " Search mappings
-nnoremap <leader>s viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
-xnoremap <leader>s :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
+nnoremap <leader>s viw:<C-u>Grep <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
+xnoremap <leader>s :<C-u>Grep <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
@@ -150,4 +150,4 @@ command! BD silent e# | bd#
 command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | redraw! | cwindow
 command! Lmake silent lmake! | redraw! | lwindow
-command! -nargs=1 Grep vimgrep /<args>/ ** | copen
+command! -nargs=+ -complete=tag Grep call grep#search(<f-args>)
