@@ -38,6 +38,7 @@ set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q
 set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 
 " Searching {{{1
+set grepprg=grep\ -HIrn\ --exclude=tags\ --exclude='*.xib'\ --exclude-dir='*.xcodeproj'\ $*
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
