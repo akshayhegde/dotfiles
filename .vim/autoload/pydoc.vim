@@ -1,7 +1,11 @@
 " Run `pydoc` on a given string
 function! pydoc#run_pydoc(cmd)
-  let reg_save = @/
+  if !executable("pydoc")
+    echoerr "Cannot find 'pydoc'"
+    return
+  endif
 
+  let reg_save = @/
   silent! execute "pedit pydoc"
   wincmd p
   execute "-read! pydoc ".a:cmd
