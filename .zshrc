@@ -79,6 +79,16 @@ function mkcd {
     mkdir -p "$1" && cd "$1"
 }
 
+function vim {
+    if [[ $# -gt 0 ]]; then
+        env vim "$@"
+    elif [[ -f "Session.vim" ]]; then
+        env vim -S
+    else
+        env vim
+    fi
+}
+
 # Fetch the pull request on a local branch for easy diffing
 function pull_github_request {
     if [[ -z "$1" ]]; then
