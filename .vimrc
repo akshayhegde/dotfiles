@@ -23,7 +23,6 @@ set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
 " UI {{{1
-set synmaxcol=160
 set termguicolors
 set formatoptions+=1j
 set lazyredraw
