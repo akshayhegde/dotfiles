@@ -34,7 +34,7 @@ zstyle -e ':completion:*' hosts 'reply=()'
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 # Aliases {{{1
-alias grep="grep -I --color=auto --exclude-dir=backup --exclude-dir=*.{xcodeproj,git,svn,hg} --exclude={tags,Session.vim}"
+alias grep="grep -EI --color=auto --exclude-dir=backup --exclude-dir=*.{xcodeproj,git,svn,hg} --exclude={tags,Session.vim}"
 alias ggrep="git grep --break --heading --line-number"
 alias head='head -n $(( $LINES - 10 ))'
 alias pgrep="pgrep -l"
@@ -81,7 +81,11 @@ function mkcd {
 
 function vim {
     if [[ $# -gt 0 ]]; then
-        env vim "$@"
+        local -a args=()
+        for arg in $@; do
+            [[ -h "$arg" ]] && args+="$(readlink $arg)" || args+="$arg"
+        done
+        env vim "${args[@]}"
     elif [[ -f "Session.vim" ]]; then
         env vim -S
     else
