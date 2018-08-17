@@ -79,6 +79,14 @@ function mkcd {
     mkdir -p "$1" && cd "$1"
 }
 
+# Better process grep
+function pg {
+    process_list="$(ps ax -o pid,ppid,user,pcpu,pmem,rss,cputime,state,comm)"
+    head -n1 <(echo $process_list)
+    command grep -i --color "$1" <(echo $process_list)
+}
+
+# If a session file exists, open it, otherwise, open vim, resolving any symlink paths
 function vim {
     if [[ $# -gt 0 ]]; then
         local -a args=()
