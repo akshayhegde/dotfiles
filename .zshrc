@@ -59,17 +59,8 @@ export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
 
 # Functions {{{1
-# Go to the open Finder window's path
-function cdf {
-    target=$(osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)')
-    if [[ "$target" != "" ]]; then
-        cd "$target" || exit 1
-    else
-        echo -e 'There are no Finder windows!' >"$2"
-    fi
-}
 
-# Redirect info to vim to use vim keybindings, rather than emacs
+# Force info to use vim keybindings, rather than emacs
 function info {
     command info "$@" | vim -u NONE -N -RM -
 }
@@ -81,12 +72,12 @@ function mkcd {
 
 # Better process grep
 function pg {
-    process_list="$(ps ax -o pid,ppid,user,pcpu,pmem,rss,cputime,state,comm)"
-    head -n1 <(echo $process_list)
-    command grep -i --color "$1" <(echo $process_list)
+    process_list="$(ps ax -o pid,ppid,user,pcpu,pmem,rss,cputime,state,command)"
+    head -n1 <(echo "$process_list")
+    command grep -i --color "$1" <(echo "$process_list")
 }
 
-# If a session file exists, open it, otherwise, open vim, resolving any symlink paths
+# If a session file exists, open it, otherwise, open vim, resolving any symlinks
 function vim {
     if [[ $# -gt 0 ]]; then
         local -a args=()
@@ -101,24 +92,8 @@ function vim {
     fi
 }
 
-# Fetch the pull request on a local branch for easy diffing
-function pull_github_request {
-    if [[ -z "$1" ]]; then
-        echo "You forgot to specify the Pull Request id number!"
-    elif [[ -z "$2" ]]; then
-        echo "You forgot to specify a local branch!"
-    else
-        git fetch origin pull/"$1"/head:"$2"
-    fi
-}
-
-# Clear out completion caches and rebuild.
-function remove_compl_cache() {
-    rm -rf ~/.zcomp* ~/.cache/zcomp* && compinit
-}
-
 # Shows the most used shell commands.
-function history_stat() {
+function history_stat {
     history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head
 }
 
