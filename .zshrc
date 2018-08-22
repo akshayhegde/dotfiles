@@ -59,6 +59,13 @@ export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
 
 # Functions {{{1
+function ssh {
+    if [[ "$TERM" =~ "^tmux-256color" ]]; then
+        TERM=screen-256color command ssh "$@"
+    else
+        command ssh "$@"
+    fi
+}
 
 # Force info to use vim keybindings, rather than emacs
 function info {
