@@ -72,7 +72,7 @@ function mkcd {
 function pg {
     process_list="$(ps ax -o pid,ppid,user,pcpu,pmem,rss,cputime,state,command)"
     head -n1 <(echo "$process_list")
-    command grep -i --color "$1" <(echo "$process_list")
+    command grep -Ei --color "$1" <(echo "$process_list")
 }
 
 # If a session file exists, open it, otherwise, open vim, resolving any symlinks
