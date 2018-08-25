@@ -23,6 +23,10 @@ set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
 " UI {{{1
+if &term =~# '\(tmux\|screen\)-256color'
+  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+endif
 set termguicolors
 set formatoptions+=1j
 set lazyredraw
