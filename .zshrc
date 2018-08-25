@@ -25,7 +25,7 @@ zstyle -e ':completion:*' hosts 'reply=()'
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 # Aliases {{{1
-alias grep="grep -EI --color=auto --exclude-dir=backup --exclude-dir=*.{xcodeproj,git,svn,hg} --exclude={tags,Session.vim}"
+alias grep="grep -EI --color=auto"
 alias ggrep="git grep --break --heading --line-number"
 alias head='head -n $(( $LINES - 10 ))'
 alias pgrep="pgrep -l"
@@ -139,15 +139,14 @@ add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats '%F{yellow}%b%f%c%u'
+zstyle ':vcs_info:*' formats ' %F{green}[%b%f%c%u%F{green}]%f'
 zstyle ':vcs_info:*' stagedstr '%F{blue}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}.%f'
-zstyle ':vcs_info:*' actionformats '%F{yellow}%b%f|%F{red}%a%f%c%u'
+zstyle ':vcs_info:*' actionformats ' %F{green}[%b%f:%F{red}%a%f%c%u%F{green}]%f'
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
 function +vi-git-untracked() {
     [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
         hook_com[unstaged]+="%F{red}?%f"
 }
 
-PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m %F{green}%~%f %(#.#.$prompt_char) '
-RPROMPT=$'$vcs_info_msg_0_'
+PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m %F{blue}%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
