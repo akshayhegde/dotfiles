@@ -139,14 +139,14 @@ add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats ' %F{green}[%b%f%c%u%F{green}]%f'
+zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
 zstyle ':vcs_info:*' stagedstr '%F{blue}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}.%f'
-zstyle ':vcs_info:*' actionformats ' %F{green}[%b%f:%F{red}%a%f%c%u%F{green}]%f'
+zstyle ':vcs_info:*' actionformats ' %F{green}(%b%f:%F{red}%a%f%c%u%F{green})%f'
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
 function +vi-git-untracked() {
     [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
         hook_com[unstaged]+="%F{red}?%f"
 }
 
-PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m %F{blue}%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
+PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m:%F{blue}%-80<...<%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
