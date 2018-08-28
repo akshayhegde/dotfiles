@@ -1,12 +1,3 @@
-# Path
-fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
-path=(~/build/bin ~/build/sbin /usr/local/sbin ~/.bin $path)
-manpath=(~/build/share/man $manpath)
-
-typeset -U PATH
-typeset -U FPATH
-typeset -U MANPATH
-
 # Zsh
 export CORRECT_IGNORE='_*'
 export KEYTIMEOUT=1

@@ -1,5 +1,13 @@
 # ------------ ajh's .zshrc ------------
 # Styles {{{1
+# Path
+fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
+path=(~/build/bin ~/build/sbin /usr/local/sbin ~/.bin ~/.bin/opt $path)
+manpath=(~/build/share/man $manpath)
+
+typeset -U PATH
+typeset -U FPATH
+typeset -U MANPATH
 
 # Cache completions
 ZCACHEDIR=~/.cache/
@@ -149,4 +157,4 @@ function +vi-git-untracked() {
         hook_com[unstaged]+="%F{red}?%f"
 }
 
-PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m:%F{blue}%-80<...<%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
+PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m:%F{blue}%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
