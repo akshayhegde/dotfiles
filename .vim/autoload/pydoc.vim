@@ -6,13 +6,20 @@ function! pydoc#run_pydoc(cmd)
   endif
 
   let reg_save = @/
-  silent! execute "pedit pydoc"
-  wincmd p
-  execute "-read! pydoc ".a:cmd
-  set buftype=nofile
-  set syntax=python
-  silent! %s/\s\+$//g
-  wincmd p
+  try
+    silent! execute "pedit pydoc"
+    wincmd P
+    resize 20
 
-  let @/ = reg_save
+    execute "-read! pydoc ".a:cmd . " 2>&1 "
+    silent! %s/\s\+$//g
+    set buftype=nofile
+    set syntax=python
+    setlocal bufhidden=delete
+    normal! 1G
+
+    wincmd p
+  finally
+    let @/ = reg_save
+  endtry
 endfunction
