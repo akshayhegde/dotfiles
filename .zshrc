@@ -94,7 +94,7 @@ function vim {
     elif [[ -f "Session.vim" ]]; then
         env vim -S
     else
-        env vim
+        env vim -c LoadSession
     fi
 }
 

@@ -4,6 +4,7 @@
 .vim/pack/
 .vim/spell
 .vim/session
+.vim/cscope
 .vim/.netrwhist
 Session.vim
 .ipython/profile_default/history.sqlite

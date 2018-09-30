@@ -154,4 +154,6 @@ command! BD silent e# | bd#
 command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | redraw! | cwindow
 command! Lmake silent lmake! | redraw! | lwindow
+command! LoadSession call session#load_session()
+command! InitSession call session#init_session()
 command! -nargs=+ -complete=tag Grep call grep#search(<f-args>)
