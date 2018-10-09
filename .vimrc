@@ -18,8 +18,8 @@ set nojoinspaces
 set nofoldenable
 set nrformats-=octal
 set switchbuf=useopen,usetab
-set tags^=.git/tags
-set cscopetag
+set path=.,**
+set cscopetag tags^=.git/tags
 set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
@@ -60,11 +60,28 @@ set backup backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
 
 " Wildignore {{{1
-set wildignore+=tags,.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*,*.entitlements
-set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,*.xc*,*.xib,*.pbxproj,*.xcodeproj/**,*.xcassets/**,*.lproj/*
+set wildignore+=tags,.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*,*.entitle*,
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,.xc*,*.xib,*.tgz,*.gz,*.tbz*,*.pbxproj,
+set wildignore+=*/*.xc*/*,*/*.lproj/*
 
 " Mappings {{{1
 let g:mapleader = ' '
+
+" Helpers
+nnoremap Q gq
+nnoremap Y y$
+nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
+xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
+nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
+nnoremap ]q :cnext<CR>zz
+nnoremap [q :cprevious<CR>zz
+nnoremap ]l :lnext<CR>zz
+nnoremap [l :lprevious<CR>zz
+nnoremap coh :nohlsearch<CR>
+nnoremap col :set list! <bar> set list?<CR>
+nnoremap cos :set spell! <bar> set spell?<CR>
+nnoremap con :set relativenumber! number!<CR>
 
 " Switch between files
 nnoremap <leader>f :find *
@@ -85,24 +102,6 @@ nnoremap <expr> j  v:count == 0 ? 'gj' : 'j'
 nnoremap <expr> k  v:count == 0 ? 'gk' : 'k'
 nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
 nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
-
-" Remap some default keys to be more useful
-nnoremap Q gq
-nnoremap Y y$
-nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
-xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
-nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
-
-" The only mappings I used from vim-unimpaired
-nnoremap ]q :cnext<CR>zz
-nnoremap [q :cprevious<CR>zz
-nnoremap ]l :lnext<CR>zz
-nnoremap [l :lprevious<CR>zz
-nnoremap coh :nohlsearch<CR>
-nnoremap col :set list! <bar> set list?<CR>
-nnoremap cos :set spell! <bar> set spell?<CR>
-nnoremap con :set relativenumber! number!<CR>
 
 " Quicker cgn/cgN
 nnoremap <leader>* *``cgn
