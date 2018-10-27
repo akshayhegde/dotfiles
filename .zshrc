@@ -132,6 +132,7 @@ bindkey '^r' history-incremental-search-backward
 bindkey '^s' history-incremental-search-forward
 bindkey '^u' backward-kill-line
 bindkey '^y' yank
+bindkey '^w' backward-delete-word
 
 # Prompt {{{1
 function zle-line-init zle-keymap-select {
