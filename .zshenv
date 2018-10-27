@@ -3,6 +3,7 @@ export CORRECT_IGNORE='_*'
 export KEYTIMEOUT=1
 
 # General
+export ARCHFLAGS='-arch x86_64'
 export BROWSER='open'
 export EDITOR=vim
 export PAGER=less
