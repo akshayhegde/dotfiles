@@ -2,7 +2,7 @@
 # Styles {{{1
 # Path
 fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
-path=(~/build/bin ~/build/sbin /usr/local/sbin ~/.bin ~/.bin/opt $path)
+path=(~/build/bin ~/build/sbin ~/.cabal/bin /usr/local/sbin ~/.bin ~/.bin/opt $path)
 manpath=(~/build/share/man $manpath)
 
 typeset -U PATH
