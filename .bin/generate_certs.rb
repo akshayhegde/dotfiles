@@ -7,7 +7,7 @@ certs = certs_list.scan(
 )
 
 valid_certs = certs.select do |cert|
-  IO.popen("/Users/ajh/build/bin/openssl x509 -inform pem -checkend 0 -noout", "w") do |openssl_io|
+  IO.popen("/sw/opt/bin/openssl x509 -inform pem -checkend 0 -noout", "w") do |openssl_io|
     openssl_io.write(cert)
     openssl_io.close_write
   end
