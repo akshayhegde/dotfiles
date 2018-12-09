@@ -12,10 +12,6 @@ export LESS='--quit-if-one-screen --ignore-case --hilite-search --LONG-PROMPT --
 export LESSHISTFILE="$HOME/.cache/.lesshst"
 
 # Compilation
-export CFLAGS="-I/Users/ajh/build/include $CFLAGS"
-export CXXFLAGS="$CFLAGS $CXXFLAGS"
-export LDFLAGS="-L/Users/ajh/build/lib -L/usr/lib $LDFLAGS"
-
-typeset -U CFLAGS
-typeset -U CXXFLAGS
-typeset -U LDFLAGS
+export CPATH="/sw/include"
+export LIBRARY_PATH="/sw/lib"
+export LD_LIBRARY_PATH="/sw/lib"
