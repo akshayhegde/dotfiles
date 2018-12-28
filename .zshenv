@@ -2,8 +2,11 @@
 export CORRECT_IGNORE='_*'
 export KEYTIMEOUT=1
 
+# Zsh completions
+fpath=(/sw/share/zsh-completions ~/.zsh/Completion $fpath)
+typeset -U FPATH
+
 # General
-export ARCHFLAGS='-arch x86_64'
 export BROWSER='open'
 export EDITOR=vim
 export PAGER=less
@@ -12,6 +15,7 @@ export LESS='--quit-if-one-screen --ignore-case --hilite-search --LONG-PROMPT --
 export LESSHISTFILE="$HOME/.cache/.lesshst"
 
 # Compilation
+export ARCHFLAGS='-arch x86_64'
 export CPATH="/sw/include"
 export LIBRARY_PATH="/sw/lib"
 export LD_LIBRARY_PATH="/sw/lib"

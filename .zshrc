@@ -1,14 +1,7 @@
-# ------------ ajh's .zshrc ------------
-# Styles {{{1
-# Path
-fpath=(~/.zsh/Completion ~/build/share/zsh/site-functions $fpath)
-typeset -U FPATH
-
 # Cache completions
-ZCACHEDIR=~/.cache/
 zstyle ':completion:*' use-cache true
-zstyle ':completion' cache-path $ZCACHEDIR
-autoload -Uz compinit && compinit -i -C -d $ZCACHEDIR/zcompdump
+zstyle ':completion' cache-path $HOME
+autoload -Uz compinit && compinit -i -C -d $HOME/.zcompdump
 
 # Completion options.
 zstyle ':completion:*' menu select
@@ -27,7 +20,7 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle -e ':completion:*' hosts 'reply=()'
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
-# Aliases {{{1
+# Aliases
 alias grep="grep -EI --color=auto"
 alias ggrep="git grep --break --heading --line-number"
 alias head='head -n $(( $LINES - 10 ))'
@@ -39,7 +32,7 @@ alias ls="ls -GApH"
 alias mv="mv -vi"
 alias rm="rm -vi"
 
-# Settings {{{1
+# Settings
 setopt completeinword menucomplete chaselinks rmstarwait \
     cdablevars autopushd pushdsilent interactivecomments \
     promptsubst transientrprompt extendedglob globdots globstarshort \
@@ -47,12 +40,11 @@ setopt completeinword menucomplete chaselinks rmstarwait \
     histignorespace banghist
 unsetopt flowcontrol clobber nomatch
 
-# History {{{1
 export HISTFILE=$HOME/.cache/.zhistory
 export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
 
-# Functions {{{1
+# Functions
 function ssh {
     if [[ "$TERM" =~ "^tmux-256color" ]]; then
         TERM=screen-256color command ssh "$@"
@@ -98,7 +90,7 @@ function history_stat {
     history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head
 }
 
-# Key Remappings (Vi-mode) {{{1
+# Key Maps
 bindkey -v
 autoload -Uz edit-command-line
 zle -N edit-command-line
@@ -129,7 +121,6 @@ bindkey '^u' backward-kill-line
 bindkey '^y' yank
 bindkey '^w' backward-delete-word
 
-# Prompt {{{1
 function zle-line-init zle-keymap-select {
     prompt_char="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
@@ -142,6 +133,7 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 add-zsh-hook precmd vcs_info
 
+# Prompt
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
