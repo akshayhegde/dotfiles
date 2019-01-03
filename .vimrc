@@ -1,11 +1,11 @@
 " ------------ ajh's .vimrc ------------
-" Syntax, FileType, Colorscheme, RTP {{{1
+" Syntax, FileType, Colorscheme, RTP
 syntax on
 filetype plugin indent on
 colorscheme spacegray
 runtime macros/matchit.vim
 
-" General {{{1
+" General
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
@@ -23,7 +23,7 @@ set cscopetag tags^=.git/tags
 set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z>
 
-" UI {{{1
+" UI
 if &term =~# '\(tmux\|screen\)-256color'
   let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
   let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
@@ -36,35 +36,35 @@ set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set showcmd showbreak=↪
 set splitright
 
-" Statusline {{{1
+" Statusline
 set laststatus=2
 set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q
 set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
 
-" Searching {{{1
+" Searching
 set grepprg=grep\ -HIrn\ --exclude=tags\ --exclude='*.xib'\ --exclude-dir='*.xcodeproj'\ $*
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
 
-" Indenting {{{1
+" Indenting
 set autoindent
 set breakindent breakindentopt=shift:4,sbr
 set smarttab expandtab
 set softtabstop=4 shiftwidth=4 shiftround
 
-" Backup {{{1
+" Backup
 set history=200
 set noswapfile
 set backup backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
 
-" Wildignore {{{1
+" Wildignore
 set wildignore+=tags,.hg,.git,.svn,*.pyc,*.spl,*.o,*.out,*.DS_Store,*.class,*.manifest,*~,#*#,%*,*.entitle*,
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,.xc*,*.xib,*.tgz,*.gz,*.tbz*,*.pbxproj,
 set wildignore+=*/*.xc*/*,*/*.lproj/*
 
-" Mappings {{{1
+" Mappings
 let g:mapleader = ' '
 
 " Helpers
@@ -136,12 +136,12 @@ nnoremap g/ /\<\><left><left>
 nnoremap <leader>j :tjump /
 nnoremap <leader>J :ptjump /
 
-" Plugin/Filetype Settings {{{1
+" Plugin/Filetype Settings
 let g:python_highlight_all = 1
 let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 
-" Autocommands {{{1
+" Autocommands
 augroup VIMRC
   autocmd!
   autocmd BufReadPost * if &ft !~# 'commit' | silent! execute 'normal! g`"zzzv' | endif
@@ -149,7 +149,7 @@ augroup VIMRC
   autocmd InsertLeave * if bufname('%') != '[Command Line]' | pclose | endif
 augroup END
 
-" Commands {{{1
+" Commands
 command! BD silent e# | bd#
 command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | redraw! | cwindow
