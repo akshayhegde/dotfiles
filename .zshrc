@@ -28,7 +28,6 @@ alias pgrep="pgrep -l"
 alias gs="git status -sb"
 alias cp="cp -vip"
 alias rcp="rsync -av --info=progress2"
-alias ls="ls -GApH"
 alias mv="mv -vi"
 alias rm="rm -vi"
 
@@ -43,6 +42,7 @@ unsetopt flowcontrol clobber nomatch
 export HISTFILE=$HOME/.cache/.zhistory
 export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
+export PKG_PREFIX=/sw
 
 # Functions
 function ssh {
@@ -50,6 +50,14 @@ function ssh {
         TERM=screen-256color command ssh "$@"
     else
         command ssh "$@"
+    fi
+}
+
+function ls {
+    if [[ -x "${PKG_PREFIX}/bin/gls" ]]; then
+        "${PKG_PREFIX}/bin/gls" -hA --color "$@"
+    else
+        /bin/ls -hAG "$@"
     fi
 }
 
