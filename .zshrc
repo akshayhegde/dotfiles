@@ -21,15 +21,16 @@ zstyle -e ':completion:*' hosts 'reply=()'
 zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 # Aliases
-alias grep="grep -EI --color=auto"
-alias ggrep="git grep --break --heading --line-number"
-alias head='head -n $(( $LINES - 10 ))'
-alias pgrep="pgrep -l"
-alias gs="git status -sb"
 alias cp="cp -vip"
-alias rcp="rsync -av --info=progress2"
+alias ggrep="git grep --break --heading --line-number"
+alias grep="grep -EI --color=auto"
+alias gs="git status -sb"
+alias head='head -n $(( $LINES - 10 ))'
 alias mv="mv -vi"
+alias pgrep="pgrep -l"
+alias rcp="rsync -av --info=progress2"
 alias rm="rm -vi"
+alias tailf="tail -F"
 
 # Settings
 setopt completeinword menucomplete chaselinks rmstarwait \
