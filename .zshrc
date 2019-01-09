@@ -18,7 +18,6 @@ zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle -e ':completion:*' hosts 'reply=()'
-zstyle -e ':completion:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 # Aliases
 alias cp="cp -vip"
