@@ -38,8 +38,7 @@ set splitright
 
 " Statusline
 set laststatus=2
-set statusline=[%n]\ %f\ [%{&ff}/%{strlen(&fenc)?&fenc:&enc}/%{&ft}]\ %m%r%w%q
-set statusline+=%=%<[0x%B]\ [%P\ %l/%L\ at\ %c]
+set statusline=%f\ %y\ %m%r%w%q%=%-15(%{&ff}/%{strlen(&fenc)?&fenc:&enc}%)\ %-15(%l,%c%V:0x%B%)\ %P
 
 " Searching
 set grepprg=grep\ -HIrn\ --exclude=tags\ --exclude='*.xib'\ --exclude-dir='*.xcodeproj'\ $*
