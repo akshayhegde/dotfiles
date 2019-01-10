@@ -3,7 +3,7 @@ export CORRECT_IGNORE='_*'
 export KEYTIMEOUT=1
 
 # Zsh completions
-fpath=(/sw/share/zsh-completions /sw/share/zsh/functions /sw/share/zsh/help ~/.zsh/Completion $fpath)
+fpath=(/sw/share/zsh-completions /sw/share/zsh/functions ~/.zsh/Completion $fpath)
 typeset -U FPATH
 
 # General
