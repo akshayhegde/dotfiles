@@ -1,51 +1,69 @@
-# Cache completions
+# Settings
+setopt ALWAYS_TO_END
+setopt CHASE_LINKS
+setopt AUTO_PUSHD
+setopt PROMPT_SUBST
+setopt INTERACTIVE_COMMENTS
+setopt EXTENDED_GLOB GLOB_DOTS
+setopt HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
+unsetopt FLOW_CONTROL
+
+# Aliases
+unalias run-help 2>/dev/null
+alias cp='cp -vip'
+alias mv='mv -vi'
+alias rm='rm -vi'
+alias jobs='jobs -l'
+alias pgrep='pgrep -l'
+alias grep='grep -EI --color=auto'
+alias head='head -n $(( $LINES - 10 ))'
+
+# Modules
+autoload -Uz compinit
+autoload -Uz run-help
+autoload -Uz edit-command-line && zle -N edit-command-line
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+
+# Completions
 zstyle ':completion:*' use-cache true
 zstyle ':completion' cache-path $HOME
-autoload -Uz compinit && compinit -i -C -d $HOME/.zcompdump
+compinit -i -C -d $HOME/.zcompdump
 
-# Completion options.
 zstyle ':completion:*' menu select
-zstyle ':completion:*' verbose true
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' format '%F{yellow}Completing %d%f'
-zstyle ':completion:*' warnings '%F{red}No matches for: %d%f'
-zstyle ':completion:*' group-name ''
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
-zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,ppid,user,comm'
+zstyle ':completion:*' users ''
 zstyle -e ':completion:*' hosts 'reply=()'
 
-# Aliases
-alias cp="cp -vip"
-alias ggrep="git grep --break --heading --line-number"
-alias grep="grep -EI --color=auto"
-alias gs="git status -sb"
-alias head='head -n $(( $LINES - 10 ))'
-alias mv="mv -vi"
-alias pgrep="pgrep -l"
-alias rcp="rsync -av --info=progress2"
-alias rm="rm -vi"
-alias tailf="tail -F"
-
-# Settings
-setopt completeinword menucomplete chaselinks rmstarwait \
-    cdablevars autopushd pushdsilent interactivecomments \
-    promptsubst transientrprompt extendedglob globdots globstarshort \
-    incappendhistory histignoredups histignorealldups histreduceblanks \
-    histignorespace banghist
-unsetopt flowcontrol clobber nomatch
-
+# History
 export HISTFILE=$HOME/.cache/.zhistory
 export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
-export PKG_PREFIX=/sw
 
 # Functions
-function ssh {
+PKG_PREFIX=/sw
+
+ls() {
+    if [[ -x "${PKG_PREFIX}/bin/gls" ]]; then
+        "${PKG_PREFIX}/bin/gls" -hA --color=auto "$@"
+    else
+        command ls -hAG "$@"
+    fi
+}
+
+rcp() {
+    if [[ -x "${PKG_PREFIX}/bin/rsync" ]]; then
+        "${PKG_PREFIX}/bin/rsync" -av --info=progress2 "$@"
+    else
+        command rsync -av --progress "$@"
+    fi
+}
+
+ssh() {
     if [[ "$TERM" =~ "^tmux-256color" ]]; then
         TERM=screen-256color command ssh "$@"
     else
@@ -53,33 +71,29 @@ function ssh {
     fi
 }
 
-function ls {
-    if [[ -x "${PKG_PREFIX}/bin/gls" ]]; then
-        "${PKG_PREFIX}/bin/gls" -hA --color "$@"
-    else
-        /bin/ls -hAG "$@"
-    fi
-}
-
-# Force info to use vim keybindings, rather than emacs
-function info {
+info() {
     command info "$@" | vim -u NONE -N -RM -
 }
 
-# Create a directory and cd into it
-function mkcd {
-    mkdir -p "$1" && cd "$1"
+pgi() {
+    local process_list
+    local matched
+    process_list="$(ps ax -o pid,ppid,user,pcpu,rss,cputime,state,command)"
+    matched="$(echo "$process_list" | grep -Ei "$1")"
+
+    if [[ ! -z "$matched" ]]; then
+        echo "$process_list" | head -n1
+        if [[ -x "${PKG_PREFIX}/bin/gnumfmt" ]]; then
+            echo "$matched" | gnumfmt --field 5 --from-unit=1024 --to=si
+        else
+            echo "$matched"
+        fi
+    else
+        return 1
+    fi
 }
 
-# Better process grep
-function pgi {
-    process_list="$(ps ax -o pid,ppid,user,pcpu,pmem,rss,cputime,state,command)"
-    head -n1 <(echo "$process_list")
-    command grep -Ei --color "$1" <(echo "$process_list")
-}
-
-# If a session file exists, open it, otherwise, open vim, resolving any symlinks
-function vim {
+vim() {
     if [[ $# -gt 0 ]]; then
         local -a args=()
         for arg in $@; do
@@ -93,16 +107,8 @@ function vim {
     fi
 }
 
-# Shows the most used shell commands.
-function history_stat {
-    history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head
-}
-
 # Key Maps
 bindkey -v
-autoload -Uz edit-command-line
-zle -N edit-command-line
-
 bindkey -M vicmd "/" history-incremental-pattern-search-forward
 bindkey -M vicmd "?" history-incremental-pattern-search-backward
 bindkey -M vicmd '^g' what-cursor-position
@@ -129,27 +135,24 @@ bindkey '^u' backward-kill-line
 bindkey '^y' yank
 bindkey '^w' backward-delete-word
 
-function zle-line-init zle-keymap-select {
+zle-line-init zle-keymap-select() {
     prompt_char="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
 }
-
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
 
 zle -N zle-line-init
 zle -N zle-keymap-select
 add-zsh-hook precmd vcs_info
 
 # Prompt
-zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
 zstyle ':vcs_info:*' stagedstr '%F{blue}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}.%f'
 zstyle ':vcs_info:*' actionformats ' %F{green}(%b%f:%F{red}%a%f%c%u%F{green})%f'
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-function +vi-git-untracked() {
++vi-git-untracked() {
     [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
         hook_com[unstaged]+="%F{red}?%f"
 }
