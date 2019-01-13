@@ -72,7 +72,7 @@ ssh() {
 }
 
 info() {
-    command info "$@" | vim -u NONE -N -RM -
+    command info "$@" | vim -RMNu NONE -
 }
 
 pgi() {
@@ -104,6 +104,18 @@ vim() {
         env vim -S
     else
         env vim -c LoadSession
+    fi
+}
+
+peek() {
+    if (($# == 1)); then
+        if [[ ! -z "$TMUX" ]]; then
+            tmux split-window -hp33 "exec env vim $1"
+        else
+            command vim -RM "$1"
+        fi
+    else
+        printf >&2 'Usage: peek <file>\n'
     fi
 }
 
