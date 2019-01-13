@@ -135,16 +135,15 @@ bindkey '^u' backward-kill-line
 bindkey '^y' yank
 bindkey '^w' backward-delete-word
 
+# Prompt
+zle -N zle-line-init
+zle -N zle-keymap-select
 zle-line-init zle-keymap-select() {
     prompt_char="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
 }
 
-zle -N zle-line-init
-zle -N zle-keymap-select
 add-zsh-hook precmd vcs_info
-
-# Prompt
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
