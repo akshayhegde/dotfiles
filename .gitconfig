@@ -25,6 +25,7 @@
     patternType = perl
 [alias]
     # Helper
+    stat = status -sb
     unmerged = diff --name-only --diff-filter=U
     show-latest-changes = !git fetch && git log --oneline @..@{u}
     open-remote = !open "$(git remote -v | head -n1 | cut -f2 | cut -d' ' -f1 | sed -Ee 's%git(://)%https\\1%')"
