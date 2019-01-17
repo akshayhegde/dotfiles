@@ -27,10 +27,10 @@ autoload -Uz vcs_info
 # Completions
 zstyle ':completion:*' use-cache true
 zstyle ':completion' cache-path $HOME
-compinit -i -C -d $HOME/.zcompdump
+compinit -C -d $HOME/.zcompdump
 
-zstyle ':completion:*' menu select
-zstyle ':completion:*' completer _complete _match
+zstyle ':completion:*' menu selection
+zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-z\-}={A-Z\_}' 'r:|?=** m:{a-z\-}={A-Z\_}'
 zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,ppid,user,comm'
