@@ -150,8 +150,7 @@ zle-line-init zle-keymap-select() {
     prompt_char="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
 }
-
-add-zsh-hook precmd vcs_info
+precmd() { vcs_info }
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
