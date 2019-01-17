@@ -1,5 +1,4 @@
 # Settings
-setopt ALWAYS_TO_END
 setopt CHASE_LINKS
 setopt AUTO_PUSHD
 setopt PROMPT_SUBST
@@ -161,10 +160,4 @@ zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
 zstyle ':vcs_info:*' stagedstr '%F{blue}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}.%f'
 zstyle ':vcs_info:*' actionformats ' %F{green}(%b%f:%F{red}%a%f%c%u%F{green})%f'
-zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-+vi-git-untracked() {
-    [[ -n $(git ls-files --exclude-standard --others 2>/dev/null) ]] && \
-        hook_com[unstaged]+="%F{red}?%f"
-}
-
 PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m:%F{blue}%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
