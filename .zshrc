@@ -25,8 +25,6 @@ autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
 # Completions
-zstyle ':completion:*' use-cache true
-zstyle ':completion' cache-path $HOME
 compinit -C -d $HOME/.zcompdump
 
 zstyle ':completion:*' menu selection
