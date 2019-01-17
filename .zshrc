@@ -70,7 +70,7 @@ ssh() {
 }
 
 info() {
-    command info "$@" | vim -RMNu NONE -
+    command info "$@" | command vim -RMNu NONE -
 }
 
 pgi() {
@@ -97,18 +97,18 @@ vim() {
         for arg in $@; do
             [[ -h "$arg" ]] && args+="$(readlink $arg)" || args+="$arg"
         done
-        env vim "${args[@]}"
+        command vim "${args[@]}"
     elif [[ -f "Session.vim" ]]; then
-        env vim -S
+        command vim -S
     else
-        env vim -c LoadSession
+        command vim -c LoadSession
     fi
 }
 
 peek() {
     if (($# == 1)); then
         if [[ ! -z "$TMUX" ]]; then
-            tmux split-window -hp33 "exec env vim $1"
+            tmux split-window "exec command vim -RM $1"
         else
             command vim -RM "$1"
         fi
