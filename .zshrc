@@ -1,4 +1,5 @@
 # Settings
+setopt COMBINING_CHARS
 setopt CHASE_LINKS
 setopt AUTO_PUSHD
 setopt PROMPT_SUBST
