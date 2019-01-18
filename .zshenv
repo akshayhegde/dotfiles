@@ -1,5 +1,4 @@
 # Zsh
-export CORRECT_IGNORE='_*'
 export KEYTIMEOUT=1
 
 # Zsh completions

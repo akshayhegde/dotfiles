@@ -12,6 +12,7 @@ unalias run-help 2>/dev/null
 alias cp='cp -vip'
 alias mv='mv -vi'
 alias rm='rm -vi'
+alias rcp='rsync -av --progress'
 alias jobs='jobs -l'
 alias pgrep='pgrep -l'
 alias grep='grep -EI --color=auto'
@@ -33,6 +34,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z\-}={A-Z\_}' 'r:|?=** m:{a-z\-}={A
 zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,ppid,user,comm'
 zstyle ':completion:*' users ''
+zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'
 zstyle -e ':completion:*' hosts 'reply=()'
 
 # History
@@ -41,21 +43,11 @@ export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
 
 # Functions
-PKG_PREFIX=/sw
-
 ls() {
-    if [[ -x "${PKG_PREFIX}/bin/gls" ]]; then
-        "${PKG_PREFIX}/bin/gls" -hA --color=auto "$@"
+    if whence gls &>/dev/null; then
+        command gls -hA --color=auto "$@"
     else
         command ls -hAG "$@"
-    fi
-}
-
-rcp() {
-    if [[ -x "${PKG_PREFIX}/bin/rsync" ]]; then
-        "${PKG_PREFIX}/bin/rsync" -av --info=progress2 "$@"
-    else
-        command rsync -av --progress "$@"
     fi
 }
 
@@ -79,7 +71,7 @@ pgi() {
 
     if [[ ! -z "$matched" ]]; then
         echo "$process_list" | head -n1
-        if [[ -x "${PKG_PREFIX}/bin/gnumfmt" ]]; then
+        if whence gnumfmt &>/dev/null; then
             echo "$matched" | gnumfmt --field 5 --from-unit=1024 --to=si
         else
             echo "$matched"
