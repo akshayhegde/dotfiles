@@ -19,12 +19,15 @@ alias pgrep='pgrep -l'
 alias grep='grep -EI --color=auto'
 alias head='head -n $(( $LINES - 10 ))'
 
-# Modules
-autoload -Uz compinit
+# Widgets
 autoload -Uz run-help
-autoload -Uz edit-command-line && zle -N edit-command-line
+autoload -Uz edit-command-line
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
+zle -N edit-command-line
+zle -N zle-line-init
+zle -N zle-keymap-select
+autoload -Uz compinit
 
 # Completions
 compinit -C -d $HOME/.zcompdump
@@ -132,8 +135,6 @@ bindkey '^y' yank
 bindkey '^w' backward-delete-word
 
 # Prompt
-zle -N zle-line-init
-zle -N zle-keymap-select
 zle-line-init zle-keymap-select() {
     prompt_char="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
     zle reset-prompt
