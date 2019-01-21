@@ -106,7 +106,6 @@ let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 
 " Commands
-command! BD silent e# | bd#
 command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | redraw! | cwindow
 command! Lake silent lmake! | redraw! | lwindow

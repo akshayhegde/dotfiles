@@ -1,55 +1,29 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-function makelink {
-    local prev
-    local dst
+bootstrap() {
+    local iCloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
+    local targets=( '.vim' '.vimrc' '.xvimrc' '.zsh' '.zshrc' '.zshenv' '.ipython'
+    '.bin' '.tigrc' '.git_template' '.gitignore' '.gitconfig'
+    )
+    local candidate
+    local target
+    local dest
 
-    prev="$(pwd)"
-    [[ -n "$2" ]] && dst="$2" || dst="$HOME"
-    cd "$dst" || exit 1
+    for candidate in "${targets[@]}"; do
+        target="$(pwd)/${candidate}"
+        dest="$HOME"
+        if [[ -f "$target" ]]; then
+            ln -sfv -- "$target" "$dest"
+        elif [[ -d "$target" ]]; then
+            ln -sFv -- "$target" "$dest"
+        else
+            printf >&2 'No such file or directory: %s\n' "$target"
+        fi
+    done
 
-    echo -e "Linking $1 to $dst"
-    if [[ -d "$1" ]]; then
-        /bin/ln -sF "$1"
-    elif [[ -f "$1" ]]; then
-        /bin/ln -sf "$1"
-    else
-        echo -e "Could not find '$1', not linking!"
-    fi
-    cd "$prev"
+    mkdir -p "${HOME}/.vim/backup/undo"
+    ln -sFv -- "${iCloud}/Vim/pack" "${HOME}/.vim/pack"
+    ln -sFv -- "${iCloud}/Vim/spell" "${HOME}/.vim/spell"
 }
 
-function setup_vim {
-    makelink ~/dotfiles/.vim
-    makelink ~/dotfiles/.vimrc
-    makelink ~/dotfiles/.xvimrc
-
-    makelink ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/pack ~/.vim
-    makelink ~/Library/Mobile\ Documents/com~apple~CloudDocs/Vim/spell ~/.vim
-
-    mkdir -p ~/.vim/backup/undo
-}
-
-function setup_shell_tools {
-    cd "$HOME" || exit 1
-
-    makelink ~/dotfiles/.zsh
-    makelink ~/dotfiles/.zshrc
-    makelink ~/dotfiles/.zshenv
-
-    makelink ~/dotfiles/.ipython
-    makelink ~/dotfiles/.bin
-}
-
-function setup_git {
-    makelink ~/dotfiles/.tigrc
-    makelink ~/dotfiles/.git_template
-    makelink ~/dotfiles/.gitignore
-    makelink ~/dotfiles/.gitconfig
-}
-
-echo -e "Bootstrapping..."
-setup_vim
-setup_shell_tools
-setup_git
-echo -e "Done!"
+bootstrap
