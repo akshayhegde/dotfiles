@@ -1,6 +1,5 @@
-#!/bin/sh
-set -e
-PATH="/Users/ajh/build/bin:$PATH"
+#!/usr/bin/env zsh
+
 trap "rm -f .git/tags.$$" EXIT
-/Users/ajh/build/bin/ctags --tag-relative=yes -Rf.git/tags.$$ --exclude=.git --languages=-javascript,sql
+command ctags --tag-relative=yes -Rf.git/tags.$$ --exclude=.git --languages=-javascript,sql
 mv .git/tags.$$ .git/tags

@@ -2,7 +2,7 @@
 
 bootstrap() {
     local iCloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
-    local targets=( '.vim' '.vimrc' '.xvimrc' '.zsh' '.zshrc' '.zshenv' '.ipython'
+    local targets=( '.vim' '.vimrc' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
     '.bin' '.tigrc' '.git_template' '.gitignore' '.gitconfig'
     )
     local candidate
