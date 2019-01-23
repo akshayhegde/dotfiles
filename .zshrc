@@ -87,9 +87,9 @@ pgi() {
 }
 
 vim() {
-    if [[ $# -gt 0 ]]; then
+    if (($# > 0)); then
         local -a args=()
-        for arg in $@; do
+        for arg in "$@"; do
             [[ -h "$arg" ]] && args+="$(readlink $arg)" || args+="$arg"
         done
         command vim "${args[@]}"
