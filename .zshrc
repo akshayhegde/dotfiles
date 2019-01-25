@@ -15,7 +15,7 @@ alias mv='mv -vi'
 alias rm='rm -vi'
 alias rcp='rsync -av --progress'
 alias jobs='jobs -l'
-alias pgrep='pgrep -l'
+alias pgrep='pgrep -fla'
 alias grep='grep -EI --color=auto'
 alias head='head -n $(( $LINES - 10 ))'
 
