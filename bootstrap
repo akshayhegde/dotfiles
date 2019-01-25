@@ -2,9 +2,10 @@
 
 bootstrap() {
     local iCloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
-    local targets=( '.vim' '.vimrc' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
+    local -a targets=( '.vim' '.vimrc' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
     '.bin' '.tigrc' '.git_template' '.gitignore' '.gitconfig' '.tmux.conf'
     )
+    local -a vim_dirs=( 'Vim/pack' 'Vim/spell' )
     local candidate
     local target
     local dest
@@ -20,10 +21,17 @@ bootstrap() {
             printf >&2 'No such file or directory: %s\n' "$target"
         fi
     done
-
     mkdir -p "${HOME}/.vim/backup/undo"
-    ln -sFv -- "${iCloud}/Vim/pack" "${HOME}/.vim/pack"
-    ln -sFv -- "${iCloud}/Vim/spell" "${HOME}/.vim/spell"
+
+    for vim_dir in "${vim_dirs[@]}"; do
+        [[ ! -d "${iCloud}/${vim_dir}" ]] && continue
+        dest="${HOME}/.vim/$(basename "$vim_dir")"
+        if [[ -d "${dest}" ]]; then
+            printf -- 'Moving existing %s directory to Trash\n' "$dest"
+            mv -v --  "$dest" "${HOME}/.Trash"
+        fi
+        ln -sFv -- "${iCloud}/${vim_dir}" "${dest}"
+    done
 }
 
 bootstrap
