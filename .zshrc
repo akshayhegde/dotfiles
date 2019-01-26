@@ -30,8 +30,9 @@ zle -N zle-keymap-select
 autoload -Uz compinit
 
 # Completions
-compinit -C -d $HOME/.zcompdump
+compinit -C && { [[ ! -s "$HOME/.zcompdump.zwc" ]] && zcompile "$HOME/.zcompdump" }&!
 
+zstyle ':completion::complete:*' use-cache on
 zstyle ':completion:*' menu selection
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-z\-}={A-Z\_}' 'r:|?=** m:{a-z\-}={A-Z\_}'
