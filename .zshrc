@@ -6,7 +6,7 @@ setopt PROMPT_SUBST
 setopt INTERACTIVE_COMMENTS
 setopt EXTENDED_GLOB GLOB_DOTS
 setopt HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
-unsetopt FLOW_CONTROL
+unsetopt FLOW_CONTROL BANG_HIST
 
 # Aliases
 unalias run-help 2>/dev/null
@@ -144,7 +144,7 @@ precmd() { vcs_info }
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
+zstyle ':vcs_info:*' actionformats ' %F{green}(%b%f:%F{red}%a%f%c%u%F{green})%f'
 zstyle ':vcs_info:*' stagedstr '%F{blue}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}.%f'
-zstyle ':vcs_info:*' actionformats ' %F{green}(%b%f:%F{red}%a%f%c%u%F{green})%f'
 PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m:%F{blue}%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
