@@ -44,7 +44,7 @@ zstyle ':completion:*:*:*:groups' ignored-patterns 'com.*' '_*'
 zstyle -e ':completion:*' hosts 'reply=()'
 
 # History
-export HISTFILE=$HOME/.cache/.zhistory
+export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
 
