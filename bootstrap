@@ -32,6 +32,14 @@ bootstrap() {
         fi
         ln -sFv -- "${iCloud}/${vim_dir}" "${dest}"
     done
+
+    if [[ -d "${iCloud}/.weechat" ]]; then
+        if [[ -d "${HOME}/.weechat" ]]; then
+            printf -- 'Moving existing %s directory to Trash\n' "${HOME}/.weechat"
+            mv -v --  "${HOME}/.weechat" "${HOME}/.Trash"
+        fi
+        ln -sFv -- "${iCloud}/.weechat" "$HOME"
+    fi
 }
 
 bootstrap
