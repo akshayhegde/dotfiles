@@ -1,45 +1,39 @@
 #!/usr/bin/env bash
 
-bootstrap() {
-    local iCloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
-    local -a targets=( '.vim' '.vimrc' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
-    '.bin' '.tigrc' '.git_template' '.gitignore' '.gitconfig' '.tmux.conf'
-    )
-    local -a vim_dirs=( 'Vim/pack' 'Vim/spell' )
-    local candidate
-    local target
-    local dest
+dotlink() {
+    local src="$1"
+    local dest="$2"
+    local path
+    path="$dest/$(basename "$src")"
 
-    for candidate in "${targets[@]}"; do
-        target="$(pwd)/${candidate}"
-        dest="$HOME"
-        if [[ -f "$target" ]]; then
-            ln -sfv -- "$target" "$dest"
-        elif [[ -d "$target" ]]; then
-            ln -sFv -- "$target" "$dest"
-        else
-            printf >&2 'No such file or directory: %s\n' "$target"
-        fi
-    done
-    mkdir -p "${HOME}/.vim/backup/undo"
-
-    for vim_dir in "${vim_dirs[@]}"; do
-        [[ ! -d "${iCloud}/${vim_dir}" ]] && continue
-        dest="${HOME}/.vim/$(basename "$vim_dir")"
-        if [[ -d "${dest}" ]]; then
-            printf -- 'Moving existing %s directory to Trash\n' "$dest"
-            mv -v --  "$dest" "${HOME}/.Trash"
-        fi
-        ln -sFv -- "${iCloud}/${vim_dir}" "${dest}"
-    done
-
-    if [[ -d "${iCloud}/.weechat" ]]; then
-        if [[ -d "${HOME}/.weechat" ]]; then
-            printf -- 'Moving existing %s directory to Trash\n' "${HOME}/.weechat"
-            mv -v --  "${HOME}/.weechat" "${HOME}/.Trash"
-        fi
-        ln -sFv -- "${iCloud}/.weechat" "$HOME"
+    [[ ! -e "$src" ]] && return 1
+    if [[ -e "$path" && ! -L "$path" ]]; then
+        printf >&2 -- 'Moving non-linked %s to Trash.\n' "$path"
+        mv -v -- "$path" "$HOME/.Trash"
     fi
+
+    if [[ -d "$src" ]]; then
+        ln -sFv -- "$src" "$dest"
+    elif [[ -f "$src" ]]; then
+        ln -sfv -- "$src" "$dest"
+    fi
+}
+
+bootstrap() {
+    local iCloud="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+    local -a targets=('.vim' '.vimrc' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
+    '.bin' '.tigrc' '.git_template' '.gitignore' '.gitconfig' '.tmux.conf'
+    "$iCloud/.weechat")
+    local -a vim_targets=("$iCloud/Vim/pack" "$iCloud/Vim/spell")
+
+    local target
+    for target in "${targets[@]}"; do
+        dotlink "$(realpath "$target")" "$HOME"
+    done
+    for target in "${vim_targets[@]}"; do
+        dotlink "$(realpath "$target")" "$HOME/.vim"
+    done
+    mkdir -p "$HOME/.vim/backup/undo"
 }
 
 bootstrap
