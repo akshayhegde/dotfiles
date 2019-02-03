@@ -25,14 +25,13 @@ bootstrap() {
     '.bin' '.tigrc' '.git_template' '.gitignore' '.gitconfig' '.tmux.conf'
     "$iCloud/.weechat")
     local -a vim_targets=("$iCloud/Vim/pack" "$iCloud/Vim/spell")
+    local -a config_targets=('mpv')
 
     local target
-    for target in "${targets[@]}"; do
-        dotlink "$(realpath "$target")" "$HOME"
-    done
-    for target in "${vim_targets[@]}"; do
-        dotlink "$(realpath "$target")" "$HOME/.vim"
-    done
+    for target in "${targets[@]}";        do dotlink "$(realpath "$target")" "$HOME";         done
+    for target in "${vim_targets[@]}";    do dotlink "$(realpath "$target")" "$HOME/.vim";    done
+    for target in "${config_targets[@]}"; do dotlink "$(realpath "$target")" "$HOME/.config"; done
+
     mkdir -p "$HOME/.vim/backup/undo"
 }
 
