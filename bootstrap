@@ -19,6 +19,14 @@ dotlink() {
     fi
 }
 
+__realpath__() {
+    if type -p realpath &>/dev/null; then
+        command realpath "$@"
+    else
+        python -c "import os; print(os.path.realpath('$1'))" | tr -d '\n'
+    fi
+}
+
 bootstrap() {
     local iCloud="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
     local -a targets=('.vim' '.vimrc' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
@@ -28,9 +36,9 @@ bootstrap() {
     local -a config_targets=('mpv')
 
     local target
-    for target in "${targets[@]}";        do dotlink "$(realpath "$target")" "$HOME";         done
-    for target in "${vim_targets[@]}";    do dotlink "$(realpath "$target")" "$HOME/.vim";    done
-    for target in "${config_targets[@]}"; do dotlink "$(realpath "$target")" "$HOME/.config"; done
+    for target in "${targets[@]}";        do dotlink "$(__realpath__ "$target")" "$HOME";         done
+    for target in "${vim_targets[@]}";    do dotlink "$(__realpath__ "$target")" "$HOME/.vim";    done
+    for target in "${config_targets[@]}"; do dotlink "$(__realpath__ "$target")" "$HOME/.config"; done
 
     mkdir -p "$HOME/.vim/backup/undo"
 }
