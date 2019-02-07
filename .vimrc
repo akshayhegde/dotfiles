@@ -33,7 +33,6 @@ set lazyredraw
 set linebreak
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set showcmd showbreak=↪
-set splitright
 
 " Search
 set grepprg=grep\ -sHIrn
