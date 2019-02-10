@@ -6,7 +6,7 @@ setopt PROMPT_SUBST
 setopt INTERACTIVE_COMMENTS
 setopt EXTENDED_GLOB GLOB_DOTS
 setopt HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
-unsetopt FLOW_CONTROL BANG_HIST
+unsetopt FLOW_CONTROL
 
 # Aliases
 unalias run-help 2>/dev/null
@@ -70,17 +70,16 @@ info() {
 }
 
 pgi() {
-    local process_list
-    local matched
-    process_list="$(ps ax -o pid,ppid,user,pcpu,rss,cputime,state,command)"
+    local process_list header matched
+    process_list="$(ps ax -mo pid,ppid,pgid,pcpu,cputime,rss,state,tty,user,comm)"
     matched="$(echo "$process_list" | grep -Ei "$1")"
 
     if [[ ! -z "$matched" ]]; then
-        echo "$process_list" | head -n1
+        header="$(echo "$process_list" | head -n1)"
         if whence gnumfmt &>/dev/null; then
-            echo "$matched" | gnumfmt --field 5 --from-unit=1024 --to=si
+            printf '%s\n%s\n' "$header" "$matched" | gnumfmt --header --field 6 --from-unit=1024 --to=si | less
         else
-            echo "$matched"
+            printf '%s\n%s\n' "$matched" | less
         fi
     else
         return 1
