@@ -70,16 +70,17 @@ info() {
 }
 
 pgi() {
-    local process_list header matched
+    local process_list header matched mem_field
     process_list="$(ps ax -mo pid,ppid,pgid,pcpu,cputime,rss,state,tty,user,comm)"
-    matched="$(echo "$process_list" | grep -Ei "$1")"
+    matched="$(echo "$process_list" | grep -Ei --color=always "$1")"
 
     if [[ ! -z "$matched" ]]; then
         header="$(echo "$process_list" | head -n1)"
         if whence gnumfmt &>/dev/null; then
-            printf '%s\n%s\n' "$header" "$matched" | gnumfmt --header --field 6 --from-unit=1024 --to=si | less
+            mem_field="$(echo "$header" | awk '{for (i = 1; i <= NF; i++) { if ($i ~ "RSS") print i }}')"
+            printf '%s\n%s\n' "$header" "$matched" | gnumfmt --header --field "$mem_field" --from-unit=1024 --to=si | less
         else
-            printf '%s\n%s\n' "$matched" | less
+            printf '%s\n%s\n' "$header" "$matched" | less
         fi
     else
         return 1
