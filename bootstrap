@@ -1,29 +1,21 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 dotlink() {
     local src="$1"
     local dest="$2"
     local path
-    path="$dest/$(basename "$src")"
+    path="$dest/$src:t"
 
     [[ ! -e "$src" ]] && return 1
     if [[ -e "$path" && ! -L "$path" ]]; then
         printf >&2 -- 'Moving non-linked %s to Trash.\n' "$path"
-        mv -v -- "$path" "$HOME/.Trash"
+        /bin/mv -v -- "$path" "$HOME/.Trash"
     fi
 
     if [[ -d "$src" ]]; then
-        ln -sFv -- "$src" "$dest"
+        /bin/ln -sFv -- "$src" "$dest"
     elif [[ -f "$src" ]]; then
-        ln -sfv -- "$src" "$dest"
-    fi
-}
-
-__realpath__() {
-    if type -p realpath &>/dev/null; then
-        command realpath "$@"
-    else
-        python -c "import os; print(os.path.realpath('$1'))" | tr -d '\n'
+        /bin/ln -sfv -- "$src" "$dest"
     fi
 }
 
@@ -36,9 +28,9 @@ bootstrap() {
     local -a config_targets=('mpv')
 
     local target
-    for target in "${targets[@]}";        do dotlink "$(__realpath__ "$target")" "$HOME";         done
-    for target in "${vim_targets[@]}";    do dotlink "$(__realpath__ "$target")" "$HOME/.vim";    done
-    for target in "${config_targets[@]}"; do dotlink "$(__realpath__ "$target")" "$HOME/.config"; done
+    for target in "${targets[@]}";        do dotlink "$target:P" "$HOME";         done
+    for target in "${vim_targets[@]}";    do dotlink "$target:P" "$HOME/.vim";    done
+    for target in "${config_targets[@]}"; do dotlink "$target:P" "$HOME/.config"; done
 
     mkdir -p "$HOME/.vim/backup/undo"
 }
