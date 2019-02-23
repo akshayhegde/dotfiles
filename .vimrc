@@ -101,6 +101,7 @@ nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent
 
 " Filetype Settings
 let g:python_highlight_all = 1
+let [hs_highlight_types, hs_highlight_more_types, hs_highlight_debug] = [1, 1, 1]
 let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 
