@@ -2,7 +2,7 @@
 syntax on
 filetype plugin indent on
 colorscheme spacegray
-runtime macros/matchit.vim
+packadd! matchit
 
 " Basics
 set autoread
@@ -75,7 +75,7 @@ nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
 nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 nnoremap <expr> <leader>b buffer#switchBySplitting('horizontally')
 nnoremap <expr> <leader>B buffer#switchBySplitting('vertically')
-nnoremap <leader>l :ls<CR>:b
+nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>f :find *
 nnoremap <leader>F :find <C-r>=expand('%:p:h').'/**/*'<CR>
 nnoremap <leader>\ :vertical sfind *
