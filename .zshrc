@@ -70,6 +70,7 @@ info() {
 }
 
 pgi() {
+    (($# != 1)) && printf >&2 'pgi <pattern>\n' && return 1
     local process_list header matched mem_field
     process_list="$(ps ax -mo pid,ppid,pgid,pcpu,cputime,rss,state,tty,user,comm)"
     matched="$(echo "$process_list" | grep -Ei --color=always "$1")"
@@ -83,7 +84,7 @@ pgi() {
             printf '%s\n%s\n' "$header" "$matched" | less
         fi
     else
-        return 1
+        return 2
     fi
 }
 
