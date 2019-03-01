@@ -92,7 +92,7 @@ vim() {
     if (($# > 0)); then
         local -a args=()
         for arg in "$@"; do
-            [[ -h "$arg" ]] && args+="$(readlink $arg)" || args+="$arg"
+            [[ -h "$arg" ]] && args+="$arg:P" || args+="$arg"
         done
         command vim "${args[@]}"
     elif [[ -f "Session.vim" ]]; then
