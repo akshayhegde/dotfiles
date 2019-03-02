@@ -36,7 +36,7 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion:*' menu selection
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-z\-}={A-Z\_}' 'r:|?=** m:{a-z\-}={A-Z\_}'
-zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=01\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32
+zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=00\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32 ow=01
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,ppid,user,comm'
 zstyle ':completion:*:*:-command-:*:*' ignored-patterns '(_*|VCS_*|XPC_*)'
 zstyle ':completion:*:*:*:users' ignored-patterns daemon nobody '_*'
@@ -73,7 +73,7 @@ pgi() {
     (($# != 1)) && printf >&2 'pgi <pattern>\n' && return 1
     local process_list header matched mem_field
     process_list="$(ps ax -mo pid,ppid,pgid,pcpu,cputime,rss,state,tty,user,comm)"
-    matched="$(echo "$process_list" | grep -Ei --color=always "$1")"
+    matched="$(echo "$process_list" | grep -Ei "$1")"
 
     if [[ ! -z "$matched" ]]; then
         header="$(echo "$process_list" | head -n1)"
