@@ -129,7 +129,7 @@ bindkey '^a' vi-insert-bol
 bindkey '^_' run-help
 bindkey '^e' vi-add-eol
 bindkey '^k' kill-line
-bindkey '^n' insert-last-word
+bindkey '^[.' insert-last-word
 bindkey '^r' history-incremental-search-backward
 bindkey '^s' history-incremental-search-forward
 bindkey '^u' backward-kill-line
