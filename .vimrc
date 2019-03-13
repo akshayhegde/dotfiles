@@ -65,8 +65,6 @@ nnoremap coh :nohlsearch<CR>
 nnoremap col :set list! <bar> set list?<CR>
 nnoremap cos :set spell! <bar> set spell?<CR>
 nnoremap con :set relativenumber! number!<CR>
-nnoremap <leader>v ^vg_
-nnoremap <leader>w m`:let @s = @/<CR>:silent! %s/\s\+$//<CR>:let @/ = @s<CR>:nohl<CR>``
 
 " Navigation
 nnoremap <expr> j  v:count == 0 ? 'gj' : 'j'
@@ -103,7 +101,6 @@ nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent
 let g:python_highlight_all = 1
 let [hs_highlight_types, hs_highlight_more_types, hs_highlight_debug] = [1, 1, 1]
 let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
-let [netrw_winsize, netrw_banner, netrw_liststyle] = [20, 0, 3]
 
 " Commands
 command! Scriptnames call setqflist(scripts#get()) | copen
