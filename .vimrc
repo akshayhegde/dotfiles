@@ -53,49 +53,46 @@ set noswapfile
 set backup backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
 
-" Maps
-let g:mapleader = ' '
-
-" Helpers
+" Keymaps
 nnoremap Q gq
 nnoremap Y y$
 nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
-nnoremap zS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
+nnoremap zy :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 nnoremap coh :nohlsearch<CR>
 nnoremap col :set list! <bar> set list?<CR>
 nnoremap cos :set spell! <bar> set spell?<CR>
 nnoremap con :set relativenumber! number!<CR>
-
-" Navigation
 nnoremap <expr> j  v:count == 0 ? 'gj' : 'j'
 nnoremap <expr> k  v:count == 0 ? 'gk' : 'k'
 nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
 nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
-nnoremap <expr> <leader>b buffer#switchBySplitting('horizontally')
-nnoremap <expr> <leader>B buffer#switchBySplitting('vertically')
-nnoremap <leader>l :ls<CR>:b<space>
-nnoremap <leader>f :find *
-nnoremap <leader>F :find <C-r>=expand('%:p:h').'/**/*'<CR>
-nnoremap <leader>\ :vertical sfind *
-nnoremap <leader><bar> :vertical sfind <C-r>=expand('%:p:h').'/**/*'<CR>
-nnoremap <leader>- :sfind *
-nnoremap <leader>_ :sfind <C-r>=expand('%:p:h').'/**/*'<CR>
-nnoremap <leader>j :tjump /
-nnoremap <leader>J :ptjump /
+
+" Navigation
+nnoremap gl :ls<CR>:buffer<space>
+nnoremap gs :ls<CR>:sbuffer<space>
+nnoremap g\ :ls<CR>:vertical sbuffer<space>
+nnoremap g<space> :find *
+nnoremap g: :find <C-r>=expand('%:p:h').'/**/*'<CR>
+nnoremap z\ :vertical sfind *
+nnoremap z<bar> :vertical sfind <C-r>=expand('%:p:h').'/**/*'<CR>
+nnoremap z" :sfind *
+nnoremap z' :sfind <C-r>=expand('%:p:h').'/**/*'<CR>
+nnoremap z} :tjump /
+nnoremap zP :ptjump /
 
 " Searching
-nnoremap <leader>* *``cgn
-nnoremap <leader># #``cgN
+nnoremap cg* *``cgn
+nnoremap cg# #``cgN
 nnoremap g/ /\<\><left><left>
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
-nnoremap <leader>s viw:<C-u>Grep <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
-xnoremap <leader>s :<C-u>Grep <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
+nnoremap zS viw:<C-u>Grep <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
+xnoremap zS :<C-u>Grep <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 
 " Git
-nnoremap <leader>gb :echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
-nnoremap <leader>go :silent !tig<CR>:silent redraw!<CR>
-nnoremap <leader>gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
+nnoremap gb :echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
+nnoremap gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
+nnoremap gO :silent !tig<CR>:silent redraw!<CR>
 
 " Filetype Settings
 let g:python_highlight_all = 1
