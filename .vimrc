@@ -68,17 +68,17 @@ nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
 nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 
 " Navigation
-nnoremap gl :ls<CR>:buffer<space>
+nnoremap g<CR> :ls<CR>:buffer<space>
 nnoremap gs :ls<CR>:sbuffer<space>
 nnoremap g\ :ls<CR>:vertical sbuffer<space>
-nnoremap g<space> :find *
-nnoremap g: :find <C-r>=expand('%:p:h').'/**/*'<CR>
+nnoremap z, :find *
+nnoremap z< :find ./<C-r>=expand('%:h').'/**/*'<CR>
 nnoremap z\ :vertical sfind *
-nnoremap z<bar> :vertical sfind <C-r>=expand('%:p:h').'/**/*'<CR>
-nnoremap z" :sfind *
-nnoremap z' :sfind <C-r>=expand('%:p:h').'/**/*'<CR>
+nnoremap z<bar> :vertical sfind ./<C-r>=expand('%:h').'/**/*'<CR>
+nnoremap z' :sfind *
+nnoremap z" :sfind ./<C-r>=expand('%:h').'/**/*'<CR>
 nnoremap z} :tjump /
-nnoremap zP :ptjump /
+nnoremap zp :ptjump /
 
 " Searching
 nnoremap cg* *``cgn
