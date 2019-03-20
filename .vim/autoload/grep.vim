@@ -11,7 +11,8 @@ function grep#search(...)
     for arg in a:000
       let grep_args .= ' ' . arg
     endfor
-    if &grepprg !~# 'git' && !isdirectory(get(split(grep_args), -1))
+    let last_arg = get(split(grep_args), -1)
+    if &grepprg !~# 'git' && (!isdirectory(last_arg) && !filereadable(last_arg))
       let grep_args .= ' .'
       echom "grep args = ". grep_args
     endif

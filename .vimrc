@@ -105,7 +105,7 @@ command! Make silent make! | redraw! | cwindow
 command! Lake silent lmake! | redraw! | lwindow
 command! LoadSession call session#load_session()
 command! InitSession call session#init_session()
-command! -nargs=+ -complete=tag Grep call grep#search(<f-args>)
+command! -nargs=+ -complete=dir Grep call grep#search(<f-args>)
 
 augroup VIMRC
   autocmd!
