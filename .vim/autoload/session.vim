@@ -22,7 +22,7 @@ function! session#init_session()
   let session_file = sessions_dir . current_workspace . "/Session.vim"
 
   if filereadable(session_file)
-    call session#load_session()
+    return session#load_session()
   endif
 
   let new_session_path = fnameescape(expand(sessions_dir . current_workspace))
