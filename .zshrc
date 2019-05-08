@@ -79,9 +79,9 @@ pgi() {
         header="$(echo "$process_list" | head -n1)"
         if whence numfmt &>/dev/null; then
             mem_field="$(echo "$header" | awk '{for (i = 1; i <= NF; i++) { if ($i ~ "RSS") print i }}')"
-            printf '%s\n%s\n' "$header" "$matched" | numfmt --header --field "$mem_field" --from-unit=1024 --to=si | less
+            printf '%s\n%s\n' "$header" "$matched" | numfmt --header --field "$mem_field" --from-unit=1024 --to=si
         else
-            printf '%s\n%s\n' "$header" "$matched" | less
+            printf '%s\n%s\n' "$header" "$matched"
         fi
     else
         return 2
