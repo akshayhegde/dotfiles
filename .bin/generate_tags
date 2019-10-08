@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+generate_tags() {
+    local file_types_to_consider=( '*.py' '*.sh' '*.c' '*.h' '*.swift' '*.cpp' )
+    local cscope_dir="${HOME}/.vim/cscope"
+
+    current_dir="$(basename "$(pwd)")"
+    cscope_workspace="${cscope_dir}/${current_dir}"
+
+    if [[ ! -d "$cscope_workspace" ]]; then
+        mkdir -p -- "$cscope_workspace"
+    fi
+
+    find_cmd='find . -type f \('
+    for file_type in "${file_types_to_consider[@]}"; do
+        local operator='-name'
+        [[ "$find_cmd" =~ '-name' ]] && operator='-o -name'
+        find_cmd="$find_cmd $operator '$file_type'"
+    done
+    find_cmd="$find_cmd \\) > cscope.files"
+
+    printf 'Finding files for cscope for %s using: %s\n' "$current_dir" "$find_cmd"
+    if ! eval "$find_cmd"; then
+        printf 'Failed to generate cscope files\n' >&2
+        return 1
+    else
+        cscope -bCqv && mv -- cscope.* "${cscope_workspace}/"
+    fi
+
+}
+
+generate_tags
