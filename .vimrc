@@ -42,7 +42,6 @@ set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
 set cscopetag tags^=.git/tags
-set path=.,**
 
 " Indent
 set autoindent
@@ -51,8 +50,8 @@ set smarttab expandtab
 set softtabstop=4 shiftwidth=4 shiftround
 
 " Backup
-set noswapfile
-set backup backupdir=~/.vim/backup/
+set directory^=~/.vim/swap/
+set backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
 
 " Keymaps
@@ -73,12 +72,9 @@ nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 nnoremap g<CR> :ls<CR>:buffer<space>
 nnoremap gs :ls<CR>:sbuffer<space>
 nnoremap g\ :ls<CR>:vertical sbuffer<space>
-nnoremap z, :find *
-nnoremap z< :find ./<C-r>=expand('%:h').'/**/*'<CR>
-nnoremap z\ :vertical sfind *
-nnoremap z<bar> :vertical sfind ./<C-r>=expand('%:h').'/**/*'<CR>
-nnoremap z' :sfind *
-nnoremap z" :sfind ./<C-r>=expand('%:h').'/**/*'<CR>
+nnoremap z, :find ./**/*
+nnoremap z\ :vertical sfind ./**/*
+nnoremap z' :sfind ./**/*
 nnoremap z} :tjump /
 nnoremap zp :ptjump /
 
