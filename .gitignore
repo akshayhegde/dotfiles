@@ -1,7 +1,7 @@
 .DS_Store
 .vim/backup
 .vim/custom-dictionary.utf-8.add
-.vim/pack/
+.vim/pack
 .vim/spell
 .vim/session
 .vim/cscope
