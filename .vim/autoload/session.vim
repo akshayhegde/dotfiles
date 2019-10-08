@@ -15,6 +15,7 @@ function session#check()
   if filereadable(session_file)
     return 'source ' . session_file . ' | ' . s:init_cscope()
   endif
+  return s:init_cscope()
 endfunction
 
 function session#mk()
