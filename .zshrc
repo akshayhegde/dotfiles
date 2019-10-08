@@ -57,6 +57,10 @@ ls() {
     fi
 }
 
+make() {
+    command make -j"$(sysctl -n hw.logicalcpu_max)" "$@"
+}
+
 ssh() {
     if [[ "$TERM" =~ "^tmux-256color" ]]; then
         TERM=screen-256color command ssh "$@"
