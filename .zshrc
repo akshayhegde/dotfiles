@@ -124,6 +124,8 @@ bindkey -M vicmd "/" history-incremental-pattern-search-forward
 bindkey -M vicmd "?" history-incremental-pattern-search-backward
 bindkey -M vicmd '^g' what-cursor-position
 bindkey -M vicmd '^x^e' edit-command-line
+bindkey -M viins '^p' up-line-or-history
+bindkey -M viins '^n' down-line-or-history
 bindkey '^x^e' edit-command-line
 bindkey '^?' backward-delete-char
 bindkey '^[[A' history-beginning-search-backward
