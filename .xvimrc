@@ -7,33 +7,20 @@ set ignorecase
 set smartcase
 set nowrap
 set wrapscan
-set laststatus=0
 
 " Mappings {{{1
 " Vim Mappings {{{2
 nmap Y y$
 nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
-" Whitespace removal
-nmap :w<CR> :%s/^\s+$//g<CR>:w<CR>:echo "Written and trimmed whitespace"<CR>
-
-" Poor man's surround.vim
-nmap <space>` gewi`<ESC>ea`<ESC>
-nmap <space>' gewi'<ESC>ea'<ESC>
-nmap <space>" gewi"<ESC>ea"<ESC>
-
-" Windows
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nmap <space>w :%s/^\s+$//g<CR>
 
 " Xcode Mappings {{{2
 nmap gcc :xccmd commentAndUncommentCurrentLines<CR>
 vmap gc :xccmd commentAndUncommentCurrentLines<CR>
 
 " Navigation
-nmap <space>f :xcmenucmd Open Quickly...<CR>
+nmap z, :xcmenucmd Open Quickly...<CR>
 nmap <space>n :nissue<CR>
 nmap <space>p :pissue<CR>
 nmap <space>i :xcmenucmd Jump to Generated Interface<CR>
