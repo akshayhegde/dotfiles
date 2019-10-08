@@ -20,7 +20,7 @@ set switchbuf=useopen,usetab
 set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o
 set sessionoptions-=options sessionoptions-=blank
-set diffopt=internal,algorithm:patience
+set diffopt+=algorithm:histogram,indent-heuristic
 
 " UI
 if &term =~# '\(tmux\|screen\)-256color'

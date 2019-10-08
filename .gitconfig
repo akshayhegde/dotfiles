@@ -41,6 +41,7 @@
     refs = reflog -10
 [diff]
     tool = vdwrap
+    algorithm = histogram
 [difftool]
     prompt = false
 [difftool "vdwrap"]
