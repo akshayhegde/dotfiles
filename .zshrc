@@ -99,10 +99,8 @@ vim() {
             [[ -h "$arg" ]] && args+="$arg:P" || args+="$arg"
         done
         command vim "${args[@]}"
-    elif [[ -f "Session.vim" ]]; then
-        command vim -S
     else
-        command vim -c LoadSession
+        command vim
     fi
 }
 

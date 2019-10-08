@@ -19,6 +19,8 @@ set nrformats-=octal
 set switchbuf=useopen,usetab
 set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o
+set sessionoptions-=options sessionoptions-=blank
+set diffopt=internal,algorithm:patience
 
 " UI
 if &term =~# '\(tmux\|screen\)-256color'
@@ -103,12 +105,12 @@ let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 command! Scriptnames call setqflist(scripts#get()) | copen
 command! Make silent make! | redraw! | cwindow
 command! Lmake silent lmake! | redraw! | lwindow
-command! LoadSession call session#load_session()
-command! InitSession call session#init_session()
 command! -nargs=+ -complete=dir Grep call grep#search(<f-args>)
 
 augroup VIMRC
   autocmd!
   autocmd BufReadPost * if &ft !~# 'commit' | silent! execute 'normal! g`"zzzv' | endif
   autocmd BufWritePost * if &diff | diffupdate | endif
+  autocmd VimEnter * nested if !argc() && empty(v:this_session) | execute session#check() | endif
+  autocmd VimLeavePre * if !empty(v:this_session) | execute session#save() | endif
 augroup END

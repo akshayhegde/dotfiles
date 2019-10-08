@@ -1,35 +1,28 @@
-function! session#load_session()
-  let sessions_dir = expand("~/.vim/sessions/")
-  let current_workspace = fnamemodify(getcwd(), ':t')
-  let session_file = sessions_dir . current_workspace . "/Session.vim"
+function s:session_file()
+  return fnameescape(expand("~/.vim/sessions/") . fnamemodify(getcwd(), ':t') . "/Session.vim")
+endfunction
 
-  let cscope_dir = expand("~/.vim/cscope/")
-  let cscope_db = cscope_dir . current_workspace
+function s:init_cscope()
+  let cscope_db = fnameescape(expand("~/.vim/cscope/") . fnamemodify(getcwd(), ':t'))
   let cscope_conn = cscope_db . '/cscope.out'
-
-  if filereadable(session_file)
-    execute 'source' fnameescape(session_file)
-  endif
-
   if executable('cscope') && has('cscope') && filereadable(cscope_conn)
-    execute 'cscope add' cscope_db
+    return 'cscope add ' . cscope_db
   endif
 endfunction
 
-function! session#init_session()
-  let sessions_dir = expand("~/.vim/sessions/")
-  let current_workspace = fnamemodify(getcwd(), ':t')
-  let session_file = sessions_dir . current_workspace . "/Session.vim"
-
+function session#check()
+  let session_file = s:session_file()
   if filereadable(session_file)
-    return session#load_session()
+    return 'source ' . session_file . ' | ' . s:init_cscope()
   endif
+endfunction
 
-  let new_session_path = fnameescape(expand(sessions_dir . current_workspace))
-  call mkdir(new_session_path)
-  if exists(':Obsession')
-    execute 'Obsession' new_session_path
-  else
-    execute 'mksession' session_file
-  endif
+function session#mk()
+  let session_file = s:session_file()
+  call mkdir(fnamemodify(session_file, ':h'), 'p', 0700)
+  return 'mksession ' . session_file . ' | '. s:init_cscope()
+endfunction
+
+function! session#save()
+  return 'mksession! ' . s:session_file()
 endfunction
