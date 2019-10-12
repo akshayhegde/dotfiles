@@ -1,15 +1,11 @@
-export PKG_PREFIX=/usr/local
 export KEYTIMEOUT=1
 export BROWSER='open'
 export EDITOR=vim
 export PAGER=less
 export MANPAGER=$PAGER
 export LESS='--ignore-case --hilite-search --LONG-PROMPT --RAW-CONTROL-CHARS --no-init'
-export ARCHFLAGS='-arch x86_64'
-export LD_LIBRARY_PATH="${PKG_PREFIX}/lib:/usr/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
 
-#fpath=("${PKG_PREFIX}/share/zsh-completions" "${PKG_PREFIX}/share/zsh/functions" "${PKG_PREFIX}/share/zsh/site-functions" "$fpath")
-
+fpath=("/usr/local/share/zsh-completions" "/usr/local/share/zsh/functions" "/usr/local/share/zsh/site-functions" $fpath)
 typeset -U FPATH
 
 export LS_COLORS="$(printf '%s' 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33' \
