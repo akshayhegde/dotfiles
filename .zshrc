@@ -142,7 +142,7 @@ bindkey '^w' backward-delete-word
 
 # Prompt
 zle-line-init zle-keymap-select() {
-    prompt_char="${${KEYMAP/vicmd/%%}/(main|viins)/$}"
+    prompt_char="${${KEYMAP/vicmd/:}/(main|viins)/%%}"
     zle reset-prompt
 }
 precmd() { vcs_info }
