@@ -1,5 +1,6 @@
 .DS_Store
 .vim/backup
+.vim/swap
 .vim/custom-dictionary.utf-8.add
 .vim/pack
 .vim/spell
