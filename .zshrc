@@ -142,14 +142,14 @@ bindkey '^w' backward-delete-word
 
 # Prompt
 zle-line-init zle-keymap-select() {
-    prompt_char="${${KEYMAP/vicmd/:}/(main|viins)/%%}"
+    prompt_char="${${KEYMAP/vicmd/>}/(main|viins)/%%}"
     zle reset-prompt
 }
 precmd() { vcs_info }
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats ' %F{green}(%b%f%c%u%F{green})%f'
-zstyle ':vcs_info:*' actionformats ' %F{green}(%b%f:%F{red}%a%f%c%u%F{green})%f'
+zstyle ':vcs_info:*' formats ' %F{green}%b%f%c%u%F{green}%f'
+zstyle ':vcs_info:*' actionformats ' %F{green}%b%f:%F{red}%a%f%c%u%F{green}%f'
 zstyle ':vcs_info:*' stagedstr '%F{blue}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}.%f'
-PROMPT=$'%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m:%F{blue}%~%f${vcs_info_msg_0_} %(#.#.$prompt_char) '
+PROMPT=$'[%(0?,,%F{red}%? )%(#.%F{1}.%f)%n%f@%m:%F{blue}%~%f${vcs_info_msg_0_}]%(#.#.$prompt_char) '
