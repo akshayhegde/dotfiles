@@ -1,5 +1,4 @@
 " ~/.xvimrc - Read by the XVim plugin for Xcode.
-" General settings {{{1
 set clipboard=unnamed
 set relativenumber
 set number
@@ -8,30 +7,8 @@ set smartcase
 set nowrap
 set wrapscan
 
-" Mappings {{{1
-" Vim Mappings {{{2
 nmap Y y$
 nmap S i<CR><ESC>^m`gk:s/ +$//<CR>``
 
-nmap <space>w :%s/^\s+$//g<CR>
-
-" Xcode Mappings {{{2
-nmap gcc :xccmd commentAndUncommentCurrentLines<CR>
-vmap gc :xccmd commentAndUncommentCurrentLines<CR>
-
 " Navigation
 nmap z, :xcmenucmd Open Quickly...<CR>
-nmap <space>n :nissue<CR>
-nmap <space>p :pissue<CR>
-nmap <space>i :xcmenucmd Jump to Generated Interface<CR>
-
-" Show
-nmap <space>g :xcmenucmd History...<CR>
-nmap <space>F :xccmd showInFinder<CR>
-nmap <space>D :xccmd showDeveloperDocumentation<CR>
-nmap <space>d :xcmenucmd Quick Help for Selected Item<CR>
-
-" Toggle Toolbars
-nmap <space>h :xccmd toggleNavigatorsVisibility<CR>
-nmap <space>j :xccmd toggleDebuggerVisibility<CR>
-nmap <space>l :xccmd toggleUtilitiesVisibility<CR>
