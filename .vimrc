@@ -28,7 +28,7 @@ if &term =~# '\(tmux\|screen\)-256color'
 endif
 set termguicolors
 set laststatus=2
-set statusline=%f\ %y\ %m%r%w%q%=%-15(%{&ff}/%{strlen(&fenc)?&fenc:&enc}%)\ %-15(%l,%c%V:0x%B%)\ %P
+set statusline=[%n]\ %f\ %y\ %m%r%w%q%=%-15(%{&ff}/%{strlen(&fenc)?&fenc:&enc}%)\ %-15(%l,%c%V:0x%B%)\ %P
 set formatoptions+=1j
 set lazyredraw
 set linebreak
