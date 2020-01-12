@@ -26,7 +26,6 @@ generate_tags() {
     else
         cscope -bCqv && mv -- cscope.* "${cscope_workspace}/"
     fi
-
 }
 
 generate_tags

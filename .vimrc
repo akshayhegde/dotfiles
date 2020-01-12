@@ -105,8 +105,7 @@ command! -nargs=+ -complete=dir Grep call grep#search(<f-args>)
 
 augroup VIMRC
   autocmd!
-  autocmd BufReadPost * if &ft !~# 'commit' | silent! execute 'normal! g`"zzzv' | endif
   autocmd BufWritePost * if &diff | diffupdate | endif
-  autocmd VimEnter * nested execute (!argc() && empty(v:this_session)) ? session#check() : session#init_cscope()
+  autocmd VimEnter * nested execute session#load()
   autocmd VimLeavePre * if !empty(v:this_session) | execute session#save() | endif
 augroup END
