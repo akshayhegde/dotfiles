@@ -1,7 +1,5 @@
 " ~/.xvimrc - Read by the XVim plugin for Xcode.
 set clipboard=unnamed
-set relativenumber
-set number
 set ignorecase
 set smartcase
 set nowrap

@@ -49,6 +49,7 @@ set smarttab expandtab
 set softtabstop=4 shiftwidth=4 shiftround
 
 " Backup
+set history=2000
 set directory^=~/.vim/swap/
 set backupdir=~/.vim/backup/
 set undofile undodir=~/.vim/backup/undo/
