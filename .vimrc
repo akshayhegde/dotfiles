@@ -2,7 +2,6 @@
 syntax on
 filetype plugin indent on
 colorscheme spacegray
-packadd! matchit
 
 " Basics
 set autoread
