@@ -1,4 +1,5 @@
 setlocal textwidth=89
+setlocal shiftwidth=2 softtabstop=2
 let &errorformat = '%E%f:%l:%c: fatal error: %m,' .
       \ '%E%f:%l:%c: error: %m,' .
       \ '%W%f:%l:%c: warning: %m,' .
