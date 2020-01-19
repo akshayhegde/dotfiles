@@ -17,7 +17,7 @@ set nofoldenable
 set nrformats-=octal
 set switchbuf=useopen,usetab
 set ttimeout ttimeoutlen=50
-set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o
+set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o,*.xcodeproj/*
 set sessionoptions-=options sessionoptions-=blank
 set diffopt+=algorithm:histogram,indent-heuristic
 
@@ -106,6 +106,7 @@ command! -nargs=+ -complete=dir Grep call grep#search(<f-args>)
 augroup VIMRC
   autocmd!
   autocmd BufWritePost * if &diff | diffupdate | endif
+  autocmd SwapExists * if getftime(v:swapname) >= getftime(expand("%:p")) | let v:swapchoice = 'o' | endif
   autocmd VimEnter * nested execute session#load()
   autocmd VimLeavePre * if !empty(v:this_session) | execute session#save() | endif
 augroup END
