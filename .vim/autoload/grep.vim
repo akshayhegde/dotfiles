@@ -2,7 +2,7 @@ function grep#search(...)
   let grepprg_save = &grepprg
   try
     if system('git rev-parse --is-inside-work-tree') =~# 'true'
-      let &grepprg = 'git grep -n $*'
+      let &grepprg = 'git grep --untracked -n $*'
     endif
 
     " If we're using normal grep, and we didn't specify a directory, add the
