@@ -16,7 +16,6 @@ alias rm='rm -vi'
 alias rcp='rsync -av --progress'
 alias jobs='jobs -l'
 alias pgrep='pgrep -fla'
-alias grep='grep -EI --color=auto'
 alias head='head -n $(( $LINES - 10 ))'
 
 # Widgets
@@ -56,6 +55,10 @@ ls() {
     fi
 }
 
+grep() {
+    command grep -EI --exclude-dir=.git --exclude-dir=.build --exclude-dir='*.xcodeproj' --color=auto "$@"
+}
+
 make() {
     command make -j"$(sysctl -n hw.logicalcpu_max)" "$@"
 }
@@ -75,7 +78,7 @@ info() {
 pgi() {
     (($# != 1)) && printf >&2 'pgi <pattern>\n' && return 1
     local process_list header matched mem_field
-    process_list="$(ps ax -mo pid,ppid,pgid,pcpu,cputime,rss,state,tty,user,comm)"
+    process_list="$(ps ax -mo pid,ppid,pgid,pcpu,cputime,rss,state,tty,user,command)"
     matched="$(echo "$process_list" | grep -Ei "$1")"
 
     if [[ ! -z "$matched" ]]; then
