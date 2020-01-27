@@ -39,5 +39,7 @@ function! session#mk()
 endfunction
 
 function! session#save()
-  return 'mksession! ' . s:session_file()
+  if !empty(buffer_name())
+    return 'mksession! ' . s:session_file()
+  endif
 endfunction

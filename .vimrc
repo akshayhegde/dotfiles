@@ -106,7 +106,6 @@ command! -nargs=+ -complete=dir Grep call grep#search(<f-args>)
 augroup VIMRC
   autocmd!
   autocmd BufWritePost * if &diff | diffupdate | endif
-  autocmd SwapExists * if getftime(v:swapname) >= getftime(expand("%:p")) | let v:swapchoice = 'o' | endif
   autocmd VimEnter * nested execute session#load()
   autocmd VimLeavePre * if !empty(v:this_session) | execute session#save() | endif
 augroup END
