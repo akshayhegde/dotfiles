@@ -36,7 +36,6 @@ set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set showcmd showbreak=↪
 
 " Search
-set grepprg=grep\ -sHIrn
 set hlsearch incsearch
 set ignorecase smartcase
 set showmatch matchtime=2
@@ -99,13 +98,13 @@ let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 
 " Commands
 command! Scriptnames call setqflist(scripts#get()) | copen
-command! Make silent make! | redraw! | cwindow
-command! Lmake silent lmake! | redraw! | lwindow
 command! -nargs=+ -complete=dir Grep call grep#search(<f-args>)
 
 augroup VIMRC
   autocmd!
-  autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd VimEnter * nested execute session#load()
-  autocmd VimLeavePre * if !empty(v:this_session) | execute session#save() | endif
+  autocmd QuickFixCmdPost l* execute 'lwindow ' . max([4, min([8, len(getloclist(0))])])
+  autocmd QuickFixCmdPost [^l]* execute  'cwindow ' . max([4, min([8, len(getqflist())])])
+  autocmd BufWritePost * if &diff | diffupdate | endif
+  autocmd VimLeavePre * execute session#save()
 augroup END

@@ -19,7 +19,6 @@ function grep#search(...)
 
     silent execute grep_args
     redraw!
-    cwindow
   finally
     let &grepprg = grepprg_save
   endtry
