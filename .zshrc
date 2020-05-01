@@ -78,14 +78,17 @@ info() {
 pgi() {
     (($# != 1)) && printf >&2 'pgi <pattern>\n' && return 1
     local process_list header matched mem_field
-    process_list="$(ps ax -mo pid,ppid,pgid,pcpu,cputime,rss,state,tty,user,command)"
+    process_list="$(ps ax -mo pid,ppid,pgid,pcpu,vsz,rss,state,tty,user,command)"
     matched="$(echo "$process_list" | grep -Ei "$1")"
 
     if [[ ! -z "$matched" ]]; then
         header="$(echo "$process_list" | head -n1)"
         if whence numfmt &>/dev/null; then
             mem_field="$(echo "$header" | awk '{for (i = 1; i <= NF; i++) { if ($i ~ "RSS") print i }}')"
-            printf '%s\n%s\n' "$header" "$matched" | numfmt --header --field "$mem_field" --from-unit=1024 --to=si
+            vsz_field="$(echo "$header" | awk '{for (i = 1; i <= NF; i++) { if ($i ~ "VSZ") print i }}')"
+            printf '%s\n%s\n' "$header" "$matched" |\
+                numfmt --header --field "$mem_field" --from-unit=1024 --to=iec |\
+                numfmt --header --field "$vsz_field" --from-unit=1024 --to=iec
         else
             printf '%s\n%s\n' "$header" "$matched"
         fi
