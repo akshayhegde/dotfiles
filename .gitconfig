@@ -18,7 +18,7 @@
     statusHints = false
     resolveConflict = false
 [core]
-    excludesfile = /Users/ajh/.gitignore
+    excludesfile = ~/.gitignore
     autocrlf = false
     pager = less --ignore-case --hilite-search --LONG-PROMPT --RAW-CONTROL-CHARS --no-init --quit-if-one-screen
 [grep]
