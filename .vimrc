@@ -15,7 +15,7 @@ set nostartofline
 set nojoinspaces
 set nofoldenable
 set nrformats-=octal
-set switchbuf=useopen,usetab
+set switchbuf=split
 set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o,*.xcodeproj/*
 set sessionoptions-=options sessionoptions-=blank
