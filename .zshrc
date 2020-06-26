@@ -17,6 +17,7 @@ alias rcp='rsync -av --progress'
 alias jobs='jobs -l'
 alias pgrep='pgrep -fla'
 alias head='head -n $(( $LINES - 10 ))'
+alias top='top -o -rsize -O -cpu'
 
 # Widgets
 autoload -Uz run-help
@@ -78,7 +79,7 @@ info() {
 pgi() {
     (($# != 1)) && printf >&2 'pgi <pattern>\n' && return 1
     local process_list header matched mem_field
-    process_list="$(ps ax -mo pid,ppid,pgid,pcpu,vsz,rss,state,tty,user,command)"
+    process_list="$(ps ax -mo pid,ppid,pgid,pcpu,nice,vsz,rss,state,tty,user,command)"
     matched="$(echo "$process_list" | grep -Ei "$1")"
 
     if [[ ! -z "$matched" ]]; then
