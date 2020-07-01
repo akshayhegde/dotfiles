@@ -37,7 +37,6 @@ set showcmd showbreak=↪
 
 " Search
 set hlsearch incsearch
-set ignorecase smartcase
 set showmatch matchtime=2
 set cscopetag tags^=.git/tags
 
