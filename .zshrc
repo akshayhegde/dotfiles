@@ -122,6 +122,22 @@ peek() {
     fi
 }
 
+ping() {
+    local host="${@: -1}"
+    local match
+
+    if [[ ! -s "$HOME/.ssh/config" ]]; then
+        command ping "$@"
+    else
+        match="$(grep -Ei "\<$host\>" -A3 ~/.ssh/config | awk 'tolower($0) ~ /hostname/ {print $2}')"
+        if [[ -z "$match" ]]; then
+            command ping "$@"
+        else
+            command ping "${@: 1:$(($# - 1))}" "$match"
+        fi
+    fi
+}
+
 # Key Maps
 bindkey -v
 bindkey -M vicmd "/" history-incremental-pattern-search-forward
