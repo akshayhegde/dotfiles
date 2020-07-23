@@ -11,13 +11,21 @@ generate_tags() {
         mkdir -p -- "$cscope_workspace"
     fi
 
-    find_cmd='find . -type f \('
+    find_cmd='find . -type f -not \( -path "./.*/*" -prune \) -and \('
     for file_type in "${file_types_to_consider[@]}"; do
         local operator='-name'
-        [[ "$find_cmd" =~ '-name' ]] && operator='-o -name'
+        [[ "$find_cmd" =~ '-name' ]] && operator='-or -name'
         find_cmd="$find_cmd $operator '$file_type'"
     done
-    find_cmd="$find_cmd \\) > cscope.files"
+
+    quote_files='awk '"'"'{print "\""$0"\""}'"'"
+    find_cmd="$find_cmd \\) | $quote_files > cscope.files"
+
+    if [[ ! -s 'cscope.files' ]]; then
+        printf 'No valid source files found\n' >&2
+        rm -f -- 'cscope.files'
+        return 1
+    fi
 
     printf 'Finding files for cscope for %s using: %s\n' "$current_dir" "$find_cmd"
     if ! eval "$find_cmd"; then
