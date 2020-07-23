@@ -6,7 +6,7 @@ function! s:check_cscope()
   let cscope_db = fnameescape(expand("~/.vim/cscope/") . fnamemodify(getcwd(), ':t'))
   let cscope_conn = cscope_db . '/cscope.out'
   if executable('cscope') && has('cscope') && filereadable(cscope_conn)
-    return 'cscope add ' . cscope_db
+    return 'cscope add ' . cscope_db . ' . -C'
   endif
 endfunction
 

@@ -75,6 +75,7 @@ nnoremap z\ :vertical sfind ./**/*
 nnoremap z' :sfind ./**/*
 nnoremap z} :tjump /
 nnoremap zp :ptjump /
+nnoremap <C-_> :cscope find f<space>
 
 " Searching
 nnoremap cg* *``cgn
