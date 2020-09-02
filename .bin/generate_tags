@@ -19,7 +19,14 @@ generate_tags() {
     done
 
     quote_files='awk '"'"'{print "\""$0"\""}'"'"
-    find_cmd="$find_cmd \\) | $quote_files > cscope.files"
+    remove_path_suffix='sed "s#./##"'
+    find_cmd="$find_cmd \\) | $remove_path_suffix | $quote_files > cscope.files"
+
+    printf 'Finding files for cscope for %s using: %s\n' "$current_dir" "$find_cmd"
+    if ! eval "$find_cmd"; then
+        printf 'Failed to generate cscope files\n' >&2
+        return 1
+    fi
 
     if [[ ! -s 'cscope.files' ]]; then
         printf 'No valid source files found\n' >&2
@@ -27,13 +34,7 @@ generate_tags() {
         return 1
     fi
 
-    printf 'Finding files for cscope for %s using: %s\n' "$current_dir" "$find_cmd"
-    if ! eval "$find_cmd"; then
-        printf 'Failed to generate cscope files\n' >&2
-        return 1
-    else
-        cscope -bCqv && mv -- cscope.* "${cscope_workspace}/"
-    fi
+    cscope -bCqv && mv -- cscope.* "${cscope_workspace}/"
 }
 
 generate_tags
