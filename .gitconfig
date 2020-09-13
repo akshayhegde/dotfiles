@@ -25,20 +25,10 @@
     lineNumber = true
     patternType = perl
 [alias]
-    stat = status -sb
     news = !git fetch && git log --oneline @..@{u}
     copy-rev = !git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
-
     ctags = !.git/hooks/ctags
     dirdiff = difftool --tool vdwrap --dir-diff
-
-    discard = !git stash save `date`
-    restore = stash apply
-
-    tags = tag -l
-    branches = branch -av
-    stashes = stash list
-    refs = reflog -10
 [diff]
     tool = vdwrap
     algorithm = histogram
