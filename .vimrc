@@ -102,9 +102,9 @@ command! Scriptnames call setqflist(scripts#get()) | copen
 augroup VIMRC
   autocmd!
   autocmd VimEnter * nested execute session#load()
-  autocmd QuickFixCmdPost l* execute 'lwindow ' . max([4, min([8, len(getloclist(0))])])
-  autocmd QuickFixCmdPost [^l]* execute  'cwindow ' . max([4, min([8, len(getqflist())])])
   autocmd SessionLoadPost * execute grep#set()
+  autocmd QuickFixCmdPost l* execute 'botright lwindow ' . max([4, min([8, len(getloclist(0))])])
+  autocmd QuickFixCmdPost [^l]* execute  'botright cwindow ' . max([4, min([8, len(getqflist())])])
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd VimLeavePre * execute session#save()
 augroup END
