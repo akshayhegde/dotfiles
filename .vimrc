@@ -83,8 +83,8 @@ nnoremap cg# #``cgN
 nnoremap g/ /\<\><left><left>
 xnoremap * :<C-u>call visualfuncs#start('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
-nnoremap zS viw:<C-u>Grep <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
-xnoremap zS :<C-u>Grep <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
+nnoremap zS viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
+xnoremap zS :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 
 " Git
 nnoremap gb :echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
@@ -98,13 +98,13 @@ let [html_indent_script1, html_indent_style1] = ['inc', 'inc']
 
 " Commands
 command! Scriptnames call setqflist(scripts#get()) | copen
-command! -nargs=+ -complete=dir Grep call grep#search(<f-args>)
 
 augroup VIMRC
   autocmd!
   autocmd VimEnter * nested execute session#load()
   autocmd QuickFixCmdPost l* execute 'lwindow ' . max([4, min([8, len(getloclist(0))])])
   autocmd QuickFixCmdPost [^l]* execute  'cwindow ' . max([4, min([8, len(getqflist())])])
+  autocmd SessionLoadPost * execute grep#set()
   autocmd BufWritePost * if &diff | diffupdate | endif
   autocmd VimLeavePre * execute session#save()
 augroup END
