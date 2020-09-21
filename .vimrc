@@ -39,6 +39,7 @@ set showcmd showbreak=↪
 set hlsearch incsearch
 set showmatch matchtime=2
 set cscopetag tags^=.git/tags
+set grepprg=git\ grep\ --untracked\ -n\ $*
 
 " Indent
 set autoindent
@@ -102,7 +103,6 @@ command! Scriptnames call setqflist(scripts#get()) | copen
 augroup VIMRC
   autocmd!
   autocmd VimEnter * nested execute session#load()
-  autocmd SessionLoadPost * execute grep#set()
   autocmd QuickFixCmdPost l* execute 'botright lwindow ' . max([4, min([8, len(getloclist(0))])])
   autocmd QuickFixCmdPost [^l]* execute  'botright cwindow ' . max([4, min([8, len(getqflist())])])
   autocmd BufWritePost * if &diff | diffupdate | endif
