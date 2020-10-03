@@ -25,7 +25,7 @@
     lineNumber = true
     patternType = perl
 [alias]
-    news = !git fetch && git log --oneline @..@{u}
+    news = !git fetch && git log --format=medium @..@{u}
     copy-rev = !git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
     ctags = !.git/hooks/ctags
     dirdiff = difftool --tool vdwrap --dir-diff
