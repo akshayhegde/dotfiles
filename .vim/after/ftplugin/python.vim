@@ -17,7 +17,7 @@ function! s:lint()
   endif
 
   let save = winsaveview()
-  silent lexpr system("flake8 " . expand("%")) | silent redraw! | lwindow
+  silent lexpr system("flake8 " . shellescape(expand("%"))) | silent redraw! | lwindow
   call winrestview(save)
 endfunction
 

@@ -7,7 +7,7 @@ function! s:lint()
     return
   endif
   let view = winsaveview()
-  silent lexpr system("swift-format lint " . expand("%")) | silent redraw! | lwindow
+  silent lexpr system("swift-format lint " . shellescape(expand("%"))) | silent redraw! | lwindow
   call winrestview(view)
 endfunction
 
