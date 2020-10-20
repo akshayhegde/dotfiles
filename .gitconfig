@@ -1,46 +1,48 @@
 [user]
-    name = Akshay Hegde
-    email = code@akshay"-hegde".com
+	name = Akshay Hegde
+	email = code@akshay"-hegde".com
 [log]
-    date = iso
+	date = iso
 [credential]
-    helper = osxkeychain
+	helper = osxkeychain
 [init]
-    templatedir = ~/.git_template
+	templatedir = ~/.git_template
 [commit]
-    gpgsign = true
-    verbose = true
+	gpgsign = true
+	verbose = true
 [push]
-    default = current
+	default = current
 [color]
-    ui = auto
+	ui = auto
 [advice]
-    statusHints = false
-    resolveConflict = false
+	statusHints = false
+	resolveConflict = false
 [core]
-    excludesfile = ~/.gitignore
-    autocrlf = false
-    pager = less --ignore-case --hilite-search --LONG-PROMPT --RAW-CONTROL-CHARS --no-init --quit-if-one-screen
+	excludesfile = ~/.gitignore
+	autocrlf = false
+	pager = less --ignore-case --hilite-search --LONG-PROMPT --RAW-CONTROL-CHARS --no-init --quit-if-one-screen
+	attributesfile = ~/.gitattributes
 [grep]
-    lineNumber = true
-    patternType = perl
+	lineNumber = true
+	patternType = perl
 [alias]
-    news = !git fetch && git log --format=medium @..@{u}
-    copy-rev = !git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
-    ctags = !.git/hooks/ctags
-    dirdiff = difftool --tool vdwrap --dir-diff
+	news = !git fetch && git log --format=medium @..@{u}
+	copy-rev = !git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
+	ctags = !.git/hooks/ctags
+	dirdiff = difftool --tool vdwrap --dir-diff
 [diff]
-    tool = vdwrap
-    algorithm = histogram
+	tool = vdwrap
+	algorithm = histogram
 [difftool]
-    prompt = false
+	prompt = false
 [difftool "vdwrap"]
-    cmd = vdwrap $LOCAL $REMOTE
+	cmd = vdwrap $LOCAL $REMOTE
 [merge]
-    tool = vimdiff
-    log = true
+	tool = vimdiff
+	log = true
 [mergetool]
-    prompt = false
-    keepBackup = false
+	prompt = false
+	keepBackup = false
 [gpg]
-    program = gpg
+	program = gpg
+# vim: noet sw=8
