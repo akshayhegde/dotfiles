@@ -9,37 +9,37 @@ set backspace=indent,eol,start
 set clipboard^=unnamed
 set complete=.,w,b,t,kspell
 set dictionary+=/usr/share/dict/words
+set diffopt+=algorithm:histogram,indent-heuristic
 set hidden
 set mouse=n ttymouse=sgr
-set nostartofline
-set nojoinspaces
 set nofoldenable
+set nojoinspaces
+set nostartofline
 set nrformats-=octal
+set sessionoptions-=options sessionoptions-=blank
+set splitright
 set switchbuf=useopen
 set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o,*.xcodeproj/*
-set sessionoptions-=options sessionoptions-=blank
-set diffopt+=algorithm:histogram,indent-heuristic
 
 " UI
-if &term =~# '\(tmux\|screen\)-256color'
-  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-endif
-set termguicolors
-set laststatus=2
-set statusline=[%n]\ %f\ %y\ %m%r%w%q%=%-15(%l,%c%V\ 0x%B%)\ %P
 set formatoptions+=1j
+set laststatus=2
 set lazyredraw
 set linebreak
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set showcmd showbreak=↪
+set statusline=[%n]\ %f\ %y\ %m%r%w%q%=%-15(%l,%c%V\ 0x%B%)\ %P
+if &term =~# '\(tmux\|screen\)-256color'
+  let [&t_8f, &t_8b] = ["\<Esc>[38:2:%lu:%lu:%lum", "\<Esc>[48:2:%lu:%lu:%lum"]
+endif
+set termguicolors
 
 " Search
-set hlsearch incsearch
-set showmatch matchtime=2
 set cscopetag tags^=.git/tags
 set grepprg=git\ grep\ --untracked\ -n\ $*
+set hlsearch incsearch
+set showmatch matchtime=2
 
 " Indent
 set autoindent
@@ -48,9 +48,9 @@ set smarttab expandtab
 set softtabstop=4 shiftwidth=4 shiftround
 
 " Backup
-set history=2000
-set directory^=~/.vim/swap/
 set backupdir=~/.vim/backup/
+set directory^=~/.vim/swap/
+set history=2000
 set undofile undodir=~/.vim/backup/undo/
 
 " Keymaps
@@ -88,10 +88,11 @@ xnoremap # :<C-u>call visualfuncs#start('?')<CR>/<C-R>=@/<CR><CR>
 nnoremap zS viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 xnoremap zS :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 
-" Git
+" Utilities
 nnoremap gb :echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
 nnoremap gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 nnoremap gO :silent !tig<CR>:silent redraw!<CR>
+nnoremap gx :execute util#browser('<C-r>=expand("<cWORD>")<CR>')<CR><CR>
 
 " Filetype Settings
 let g:python_highlight_all = 1
