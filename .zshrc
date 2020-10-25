@@ -33,7 +33,7 @@ compinit -C && { [[ ! -s "$HOME/.zcompdump.zwc" ]] && zcompile "$HOME/.zcompdump
 
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion:*' menu selection
-zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' completer _complete _match
 zstyle ':completion:*' matcher-list '' 'm:{a-z\-}={A-Z\_}' 'r:|?=** m:{a-z\-}={A-Z\_}'
 zstyle ':completion:*' list-colors no=00 fi=00 di=01\;34 pi=33 so=00\;35 bd=00\;35 cd=00\;34 or=00\;41 mi=00\;45 ex=01\;32 ow=01
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,ppid,user,comm'
