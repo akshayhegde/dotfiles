@@ -1,6 +1,5 @@
 [user]
 	name = Akshay Hegde
-	email = code@akshay"-hegde".com
 [log]
 	date = iso
 [credential]
@@ -45,4 +44,5 @@
 	keepBackup = false
 [gpg]
 	program = gpg
-# vim: noet sw=8
+[pull]
+	ff = only

@@ -1,1 +1,3 @@
-set keywordprg=~/.bin/search-git-config
+setlocal shiftwidth&
+setlocal expandtab&
+setlocal softtabstop&
