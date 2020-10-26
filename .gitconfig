@@ -1,7 +1,7 @@
 [user]
 	name = Akshay Hegde
 [log]
-	date = iso
+	date = iso-strict
 [credential]
 	helper = osxkeychain
 [init]
