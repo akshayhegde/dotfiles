@@ -7,7 +7,7 @@ function! pydoc#run_pydoc(cmd)
 
   let reg_save = @/
   try
-    silent! execute "pedit pydoc"
+    silent! execute "topleft pedit pydoc"
     wincmd P
     resize 20
 
