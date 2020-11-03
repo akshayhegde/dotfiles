@@ -74,7 +74,7 @@ nnoremap g\ :ls<CR>:vertical sbuffer<space>
 nnoremap z, :find ./**/*
 nnoremap z\ :vertical sfind ./**/*
 nnoremap z' :sfind ./**/*
-nnoremap z} :ptjump /
+nnoremap zP :tjump /\<
 nnoremap zp :psearch <C-r>=expand("<cword>")<CR><CR>
 nnoremap <BS> :ptjump <C-r>=expand("<cword>")<CR><CR>
 nnoremap <C-_> :cscope find f<space>
