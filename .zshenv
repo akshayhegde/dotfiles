@@ -7,7 +7,7 @@ export LESS='--ignore-case --hilite-search --LONG-PROMPT --RAW-CONTROL-CHARS --n
 export GPG_TTY="$(tty)"
 export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
 
-fpath=("/usr/local/share/zsh-completions" "/usr/local/share/zsh/functions" "/usr/local/share/zsh/site-functions" $fpath)
+fpath=("/usr/local/share/zsh/functions" "/usr/local/share/zsh/site-functions" "/usr/share/zsh/5.8/functions" $fpath)
 typeset -U FPATH
 
 export LS_COLORS="$(printf '%s' 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33' \
