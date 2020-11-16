@@ -16,6 +16,7 @@
 [advice]
 	statusHints = false
 	resolveConflict = false
+	addEmptyPathspec = false
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = false
