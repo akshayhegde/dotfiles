@@ -72,8 +72,11 @@ nnoremap g<CR> :ls<CR>:buffer<space>
 nnoremap gs :ls<CR>:sbuffer<space>
 nnoremap g\ :ls<CR>:vertical sbuffer<space>
 nnoremap z, :find ./**/*
+nnoremap z< :find ./<C-r>=expand("%:h")<CR>/**/*
 nnoremap z\ :vertical sfind ./**/*
+nnoremap z<bar> :vertical sfind ./<C-r>=expand("%:h")<CR>/**/*
 nnoremap z' :sfind ./**/*
+nnoremap z" :sfind ./<C-r>=expand("%:h")<CR>/**/*
 nnoremap zP :tjump /\<
 nnoremap zp :psearch <C-r>=expand("<cword>")<CR><CR>
 nnoremap <BS> :ptjump <C-r>=expand("<cword>")<CR><CR>
