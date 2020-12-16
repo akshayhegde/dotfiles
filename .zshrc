@@ -34,7 +34,7 @@ compinit -C && { [[ ! -s "$HOME/.zcompdump.zwc" ]] && zcompile "$HOME/.zcompdump
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion:*' menu selection
 zstyle ':completion:*' completer _complete _match
-zstyle ':completion:*' auto-description '%F{yellow} (specify) > %B%d%b%f'
+zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*:descriptions' format '%F{yellow} > %B%d%b%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' matcher-list '' 'm:{a-z\-}={A-Z\_}' 'r:|?=** m:{a-z\-}={A-Z\_}'
