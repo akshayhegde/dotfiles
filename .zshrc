@@ -10,6 +10,7 @@ unsetopt FLOW_CONTROL
 
 # Aliases
 unalias run-help 2>/dev/null
+alias ls='ls -hAG'
 alias cp='cp -vip'
 alias mv='mv -vi'
 alias rm='rm -vi'
@@ -51,16 +52,13 @@ export HISTSIZE=6000000
 export SAVEHIST=$HISTSIZE
 
 # Functions
-ls() {
-    if whence gls &>/dev/null; then
-        command gls -hA --color=auto "$@"
-    else
-        command ls -hAG "$@"
-    fi
-}
-
 grep() {
-    command grep -EI --exclude-dir=.git --exclude-dir=.build --exclude-dir='*.xcodeproj' --color=auto "$@"
+    command grep -EI \
+        --exclude-dir=.git \
+        --exclude-dir=.build \
+        --exclude-dir='*.xcodeproj' \
+        --color=auto \
+        "$@"
 }
 
 make() {
