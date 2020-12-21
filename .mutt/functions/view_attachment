@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+function view_attachment {
+    local tmpdir="$HOME/.mutt/cache/tmp/attachments"
+    local file_basename="$(basename "$1")"
+    local ext="$2"
+    local mime_type
+    local renamed
+
+    if [[ ! -d "$tmpdir" ]]; then
+        mkdir -p -- "$tmpdir"
+    else
+        find "$tmpdir" -type f -delete
+    fi
+
+    if [[ -z "$ext" ]]; then
+        mime_type="$(file -b --mime-type "$1")"
+        if [[ "$mime_type" =~ 'text/[a-z]+' ]]; then
+            cp -- "$1" "$tmpdir/$file_basename"
+            view -RMZ -c 'set noml' -- "$tmpdir/$file_basename"
+        elif [[ "$file_basename" =~ '\.' ]]; then
+            cp -- "$1" "$tmpdir/$file_basename"
+            open -- "$tmpdir/$file_basename"
+        else
+            renamed="$tmpdir/$(awk -F'.' '{printf $1}' <<< "$file_basename").$mime_type"
+            cp -- "$1" "$renamed"
+            open -- "$renamed"
+        fi
+    else
+        renamed="$tmpdir/$(awk -F '.' '{printf $1}' <<< "$file_basename").$ext"
+        cp -- "$1" "$renamed"
+        open -- "$renamed"
+    fi
+}
+
+view_attachment "$@"

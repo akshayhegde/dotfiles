@@ -1,0 +1,13 @@
+application/pdf; ~/.mutt/functions/view_attachment %s pdf
+image/jpg; ~/.mutt/functions/view_attachment %s jpg
+image/jpeg; ~/.mutt/functions/view_attachment %s jpg
+image/png; ~/.mutt/functions/view_attachment %s png
+image/gif; ~/.mutt/functions/view_attachment %s gif
+
+text/html; ~/.mutt/functions/view_attachment %s html; needsterminal;
+text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput;
+
+text/x-diff; view -RMZ -c 'set noml' %s; needsterminal;
+text/x-patch; view -RMZ -c 'set noml' %s; needsterminal;
+
+application/octet-stream; ~/.mutt/functions/view_attachment %s

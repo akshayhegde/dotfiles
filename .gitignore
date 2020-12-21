@@ -15,3 +15,11 @@ tags
 *.xcworkspace
 *.xctimeline
 xcuserdata
+.mutt/accounts
+.mutt/aliases
+.mutt/cache
+.mutt/functions/new_mail
+.mutt/functions/check
+.mutt/hooks
+.mutt/subscriptions
+.mutt/mailboxes-*

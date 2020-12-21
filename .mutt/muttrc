@@ -1,0 +1,218 @@
+# General Behaviors {{{1
+set beep = no
+set beep_new = yes
+set confirmappend = no
+set mark_old = no
+set quit = ask-yes
+set sleep_time = 0
+set timeout = 10
+set wait_key = no
+set read_inc = 100
+set write_inc = 100
+
+# Mail Options {{{1
+set mail_check_stats = yes
+set size_show_bytes = yes
+set ssl_force_tls = yes
+set ssl_starttls = no
+
+# Accounts {{{1
+source ~/.mutt/accounts
+
+# Composing {{{1
+set delete = ask-yes
+set edit_headers = yes
+set fast_reply = yes
+set include = yes
+set ispell = "aspell --mode=email check"
+set mime_forward = ask-yes
+set print = no
+
+# Viewing {{{1
+set tilde = yes
+set markers = no
+unignore Content-Type:
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# Folders and Locations {{{1
+set mbox_type = Maildir
+set folder = "~/.mail/fastmail"
+set spoolfile = "~/.mail/fastmail/Inbox"
+set header_cache = "~/.mutt/cache/headers"
+set tmpdir = "~/.mutt/cache/tmp"
+set attach_save_dir = "$tmpdir/attachments"
+set mailcap_path = "~/.mutt/mailcap"
+set signature = "~/.mutt/signature"
+set alias_file = "~/.mutt/aliases"
+source $alias_file
+
+# History {{{1
+set history_file = "$tmpdir/history"
+set history_remove_dups = yes
+set history = 100
+set save_history = $history
+
+# Mailboxes {{{1
+source ~/.mutt/mailboxes-fastmail
+
+# GPG {{{1
+set pgp_default_key = "0xC27B580D0881E07777359F40BA511FD61E9C5108"
+set crypt_use_gpgme = yes
+set postpone_encrypt = yes
+
+# Mailing Lists {{{1
+source ~/.mutt/subscriptions
+
+# Views {{{1
+# Index {{{2
+set index_format="%Z  %d  %-25.25F  %?X?📎&  ?  %?M?(%02M)&  ?  %s"
+set date_format = "%FT%T%z"
+set sort = "threads"
+
+# Status {{{2
+set status_format=" %h: %f (msgs:%?M?%M/?%m size:%l%?n? new:%n?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l??) %> (%s/%S) (%P)   "
+
+# Menu {{{2
+set menu_move_off = no
+
+# Pager {{{2
+set pager_index_lines = 9
+set pager_context = 5
+set pager_stop = yes
+set pager_format = " %n —  %s %* (%P)   "
+mime_lookup application/octet-stream
+
+# Attachments {{{2
+set attach_format = "%u%D%I %t%4n %T%.40d%> [%m/%M, %e%?C?, %C?, %s] "
+
+# Sidebar {{{2
+set sidebar_divider_char = '¦'
+set sidebar_visible = yes
+set sidebar_width = 25
+set sidebar_format = "%B%?N? [%N]?%* %S"
+set sidebar_short_path = yes
+set sidebar_folder_indent = yes
+
+# Key Bindings {{{1
+# Index Key Bindings {{{2
+bind index gg first-entry
+bind index G last-entry
+bind index gd delete-thread
+bind index gu undelete-thread
+bind index \Cr group-reply
+bind index \Cd half-down
+bind index \Cu half-up
+bind index \Cf next-page
+bind index \Cb previous-page
+bind index N search-opposite
+bind index gr toggle-new
+bind index <space> collapse-thread
+bind index z noop
+bind index Z noop
+
+# Pager Key Bindings {{{2
+bind pager gg top
+bind pager G bottom
+bind pager j next-line
+bind pager k previous-line
+bind pager N search-opposite
+bind pager \Cd half-down
+bind pager \Cu half-up
+bind pager \Cb previous-page
+bind pager \Cf next-page
+
+# Sidebar Key Bindings {{{2
+bind index,pager gp sidebar-prev-new
+bind index,pager gn sidebar-next-new
+bind index,pager go sidebar-open
+bind index,pager B sidebar-toggle-visible
+
+# Macros {{{1
+# Index Macros {{{2
+macro index \C^ "<shell-escape>mbsync -a<enter>" "Synchronize maildir"
+
+# Sidebar Macros {{{2
+macro index,pager <up> "<sidebar-prev><sidebar-open>"
+macro index,pager <down> "<sidebar-next><sidebar-open>"
+
+# Hooks {{{1
+# Folder Hooks {{{2
+source ~/.mutt/hooks/folder-hooks
+
+# Send Hooks {{{2
+source ~/.mutt/hooks/send-hooks
+
+# Save Hooks {{{2
+save-hook . "="
+
+# Colors {{{1
+# Default Colors {{{2
+color normal             none      default   default
+color error              bold      color9    default
+color tilde              none      color235  default
+color message            bold      color2    default
+color markers            none      color103  default
+color attachment         none      color109  default
+color search             reverse   color3    default
+color status             none      default   color236
+color indicator          reverse   default   default
+color tree               none      color136  default
+color signature          none      color244  default
+
+# Index Colors {{{2
+color index              none      color1    default   "~D(!~p|~p)"
+color index              none      default   default   "~A!~N!~T!~p!~Q!~F!~D!~P"
+color index              none      color2    default   "~N"
+
+# Sidebar Colors {{{2
+color sidebar_indicator  reverse   default   default
+color sidebar_highlight  none      default   color237
+color sidebar_divider    none      default   default
+color sidebar_new        bold      color179  default
+
+# Prompt Colors {{{2
+color prompt             bold      color130  default
+
+# Quoted Colors {{{2
+color quoted             none      color108  default
+color quoted1            none      color103  default
+color quoted2            none      color109  default
+color quoted3            none      color67   default
+color quoted4            none      color107  default
+color quoted5            none      color208  default
+color quoted6            none      color205  default
+color quoted7            none      color202  default
+color quoted8            none      color159  default
+color quoted9            none      color7    default
+
+# Header Colors {{{2
+color hdrdefault         none      color110  default
+color header             none      color130  default    '^date:'
+color header             none      color153  default    '^(to|cc|bcc):'
+color header             none      color179  default    '^from:'
+color header             bold      default   default    '^subject:'
+color header             none      color31   default    '^user-agent:'
+color header             none      color66   default    '^reply-to:'
+
+# Body Colors {{{2
+# URLs {{{3
+color body               none      color111  default [-a-z_0-9+.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+
+
+# Diffs
+color body               none      color9    default "^[\-]{1,3}.+"
+color body               none      color107  default "^[\+]{1,3}.+"
+color body               none      color107  default "LGTM"
+color body               bold      default   default "^diff.*"
+color body               bold      default   default "^[\*]{3}.+"
+color body               none      color14   default "^@@.*"
+color body               bold      default   default "-- Commit Summary --"
+color body               bold      default   default "-- File Changes --"
+color body               bold      default   default "-- Patch Links --"
+color body               none      color14   default "^(Signed-off-by).*"
+
+# Mailing Lists
+color body               none      color7    default "^---[[:space:]]?$"
+color body               none      color7    default "^You received this message because.*"
+color body               none      color7    default "^To unsubscribe from this group.*"
+color body               none      color7    default "^To view this discussion on.*"
