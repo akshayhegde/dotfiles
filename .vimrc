@@ -21,6 +21,7 @@ set splitright
 set switchbuf=useopen
 set ttimeout ttimeoutlen=50
 set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o,*.xcodeproj/*
+set visualbell t_vb=
 
 " UI
 set formatoptions+=1j

@@ -6,7 +6,7 @@ setopt PROMPT_SUBST
 setopt INTERACTIVE_COMMENTS
 setopt EXTENDED_GLOB GLOB_DOTS
 setopt HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS SHARE_HISTORY
-unsetopt FLOW_CONTROL
+unsetopt FLOW_CONTROL BEEP
 
 # Aliases
 unalias run-help 2>/dev/null
@@ -137,6 +137,12 @@ ping() {
             command ping "${@: 1:$(($# - 1))}" "$match"
         fi
     fi
+}
+
+mutt() {
+    stty quit undef
+    (cd "$HOME/.mail/fastmail" && command mutt "$@")
+    stty quit '^\'
 }
 
 # Key Maps
