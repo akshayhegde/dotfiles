@@ -1,15 +1,16 @@
-" ------------ ajh's .vimrc ------------
+" Basics
 syntax on
 filetype plugin indent on
 colorscheme spacegray
 
-" Basics
+" General Behaviors
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
 set complete=.,w,b,t,kspell
 set dictionary+=/usr/share/dict/words
 set diffopt+=algorithm:histogram,indent-heuristic
+set formatoptions+=1j
 set hidden
 set mouse=n ttymouse=sgr
 set nofoldenable
@@ -20,11 +21,10 @@ set sessionoptions-=options sessionoptions-=blank
 set splitright
 set switchbuf=useopen
 set ttimeout ttimeoutlen=50
-set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o,*.xcodeproj/*
 set visualbell t_vb=
+set wildmenu wildcharm=<C-z> wildignore+=tags,*.pyc,*.o,*.xcodeproj/*
 
-" UI
-set formatoptions+=1j
+" Display
 set laststatus=2
 set lazyredraw
 set linebreak
@@ -37,7 +37,7 @@ endif
 set termguicolors
 
 " Search
-set cscopetag tags^=.git/tags
+set tags^=.git/tags
 set grepprg=git\ grep\ --untracked\ -n\ $*
 set hlsearch incsearch
 set showmatch matchtime=2
@@ -78,10 +78,9 @@ nnoremap z\ :vertical sfind ./**/*
 nnoremap z<bar> :vertical sfind ./<C-r>=expand("%:h")<CR>/**/*
 nnoremap z' :sfind ./**/*
 nnoremap z" :sfind ./<C-r>=expand("%:h")<CR>/**/*
-nnoremap zP :tjump /\<
-nnoremap zp :psearch <C-r>=expand("<cword>")<CR><CR>
-nnoremap <BS> :ptjump <C-r>=expand("<cword>")<CR><CR>
-nnoremap <C-_> :cscope find f<space>
+nnoremap zp :tjump /\<
+nnoremap z] :psearch <C-r>=expand("<cword>")<CR><CR>
+nnoremap z<C-]> :ptjump <C-r>=expand("<cword>")<CR><CR>
 
 " Searching
 nnoremap cg* *``cgn
