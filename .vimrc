@@ -12,6 +12,7 @@ set dictionary+=/usr/share/dict/words
 set diffopt+=algorithm:histogram,indent-heuristic
 set formatoptions+=1j
 set hidden
+set modelines=1
 set mouse=n ttymouse=sgr
 set nofoldenable
 set nojoinspaces
