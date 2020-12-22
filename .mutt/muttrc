@@ -27,6 +27,7 @@ set include = yes
 set ispell = "aspell --mode=email check"
 set mime_forward = ask-yes
 set print = no
+set fcc_delimiter = ','
 
 # Viewing {{{1
 set tilde = yes
@@ -145,6 +146,9 @@ source ~/.mutt/hooks/send-hooks
 
 # Save Hooks {{{2
 save-hook . "="
+
+# Fcc Hooks {{{2
+fcc-hook '!~C $hostname' '\^,<'
 
 # Colors {{{1
 # Default Colors {{{2
