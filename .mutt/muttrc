@@ -51,7 +51,8 @@ source $alias_file
 # History {{{1
 set history_file = "$tmpdir/history"
 set history_remove_dups = yes
-set history = 100
+set history = 300
+set error_history = $history
 set save_history = $history
 
 # Mailboxes {{{1
