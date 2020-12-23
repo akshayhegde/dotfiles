@@ -1,7 +1,17 @@
 " Basics
 syntax on
 filetype plugin indent on
+
+" Colors
+let g:spacegray_low_contrast = 1
 colorscheme spacegray
+
+if has('termguicolors') && $COLORTERM ==# 'truecolor'
+  if &term =~# '\(tmux\|screen\)-256color'
+    let [&t_8f, &t_8b] = ["\<Esc>[38:2:%lu:%lu:%lum", "\<Esc>[48:2:%lu:%lu:%lum"]
+  endif
+  set termguicolors
+endif
 
 " General Behaviors
 set autoread
@@ -32,10 +42,6 @@ set linebreak
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set showcmd showbreak=↪
 set statusline=[%n]\ %f\ %y\ %m%r%w%q%=%-15(%l,%c%V\ 0x%B%)\ %P
-if &term =~# '\(tmux\|screen\)-256color'
-  let [&t_8f, &t_8b] = ["\<Esc>[38:2:%lu:%lu:%lum", "\<Esc>[48:2:%lu:%lu:%lum"]
-endif
-set termguicolors
 
 " Search
 set tags^=.git/tags
