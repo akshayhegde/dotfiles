@@ -36,10 +36,15 @@ unignore Content-Type:
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-# Folders and Locations {{{1
+# Maildir {{{1
 set mbox_type = Maildir
 set folder = "~/.mail/fastmail"
 set spoolfile = "~/.mail/fastmail/Inbox"
+set postponed = "=Drafts"
+set record = "=Sent"
+set trash = "=Trash"
+
+# Miscellany Locations {{{1
 set header_cache = "~/.mutt/cache/headers"
 set tmpdir = "~/.mutt/cache/tmp"
 set attach_save_dir = "$tmpdir/attachments"
