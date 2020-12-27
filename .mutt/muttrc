@@ -103,6 +103,10 @@ set sidebar_short_path = yes
 set sidebar_folder_indent = yes
 
 # Key Bindings {{{1
+# Generic Key Bindings {{{2
+bind generic,index,pager,browser,attach,compose gh help
+bind generic,index,pager,browser,attach,compose ? search-reverse
+
 # Index Key Bindings {{{2
 bind index gg first-entry
 bind index G last-entry
