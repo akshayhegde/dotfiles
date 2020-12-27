@@ -64,7 +64,7 @@ set save_history = $history
 source ~/.mutt/mailboxes-fastmail
 
 # GPG {{{1
-set pgp_default_key = "0xC27B580D0881E07777359F40BA511FD61E9C5108"
+set pgp_default_key = "0x0AC668879C59205C"
 set crypt_use_gpgme = yes
 set postpone_encrypt = yes
 
