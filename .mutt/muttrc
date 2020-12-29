@@ -159,7 +159,7 @@ source ~/.mutt/hooks/send-hooks
 save-hook . "="
 
 # Fcc Hooks {{{2
-fcc-hook '!~C $hostname' '\^,<'
+source ~/.mutt/hooks/fcc-hooks
 
 # Colors {{{1
 # Default Colors {{{2
