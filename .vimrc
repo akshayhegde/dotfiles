@@ -66,10 +66,10 @@ nnoremap Q gq
 nnoremap Y y$
 nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
 nnoremap zy :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
-nnoremap coh :nohlsearch<CR>
-nnoremap col :set list! <bar> set list?<CR>
-nnoremap cos :set spell! <bar> set spell?<CR>
-nnoremap con :set relativenumber! number!<CR>
+nnoremap coh :<C-u>nohlsearch<CR>
+nnoremap col :<C-u>set list! <bar> set list?<CR>
+nnoremap cos :<C-u>set spell! <bar> set spell?<CR>
+nnoremap con :<C-u>set relativenumber! number!<CR>
 nnoremap <expr> j  v:count == 0 ? 'gj' : 'j'
 nnoremap <expr> k  v:count == 0 ? 'gk' : 'k'
 nnoremap <expr> gj v:count == 0 ? 'j' : 'gj'
@@ -77,17 +77,17 @@ nnoremap <expr> gk v:count == 0 ? 'k' : 'gk'
 
 " Navigation
 nnoremap g<CR> :ls<CR>:buffer<space>
-nnoremap gs :ls<CR>:sbuffer<space>
-nnoremap g\ :ls<CR>:vertical sbuffer<space>
-nnoremap z, :find ./**/*
-nnoremap z< :find ./<C-r>=expand("%:h")<CR>/**/*
-nnoremap z\ :vertical sfind ./**/*
-nnoremap z<bar> :vertical sfind ./<C-r>=expand("%:h")<CR>/**/*
-nnoremap z' :sfind ./**/*
-nnoremap z" :sfind ./<C-r>=expand("%:h")<CR>/**/*
-nnoremap zp :tjump /\<
-nnoremap z] :psearch <C-r>=expand("<cword>")<CR><CR>
-nnoremap z<C-]> :ptjump <C-r>=expand("<cword>")<CR><CR>
+nnoremap gs :<C-u>ls<CR>:sbuffer<space>
+nnoremap g\ :<C-u>ls<CR>:vertical sbuffer<space>
+nnoremap z, :<C-u>find ./**/*
+nnoremap z< :<C-u>find ./<C-r>=expand("%:h")<CR>/**/*
+nnoremap z\ :<C-u>vertical sfind ./**/*
+nnoremap z<bar> :<C-u>vertical sfind ./<C-r>=expand("%:h")<CR>/**/*
+nnoremap z' :<C-u>sfind ./**/*
+nnoremap z" :<C-u>sfind ./<C-r>=expand("%:h")<CR>/**/*
+nnoremap zp :<C-u>tjump /\<
+nnoremap z] :<C-u>psearch <C-r>=expand("<cword>")<CR><CR>
+nnoremap z<C-]> :<C-u>ptjump <C-r>=expand("<cword>")<CR><CR>
 
 " Searching
 nnoremap cg* *``cgn
@@ -99,10 +99,10 @@ nnoremap zS viw:<C-u>grep! <C-R>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>
 xnoremap zS :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>redraw!<CR>
 
 " Utilities
-nnoremap gb :echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
-nnoremap gB :silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
-nnoremap gO :silent !tig<CR>:silent redraw!<CR>
-nnoremap gx :execute util#browser('<C-r>=expand("<cWORD>")<CR>')<CR><CR>
+nnoremap gb :<C-u>echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
+nnoremap gB :<C-u>silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
+nnoremap gO :<C-u>silent !tig<CR>:silent redraw!<CR>
+nnoremap gx :<C-u>execute util#browser('<C-r>=expand("<cWORD>")<CR>')<CR><CR>
 
 " Filetype Settings
 let g:python_highlight_all = 1
