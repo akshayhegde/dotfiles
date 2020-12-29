@@ -208,7 +208,6 @@ color header             none      color130  default    '^date:'
 color header             none      color153  default    '^(to|cc|bcc):'
 color header             none      color179  default    '^from:'
 color header             bold      default   default    '^subject:'
-color header             none      color31   default    '^user-agent:'
 color header             none      color66   default    '^reply-to:'
 
 # Body Colors {{{2
