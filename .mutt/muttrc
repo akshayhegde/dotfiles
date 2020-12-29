@@ -112,6 +112,7 @@ bind index gg first-entry
 bind index G last-entry
 bind index gd delete-thread
 bind index gu undelete-thread
+bind index gt tag-thread
 bind index \Cr group-reply
 bind index \Cd half-down
 bind index \Cu half-up
