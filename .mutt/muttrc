@@ -219,7 +219,7 @@ color body               none      color111  default [-a-z_0-9+.%$]+@[-a-z_0-9.]
 color body               none      color9    default "^[\-]{1,3}.+"
 color body               none      color107  default "^[\+]{1,3}.+"
 color body               none      color107  default "LGTM"
-color body               bold      default   default "^diff.*"
+color body               bold      default   default "^[d]iff[[:space:]].*"
 color body               bold      default   default "^[\*]{3}.+"
 color body               none      color14   default "^@@.*"
 color body               bold      default   default "-- Commit Summary --"
