@@ -21,7 +21,7 @@ dotlink() {
 
 bootstrap() {
     local iCloud="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
-    local -a targets=('.vim' '.vimrc' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
+    local -a targets=('.vim' '.xvimrc' '.zshrc' '.zshenv' '.ipython'
     '.bin' '.tigrc' '.ctags' '.git_template' '.gitignore' '.gitconfig'
     '.gitattributes' '.tmux.conf' ".mutt" "$iCloud/.weechat")
     local -a vim_targets=("$iCloud/Vim/pack" "$iCloud/Vim/spell")
