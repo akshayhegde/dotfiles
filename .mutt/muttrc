@@ -136,6 +136,8 @@ bind pager \Cb previous-page
 bind pager \Cf next-page
 
 # Sidebar Key Bindings {{{2
+bind index,pager <up> sidebar-prev
+bind index,pager <down> sidebar-next
 bind index,pager gp sidebar-prev-new
 bind index,pager gn sidebar-next-new
 bind index,pager go sidebar-open
@@ -144,10 +146,6 @@ bind index,pager B sidebar-toggle-visible
 # Macros {{{1
 # Index Macros {{{2
 macro index \C^ "<shell-escape>mbsync -a<enter>" "Synchronize maildir"
-
-# Sidebar Macros {{{2
-macro index,pager <up> "<sidebar-prev><sidebar-open>"
-macro index,pager <down> "<sidebar-next><sidebar-open>"
 
 # Hooks {{{1
 # Folder Hooks {{{2
