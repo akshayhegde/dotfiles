@@ -23,3 +23,5 @@ xcuserdata
 .mutt/hooks
 .mutt/subscriptions
 .mutt/mailboxes-*
+.bin/checksum
+.bin/firefox-update
