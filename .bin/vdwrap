@@ -17,7 +17,7 @@ dirdiff() {
     fi
 
     all_files=( left/**/*(-.ND) right/**/*(-.ND) )
-    all_files=( ${(u)all_files[@]#*/} )
+    all_files=( ${(u)all_files#*/} )
 
     {
     # If a file doesn't exist, diff against /dev/null instead. This is what
@@ -26,8 +26,8 @@ dirdiff() {
     print 'autocmd! BufNewFile * view /dev/null | bdelete #'
     print 'augroup END'
 
-    for f in $all_files[@]; do
-        printf 'tabnew %s | vsplit %s\n' left/$f right/$f
+    for f in $all_files; do
+        printf 'tabnew %q | vsplit %q\n' left/$f right/$f
         print 'windo diffthis'
         print $per_tab_ro_cmds
     done
@@ -47,14 +47,14 @@ dirdiff() {
 # it and just ask people to use an alias instead?
 regulardiff() {
     gitexecpath="$(git --exec-path)"
-    export PATH=$gitexecpath:$PATH
+    path=( $gitexecpath $path )
     export LOCAL=$1
     export REMOTE=$2
     sh -c '. git-mergetool--lib;  run_merge_tool vimdiff'
 }
 
 # If there are only two arguments and both are directories then --dir-diff has
-# been given to 'git difftool'. Otherwise we use vimdiff us usual.
+# been given to 'git difftool'. Otherwise we use vimdiff as usual.
 if [[ -d $1 && -d $2 && -z $3 ]]
 then
     dirdiff "$@"
