@@ -100,7 +100,7 @@ xnoremap zS :<C-u>grep! <C-r>=visualfuncs#getSelection()<CR><CR>:cwindow<bar>red
 
 " Utilities
 nnoremap gb :<C-u>echo system('git rev-parse --abbrev-ref @ <bar> tr -d "\n"')<CR>
-nnoremap gB :<C-u>silent !tig blame % +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
+nnoremap gB :<C-u>silent !tig blame <C-r>=shellescape(expand("%"))<CR> +<C-r>=expand(line('.'))<CR><CR>:silent redraw!<CR>
 nnoremap gO :<C-u>silent !tig<CR>:silent redraw!<CR>
 nnoremap gx :<C-u>execute util#browser('<C-r>=expand("<cWORD>")<CR>')<CR><CR>
 
