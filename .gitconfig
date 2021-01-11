@@ -5,6 +5,7 @@
 [credential]
 	helper = osxkeychain
 [init]
+	defaultBranch = main
 	templatedir = ~/.git_template
 [commit]
 	gpgsign = true
