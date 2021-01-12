@@ -1,50 +1,45 @@
 [user]
 	name = Akshay Hegde
-[log]
-	date = iso-strict
-[credential]
-	helper = osxkeychain
 [init]
 	defaultBranch = main
 	templatedir = ~/.git_template
-[commit]
-	gpgsign = true
-	verbose = true
-[push]
-	default = current
 [color]
 	ui = auto
 [advice]
-	statusHints = false
-	resolveConflict = false
 	addEmptyPathspec = false
+	resolveConflict = false
+	statusHints = false
 [core]
-	excludesfile = ~/.gitignore
 	autocrlf = false
-	pager = less --ignore-case --hilite-search --LONG-PROMPT --RAW-CONTROL-CHARS --no-init --quit-if-one-screen
 	attributesfile = ~/.gitattributes
-[grep]
-	lineNumber = true
-	patternType = perl
+	excludesfile = ~/.gitignore
 [alias]
-	news = !git fetch && git log --format=medium @..@{u}
 	copy-rev = !git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
 	ctags = !.git/hooks/ctags
 	dirdiff = difftool --tool vdwrap --dir-diff
+	news = !git fetch && git log --format=medium @..@{u}
+[log]
+	date = iso-strict
+[commit]
+	gpgsign = true
+	verbose = true
+[grep]
+	lineNumber = true
+	patternType = perl
 [diff]
-	tool = vdwrap
 	algorithm = histogram
+	tool = vdwrap
 [difftool]
 	prompt = false
 [difftool "vdwrap"]
 	cmd = vdwrap $LOCAL $REMOTE
 [merge]
-	tool = vimdiff
 	log = true
+	tool = vimdiff
 [mergetool]
-	prompt = false
 	keepBackup = false
-[gpg]
-	program = gpg
+	prompt = false
 [pull]
 	ff = only
+[push]
+	default = current
