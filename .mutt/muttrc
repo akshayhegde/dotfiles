@@ -171,7 +171,7 @@ color markers            none      color103  default
 color attachment         none      color109  default
 color search             reverse   color3    default
 color status             none      default   color236
-color indicator          reverse   default   default
+color indicator          none      color234  color247
 color tree               none      color136  default
 color signature          none      color244  default
 
@@ -181,7 +181,7 @@ color index              none      default   default   "~A!~N!~T!~p!~Q!~F!~D!~P"
 color index              none      color2    default   "~N"
 
 # Sidebar Colors {{{2
-color sidebar_indicator  reverse   default   default
+color sidebar_indicator  none      color234  color247
 color sidebar_highlight  none      default   color237
 color sidebar_divider    none      default   default
 color sidebar_new        bold      color179  default
