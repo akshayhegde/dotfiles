@@ -1,12 +1,15 @@
-# Settings
-set main-view = line-number:no,interval=4 \
-    id:yes \
-    date:default \
-    author:full \
-    commit-title:yes,graph,refs,overflow=72
-
+# General Settings
 set line-graphics = utf-8
 set show-changes = yes
+set mouse = yes
+set mouse-scroll = 2
+
+# View Settings
+set main-view = \
+    id:yes \
+    date:custom,format:%FT%T%z \
+    author:full \
+    commit-title:yes,graph,refs,overflow=72
 
 # Keybindings
 bind main g move-first-line
@@ -14,17 +17,31 @@ bind main G move-last-line
 bind main R !git rebase -i %(commit)
 bind status c !git commit --verbose
 
-# Colors
-color author green default
-color cursor white black
-color date yellow default
-color graph-commit green default
-color main-head magenta default
-color main-tag magenta default
-color stat-staged green default
-color stat-unstaged red default
-color stat-untracked yellow default
-color status white default
-color title-focus white black
-color tree.directory cyan default
-color tree.header white default
+# General Colors
+color author          green      default
+color cursor          default    color0
+color id              yellow     default
+color date            blue       default
+
+# Graph Colors
+color graph-commit    green      default
+
+# Main View Colors
+color main-head       magenta    default
+color main-tag        magenta    default
+
+# Status View Colors
+color stat-staged     green      default
+color stat-unstaged   red        default
+color stat-untracked  yellow     default
+
+# Status Window Colors
+color status          white      default
+
+# Title Colors
+color title-focus     color249   color236
+color title-blur      color239   color232
+
+# Tree colors
+color tree.directory  blue       default  bold
+color tree.header     white      default
