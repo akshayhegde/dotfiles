@@ -76,7 +76,6 @@ source ~/.mutt/subscriptions
 set index_format="%Z  %d  %-25.25F  %?X?📎&  ?  %?M?(%02M)&  ?  %s"
 set date_format = "%FT%T%z"
 set sort = "threads"
-set sort_aux = "last-date-received"
 set delete = yes
 
 # Status {{{2
@@ -112,7 +111,7 @@ bind generic,index,pager,browser,attach,compose ? search-reverse
 bind index gg first-entry
 bind index G last-entry
 bind index gd delete-thread
-bind index gu undelete-thread
+bind index gD undelete-thread
 bind index gt tag-thread
 bind index \Cr group-reply
 bind index \Cd half-down
@@ -122,8 +121,10 @@ bind index \Cb previous-page
 bind index N search-opposite
 bind index gr toggle-new
 bind index <space> collapse-thread
+bind index g<space> collapse-all
 bind index z noop
 bind index Z noop
+bind index <BackTab> previous-new-then-unread
 
 # Pager Key Bindings {{{2
 bind pager gg top
@@ -135,6 +136,7 @@ bind pager \Cd half-down
 bind pager \Cu half-up
 bind pager \Cb previous-page
 bind pager \Cf next-page
+bind pager <BackTab> previous-new-then-unread
 
 # Sidebar Key Bindings {{{2
 bind index,pager <up> sidebar-prev
