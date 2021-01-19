@@ -3,13 +3,10 @@ set line-graphics = utf-8
 set show-changes = yes
 set mouse = yes
 set mouse-scroll = 2
+set reference-format = @head [branch] <tag> {remote} ~replace~
 
 # View Settings
-set main-view = \
-    id:yes \
-    date:custom,format:%FT%T%z \
-    author:full \
-    commit-title:yes,graph,refs,overflow=72
+set main-view = id:yes date:custom,format:%FT%T%z author:full commit-title:yes,graph,refs,overflow=no
 
 # Keybindings
 bind main g move-first-line
@@ -18,7 +15,7 @@ bind main R !git rebase -i %(commit)
 bind status c !git commit --verbose
 
 # General Colors
-color author          green      default
+color author          magenta    default
 color cursor          default    color0
 color id              yellow     default
 color date            blue       default
@@ -27,8 +24,12 @@ color date            blue       default
 color graph-commit    green      default
 
 # Main View Colors
-color main-head       magenta    default
-color main-tag        magenta    default
+color main-head       cyan       default bold
+color main-ref        green      default bold
+color main-local-tag  yellow     default bold
+color main-tag        yellow     default bold
+color main-tracked    red        default bold
+color main-remote     red        default bold
 
 # Status View Colors
 color stat-staged     green      default
