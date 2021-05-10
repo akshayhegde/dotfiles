@@ -216,19 +216,6 @@ color header             none      color66   default    '^reply-to:'
 # URLs {{{3
 color body               none      color111  default [-a-z_0-9+.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+
 
-# Diffs
-color body               none      color9    default "^[\-]{1,3}.+"
-color body               none      color107  default "^[\+]{1,3}.+"
-color body               none      color107  default "LGTM"
-color body               bold      default   default "^[d]iff[[:space:]].*"
-color body               bold      default   default "^!.+"
-color body               bold      default   default "^[\*]{3}.+"
-color body               none      color14   default "^@@.*"
-color body               bold      default   default "-- Commit Summary --"
-color body               bold      default   default "-- File Changes --"
-color body               bold      default   default "-- Patch Links --"
-color body               none      color14   default "^(Signed-off-by).*"
-
 # Mailing Lists
 color body               none      color7    default "^---[[:space:]]?$"
 color body               none      color7    default "^You received this message because.*"
