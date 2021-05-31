@@ -85,7 +85,7 @@ nnoremap z\ :<C-u>vertical sfind ./**/*
 nnoremap z<bar> :<C-u>vertical sfind ./<C-r>=expand("%:h")<CR>/**/*
 nnoremap z' :<C-u>sfind ./**/*
 nnoremap z" :<C-u>sfind ./<C-r>=expand("%:h")<CR>/**/*
-nnoremap zp :<C-u>tjump /\<
+nnoremap z} :<C-u>tjump /\<
 nnoremap z] :<C-u>psearch <C-r>=expand("<cword>")<CR><CR>
 nnoremap z<C-]> :<C-u>ptjump <C-r>=expand("<cword>")<CR><CR>
 
