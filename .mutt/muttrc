@@ -193,16 +193,16 @@ color sidebar_new        bold      color179  default
 color prompt             bold      color130  default
 
 # Quoted Colors {{{2
-color quoted             none      color108  default
-color quoted1            none      color103  default
-color quoted2            none      color109  default
-color quoted3            none      color67   default
-color quoted4            none      color107  default
-color quoted5            none      color208  default
-color quoted6            none      color205  default
-color quoted7            none      color202  default
-color quoted8            none      color159  default
-color quoted9            none      color7    default
+color quoted             none      color108 default
+color quoted1            none      color109 default
+color quoted2            none      color12  default
+color quoted3            none      color67  default
+color quoted4            none      color14  default
+color quoted5            none      color65  default
+color quoted6            none      color137 default
+color quoted7            none      color138 default
+color quoted8            none      color94  default
+color quoted9            none      color59  default
 
 # Header Colors {{{2
 color hdrdefault         none      color110  default
