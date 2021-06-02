@@ -11,4 +11,7 @@ export GPG_TTY="$(tty)"
 export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
 
 fpath=("/usr/local/share/zsh/site-functions" $fpath)
-typeset -U FPATH
+typeset -U fpath
+
+path=("$HOME/.bin" "$HOME/Library/Python/Current/bin" $path)
+typeset -U path
