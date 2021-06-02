@@ -48,9 +48,9 @@ zstyle ':completion:*:*:*:groups' ignored-patterns 'com.*' '_*'
 zstyle -e ':completion:*' hosts 'reply=()'
 
 # History
-export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=6000000
-export SAVEHIST=$HISTSIZE
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=6000000
+SAVEHIST=$HISTSIZE
 
 # Functions
 grep() {

@@ -1,5 +1,8 @@
-export KEYTIMEOUT=1
-export BROWSER='open'
+# Zsh Options
+KEYTIMEOUT=1
+
+# Environment variables
+export BROWSER=open
 export EDITOR=vim
 export PAGER=less
 export MANPAGER=$PAGER
