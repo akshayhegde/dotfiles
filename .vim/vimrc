@@ -44,7 +44,6 @@ set showcmd showbreak=↪
 set statusline=[%n]\ %f\ %y\ %m%r%w%q%=%-15(%l,%c%V\ 0x%B%)\ %P
 
 " Search
-set tags^=.git/tags
 set grepprg=git\ grep\ --untracked\ -n\ $*
 set hlsearch incsearch
 set showmatch matchtime=2
