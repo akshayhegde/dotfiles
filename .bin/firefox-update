@@ -1,0 +1,106 @@
+#!/bin/zsh
+# The Most Amazingly Stupid Firefox Updater™
+#
+# Brought to you by — Akshay Hegde
+# Exclusively for macOS
+#
+# Seriously, the only thing this is good for is to download the latest
+# Firefox's nightly channel, and preventing its automatic updates.
+
+function download_release {
+    local download_source="https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=osx&lang=en-US"
+    local download_path="$HOME/Downloads/firefox.dmg"
+
+    if [[ -f "$download_path" ]]; then
+        mv -f -- "$download_path" "$HOME/.Trash/"
+    fi
+
+    printf '\n==> DOWNLOAD: Using download source "%s"\n\n' "$download_source"
+    if ! curl --fail --location "$download_source" -o "$download_path"
+    then
+        printf >&2 'Error downloading Firefox, aborting.\n'
+        return 2
+    fi
+}
+
+function detach_dmg {
+    local dmg_path="$1"
+
+    if [[ -z "$dmg_path" ]]; then
+        printf >&2 '==> WARNING: Did not specify DMG path to detach.\n'
+        return 1
+    elif [[ ! -d "$dmg_path" ]]; then
+        return
+    fi
+
+    printf 'Detaching disk image at path "%s"\n' "$dmg_path"
+    if ! hdiutil detach "$dmg_path"; then
+        printf >&2 '==> WARNING: Could not detach Firefox DMG.\n'
+    fi
+}
+
+function install_release {
+    local download_path="$HOME/Downloads/firefox.dmg"
+    local dmg_path='/Volumes/Firefox Nightly'
+    local install_path
+    local policies
+    local version_string
+
+    if [[ ! -f "$download_path" ]]; then
+        printf >&2 'Bad download path: %s\n' "$download_path"
+        return 2
+    fi
+
+    printf '\n==> INSTALL: Processing disk image for install...\n\n'
+
+    install_path='/Applications/Firefox Nightly.app'
+
+    if [[ -d "$install_path" ]]; then
+        mv -- "$install_path" "$HOME/.Trash/firefox-$(date +'%s')"
+    fi
+
+    detach_dmg "$dmg_path"
+    if ! hdiutil attach "$download_path"; then
+        printf >&2 'Cannot attach DMG at path: %s\n' "$download_path"
+        return 3
+    fi
+
+    if ! rsync -a --progress -- "$dmg_path/Firefox Nightly.app" /Applications; then
+        printf >&2 'Could not copy Firefox to "%s". Aborting.\n' "$install_path"
+        detach_dmg "$dmg_path"
+        return 4
+    fi
+
+    if [[ ! -d "$install_path" ]]; then
+        printf >&2 'Incomplete copy of Firefox at install path "%s". Aborting.\n' "$install_path"
+        detach_dmg "$dmg_path"
+        return 5
+    elif ! mkdir -- "$install_path/Contents/Resources/distribution"; then
+        printf >&2 'Could not create distribution at install path "%s". Aborting.\n' "$install_path"
+        detach_dmg "$dmg_path"
+        return 6
+    fi
+
+    printf '\n==> INSTALL: Writing policies...\n'
+    policies='{"policies":{"DisableAppUpdate":true}}'
+    if ! printf >"$install_path/Contents/Resources/distribution/policies.json" '%s\n' "$policies"; then
+        printf >&2 'Could not write policies to Firefox distribution at path "%s". Aborting.\n' "$install_path"
+        detach_dmg "$dmg_path"
+        return 7
+    fi
+
+    detach_dmg "$dmg_path"
+
+    rm -f -- "$download_path"
+    version_string="$(defaults read "$install_path/Contents/Info" 'CFBundleShortVersionString')"
+    printf '\n==> DONE: Firefox has been updated to %s.\n\n' "$version_string"
+}
+
+function firefox_update {
+    printf '\n==> START: The Most Amazing Firefox Updater™\n\n'
+
+    download_release || return $?
+    install_release || return $?
+}
+
+firefox_update
