@@ -1,13 +1,13 @@
 --langdef=swift
 --langmap=swift:+.swift
---regex-swift=/[[:<:]](var|let)[[:>:]][[:space:]]+([^:=<]+).*$/\2/,variable/
---regex-swift=/[[:<:]]func[[:>:]][[:space:]]+([^\(\)<]+)\([^\(\)]*\)/\1/,function/
---regex-swift=/[[:<:]]class[[:>:]][[:space:]]+([^:\{<]+).*$/\1/,class/
---regex-swift=/[[:<:]]case[[:>:]][[:space:]]+([a-zA-Z0-9_]+)/\1/e,enumerators/
---regex-swift=/[[:<:]]enum[[:>:]][[:space:]]+([^:\{<]+).*$/\1/,enumeration/
---regex-swift=/[[:<:]]struct[[:>:]][[:space:]]+([^:\{<]+).*$/\1/,struct/
---regex-swift=/[[:<:]]protocol[[:space:]]+([^:\{<]+).*$/\1/,protocol/
---regex-swift=/[[:<:]]extension[[:>:]][[:space:]]+([^:\{<]+).*$/\1/E,extension/
---regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([^:\{<]+).*$/\1/t,typealias/
+--regex-swift=/[[:<:]]func[[:>:]][[:space:]]+([^\(\)<]+)\([^\(\)]*\)/\1/f,function,functions/
+--regex-swift=/[[:<:]]class[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/c,class,classes/
+--regex-swift=/[[:<:]]enum[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/e,enum,enumerations/
+--regex-swift=/[[:<:]]struct[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/s,struct,structures/
+--regex-swift=/[[:<:]]protocol[[:space:]]+([[:alnum:]_]+)/\1/P,protocol,protocols/
+--regex-swift=/[[:<:]]extension[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/E,extension,extensions/
+--regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/T,typealias/
+--regex-swift=/[[:<:]]let[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/d,constant,constants/
+--regex-swift=/[[:<:]]var[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/v,variable,variables/
 
 --langmap=vim:+(vimrc)
