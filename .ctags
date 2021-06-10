@@ -9,3 +9,5 @@
 --regex-swift=/[[:<:]]protocol[[:space:]]+([^:\{<]+).*$/\1/,protocol/
 --regex-swift=/[[:<:]]extension[[:>:]][[:space:]]+([^:\{<]+).*$/\1/E,extension/
 --regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([^:\{<]+).*$/\1/t,typealias/
+
+--langmap=vim:+(vimrc)
