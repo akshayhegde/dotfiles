@@ -11,3 +11,15 @@
 --regex-swift=/[[:<:]]var[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/v,variable,variables/
 
 --langmap=vim:+(vimrc)
+
+--exclude=.build
+--exclude=.swiftpm
+--exclude=.pyc
+--exclude=Tests
+--exclude=tests
+--exclude=test
+--exclude=tags
+--exclude=.swp
+--exclude=.vim/backup
+--exclude=.vim/sessions
+--exclude=.vim/pack
