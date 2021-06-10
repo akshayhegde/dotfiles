@@ -3,6 +3,8 @@
 PATH="/usr/local/bin:$PATH"
 
 trap "rm -f .tags.$$" INT TERM EXIT
-git ls-files | \
-    command ctags --tag-relative -L - -f ".tags.$$" --languages=-javascript,sql
-mv -- ".tags.$$" tags 2>/dev/null
+
+if command ctags --tag-relative -Rf ".tags.$$"
+then
+    mv -- ".tags.$$" tags
+fi
