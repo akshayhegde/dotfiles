@@ -149,7 +149,7 @@ bind index,pager B sidebar-toggle-visible
 
 # Macros {{{1
 # Index Macros {{{2
-macro index \C^ "<shell-escape>mbsync -a<enter>" "Synchronize maildir"
+macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" "Synchronize maildir"
 
 # Hooks {{{1
 # Folder Hooks {{{2
