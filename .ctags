@@ -8,7 +8,7 @@
 --regex-swift=/[[:<:]]struct[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/s,struct,structures/
 --regex-swift=/[[:<:]]protocol[[:space:]]+([[:alnum:]_]+)/\1/P,protocol,protocols/
 --regex-swift=/[[:<:]]extension[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/E,extension,extensions/
---regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/T,typealias/
+--regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/a,typealias/
 --regex-swift=/[[:<:]]let[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/d,constant,constants/
 --regex-swift=/[[:<:]]var[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/v,variable,variables/
 
