@@ -64,7 +64,7 @@ set undofile undodir=~/.vim/backup/undo/
 nnoremap Q gq
 nnoremap Y y$
 nnoremap S i<CR><ESC>^m`gk:silent! s/\s\+$//<CR>:noh<CR>``
-nnoremap gy :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
+nnoremap gS :<C-u>echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 nnoremap coh :<C-u>nohlsearch<CR>
 nnoremap col :<C-u>set list! <bar> set list?<CR>
 nnoremap cos :<C-u>set spell! <bar> set spell?<CR>
