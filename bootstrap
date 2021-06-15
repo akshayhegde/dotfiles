@@ -20,16 +20,14 @@ dotlink() {
 }
 
 bootstrap() {
-    local iCloud="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
     local -a targets=('.vim' '.xvimrc' '.zshrc' '.zprofile' '.ipython'
     '.bin' '.tigrc' '.ctags' '.git_template' '.gitignore' '.gitconfig'
-    '.gitattributes' '.tmux.conf' ".mutt" "$iCloud/.weechat")
+    '.gitattributes' '.tmux.conf' ".mutt")
     local -a vim_targets=("$iCloud/Vim/pack" "$iCloud/Vim/spell")
     local -a config_targets=('mpv')
 
     local target
     for target in "${targets[@]}";        do dotlink "$target:P" "$HOME";         done
-    for target in "${vim_targets[@]}";    do dotlink "$target:P" "$HOME/.vim";    done
     for target in "${config_targets[@]}"; do dotlink "$target:P" "$HOME/.config"; done
 
     mkdir -p "$HOME/.vim/backup/undo"
