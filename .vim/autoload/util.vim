@@ -4,6 +4,6 @@ function! util#browser(url)
     echoerr "not a url"
     return ''
   endif
-  let patched = substitute(a:url, "[,']", "", "g")
+  let patched = substitute(a:url, "[,'\(\)]", "", "g")
   return '!' . $BROWSER . ' ' . patched
 endfunction
