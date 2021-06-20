@@ -22,7 +22,7 @@ dotlink() {
 bootstrap() {
     local -a targets=('.vim' '.xvimrc' '.zshrc' '.zprofile' '.ipython'
     '.bin' '.tigrc' '.ctags' '.git_template' '.gitignore' '.gitconfig'
-    '.gitattributes' '.tmux.conf' ".mutt")
+    '.tmux.conf' '.mutt')
     local -a vim_targets=("$iCloud/Vim/pack" "$iCloud/Vim/spell")
     local -a config_targets=('mpv')
 
