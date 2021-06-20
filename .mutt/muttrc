@@ -81,9 +81,6 @@ set delete = yes
 # Status {{{2
 set status_format=" %h: %f (msgs:%?M?%M/?%m size:%l%?n? new:%n?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l??) %> (%s/%S) (%P) "
 
-# Menu {{{2
-set menu_move_off = no
-
 # Pager {{{2
 set pager_index_lines = 9
 set pager_context = 5
@@ -122,8 +119,6 @@ bind index N search-opposite
 bind index gr toggle-new
 bind index <space> collapse-thread
 bind index g<space> collapse-all
-bind index z noop
-bind index Z noop
 bind index <BackTab> previous-new-then-unread
 
 # Pager Key Bindings {{{2
@@ -150,7 +145,8 @@ bind index,pager B sidebar-toggle-visible
 
 # Macros {{{1
 # Index Macros {{{2
-macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" "Synchronize maildir"
+macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" "synchronize maildir"
+macro index zz '<enter-command>set menu_move_off<enter><enter-command>set menu_context=1000<enter><enter-command>reset menu_context<enter>' "center view at cursor line"
 
 # Hooks {{{1
 # Folder Hooks {{{2
