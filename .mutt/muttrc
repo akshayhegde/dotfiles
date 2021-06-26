@@ -133,6 +133,7 @@ bind pager \Cd half-down
 bind pager \Cu half-up
 bind pager \Cb previous-page
 bind pager \Cf next-page
+bind pager \Ct skip-quoted
 bind pager <BackTab> previous-new-then-unread
 
 # Sidebar Key Bindings {{{2
