@@ -33,7 +33,7 @@ function detach_dmg {
         return
     fi
 
-    printf 'Detaching disk image at path "%s"\n' "$dmg_path"
+    printf '\n==> CLEANING: Detaching disk image at path "%s"\n' "$dmg_path"
     if ! hdiutil detach "$dmg_path"; then
         printf >&2 '==> WARNING: Could not detach Firefox DMG.\n'
     fi
