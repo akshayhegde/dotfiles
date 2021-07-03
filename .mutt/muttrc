@@ -149,6 +149,9 @@ bind index,pager B sidebar-toggle-visible
 macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" "synchronize maildir"
 macro index zz '<enter-command>set menu_move_off<enter><enter-command>set menu_context=1000<enter><enter-command>reset menu_context<enter>' "center view at cursor line"
 
+# Pager Macros {{{2
+macro pager gu '<enter-command>set pipe_decode<enter><pipe-message>urlview<enter><enter-command>unset pipe_decode<enter>' 'scan and display linked urls'
+
 # Hooks {{{1
 # Folder Hooks {{{2
 source ~/.mutt/hooks/folder-hooks
