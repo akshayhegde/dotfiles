@@ -12,12 +12,6 @@ unsetopt FLOW_CONTROL BEEP
 # Aliases
 unalias run-help 2>/dev/null
 alias ls='ls -hAG'
-alias cp='cp -vip'
-alias mv='mv -vi'
-alias rm='rm -vi'
-alias rcp='rsync -av --progress'
-alias jobs='jobs -l'
-alias pgrep='pgrep -fla'
 alias head='head -n $(( $LINES - 10 ))'
 alias top='top -o -rsize -O -cpu'
 
