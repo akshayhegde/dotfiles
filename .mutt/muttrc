@@ -56,7 +56,7 @@ source $alias_file
 # History {{{1
 set history_file = "$tmpdir/history"
 set history_remove_dups = yes
-set history = 300
+set history = 3000
 set error_history = $history
 set save_history = $history
 
