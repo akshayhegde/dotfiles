@@ -31,6 +31,7 @@ bootstrap() {
     for target in "${config_targets[@]}"; do dotlink "$target:P" "$HOME/.config"; done
 
     mkdir -p "$HOME/.vim/backup/undo"
+    mkdir -p "$HOME/.vim/backup/swap"
 }
 
 bootstrap
