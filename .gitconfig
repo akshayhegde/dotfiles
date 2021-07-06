@@ -17,7 +17,6 @@
 	copy-rev = !git rev-parse --short @ | tr -d '\n' | pbcopy && echo "Copied $(pbpaste)"
 	ctags = !.git/hooks/ctags
 	dirdiff = difftool --tool vdwrap --dir-diff
-	news = !git fetch && git log --format=medium @..@{u}
 	logs = log --graph --pretty='format:%C(auto,yellow)%h %C(auto,blue)%ad %C(auto,magenta)%aN %C(reset)%s %C(auto)%d%C(reset)'
 [log]
 	date = iso-strict
