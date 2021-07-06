@@ -207,9 +207,9 @@ color quoted9            none      color59  default
 
 # Header Colors {{{2
 color hdrdefault         none      color110  default
-color header             none      color130  default    '^date:'
+color header             none      color4    default    '^date:'
 color header             none      color153  default    '^(to|cc|bcc):'
-color header             none      color179  default    '^from:'
+color header             none      color11   default    '^from:'
 color header             bold      default   default    '^subject:'
 color header             none      color66   default    '^reply-to:'
 
