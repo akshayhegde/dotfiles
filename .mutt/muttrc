@@ -20,6 +20,8 @@ set ssl_starttls = no
 source ~/.mutt/accounts
 
 # Composing {{{1
+set abort_nosubject = no
+set abort_unmodified = no
 set delete = ask-yes
 set edit_headers = yes
 set fast_reply = yes
