@@ -1,0 +1,24 @@
+#!/bin/zsh
+#
+# Works with mutt's 'new_mail_command' setting to notify of new email messages.
+# Pretty dumb overall, and too noisy in general.
+#
+
+function new_mail {
+    local new_mailboxes="$1"
+    local title
+    local body
+
+    if [[ "$new_mailboxes" == "0" ]]
+    then
+        title="Mailbox Update"
+        body="One or more mailboxes have new read messages"
+    else
+        title="You've Got Mail!"
+        body="$new_mailboxes mailboxes with new messages"
+    fi
+
+    osascript -e "display notification \"$body\" with title \"$title\""
+}
+
+new_mail "$@"

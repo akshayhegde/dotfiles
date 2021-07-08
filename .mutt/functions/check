@@ -1,0 +1,49 @@
+#!/bin/zsh
+#
+# Checks for new mail for every given interval, using 'mbsync'.
+#
+
+function mail_check {
+    local interval="$1"
+    local mailbox="$2"
+
+    [[ -z "$interval" ]] && interval=60
+    [[ -z "$mailbox" ]] && mailbox="-a"
+
+    # FIXME: Is there a better way to trigger the pinentry dialog?
+    echo '' | gpg --sign --batch -qo /dev/null
+
+    if (( interval > 0 ))
+    then
+        printf 'Mail check interval for mailbox "%s" set to %ss\n' "${mailbox/-a/all}" "$interval"
+    fi
+
+    while true
+    do
+        printf '%s: \n' "$(/bin/date -R)"
+        if ! pgrep 'mbsync' &>/dev/null
+        then
+            /usr/local/bin/mbsync "$mailbox" || return 1
+        else
+            printf 'Skipping invocation: mbsync already running.\n'
+        fi
+
+        printf '\n'
+        if (( interval > 0 ))
+        then
+            sleep "$interval"
+            if ! echo '' | gpg --sign --batch --no-tty --pinentry-mode error -qo /dev/null
+            then
+                printf >&2 'GPG key needed, but no longer in cache. Aborting.\n'
+                return 2
+            fi
+        else
+            break
+        fi
+    done
+
+    (( interval > 0 )) && \
+        osascript -e 'display notification "Mail check has stopped" with title "Mail Check"'
+}
+
+mail_check "$@"
