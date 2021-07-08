@@ -196,24 +196,23 @@ color sidebar_new        bold      color179  default
 color prompt             bold      color130  default
 
 # Quoted Colors {{{2
-color quoted             none      color108 default
-color quoted1            none      color109 default
-color quoted2            none      color12  default
-color quoted3            none      color67  default
-color quoted4            none      color14  default
-color quoted5            none      color65  default
-color quoted6            none      color137 default
-color quoted7            none      color138 default
-color quoted8            none      color94  default
-color quoted9            none      color59  default
+color quoted             none      color108  default
+color quoted1            none      color109  default
+color quoted2            none      color12   default
+color quoted3            none      color67   default
+color quoted4            none      color14   default
+color quoted5            none      color65   default
+color quoted6            none      color137  default
+color quoted7            none      color138  default
+color quoted8            none      color94   default
+color quoted9            none      color59   default
 
 # Header Colors {{{2
-color hdrdefault         none      color110  default
-color header             none      color4    default    '^date:'
-color header             none      color153  default    '^(to|cc|bcc):'
-color header             none      color11   default    '^from:'
-color header             bold      default   default    '^subject:'
-color header             none      color66   default    '^reply-to:'
+color hdrdefault         none      color245  default
+color header             none      color153  default '^date:'
+color header             none      color11   default '^(from|to|cc|bcc):'
+color header             bold      default   default '^subject:'
+color header             none      color66   default '^X-spam-.*:'
 
 # Body Colors {{{2
 # URLs {{{3
