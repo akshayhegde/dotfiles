@@ -147,12 +147,15 @@ bind index,pager go sidebar-open
 bind index,pager B sidebar-toggle-visible
 
 # Macros {{{1
-# Index Macros {{{2
 macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" "synchronize maildir"
 macro index zz '<enter-command>set menu_move_off<enter><enter-command>set menu_context=1000<enter><enter-command>reset menu_context<enter>' "center view at cursor line"
-
-# Pager Macros {{{2
 macro pager gu '<enter-command>set pipe_decode<enter><pipe-message>urlview<enter><enter-command>unset pipe_decode<enter>' 'scan and display linked urls'
+macro index d "<tag-prefix><enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><tag-prefix><delete-message>" "mark read and delete"
+macro index gA "<tag-prefix><enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><tag-prefix><save-message>=Archive<enter>" "archive message"
+macro pager gA "<save-message>=Archive<enter>" "archive message"
+macro index gN "<tag-prefix><enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><tag-prefix><save-message>=Archive/Notifications<enter>" "archive notification"
+macro pager gN "<save-message>=Archive/Notifications<enter>" "archive notification"
+macro index S "<tag-prefix><enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><tag-prefix><save-message>=Archive/VerifiedSpam<enter>" "mark as spam"
 
 # Hooks {{{1
 # Folder Hooks {{{2
