@@ -185,9 +185,10 @@ color tree               none      color136  default
 color signature          none      color244  default
 
 # Index Colors {{{2
-color index              none      color1    default   "~D(!~p|~p)"
-color index              none      default   default   "~A!~N!~T!~p!~Q!~F!~D!~P"
+color index              none      color1    default   "~D"
+color index              none      color14   default   "~T"
 color index              none      color2    default   "~N"
+color index              none      color12    default   "~O"
 
 # Sidebar Colors {{{2
 color sidebar_indicator  none      color234  color247
