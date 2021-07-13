@@ -219,7 +219,8 @@ color header             none      color66   default '^X-spam-.*:'
 
 # Body Colors {{{2
 # URLs {{{3
-color body               none      color111  default '[-a-z_0-9+.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+'
+color body               none      color111  default '(^|<| )mailto:[^ ]+@[^ ]( |>|$)'
+color body               none      color111  default '(^|<| )(http|https|ftp|file|ssh)://[^ ]+( |>|$)'
 
 # Mailing Lists
 color body               none      color7    default '^--- ?$'
