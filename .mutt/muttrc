@@ -17,7 +17,7 @@ set ssl_force_tls = yes
 set ssl_starttls = no
 
 # Accounts {{{1
-source ~/.mutt/accounts
+source "$HOME/.mutt/accounts"
 
 # Composing {{{1
 set abort_nosubject = no
@@ -26,7 +26,7 @@ set delete = ask-yes
 set edit_headers = yes
 set fast_reply = yes
 set include = yes
-set ispell = "aspell --mode=email check"
+set ispell = 'aspell --mode=email check'
 set mime_forward = ask-yes
 set print = no
 set fcc_delimiter = ','
@@ -40,19 +40,19 @@ alternative_order text/plain text/enriched text/html
 
 # Maildir {{{1
 set mbox_type = Maildir
-set folder = "~/.mail/fastmail"
-set spoolfile = "~/.mail/fastmail/Inbox"
-set postponed = "=Drafts"
-set record = "=Sent"
-set trash = "=Trash"
+set folder = "$HOME/.mail/fastmail"
+set spoolfile = "$HOME/.mail/fastmail/Inbox"
+set postponed = '=Drafts'
+set record = '=Sent'
+set trash = '=Trash'
 
 # Miscellany Locations {{{1
-set header_cache = "~/.mutt/cache/headers"
-set tmpdir = "~/.mutt/cache/tmp"
+set header_cache = "$HOME/.mutt/cache/headers"
+set tmpdir = "$HOME/.mutt/cache/tmp"
 set attach_save_dir = "$tmpdir/attachments"
-set mailcap_path = "~/.mutt/mailcap"
-set signature = "~/.mutt/signature"
-set alias_file = "~/.mutt/aliases"
+set mailcap_path = "$HOME/.mutt/mailcap"
+set signature = "$HOME/.mutt/signature"
+set alias_file = "$HOME/.mutt/aliases"
 source $alias_file
 
 # History {{{1
@@ -63,41 +63,41 @@ set error_history = $history
 set save_history = $history
 
 # Mailboxes {{{1
-source ~/.mutt/mailboxes-fastmail
+source "$HOME/.mutt/mailboxes-fastmail"
 
 # GPG {{{1
-set pgp_default_key = "0x0AC668879C59205C"
+set pgp_default_key = '0x0AC668879C59205C'
 set crypt_use_gpgme = yes
 set postpone_encrypt = yes
 
 # Mailing Lists {{{1
-source ~/.mutt/subscriptions
+source "$HOME/.mutt/subscriptions"
 
 # Views {{{1
 # Index {{{2
-set index_format="%Z  (%?l?%4l&%4c?)  %?X?📎&  ?  %d  %-25.25F  %?M?(%02M)&  ?  %s"
-set date_format = "%FT%T%z"
-set sort = "threads"
+set index_format='%Z  (%?l?%4l&%4c?)  %?X?📎&  ?  %d  %-25.25F  %?M?(%02M)&  ?  %s'
+set date_format = '%FT%T%z'
+set sort = 'threads'
 set delete = yes
 
 # Status {{{2
-set status_format=" %h: %f (msgs:%?M?%M/?%m size:%l%?n? new:%n?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l??) %> (%s/%S) (%P) "
+set status_format=' %h: %f (msgs:%?M?%M/?%m size:%l%?n? new:%n?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l??) %> (%s/%S) (%P) '
 
 # Pager {{{2
 set pager_index_lines = 9
 set pager_context = 5
 set pager_stop = yes
-set pager_format = " %n —  %s %* (%P)   "
+set pager_format = ' %n —  %s %* (%P)   '
 mime_lookup application/octet-stream
 
 # Attachments {{{2
-set attach_format = "%u%D%I %t%4n %T%.40d%> [%m/%M, %e%?C?, %C?, %s] "
+set attach_format = '%u%D%I %t%4n %T%.40d%> [%m/%M, %e%?C?, %C?, %s] '
 
 # Sidebar {{{2
 set sidebar_divider_char = '¦'
 set sidebar_visible = yes
 set sidebar_width = 25
-set sidebar_format = "%B%?N? [%N]?%* %S"
+set sidebar_format = '%B%?N? [%N]?%* %S'
 set sidebar_short_path = yes
 set sidebar_folder_indent = yes
 
@@ -147,28 +147,28 @@ bind index,pager go sidebar-open
 bind index,pager B sidebar-toggle-visible
 
 # Macros {{{1
-macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" "synchronize maildir"
-macro index zz '<enter-command> set menu_move_off<enter><enter-command> set menu_context=1000<enter><enter-command> reset menu_context<enter>' "center view at cursor line"
+macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" 'synchronize maildir'
+macro index zz '<enter-command> set menu_move_off<enter><enter-command> set menu_context=1000<enter><enter-command> reset menu_context<enter>' 'center view at cursor line'
 macro pager gu '<enter-command> set pipe_decode<enter><pipe-message>urlview<enter><enter-command> unset pipe_decode<enter>' 'scan and display linked urls'
-macro index d "<tag-prefix><enter-command> unset resolve<enter><clear-flag>N<enter-command> set resolve<enter><tag-prefix><delete-message>" 'mark read and delete'
-macro index gA "<tag-prefix><enter-command> unset resolve<enter><clear-flag>N<enter-command> set resolve<enter><tag-prefix><save-message>=Archive<enter>" "archive message"
-macro pager gA "<save-message>=Archive<enter>" "archive message"
-macro index gN "<tag-prefix><enter-command> unset resolve<enter><clear-flag>N<enter-command> set resolve<enter><tag-prefix><save-message>=Archive/Notifications<enter>" "archive notification"
-macro pager gN "<save-message>=Archive/Notifications<enter>" "archive notification"
-macro index S "<tag-prefix><enter-command> unset resolve<enter><clear-flag>N<enter-command> set resolve<enter><tag-prefix><save-message>=Archive/VerifiedSpam<enter>" "mark as spam"
+macro index d '<enter-command> unset resolve<enter><tag-prefix><clear-flag>N<enter-command> set resolve<enter><tag-prefix><delete-message>' 'mark read and delete'
+macro index gA '<enter-command> unset resolve<enter><tag-prefix><clear-flag>N<enter-command> set resolve<enter><tag-prefix><save-message>=Archive<enter>' 'archive message'
+macro pager gA '<save-message>=Archive<enter>' 'archive message'
+macro index gN '<enter-command> unset resolve<enter><tag-prefix><clear-flag>N<enter-command> set resolve<enter><tag-prefix><save-message>=Archive/Notifications<enter>' 'archive notification'
+macro pager gN '<save-message>=Archive/Notifications<enter>' 'archive notification'
+macro index S '<enter-command> unset resolve<enter><tag-prefix><clear-flag>N<><enter-command> set resolve<enter><tag-prefix><save-message>=Archive/VerifiedSpam<enter>' 'mark as spam'
 
 # Hooks {{{1
 # Folder Hooks {{{2
-source ~/.mutt/hooks/folder-hooks
+source "$HOME/.mutt/hooks/folder-hooks"
 
 # Send Hooks {{{2
-source ~/.mutt/hooks/send-hooks
+source "$HOME/.mutt/hooks/send-hooks"
 
 # Save Hooks {{{2
-save-hook . "="
+save-hook . '='
 
 # Fcc Hooks {{{2
-source ~/.mutt/hooks/fcc-hooks
+source "$HOME/.mutt/hooks/fcc-hooks"
 
 # Colors {{{1
 # Default Colors {{{2
@@ -185,10 +185,10 @@ color tree               none      color136  default
 color signature          none      color244  default
 
 # Index Colors {{{2
-color index              none      color1    default "~D"
-color index              none      color14   default "~T"
-color index              none      color2    default "~N"
-color index              none      color12   default "~O"
+color index              none      color1    default '~D'
+color index              none      color14   default '~T'
+color index              none      color2    default '~N'
+color index              none      color12   default '~O'
 
 # Sidebar Colors {{{2
 color sidebar_indicator  none      color234  color247
@@ -220,28 +220,28 @@ color header             none      color66   default '^X-spam-.*:'
 
 # Body Colors {{{2
 # URLs {{{3
-color body               none      color111  default [-a-z_0-9+.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+
+color body               none      color111  default '[-a-z_0-9+.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+'
 
 # Mailing Lists
-color body               none      color7    default "^--- ?$"
-color body               none      color7    default "^You received this message because.*"
-color body               none      color7    default "^To unsubscribe from this group.*"
-color body               none      color7    default "^To view this discussion on.*"
+color body               none      color7    default '^--- ?$'
+color body               none      color7    default '^You received this message because.*'
+color body               none      color7    default '^To unsubscribe from this group.*'
+color body               none      color7    default '^To view this discussion on.*'
 
 # Patch Reviews/Commits
-color body               bold      default   default "-- Commit Summary --"
-color body               bold      default   default "-- File Changes --"
-color body               bold      default   default "-- Patch Links --"
-color body               none      color14   default "^(Signed-off-by).*"
+color body               bold      default   default '-- Commit Summary --'
+color body               bold      default   default '-- File Changes --'
+color body               bold      default   default '-- Patch Links --'
+color body               none      color14   default '^(Signed-off-by).*'
 
 # Diffs
-color body               bold      default   default "^diff .*"
-color body               bold      default   default "^index [0-9a-fA-F]+\.\..*"
-color body               bold      default   default "^[\+]{3}.*"
-color body               bold      default   default "^[\*]{3} .+"
-color body               bold      default   default "^\-\-\- .+"
-color body               none      color4    default "^!.+"
-color body               none      color14   default "^@@.*$"
-color body               none      color14   default "^[\*\-][\*\-][\*\-] [[:digit:]]+,[[:digit:]].*$"
-color body               none      color107  default "^[\+][^\+]+.*"
-color body               none      color9    default "^\-[^\-]+.*"
+color body               bold      default   default '^diff .*'
+color body               bold      default   default '^index [0-9a-fA-F]+\.\..*'
+color body               bold      default   default '^[\+]{3}.*'
+color body               bold      default   default '^[\*]{3} .+'
+color body               bold      default   default '^\-\-\- .+'
+color body               none      color4    default '^!.+'
+color body               none      color14   default '^@@.*$'
+color body               none      color14   default '^[\*\-][\*\-][\*\-] [[:digit:]]+,[[:digit:]].*$'
+color body               none      color107  default '^[\+][^\+]+.*'
+color body               none      color9    default '^\-[^\-]+.*'
