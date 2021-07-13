@@ -39,7 +39,6 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # Maildir {{{1
-set mbox_type = Maildir
 set folder = "$HOME/.mail/fastmail"
 set spoolfile = "$HOME/.mail/fastmail/Inbox"
 set postponed = '=Drafts'
