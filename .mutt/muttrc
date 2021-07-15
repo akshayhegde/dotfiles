@@ -86,7 +86,7 @@ set status_format=' %h: %f (msgs:%?M?%M/?%m size:%l%?n? new:%n?%?d? del:%d?%?F? 
 set pager_index_lines = 9
 set pager_context = 5
 set pager_stop = yes
-set pager_format = ' %n —  %s %* (%P)   '
+set pager_format = '-%Z- %C/%m: %-30.30n   %s%*     (%P) '
 mime_lookup application/octet-stream
 
 # Attachments {{{2
