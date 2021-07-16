@@ -10,6 +10,7 @@ set wait_key = no
 set read_inc = 100
 set write_inc = 100
 set arrow_cursor = yes
+set delete = ask-yes
 
 # Mail Options {{{1
 set mail_check_stats = yes
@@ -23,7 +24,8 @@ source "$HOME/.mutt/accounts"
 # Composing {{{1
 set abort_nosubject = no
 set abort_unmodified = no
-set delete = ask-yes
+set postpone = no
+set recall = no
 set edit_headers = yes
 set fast_reply = yes
 set include = yes
