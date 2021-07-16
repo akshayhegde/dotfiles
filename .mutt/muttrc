@@ -172,30 +172,31 @@ source "$HOME/.mutt/hooks/fcc-hooks"
 # Default Colors {{{2
 color normal             none      default   default
 color error              bold      color9    default
-color tilde              none      color235  default
-color message            bold      color2    default
+color tilde              none      color8    default
+color message            none      color2    default
 color markers            none      color103  default
 color attachment         none      color109  default
 color search             reverse   color3    default
 color status             none      default   color236
-color indicator          none      color234  color247
-color tree               none      color136  default
+color indicator          bold      color234  color4
+color tree               none      color240  default
 color signature          none      color244  default
 
 # Index Colors {{{2
 color index              none      color1    default '~D'
-color index              none      color14   default '~T'
-color index              none      color2    default '~N'
-color index              none      color12   default '~O'
+color index              none      color14   default '~T!~N'
+color index              none      color2    default '~N!~T'
+color index              none      color107  default '~N~T'
+color index              none      color12   default '~O!~T'
+color index              none      color109  default '~O~T'
 
 # Sidebar Colors {{{2
-color sidebar_indicator  none      color234  color247
 color sidebar_highlight  none      default   color237
 color sidebar_divider    none      default   default
-color sidebar_new        bold      color179  default
+color sidebar_new        bold      color2    default
 
 # Prompt Colors {{{2
-color prompt             bold      color130  default
+color prompt             bold      color4    default
 
 # Quoted Colors {{{2
 color quoted             none      color108  default
