@@ -75,7 +75,7 @@ source "$HOME/.mutt/subscriptions"
 # Views {{{1
 # Index {{{2
 set index_format='%Z  (%?l?%4l&%4c?)  %?X?📎&  ?  %d  %-25.25F  %?M?(%02M)&  ?  %s'
-set date_format = '%FT%T%z'
+set date_format = '%F %H:%M %z'
 set sort = 'threads'
 set delete = yes
 
