@@ -136,6 +136,10 @@ bind pager k previous-line
 bind pager \Ct skip-quoted
 bind pager <BackTab> previous-new-then-unread
 
+# Compose Key Bindings {{{2
+bind compose d detach-file
+bind compose D edit-description
+
 # Sidebar Key Bindings {{{2
 bind index,pager <up> sidebar-prev
 bind index,pager <down> sidebar-next
