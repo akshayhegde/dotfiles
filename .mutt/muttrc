@@ -102,22 +102,22 @@ set sidebar_short_path = yes
 set sidebar_folder_indent = yes
 
 # Key Bindings {{{1
-# Generic Key Bindings {{{2
-bind generic,index,pager,browser,attach,compose gh help
-bind generic,index,pager,browser,attach,compose ? search-reverse
+# Common Key Bindings {{{2
+bind generic,alias,index,pager,browser,attach,pgp,compose gh help
+bind generic,alias,index,pager,browser,attach,pgp,compose ? search-reverse
+bind generic,alias,index,pager,browser,attach,pgp,compose N search-opposite
+bind generic,alias,index,pager,browser,attach,pgp,compose \Cb previous-page
+bind generic,alias,index,pager,browser,attach,pgp,compose \Cf next-page
+bind generic,alias,index,pager,browser,attach,pgp,compose \Cu half-up
+bind generic,alias,index,pager,browser,attach,pgp,compose \Cd half-down
+bind generic,alias,index,browser,attach,pgp,compose gg first-entry
+bind generic,alias,index,browser,attach,pgp,compose G last-entry
+bind index,pager gd delete-thread
+bind index,pager gD undelete-thread
 
 # Index Key Bindings {{{2
-bind index gg first-entry
-bind index G last-entry
-bind index gd delete-thread
-bind index gD undelete-thread
 bind index gt tag-thread
 bind index \Cr group-reply
-bind index \Cd half-down
-bind index \Cu half-up
-bind index \Cf next-page
-bind index \Cb previous-page
-bind index N search-opposite
 bind index gr toggle-new
 bind index <space> collapse-thread
 bind index g<space> collapse-all
@@ -129,15 +129,8 @@ bind index zb current-bottom
 # Pager Key Bindings {{{2
 bind pager gg top
 bind pager G bottom
-bind pager gd delete-thread
-bind pager gD undelete-thread
 bind pager j next-line
 bind pager k previous-line
-bind pager N search-opposite
-bind pager \Cd half-down
-bind pager \Cu half-up
-bind pager \Cb previous-page
-bind pager \Cf next-page
 bind pager \Ct skip-quoted
 bind pager <BackTab> previous-new-then-unread
 
