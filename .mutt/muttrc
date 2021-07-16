@@ -9,6 +9,7 @@ set timeout = 10
 set wait_key = no
 set read_inc = 100
 set write_inc = 100
+set arrow_cursor = yes
 
 # Mail Options {{{1
 set mail_check_stats = yes
@@ -150,6 +151,7 @@ macro index \C^ "<shell-escape>$HOME/.mutt/functions/check 0 -a<enter>" 'synchro
 macro index zz '<enter-command> set menu_move_off<enter><enter-command> set menu_context=1000<enter><enter-command> reset menu_context<enter>' 'center view at cursor line'
 macro pager gu '<enter-command> set pipe_decode<enter><pipe-message>urlview<enter><enter-command> unset pipe_decode<enter>' 'scan and display linked urls'
 macro index d '<enter-command> unset resolve<enter><tag-prefix><clear-flag>N<enter-command> set resolve<enter><tag-prefix><delete-message>' 'mark read and delete'
+macro generic,alias,index,pager,browser,attach,compose V '<enter-command> toggle arrow_cursor<enter>' 'toggle arrow cursor'
 
 # Hooks {{{1
 # Folder Hooks {{{2
