@@ -105,7 +105,8 @@ set sidebar_folder_indent = yes
 
 # Key Bindings {{{1
 # Common Key Bindings {{{2
-bind generic,alias,index,pager,browser,attach,pgp,compose gh help
+bind generic ! help
+bind generic,alias,index,pager,browser,attach,pgp,compose = shell-escape
 bind generic,alias,index,pager,browser,attach,pgp,compose ? search-reverse
 bind generic,alias,index,pager,browser,attach,pgp,compose N search-opposite
 bind generic,alias,index,pager,browser,attach,pgp,compose \Cb previous-page
